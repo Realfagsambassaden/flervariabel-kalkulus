@@ -1,0 +1,12 @@
+# Om faget.
+nettsted: matematikkhjelp
+tittel: "Flervariabel kalkulus og PDE-er"
+kortnavn: flervariabel-kalkulus   # brukes i nettadressen: matematikkhjelp.no/flervariabel-kalkulus/
+beskrivelse: "Dobbelt- og trippelintegraler, linje- og flateintegraler, vektorfelt og integralsetningene, partielle differensiallikninger og numeriske metoder (endelige differanser og endelig volum). Med eksempler, kjørbar Python og oppgaver med løsning."
+ansvarlig: "Realfagsambassaden"
+status: arbeid                 # skjult (vises ikke) | arbeid (vises med «under arbeid») | klar
+
+# PDF-kompendium (lages automatisk sammen med nettsidene)
+pdf:
+  undertittel: "Flervariabel kalkulus og PDE-er"
+  linje: "Ingeniørnivå · matematikkhjelp.no"

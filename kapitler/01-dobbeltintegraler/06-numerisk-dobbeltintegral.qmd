@@ -1,0 +1,159 @@
+---
+title: "Numerisk beregning av dobbeltintegraler"
+tema: dobbeltintegraler
+undertema: numerisk
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/01-06-numerisk-dobbeltintegral) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+Mange dobbeltintegraler har ingen antiderivert vi kan skrive opp, som $\iint \mathrm{e}^{-(x^2 + y^2)}\,\mathrm{d}A$ over et kvadrat. Og ofte har vi bare målinger: dybden i en innsjø målt i et rutenett, eller temperaturen i noen punkter på en plate. Da regner vi integralet ut **numerisk**, ved å gjøre akkurat det definisjonen sier: dele området i små biter og summere.
+
+## Midtpunktsregelen
+
+Dobbeltintegralet over et rektangel $R = [a, b] \times [c, d]$ er grensen av Riemann-summer. Del $R$ i $n \times m$ små rektangler med sider $\Delta x$ og $\Delta y$, og bruk funksjonsverdien i midtpunktet $(\bar x_i, \bar y_j)$ av hvert rektangel:
+
+::: {.callout-important title="Midtpunktsregelen i 2D"}
+$$
+\iint_R f(x, y)\,\mathrm{d}A \approx \sum_{i=1}^{n}\sum_{j=1}^{m} f(\bar x_i, \bar y_j)\,\Delta x\,\Delta y
+$$
+Hvert ledd er volumet av en søyle med grunnflate $\Delta x\,\Delta y$ og høyde $f(\bar x_i, \bar y_j)$. Feilen er $O(h^2)$, der $h$ er den største steglengden.
+:::
+
+::: {.eksempel}
+**Eksempel: For hånd.** Tilnærm $\iint_R xy^2\,\mathrm{d}A$ over $R = [0, 2] \times [0, 1]$ med $2 \times 2$ rektangler. Det eksakte svaret er $\frac23$.
+
+::: {.losning}
+$\Delta x = 1$, $\Delta y = 0.5$, og midtpunktene er $\bar x \in \{0.5,\ 1.5\}$ og $\bar y \in \{0.25,\ 0.75\}$.
+$$
+\begin{aligned}
+\text{sum} &= \big(0.5\cdot 0.0625 + 0.5\cdot 0.5625 + 1.5\cdot 0.0625 + 1.5\cdot 0.5625\big)\cdot 1\cdot 0.5 \\
+&= 1.25\cdot 0.5 = \underline{\underline{0.625}}
+\end{aligned}
+$$
+Feilen er $0.042$, altså 6 %, med bare fire funksjonsverdier.
+:::
+:::
+
+## Trapes og Simpson i to dimensjoner
+
+Regler fra én dimensjon kan brukes i hver retning for seg. Har trapesregelen vektene $\frac12, 1, 1, \dots, 1, \frac12$, får punktet $(x_i, y_j)$ i 2D vekten $w_iw_j$:
+$$
+\iint_R f\,\mathrm{d}A \approx \Delta x\,\Delta y\sum_{i}\sum_{j} w_iw_j\,f(x_i, y_j)
+$$
+Hjørnene får vekt $\frac14$, kantene $\frac12$ og de indre punktene $1$. Simpsons regel gir på samme måte vektene $1, 4, 2, 4, \dots, 4, 1$ (delt på 3) i hver retning.
+
+::: {.eksempel}
+**Eksempel: Sammenlign reglene.** Regn ut $\iint_{[0,1]^2}\mathrm{e}^{-(x^2 + y^2)}\,\mathrm{d}A = 0.557746$ med $n \times n$ delintervaller.
+
+::: {.losning}
+| $n$ | midtpunkt, feil | trapes, feil | Simpson, feil |
+|---|---|---|---|
+| $2$ | $1.2\cdot 10^{-2}$ | $-2.3\cdot 10^{-2}$ | $5.3\cdot 10^{-4}$ |
+| $4$ | $2.9\cdot 10^{-3}$ | $-5.7\cdot 10^{-3}$ | $4.7\cdot 10^{-5}$ |
+| $8$ | $7.2\cdot 10^{-4}$ | $-1.4\cdot 10^{-3}$ | $3.0\cdot 10^{-6}$ |
+
+Midtpunkt og trapes er av andre orden (feilen deles på 4), Simpson av fjerde orden (feilen deles på 16). Som i én dimensjon er midtpunktsfeilen omtrent halvparten av trapesfeilen, med motsatt fortegn.
+:::
+:::
+
+## Områder som ikke er rektangler
+
+::: {.kort}
+- **Maske** Legg området inn i et rektangel, og ta bare med midtpunktene som ligger inne i området. Enkelt, men kantene gir en feil av første orden.
+- **Variable grenser** Skriv integralet som itererte integraler med grenser som avhenger av $x$, og bruk en 1D-regel i hver retning. `scipy.integrate.dblquad` gjør dette automatisk.
+- **Bytt koordinater** Er området en sirkel eller en sektor, gir polarkoordinater et rektangel i $(r, \theta)$.
+:::
+
+::: {.eksempel}
+**Eksempel: Dybdemålinger.** En liten dam er målt i et rutenett med $10\ \mathrm{m}$ mellom punktene. Dybden (i meter) er null langs kanten:
+$$
+\begin{matrix}
+0 & 0 & 0 & 0 & 0 \\
+0 & 2.1 & 3.4 & 2.8 & 0 \\
+0 & 3.0 & 5.2 & 4.1 & 0 \\
+0 & 1.8 & 2.9 & 2.2 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{matrix}
+$$
+Anslå hvor mye vann dammen rommer.
+
+::: {.losning}
+Volumet er $\iint$ dybde $\mathrm{d}A$. Med trapesregelen har alle randpunktene dybde 0, så bare de indre punktene (vekt 1) teller:
+$$
+V \approx 10\cdot 10\cdot(2.1 + 3.4 + 2.8 + 3.0 + 5.2 + 4.1 + 1.8 + 2.9 + 2.2)\ \mathrm{m^3} = \underline{\underline{2.8\cdot 10^{3}\ \mathrm{m^3}}}
+$$
+Simpson gir $3.0\cdot 10^{3}\ \mathrm{m^3}$. Med så få målepunkter er det rimelig å oppgi to gjeldende siffer, og at usikkerheten er minst 10 %.
+:::
+:::
+
+## Prøv selv
+
+```{.python .kjor}
+import numpy as np
+from scipy import integrate
+
+f = lambda x, y: np.exp(-(x**2 + y**2))
+
+# Midtpunktsregelen med meshgrid
+n = 16; h = 1/n
+xm = (np.arange(n) + 0.5)*h
+X, Y = np.meshgrid(xm, xm)
+print("Midtpunkt:", f(X, Y).sum()*h*h)
+
+# SciPy: dblquad integrerer f(y, x) med y innerst
+verdi, feil = integrate.dblquad(lambda y, x: f(x, y), 0, 1, 0, 1)
+print("dblquad:  ", verdi)
+
+# Kvartsirkel med variabel øvre grense for y
+verdi, _ = integrate.dblquad(lambda y, x: x*y, 0, 1, 0, lambda x: np.sqrt(1 - x**2))
+print("∬ xy over kvartsirkel:", verdi, "(eksakt 1/8)")
+
+# Maske: areal av kvartsirkel
+n = 400; h = 1/n; xm = (np.arange(n) + 0.5)*h
+X, Y = np.meshgrid(xm, xm)
+print("Areal med maske:", ((X**2 + Y**2) <= 1).sum()*h*h, "eksakt", np.pi/4)
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Midtpunkt for hånd"}
+Tilnærm $\iint_R (x + y)\,\mathrm{d}A$ over $R = [0, 2] \times [0, 2]$ med $2 \times 2$ kvadrater. Hvorfor blir svaret eksakt?
+
+::: {.losning}
+Midtpunkter $(0.5, 0.5)$, $(0.5, 1.5)$, $(1.5, 0.5)$, $(1.5, 1.5)$ med $f = 1, 2, 2, 3$. Sum $= 8\cdot 1 = \underline{\underline{8}}$, som er eksakt. Midtpunktsregelen er eksakt for lineære funksjoner, fordi det som er for mye på den ene halvdelen av rektangelet, er for lite på den andre.
+:::
+:::
+
+::: {.oppgave tittel="Trapesvekter" niva="Middels"}
+Tilnærm $\iint_{[0,1]^2} x^2y\,\mathrm{d}A$ med trapesregelen og $2 \times 2$ delintervaller. Eksakt svar er $\frac16$.
+
+::: {.losning}
+Punktene er $x, y \in \{0,\ 0.5,\ 1\}$ med vekter $\frac12, 1, \frac12$ og $\Delta x = \Delta y = 0.5$. Bare punkter med $x, y > 0$ bidrar:
+
+$(0.5, 0.5)$: vekt 1, $f = 0.125$. $(0.5, 1)$: vekt $\frac12$, $f = 0.25$. $(1, 0.5)$: vekt $\frac12$, $f = 0.5$. $(1, 1)$: vekt $\frac14$, $f = 1$.
+
+Sum: $0.125 + 0.125 + 0.25 + 0.25 = 0.75$. Gang med $0.25$: $\underline{\underline{0.1875}}$ (eksakt $0.1667$).
+:::
+:::
+
+::: {.oppgave tittel="Masse av en plate" niva="Middels"}
+En halvsirkelformet plate $x^2 + y^2 \le 1$, $y \ge 0$ (i meter) har tetthet $\sigma = 2 + y\ \mathrm{kg/m^2}$. Finn massen med `dblquad`, og kontroller med polarkoordinater.
+
+::: {.losning}
+`dblquad(lambda y, x: 2 + y, -1, 1, 0, lambda x: np.sqrt(1 - x**2))` gir $3.808\ \mathrm{kg}$.
+
+Polart: $\int_0^{\pi}\int_0^1(2 + r\sin\theta)\,r\,\mathrm{d}r\,\mathrm{d}\theta = \pi + \frac23 = \underline{\underline{3.81\ \mathrm{kg}}}$.
+:::
+:::
+
+::: {.oppgave tittel="Maskefeil" niva="Utfordrende"}
+Kjør maskemetoden for arealet av kvartsirkelen med $n = 10,\ 100,\ 1000$. Hvilken orden har feilen? Hvorfor er den dårligere enn midtpunktsregelen for et rektangel?
+
+::: {.losning}
+Feilene blir omtrent $4.6\cdot 10^{-3}$, $3.0\cdot 10^{-4}$ og $2.1\cdot 10^{-5}$, men de varierer ujevnt fordi det avhenger av hvordan kanten treffer rutenettet. I snitt er feilen av orden $h$ til $h^{1.5}$, ikke $h^2$. Rutene som kanten skjærer gjennom, telles enten helt med eller ikke i det hele tatt.
+:::
+:::
+
+::::

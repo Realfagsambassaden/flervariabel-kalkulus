@@ -1,0 +1,19 @@
+---
+title: "Sylinderkoordinater"
+tema: trippelintegraler
+undertema: sylinderkoordinater
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/02-02-sylinderkoordinater) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Volumelementet r dz dr dθ
+- Sylindre og kjegler

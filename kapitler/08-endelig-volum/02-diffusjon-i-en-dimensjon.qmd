@@ -1,0 +1,165 @@
+---
+title: "Diffusjon i én dimensjon"
+tema: endelig-volum
+undertema: diffusjon-1d
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/08-02-diffusjon-i-en-dimensjon) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+Nå gjør vi bevaringsloven for én celle om til en likning vi kan regne med. Eksempelet er varmeledning gjennom en vegg, der varmeledningsevnen $\kappa$ spiller rollen til $\Gamma$:
+$$
+\frac{\mathrm{d}}{\mathrm{d}x}\left(\kappa\frac{\mathrm{d}T}{\mathrm{d}x}\right) + S = 0
+$$
+
+## Fluksene på celleflatene
+
+Bevaringsloven for cellen rundt $P$ inneholder gradienten på flatene $e$ og $w$, men vi kjenner bare temperaturen i nodene. Den enkleste tilnærmingen er en rett linje mellom nodene:
+$$
+\left(\kappa A\frac{\mathrm{d}T}{\mathrm{d}x}\right)_e \approx \kappa_eA\,\frac{T_E - T_P}{\delta x}, \qquad
+\left(\kappa A\frac{\mathrm{d}T}{\mathrm{d}x}\right)_w \approx \kappa_wA\,\frac{T_P - T_W}{\delta x}
+$$
+Kilden skrives som $\bar{S}A\,\delta x = S_u + S_PT_P$, en konstant del og en del som avhenger av $T_P$ (mer om den på neste side). Setter vi inn og samler leddene med $T_P$ til venstre, får vi:
+
+::: {.callout-important title="Den diskrete likningen for en celle"}
+$$
+a_PT_P = a_WT_W + a_ET_E + S_u
+$$
+med
+$$
+a_W = \frac{\kappa_wA}{\delta x}, \qquad a_E = \frac{\kappa_eA}{\delta x}, \qquad a_P = a_W + a_E - S_P
+$$
+Temperaturen i $P$ er et vektet gjennomsnitt av naboene, pluss bidraget fra kilden.
+:::
+
+## Randceller
+
+Randen faller sammen med en celleflate, så avstanden fra randen til den første noden er bare $\frac{\delta x}{2}$. Er temperaturen $T_V$ kjent i venstre ende, blir fluksen inn gjennom randflaten
+$$
+\kappa A\,\frac{T_P - T_V}{\delta x/2} = \frac{2\kappa A}{\delta x}\,(T_P - T_V)
+$$
+Det er ingen vestnabo, så $a_W = 0$. I stedet legger vi randen inn som et kildeledd:
+
+::: {.callout-important title="Kjent randtemperatur"}
+$$
+a_W = 0, \qquad S_P = -\frac{2\kappa A}{\delta x}, \qquad S_u = \frac{2\kappa A}{\delta x}\,T_V
+$$
+Tilsvarende i høyre ende med $a_E = 0$ og $T_H$.
+:::
+
+::: {.eksempel}
+**Eksempel: Yttervegg.** En vegg er $0.20\ \mathrm{m}$ tykk og har $\kappa = 0.80\ \mathrm{W/(m\,K)}$. Innsiden er $20\ \mathrm{°C}$ og utsiden $-10\ \mathrm{°C}$. Del veggen i fire celler, og finn temperaturene og varmetapet per kvadratmeter.
+
+::: {.losning}
+$\delta x = 0.050\ \mathrm{m}$ og $A = 1\ \mathrm{m^2}$, så $\frac{\kappa A}{\delta x} = 16\ \mathrm{W/K}$ og $\frac{2\kappa A}{\delta x} = 32\ \mathrm{W/K}$.
+
+| celle | $a_W$ | $a_E$ | $S_P$ | $S_u$ | $a_P$ |
+|---|---|---|---|---|---|
+| 1 | $0$ | $16$ | $-32$ | $32\cdot 20 = 640$ | $48$ |
+| 2 | $16$ | $16$ | $0$ | $0$ | $32$ |
+| 3 | $16$ | $16$ | $0$ | $0$ | $32$ |
+| 4 | $16$ | $0$ | $-32$ | $32\cdot(-10) = -320$ | $48$ |
+
+$$
+\begin{bmatrix} 48 & -16 & 0 & 0 \\ -16 & 32 & -16 & 0 \\ 0 & -16 & 32 & -16 \\ 0 & 0 & -16 & 48 \end{bmatrix}
+\begin{bmatrix} T_1 \\ T_2 \\ T_3 \\ T_4 \end{bmatrix}
+=
+\begin{bmatrix} 640 \\ 0 \\ 0 \\ -320 \end{bmatrix}
+$$
+gir $\underline{\underline{T = (16.25,\ 8.75,\ 1.25,\ -6.25)\ \mathrm{°C}}}$.
+
+Varmetapet er fluksen gjennom en hvilken som helst flate, for eksempel mellom celle 1 og 2: $16\cdot(16.25 - 8.75) = \underline{\underline{120\ \mathrm{W/m^2}}}$. Den eksakte løsningen er den rette linja $T = 20 - 150x$, og den numeriske løsningen er eksakt, fordi den lineære tilnærmingen av fluksen er eksakt for en rett linje.
+:::
+:::
+
+## Lag av ulike materialer
+
+Her viser metoden styrken sin. Består veggen av to materialer, har temperaturen en knekk der de møtes, og $T''$ finnes ikke der. Bevaringsloven gjelder likevel: Fluksen er den samme på begge sider av grenseflaten.
+
+Hvilken $\kappa_e$ skal vi bruke på en flate mellom to celler med ulik $\kappa$? Tenk på varmemotstand i serie: Den halve cellen på hver side har motstand $\frac{\delta x/2}{\kappa}$, og motstandene legges sammen. Det gir det **harmoniske gjennomsnittet**
+$$
+\kappa_e = \frac{2\kappa_P\kappa_E}{\kappa_P + \kappa_E}
+$$
+
+::: {.eksempel}
+**Eksempel: Murvegg med isolasjon.** Veggen over får $0.10\ \mathrm{m}$ mur med $\kappa = 0.80\ \mathrm{W/(m\,K)}$ og $0.10\ \mathrm{m}$ isolasjon med $\kappa = 0.040\ \mathrm{W/(m\,K)}$. Hva blir varmetapet nå, og hva er temperaturen der muren og isolasjonen møtes?
+
+::: {.losning}
+Med åtte celler og harmonisk gjennomsnitt i grenseflaten gir koden under varmetapet $\underline{\underline{11.4\ \mathrm{W/m^2}}}$, bare en tidel av før. Det stemmer eksakt med serieformelen
+$$
+q = \frac{\Delta T}{\sum\frac{L}{\kappa}} = \frac{30\ \mathrm{K}}{\frac{0.10}{0.80} + \frac{0.10}{0.040}\ \mathrm{m^2K/W}} = 11.4\ \mathrm{W/m^2}
+$$
+Temperaturen i grenseflaten er $20 - 11.4\cdot\frac{0.10}{0.80} = \underline{\underline{18.6\ \mathrm{°C}}}$. Nesten hele temperaturfallet skjer i isolasjonen.
+
+Bruker vi vanlig gjennomsnitt $\frac12(\kappa_P + \kappa_E)$ i stedet, blir varmetapet for stort, fordi den dårlige lederen får for lite vekt.
+:::
+:::
+
+## Prøv selv
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def evm_1d(kappa, dx, TV, TH, q=0.0):
+    """Endelig volum for (kappa T')' + q = 0 med kjent T i begge ender, A = 1."""
+    n = len(kappa)
+    kf = 2*kappa[:-1]*kappa[1:]/(kappa[:-1] + kappa[1:])   # harmonisk snitt på flatene
+    A = np.zeros((n, n)); F = np.zeros(n)
+    for i in range(n):
+        aW = kf[i-1]/dx if i > 0 else 0
+        aE = kf[i]/dx if i < n - 1 else 0
+        SP, Su = 0.0, q*dx
+        if i == 0:     SP -= 2*kappa[0]/dx;  Su += 2*kappa[0]/dx*TV
+        if i == n - 1: SP -= 2*kappa[-1]/dx; Su += 2*kappa[-1]/dx*TH
+        A[i, i] = aW + aE - SP
+        if i > 0:     A[i, i-1] = -aW
+        if i < n - 1: A[i, i+1] = -aE
+        F[i] = Su
+    return np.linalg.solve(A, F)
+
+n = 8; dx = 0.20/n
+kappa = np.array([0.80]*(n//2) + [0.040]*(n//2))
+T = evm_1d(kappa, dx, 20, -10)
+x = (np.arange(n) + 0.5)*dx
+print("Temperaturer:", np.round(T, 2))
+print("Varmetap:", round(kappa[0]*(20 - T[0])/(dx/2), 2), "W/m²")
+
+plt.plot(x, T, 'o-'); plt.axvline(0.10, color='gray', ls='--')
+plt.xlabel('x (m)'); plt.ylabel('T (°C)'); plt.show()
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Koeffisienter"}
+En stav med $\kappa = 200\ \mathrm{W/(m\,K)}$ og $A = 1.0\cdot 10^{-4}\ \mathrm{m^2}$ deles i celler med $\delta x = 0.010\ \mathrm{m}$. Finn $a_W$, $a_E$ og $a_P$ for en indre celle og for cellen ved venstre rand med kjent temperatur.
+
+::: {.losning}
+$\frac{\kappa A}{\delta x} = \frac{200\cdot 1.0\cdot 10^{-4}}{0.010} = 2.0\ \mathrm{W/K}$.
+
+Indre celle: $\underline{\underline{a_W = a_E = 2.0,\ a_P = 4.0}}$ (W/K).
+
+Randcelle: $a_W = 0$, $a_E = 2.0$, $S_P = -4.0$, så $\underline{\underline{a_P = 6.0\ \mathrm{W/K}}}$ og $S_u = 4.0\,T_V$.
+:::
+:::
+
+::: {.oppgave tittel="Tre celler" niva="Middels"}
+En stav har $T_V = 0\ \mathrm{°C}$ og $T_H = 60\ \mathrm{°C}$ og deles i tre celler med $\frac{\kappa A}{\delta x} = 1$. Sett opp og løs systemet.
+
+::: {.losning}
+$3T_1 - T_2 = 0$, $\quad -T_1 + 2T_2 - T_3 = 0$, $\quad -T_2 + 3T_3 = 120$.
+
+Fra den første: $T_2 = 3T_1$. Den andre: $T_3 = 5T_1$. Den tredje: $-3T_1 + 15T_1 = 120$, så $\underline{\underline{T = (10,\ 30,\ 50)\ \mathrm{°C}}}$, som ligger på den rette linja.
+:::
+:::
+
+::: {.oppgave tittel="Feil gjennomsnitt" niva="Utfordrende"}
+Endre koden slik at den bruker vanlig gjennomsnitt $\frac12(\kappa_P + \kappa_E)$ på flatene. Hvor stort blir varmetapet for murveggen med isolasjon, og hvorfor er det feil?
+
+::: {.losning}
+Med vanlig gjennomsnitt blir flaten i grensen tillagt $\kappa = 0.42$, som om den halve isolasjonscellen var nesten like god leder som muren. Varmetapet blir da $\underline{\underline{12.7\ \mathrm{W/m^2}}}$, 11 % for høyt. Det harmoniske gjennomsnittet tilsvarer to motstander i serie, og det er riktig fysikk.
+:::
+:::
+
+::::

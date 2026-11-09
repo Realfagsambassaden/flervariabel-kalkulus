@@ -1,0 +1,20 @@
+---
+title: "Hva er en partiell differensiallikning?"
+tema: partielle-differensiallikninger
+undertema: typer
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/06-01-hva-er-en-pde) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Orden og linearitet
+- Varme-, bølge- og Laplace-likningen
+- Elliptisk, parabolsk og hyperbolsk

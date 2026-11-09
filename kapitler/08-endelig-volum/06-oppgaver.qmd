@@ -1,0 +1,48 @@
+---
+title: "Blandede oppgaver: endelig volum-metoden"
+tema: endelig-volum
+undertema: oppgaver
+---
+
+<!-- tillegg: Claude -->
+Oppgavene blander randbetingelser, kilder, 2D og tid. Prøv selv før du åpner løsningen.
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Endelig volum eller endelige differanser?"}
+Nevn to situasjoner der endelig volum-metoden har en klar fordel framfor endelige differanser.
+
+::: {.losning}
+For eksempel: et materiale med flere lag med ulik varmeledningsevne (fluksen er kontinuerlig selv om gradienten hopper), en geometri som ikke er rektangulær (cellene kan ha vilkårlig form), og problemer der det er viktig at masse eller energi er eksakt bevart.
+:::
+:::
+
+::: {.oppgave tittel="Gulvvarme" niva="Middels"}
+En $0.060\ \mathrm{m}$ tykk betongplate med $\kappa = 1.4\ \mathrm{W/(m\,K)}$ har varmekabler som gir $q = 2.0\ \mathrm{kW/m^3}$ jevnt fordelt. Undersiden er isolert, og oversiden holdes på $22\ \mathrm{°C}$ av romlufta. Hva er den høyeste temperaturen i platen? Bruk endelig volum-metoden med tre celler, og sammenlign med det eksakte svaret.
+
+::: {.losning}
+$\delta x = 0.020\ \mathrm{m}$, $\frac{\kappa}{\delta x} = 70\ \mathrm{W/K}$, $q\,\delta x = 40\ \mathrm{W}$ (per m²). Med isolert celle 1 (nederst) og kjent temperatur over celle 3:
+
+Celle 1: $70T_1 - 70T_2 = 40$. Celle 2: $-70T_1 + 140T_2 - 70T_3 = 40$. Celle 3: $-70T_2 + 210T_3 = 40 + 140\cdot 22$.
+
+Løsningen er $T = (24.57,\ 24.00,\ 22.86)\ \mathrm{°C}$, mot eksakt $(24.50,\ 23.93,\ 22.79)\ \mathrm{°C}$ i nodene. Eksakt er $T = 22 + \frac{q}{2\kappa}(L^2 - x^2)$ målt fra den isolerte siden, med maksimum $22 + \frac{2000\cdot 0.060^2}{2\cdot 1.4} = \underline{\underline{24.6\ \mathrm{°C}}}$ ved den isolerte undersiden.
+:::
+:::
+
+::: {.oppgave tittel="Hjørnecelle" niva="Middels"}
+Skriv opp likningen for hjørnecellen øverst til høyre i en 2D-plate med kvadratiske celler og $\kappa = 1$, når høyre vegg er isolert og øvre vegg holdes på $50\ \mathrm{°C}$.
+
+::: {.losning}
+Naboer $W$ og $S$ gir $a_W = a_S = 1$. Høyre vegg er isolert og gir ingenting. Øvre vegg gir $S_P = -2$ og $S_u = 2\cdot 50 = 100$. Altså $\underline{\underline{4T_P = T_W + T_S + 100}}$.
+:::
+:::
+
+::: {.oppgave tittel="Fra ODE til tidssteg" niva="Utfordrende"}
+Vis at den eksplisitte metoden for en indre celle uten kilde er stabil for $r \le \frac12$ ved å se på en sagtannfeil $e_i = (-1)^i\varepsilon$.
+
+::: {.losning}
+$e_P^{n+1} = e_P^n + r(e_W^n - 2e_P^n + e_E^n) = e_P^n + r(-e_P^n - 2e_P^n - e_P^n) = (1 - 4r)e_P^n$. Kravet $|1 - 4r| \le 1$ gir $\underline{\underline{0 \le r \le \frac12}}$, det samme som kravet om positiv koeffisient foran $T_P^n$.
+:::
+:::
+
+::::

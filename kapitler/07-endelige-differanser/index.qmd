@@ -1,0 +1,21 @@
+---
+title: "Endelige differanser"
+toc: false
+---
+
+::: {.intro}
+
+En datamaskin kan ikke derivere, men den kan trekke fra og dele. Med endelige differanser bytter vi de deriverte ut med differanser i et rutenett, og en differensiallikning blir til et likningssystem eller en oppdateringsformel som vi kan regne ut steg for steg.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hvordan tilnærmer vi deriverte med funksjonsverdier?
+
+2.  Hvordan løser vi et randverdiproblem numerisk?
+
+3.  Hvordan løser vi varme- og bølgelikningen numerisk, og hva er stabilitet?
+
+:::

@@ -1,0 +1,70 @@
+---
+title: "Blandede oppgaver: endelige differanser"
+tema: endelige-differanser
+undertema: oppgaver
+---
+
+<!-- tillegg: Claude -->
+Oppgavene blander randverdiproblemer, iterasjon, varme- og bølgelikningen. Prøv selv før du åpner løsningen.
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Hvilken type problem?"}
+Er problemene randverdiproblemer (løses samlet) eller initialverdiproblemer (løses steg for steg)?
+
+a) $u'' = -1$, $u(0) = 0$, $u(2) = 0$ b) $u'' = -1$, $u(0) = 0$, $u'(0) = 1$ c) $u_t = u_{xx}$ med $u(x, 0)$, $u(0, t)$ og $u(1, t)$ gitt
+
+::: {.losning}
+a) Randverdiproblem: betingelser i hver sin ende. b) Initialverdiproblem: begge betingelsene står i $x = 0$, så vi kan marsjere i $x$, selv om variabelen ikke heter $t$. c) Begge deler: randverdiproblem i $x$ og initialverdiproblem i $t$.
+
+Det som avgjør, er *hvor* betingelsene står, ikke hva variabelen heter.
+:::
+:::
+
+::: {.oppgave tittel="Tau som henger" niva="Middels"}
+Et tau som henger mellom to festepunkter i samme høyde, har nedbøyning $y(x)$ som oppfyller $y'' = 0.02$ (i m⁻¹) for $0 \le x \le 10\ \mathrm{m}$ med $y(0) = y(10) = 0$. Sett opp og løs differanselikningene med $N = 5$. Hvor mye henger tauet ned på midten? Er svaret eksakt?
+
+::: {.losning}
+$h = 2.0\ \mathrm{m}$, $h^2r = 0.08$. Likningene $U_{i-1} - 2U_i + U_{i+1} = 0.08$ for $i = 1, \dots, 4$ med $U_0 = U_5 = 0$ gir $U = (0,\ -0.16,\ -0.24,\ -0.24,\ -0.16,\ 0)$ m.
+
+Eksakt løsning: $y = 0.01x(x - 10)$, som gir de samme verdiene. Svaret er eksakt fordi løsningen er et andregradspolynom. Midt på er $y(5) = \underline{\underline{-0.25\ \mathrm{m}}}$, som ikke er et gitterpunkt med $N = 5$.
+:::
+:::
+
+::: {.oppgave tittel="Stabilt eller ikke?" niva="Middels"}
+Avgjør om valgene er stabile.
+
+a) Varmelikningen $u_t = 0.5u_{xx}$ med $\Delta x = 0.1$ og $\Delta t = 0.01$ (eksplisitt Euler).
+b) Bølgelikningen med $c = 2$, $\Delta x = 0.1$ og $\Delta t = 0.04$ (leapfrog).
+c) Varmelikningen i 2D, $u_t = \Delta u$, med $h = 0.1$ og $\Delta t = 0.003$.
+
+::: {.losning}
+a) $r = \frac{0.5\cdot 0.01}{0.01} = 0.5 \le 0.5$: **stabilt** (akkurat på grensen).
+b) $r = \frac{2\cdot 0.04}{0.1} = 0.8 \le 1$: **stabilt**.
+c) $r = \frac{0.003}{0.01} = 0.3 > 0.25$: **ustabilt**.
+:::
+:::
+
+::: {.oppgave tittel="Hjørnet på en plate" niva="Middels"}
+En kvadratisk plate deles med $h = \frac13$ av sidelengden (fire indre punkter). Venstre kant har $0\ \mathrm{°C}$, høyre kant $90\ \mathrm{°C}$, og topp og bunn $0\ \mathrm{°C}$. Finn de fire temperaturene.
+
+::: {.losning}
+Symmetri om midtlinja gir to ukjente: $a$ (de to punktene til venstre) og $b$ (de to til høyre).
+
+$4a = 0 + 0 + a + b$ gir $3a = b$. $4b = 90 + 0 + b + a$ gir $3b - a = 90$. Altså $9a - a = 90$, så $\underline{\underline{a = 11.25\ \mathrm{°C}}}$ og $\underline{\underline{b = 33.75\ \mathrm{°C}}}$.
+:::
+:::
+
+::: {.oppgave tittel="Avkjøling med isolert ende" niva="Utfordrende"}
+En stav har $u_t = u_{xx}$ på $[0, 1]$ med $u(x, 0) = 1$. Venstre ende holdes på $u(0, t) = 0$, og høyre ende er isolert, $u_x(1, t) = 0$. Skriv oppdateringsformelen for randpunktet $x_M$ med fiktiv rand. Implementer metoden og finn $u(1, t)$ ved $t = 0.5$.
+
+::: {.losning}
+Fiktivt punkt: $U_{M+1}^n = U_{M-1}^n$. Da blir formelen i $x_M$
+$$
+U_M^{n+1} = U_M^n + 2r\big(U_{M-1}^n - U_M^n\big)
+$$
+Med $M = 20$ og $r = 0.4$ gir koden $u(1, 0.5) \approx \underline{\underline{0.37}}$. (Den eksakte løsningen er en rekke der det første leddet $\frac{4}{\pi}\mathrm{e}^{-\pi^2t/4}\sin\frac{\pi x}{2}$ dominerer, og det gir $0.37$.)
+:::
+:::
+
+::::

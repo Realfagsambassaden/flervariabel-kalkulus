@@ -1,0 +1,23 @@
+---
+title: "Trippelintegraler"
+toc: false
+---
+
+::: {.intro}
+
+Med trippelintegraler summerer vi over et område i rommet: volum, masse, tyngdepunkt og treghetsmoment. Sylinder- og kulekoordinater gjør runde områder enkle, og numeriske metoder tar resten.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hvordan setter vi opp grensene i et trippelintegral?
+
+2.  Når passer sylinder- og kulekoordinater?
+
+3.  Hvordan regner vi ut treghetsmoment?
+
+4.  Hvordan regner vi ut trippelintegraler numerisk?
+
+:::

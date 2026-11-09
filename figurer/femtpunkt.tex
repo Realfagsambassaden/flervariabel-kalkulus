@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=1.15]
+\draw[black!35] (0,0) grid (6,5);
+\foreach \i in {0,...,6} { \fill[rod] (\i,0) circle (2pt); \fill[rod] (\i,5) circle (2pt); }
+\foreach \j in {1,...,4} { \fill[rod] (0,\j) circle (2pt); \fill[rod] (6,\j) circle (2pt); }
+\foreach \i in {1,...,5} \foreach \j in {1,...,4} { \fill[bla!70] (\i,\j) circle (1.6pt); }
+\draw[gronn,line width=1.6pt] (2,3)--(4,3) (3,2)--(3,4);
+\fill[gronn] (3,3) circle (3.5pt); \foreach \p in {(2,3),(4,3),(3,2),(3,4)} \fill[gronn] \p circle (3pt);
+\node[above right] at (3,3) {$U_{i,j}$};
+\node[left] at (2,3.25) {$U_{i-1,j}$}; \node[right] at (4,3.25) {$U_{i+1,j}$};
+\node[above] at (3,4) {$U_{i,j+1}$}; \node[below] at (3,2) {$U_{i,j-1}$};
+\draw[<->] (0,-0.4)--(1,-0.4) node[midway,below]{$h$};
+\node[right] at (6.2,5) {randverdier};
+\fill[rod] (6.35,4.5) circle (2pt); \node[right] at (6.45,4.5) {kjent};
+\fill[bla!70] (6.35,4.0) circle (1.6pt); \node[right] at (6.45,4.0) {ukjent};
+\end{tikzpicture}

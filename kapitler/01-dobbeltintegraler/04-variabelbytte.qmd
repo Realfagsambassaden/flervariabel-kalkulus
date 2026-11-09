@@ -1,0 +1,20 @@
+---
+title: "Variabelbytte og jacobideterminanten"
+tema: dobbeltintegraler
+undertema: variabelbytte
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/01-04-variabelbytte) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Transformasjoner av planet
+- Jacobideterminanten
+- Eksempler med skjeve områder

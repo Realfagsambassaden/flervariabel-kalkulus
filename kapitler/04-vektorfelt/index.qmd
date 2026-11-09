@@ -1,0 +1,21 @@
+---
+title: "Vektorfelt"
+toc: false
+---
+
+::: {.intro}
+
+Vindfelt, strømning og elektriske felt er vektorfelt. Divergens og curl måler kilder og virvler, og linjeintegralet av et felt er arbeid. Konservative felt har et potensial, og da blir arbeidet uavhengig av veien.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hva måler divergens og curl?
+
+2.  Hvordan regner vi ut arbeid langs en kurve?
+
+3.  Når er et vektorfelt konservativt?
+
+:::

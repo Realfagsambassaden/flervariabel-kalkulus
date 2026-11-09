@@ -1,0 +1,14 @@
+\begin{tikzpicture}[xscale=1.5,yscale=1.1]
+\draw[thick] (0,0)--(5,0); \draw[thick,dashed,black!50] (5,0)--(6,0);
+\foreach \i in {0,...,6} { \draw (\i,0.12)--(\i,-0.12); }
+\fill[rod] (-0.1,-0.1) rectangle (0.1,0.1);
+\foreach \i in {1,...,5} { \fill[bla] (\i,0) circle (2.5pt); }
+\draw[black!60,thick] (6,0) circle (3pt);
+\fill[black!15] (5,-0.6) rectangle (5.06,0.6);
+\node[below=3pt] at (0,0) {$x_0$}; \node[below=3pt] at (4,0) {$x_{N-1}$}; \node[below=3pt] at (5,0) {$x_N$};
+\node[below=3pt,black!60] at (6,0) {$x_{N+1}$};
+\node[above=4pt] at (0,0) {$U_0$}; \node[above=4pt] at (4,0) {$U_{N-1}$}; \node[above=4pt] at (5,0) {$U_N$};
+\node[above=4pt,black!60] at (6,0) {$U_{N+1}$};
+\node[black!70] at (5.03,-0.95) {rand, $u'(b)$ kjent};
+\draw[gronn,<->,thick] (4,0.75) to[bend left=30] node[above]{\small sentraldifferanse} (6,0.75);
+\end{tikzpicture}

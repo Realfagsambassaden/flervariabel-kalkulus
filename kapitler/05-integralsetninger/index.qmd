@@ -1,0 +1,21 @@
+---
+title: "Integralsetningene"
+toc: false
+---
+
+::: {.intro}
+
+Greens teorem, divergenssetningen og Stokes' teorem knytter integraler over et område til integraler over randen. De er grunnlaget for bevaringslover, Maxwells likninger og endelig volum-metoden.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hva er fluks?
+
+2.  Hva sier Greens teorem, divergenssetningen og Stokes' teorem?
+
+3.  Hvordan brukes setningene i fysikken?
+
+:::

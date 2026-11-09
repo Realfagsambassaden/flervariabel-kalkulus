@@ -1,0 +1,20 @@
+---
+title: "Flateintegraler"
+tema: kurve-og-flateintegraler
+undertema: flateintegraler
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/03-03-flateintegraler) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Arealelementet
+- Areal av krumme flater
+- Flateintegral av en funksjon

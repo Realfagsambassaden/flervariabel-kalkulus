@@ -1,0 +1,19 @@
+---
+title: "Fluks gjennom en flate"
+tema: integralsetninger
+undertema: fluks
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/05-03-fluks-i-rommet) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Orientering av flater
+- Fluksintegral

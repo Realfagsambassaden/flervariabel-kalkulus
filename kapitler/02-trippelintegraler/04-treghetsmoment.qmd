@@ -1,0 +1,19 @@
+---
+title: "Tyngdepunkt og treghetsmoment"
+tema: trippelintegraler
+undertema: anvendelser
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/02-04-treghetsmoment) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Tyngdepunkt i rommet
+- Treghetsmoment for sylinder og kule

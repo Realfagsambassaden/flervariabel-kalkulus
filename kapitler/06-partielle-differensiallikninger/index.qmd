@@ -1,0 +1,21 @@
+---
+title: "Partielle differensiallikninger"
+toc: false
+---
+
+::: {.intro}
+
+Varme som sprer seg, en streng som svinger og et potensial i ro: Alle beskrives av partielle differensiallikninger. Her ser vi på de tre klassiske likningene, rand- og initialbetingelser, og hvordan bevaringslover gir likningene.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hva er varmelikningen, bølgelikningen og Laplace-likningen?
+
+2.  Hvilke betingelser trengs for at løsningen skal bli entydig?
+
+3.  Hvordan kommer en PDE fra en bevaringslov?
+
+:::
