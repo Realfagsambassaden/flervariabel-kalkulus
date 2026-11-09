@@ -1,0 +1,20 @@
+---
+title: "Dobbeltintegraler over generelle områder"
+tema: dobbeltintegraler
+undertema: generelle-omrader
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/01-02-generelle-omrader) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Områder av type I og type II
+- Å bytte integrasjonsrekkefølge
+- Areal som dobbeltintegral

@@ -1,0 +1,143 @@
+---
+title: "Jacobi- og Gauss–Seidel-iterasjon"
+tema: endelige-differanser
+undertema: iterasjon
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/07-03-jacobi-og-gauss-seidel) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+I én dimensjon er likningssystemet lite, og `np.linalg.solve` løser det på et blunk. I to og tre dimensjoner kan det fort bli hundretusener av ukjente, og da blir det tungvint å bygge hele matrisen. **Iterative metoder** går en annen vei: Start med en gjetning, og forbedre den punkt for punkt, igjen og igjen, til den slutter å endre seg. Vi trenger aldri å lage matrisen.
+
+## Ideen
+
+Differanselikningen i punkt $i$ er
+$$
+v_iU_{i-1} + d_iU_i + w_iU_{i+1} = h^2r_i
+$$
+Løs den for $U_i$:
+$$
+U_i = \frac{1}{d_i}\Big(h^2r_i - v_iU_{i-1} - w_iU_{i+1}\Big)
+$$
+Kjenner vi naboene, gir dette en bedre verdi i punktet. Gjør vi det i alle punkter, om og om igjen, nærmer vi oss løsningen. Metodene skiller seg bare i *hvilke* naboverdier de bruker.
+
+::: {.callout-note title="Definisjon: Jacobi-iterasjon"}
+Regn ut alle nye verdier fra de gamle:
+$$
+U_i^{(m+1)} = \frac{1}{d_i}\Big(h^2r_i - v_iU_{i-1}^{(m)} - w_iU_{i+1}^{(m)}\Big), \qquad i = 1, \dots, N - 1
+$$
+:::
+
+::: {.callout-note title="Definisjon: Gauss–Seidel-iterasjon"}
+Gå gjennom punktene i rekkefølge, og bruk nye verdier så snart de finnes:
+$$
+U_i^{(m+1)} = \frac{1}{d_i}\Big(h^2r_i - v_iU_{i-1}^{(m+1)} - w_iU_{i+1}^{(m)}\Big), \qquad i = 1, \dots, N - 1
+$$
+Venstre nabo er allerede oppdatert når vi kommer til punkt $i$.
+:::
+
+Vi stopper når den største endringen i en iterasjon er mindre enn en valgt **toleranse**, for eksempel $\max_i|U_i^{(m+1)} - U_i^{(m)}| < 10^{-8}$. En god startgjetning er en rett linje mellom randverdiene.
+
+::: {.eksempel}
+**Eksempel: Tre iterasjoner for hånd.** Bruk Jacobi og Gauss–Seidel på $u'' - 4u = -4x$, $u(0) = 0$, $u(1) = 2$ med $N = 4$. Start med den rette linja $U = (0, 0.5, 1, 1.5, 2)$.
+
+::: {.losning}
+Her er $d = -2.25$, $v = w = 1$ og $h^2r_i = -0.25x_i$, så oppdateringen er
+$$
+U_i = \frac{-0.25x_i - U_{i-1} - U_{i+1}}{-2.25}
+$$
+
+**Jacobi**, første iterasjon (bare gamle verdier):
+$U_1 = \frac{-0.0625 - 0 - 1}{-2.25} = 0.4722$, $\quad U_2 = \frac{-0.125 - 0.5 - 1.5}{-2.25} = 0.9444$, $\quad U_3 = \frac{-0.1875 - 1 - 2}{-2.25} = 1.4167$
+
+**Gauss–Seidel**, første iterasjon (bruker nye $U_1$ og $U_2$ med en gang):
+$U_1 = 0.4722$, $\quad U_2 = \frac{-0.125 - 0.4722 - 1.5}{-2.25} = 0.9321$, $\quad U_3 = \frac{-0.1875 - 0.9321 - 2}{-2.25} = 1.3865$
+
+| iterasjon | Jacobi $U_1, U_2, U_3$ | Gauss–Seidel $U_1, U_2, U_3$ |
+|---|---|---|
+| 1 | $0.4722,\ 0.9444,\ 1.4167$ | $0.4722,\ 0.9321,\ 1.3865$ |
+| 2 | $0.4475,\ 0.8951,\ 1.3920$ | $0.4420,\ 0.8682,\ 1.3581$ |
+| 3 | $0.4256,\ 0.8731,\ 1.3700$ | $0.4137,\ 0.8430,\ 1.3469$ |
+| løsning | $0.3951,\ 0.8265,\ 1.3396$ | $0.3951,\ 0.8265,\ 1.3396$ |
+
+Gauss–Seidel kommer raskere mot løsningen.
+:::
+:::
+
+## Hvor mange iterasjoner?
+
+Med toleranse $10^{-8}$ og rett linje som start trengs dette for eksempelet over:
+
+| $N$ | $4$ | $10$ | $20$ |
+|---|---|---|---|
+| Jacobi | $35$ | $202$ | $731$ |
+| Gauss–Seidel | $19$ | $107$ | $387$ |
+
+::: {.kort}
+- **Gauss–Seidel er omtrent dobbelt så rask** som Jacobi, for samme arbeid per iterasjon.
+- **Antall iterasjoner vokser omtrent som $N^2$.** Informasjon fra randen flytter seg bare ett punkt per iterasjon, så fine rutenett trenger mange runder.
+- **Jacobi kan regnes parallelt**, fordi alle punktene oppdateres uavhengig av hverandre. Det passer godt på grafikkort.
+:::
+
+::: {.callout-tip title="Konvergerer det alltid?"}
+Nei, men for differanselikningene her gjør det det, så lenge $|d_i| \ge |v_i| + |w_i|$ (matrisen er *diagonaldominant*). Med $p = 0$ og $q \le 0$ er det alltid oppfylt. Fysisk betyr $q \le 0$ at leddet virker som et sluk, for eksempel varmetap.
+:::
+
+## Prøv selv
+
+```{.python .kjor}
+import numpy as np
+
+N = 10; h = 1/N
+x = np.linspace(0, 1, N + 1)
+d = -2 - 4*h**2; hr = -4*x*h**2          # u'' - 4u = -4x
+
+def iterer(metode, tol=1e-8):
+    U = 2*x.copy()                          # rett linje fra 0 til 2
+    for m in range(1, 100000):
+        G = U.copy()
+        if metode == 'Jacobi':
+            U[1:-1] = (hr[1:-1] - G[:-2] - G[2:])/d
+        else:                               # Gauss–Seidel
+            for i in range(1, N):
+                U[i] = (hr[i] - U[i-1] - U[i+1])/d
+        if abs(U - G).max() < tol:
+            return U, m
+
+for metode in ['Jacobi', 'Gauss–Seidel']:
+    U, m = iterer(metode)
+    print(f"{metode}: {m} iterasjoner, U(0.5) = {U[N//2]:.6f}")
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Rett linje"}
+Bruk Gauss–Seidel på $u'' = 0$, $u(0) = 0$, $u(1) = 4$ med $N = 4$, og start med $U_1 = U_2 = U_3 = 0$. Regn ut to iterasjoner. Hva er den eksakte løsningen?
+
+::: {.losning}
+Oppdatering: $U_i = \frac12(U_{i-1} + U_{i+1})$.
+
+1: $U_1 = 0$, $U_2 = 0$, $U_3 = \frac12(0 + 4) = 2$. 2: $U_1 = 0$, $U_2 = 1$, $U_3 = 2.5$.
+
+Eksakt: $u = 4x$, altså $\underline{\underline{U = (1, 2, 3)}}$.
+:::
+:::
+
+::: {.oppgave tittel="Jacobi med Python" niva="Middels"}
+Endre koden slik at den teller iterasjoner for $N = 40$. Stemmer det at antallet vokser omtrent som $N^2$?
+
+::: {.losning}
+Jacobi trenger omtrent $2600$ og Gauss–Seidel omtrent $1400$ iterasjoner. Fra $N = 20$ til $40$ øker antallet med en faktor $3.6$, som er i nærheten av $4$.
+:::
+:::
+
+::: {.oppgave tittel="Overrelaksasjon (SOR)" niva="Utfordrende"}
+I SOR beregner vi Gauss–Seidel-verdien $U_i^{\text{GS}}$ og setter $U_i \leftarrow U_i + \omega(U_i^{\text{GS}} - U_i)$ med $1 < \omega < 2$. Prøv $\omega = 1.5$ og $\omega = 1.7$ for $N = 20$. Hvor mange iterasjoner trengs?
+
+::: {.losning}
+Med $\omega = 1.5$ trengs $\underline{\underline{132}}$ og med $\omega = 1.7$ bare $\underline{\underline{51}}$ iterasjoner, mot 387 for vanlig Gauss–Seidel. Teorien gir $\omega = \frac{2}{1 + \sin(\pi/N)} \approx 1.73$ som omtrent det beste valget for slike problemer.
+:::
+:::
+
+::::

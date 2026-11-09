@@ -1,0 +1,21 @@
+---
+title: "Kurver og flater"
+toc: false
+---
+
+::: {.intro}
+
+Vi integrerer langs kurver og over krumme flater. Parametrisering er nøkkelen: Den gjør et integral over en kurve eller flate om til et vanlig integral.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hvordan parametriserer vi kurver og flater?
+
+2.  Hva er et linjeintegral av en funksjon?
+
+3.  Hvordan finner vi arealet av en krum flate?
+
+:::

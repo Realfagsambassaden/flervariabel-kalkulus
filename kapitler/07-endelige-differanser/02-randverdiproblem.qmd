@@ -1,0 +1,158 @@
+---
+title: "Randverdiproblemer med Dirichlet-betingelser"
+tema: endelige-differanser
+undertema: randverdiproblem
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/07-02-randverdiproblem) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+Temperaturen i en stav med faste endetemperaturer, nedbøyningen av en bjelke som er festet i begge ender og konsentrasjonen i et rør med kjent innhold i hver ende er alle **randverdiproblemer**: en differensiallikning på et intervall, med betingelser i *begge* endene. Her ser vi hvordan differanseformlene gjør et slikt problem om til et lineært likningssystem.
+
+## Problemet
+
+Vi ser på den lineære andreordens likningen
+$$
+u'' + p(x)\,u' + q(x)\,u = r(x), \qquad a \le x \le b, \qquad u(a) = u_a, \quad u(b) = u_b
+$$
+der $p$, $q$ og $r$ er kjente funksjoner. Når verdien av $u$ er gitt på randen, kalles betingelsene **Dirichlet-betingelser**.
+
+## Metoden i fire steg
+
+![](../../bilder/figurer/rutenett-1d.svg){.tikz-fig style="width:520px" fig-alt="Et intervall delt i like store biter med lengde h. Endepunktene x null lik a og x N lik b er røde firkanter med kjente verdier, og de indre punktene x 1 til x N minus 1 er blå punkter med ukjente verdier U i."}
+
+::: {.steg}
+1. **Lag et rutenett.** Velg $N$, sett $h = \frac{b - a}{N}$ og $x_i = a + ih$ for $i = 0, 1, \dots, N$. Endepunktene $x_0$ og $x_N$ er randpunkter, resten er indre punkter.
+2. **Bytt ut de deriverte** i hvert indre punkt med sentraldifferanser.
+3. **Bytt ut den eksakte løsningen** $u(x_i)$ med en ukjent tilnærming $U_i$. Da får vi én likning per indre punkt.
+4. **Løs likningssystemet** for $U_1, \dots, U_{N-1}$.
+:::
+
+Steg 2 og 3 gir, for $i = 1, \dots, N - 1$,
+$$
+\frac{U_{i+1} - 2U_i + U_{i-1}}{h^2} + p_i\frac{U_{i+1} - U_{i-1}}{2h} + q_iU_i = r_i
+$$
+der $p_i = p(x_i)$ og så videre. Vi ganger med $h^2$ og samler leddene:
+
+::: {.callout-important title="Differanselikningen"}
+$$
+v_i\,U_{i-1} + d_i\,U_i + w_i\,U_{i+1} = h^2r_i, \qquad i = 1, \dots, N - 1
+$$
+med
+$$
+v_i = 1 - \frac{h}{2}p_i, \qquad d_i = -2 + h^2q_i, \qquad w_i = 1 + \frac{h}{2}p_i
+$$
+Hver likning inneholder bare et punkt og de to naboene. Matrisen blir derfor **tridiagonal**: Den har tall bare på diagonalen og rett over og under.
+:::
+
+Randbetingelsene er de to siste likningene: $U_0 = u_a$ og $U_N = u_b$. I likningene for $i = 1$ og $i = N - 1$ er $U_0$ og $U_N$ kjente, så de flyttes over til høyre side.
+
+::: {.eksempel}
+**Eksempel: Fire intervaller.** Løs
+$$
+u'' - 4u = -4x, \qquad u(0) = 0, \quad u(1) = 2
+$$
+med $N = 4$, og sammenlign med den eksakte løsningen $u(x) = x + \frac{\sinh 2x}{\sinh 2}$.
+
+::: {.losning}
+$h = 0.25$, $p = 0$ og $q = -4$, så $v = w = 1$ og $d = -2 - 4\cdot 0.25^2 = -2.25$. Høyresiden er $h^2r_i = 0.0625\cdot(-4x_i) = -0.25x_i$.
+
+De tre indre likningene, med $U_0 = 0$ og $U_4 = 2$ flyttet over:
+$$
+\begin{bmatrix} -2.25 & 1 & 0 \\ 1 & -2.25 & 1 \\ 0 & 1 & -2.25 \end{bmatrix}
+\begin{bmatrix} U_1 \\ U_2 \\ U_3 \end{bmatrix}
+=
+\begin{bmatrix} -0.0625 \\ -0.125 \\ -0.1875 - 2 \end{bmatrix}
+$$
+
+| $x_i$ | $0.25$ | $0.50$ | $0.75$ |
+|---|---|---|---|
+| $U_i$ | $0.39512$ | $0.82653$ | $1.33957$ |
+| $u(x_i)$ | $0.39368$ | $0.82403$ | $1.33709$ |
+
+Største feil er $2.5\cdot 10^{-3}$, med bare tre ukjente.
+:::
+:::
+
+## Hvor nøyaktig er metoden?
+
+Begge differansene er av andre orden, og det blir løsningen også: Dobler vi $N$, blir feilen omtrent fire ganger mindre.
+
+| $N$ | $4$ | $8$ | $16$ | $32$ |
+|---|---|---|---|---|
+| største feil | $2.5\cdot 10^{-3}$ | $6.9\cdot 10^{-4}$ | $1.7\cdot 10^{-4}$ | $4.3\cdot 10^{-5}$ |
+
+## Prøv selv
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def rvp_dirichlet(p, q, r, a, b, ua, ub, N):
+    """Løser u'' + p u' + q u = r, u(a)=ua, u(b)=ub med sentraldifferanser."""
+    h = (b - a)/N
+    x = np.linspace(a, b, N + 1)
+    A = np.zeros((N + 1, N + 1)); F = np.zeros(N + 1)
+    A[0, 0] = 1;  F[0] = ua            # randbetingelse i a
+    A[N, N] = 1;  F[N] = ub            # randbetingelse i b
+    for i in range(1, N):
+        A[i, i - 1] = 1 - h/2*p(x[i])
+        A[i, i]     = -2 + h**2*q(x[i])
+        A[i, i + 1] = 1 + h/2*p(x[i])
+        F[i] = h**2*r(x[i])
+    return x, np.linalg.solve(A, F)
+
+u_eksakt = lambda x: x + np.sinh(2*x)/np.sinh(2)
+for N in [4, 8, 16, 32]:
+    x, U = rvp_dirichlet(lambda x: 0, lambda x: -4, lambda x: -4*x, 0, 1, 0, 2, N)
+    print(N, abs(U - u_eksakt(x)).max())
+
+xx = np.linspace(0, 1, 200)
+plt.plot(xx, u_eksakt(xx), label='eksakt')
+x, U = rvp_dirichlet(lambda x: 0, lambda x: -4, lambda x: -4*x, 0, 1, 0, 2, 4)
+plt.plot(x, U, 'o', label='N = 4')
+plt.legend(); plt.xlabel('x'); plt.show()
+```
+
+::: {.callout-tip title="Til ettertanke"}
+Hvorfor gir metoden *eksakt* svar for $u'' = 6$, $u(0) = 0$, $u(1) = 3$, uansett $N$? (Hint: Hva er feilleddet i formelen for $f''$ når $f$ er et andregradspolynom?)
+:::
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Sett opp systemet"}
+Sett opp likningssystemet for $u'' = 2$, $u(0) = 1$, $u(1) = 0$ med $N = 3$, og løs det. Sammenlign med den eksakte løsningen $u = x^2 - 2x + 1$.
+
+::: {.losning}
+$h = \frac13$, $h^2r = \frac29$. Likningene: $U_0 - 2U_1 + U_2 = \frac29$ og $U_1 - 2U_2 + U_3 = \frac29$ med $U_0 = 1$, $U_3 = 0$.
+
+$-2U_1 + U_2 = -\frac79$ og $U_1 - 2U_2 = \frac29$ gir $\underline{\underline{U_1 = \frac49,\ U_2 = \frac19}}$. Det er nøyaktig $u(\frac13) = \frac49$ og $u(\frac23) = \frac19$, fordi løsningen er et andregradspolynom.
+:::
+:::
+
+::: {.oppgave tittel="Koeffisientene" niva="Middels"}
+Finn $v_i$, $d_i$ og $w_i$ for $u'' + 2u' - 3u = 9x$ med $h = 0.25$.
+
+::: {.losning}
+$p = 2$, $q = -3$: $v = 1 - 0.125\cdot 2 = \underline{\underline{0.75}}$, $d = -2 + 0.0625\cdot(-3) = \underline{\underline{-2.1875}}$, $w = \underline{\underline{1.25}}$.
+:::
+:::
+
+::: {.oppgave tittel="Stav med varmetap" niva="Middels"}
+Temperaturen $T(x)$ (i °C) i en tynn stav med lengde $1.0\ \mathrm{m}$ som taper varme til luft på $20\ \mathrm{°C}$, oppfyller $T'' - 9(T - 20) = 0$. Endene holdes på $T(0) = 100\ \mathrm{°C}$ og $T(1) = 60\ \mathrm{°C}$. Bruk koden over med $N = 10$ og finn temperaturen midt på staven.
+
+::: {.losning}
+Skriv likningen som $T'' - 9T = -180$, altså $p = 0$, $q = -9$, $r = -180$. Koden gir $T(0.5) \approx \underline{\underline{45.6\ \mathrm{°C}}}$ (den eksakte verdien er $45.5\ \mathrm{°C}$).
+:::
+:::
+
+::: {.oppgave tittel="Konvergens" niva="Utfordrende"}
+Bruk koden til å lage et log-log-plott av største feil mot $h$ for eksempelet over, og finn konvergensordenen fra stigningstallet.
+
+::: {.losning}
+Med `np.polyfit(np.log(h), np.log(feil), 1)` får du stigningstall $\underline{\underline{\approx 2.0}}$: metoden er av andre orden.
+:::
+:::
+
+::::

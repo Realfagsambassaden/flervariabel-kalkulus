@@ -1,0 +1,23 @@
+---
+title: "Dobbeltintegraler"
+toc: false
+---
+
+::: {.intro}
+
+Et dobbeltintegral summerer en funksjon over et område i planet. Det gir volum under en flate, masse av en plate og tyngdepunkt, og kan regnes ut i kartesiske koordinater, i polarkoordinater eller numerisk.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hva betyr et dobbeltintegral, og hvordan regner vi det ut som itererte integraler?
+
+2.  Hvordan integrerer vi over områder som ikke er rektangler?
+
+3.  Når lønner det seg å bytte til polarkoordinater?
+
+4.  Hvordan regner vi ut et dobbeltintegral numerisk?
+
+:::

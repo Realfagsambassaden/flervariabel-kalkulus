@@ -1,0 +1,21 @@
+---
+title: "Endelig volum-metoden"
+toc: false
+---
+
+::: {.intro}
+
+Endelig volum-metoden bygger direkte på bevaringsloven: Det som strømmer inn i en celle, minus det som strømmer ut, er lik det som produseres der. Metoden er standard i programmer for strømnings- og varmeberegninger.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hvordan gjør vi en bevaringslov om til et likningssystem?
+
+2.  Hvordan tar vi med kildeledd og randbetingelser?
+
+3.  Hvordan løser vi tidsavhengige problemer, og hvor stort tidssteg tåler metoden?
+
+:::

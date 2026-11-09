@@ -1,0 +1,134 @@
+---
+title: "Numerisk beregning av trippelintegraler"
+tema: trippelintegraler
+undertema: numerisk
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/02-05-numerisk-trippelintegral) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+Et trippelintegral er en sum over små bokser i rommet. Numerisk gjør vi det samme som i to dimensjoner: deler opp, regner ut funksjonen i hver bit og summerer. Men nå vokser antallet biter *raskt*. Det gjør at en helt annen idé, **Monte Carlo-integrasjon** med tilfeldige punkter, blir konkurransedyktig.
+
+## Midtpunktsregelen i 3D
+
+Del boksen $B = [a, b] \times [c, d] \times [e, f]$ i $n \times m \times l$ små bokser med volum $\Delta V = \Delta x\,\Delta y\,\Delta z$:
+
+::: {.callout-important title="Midtpunktsregelen i 3D"}
+$$
+\iiint_B f(x, y, z)\,\mathrm{d}V \approx \sum_{i}\sum_{j}\sum_{k} f(\bar x_i, \bar y_j, \bar z_k)\,\Delta V
+$$
+:::
+
+::: {.eksempel}
+**Eksempel: Masse av en terning.** En terning $[0, 1]^3$ (i meter) har tetthet $\rho = x^2 + yz$ (i $\mathrm{kg/m^3}$). Tilnærm massen med $2 \times 2 \times 2$ små terninger. Eksakt masse er $\frac13 + \frac14 = \frac{7}{12}\ \mathrm{kg}$.
+
+::: {.losning}
+Midtpunktene har koordinater $0.25$ eller $0.75$, og $\Delta V = \frac18\ \mathrm{m^3}$. Snittet av $x^2$ over de åtte punktene er $\frac12(0.0625 + 0.5625) = 0.3125$. Snittet av $yz$ er $\frac12(0.25 + 0.75)\cdot\frac12(0.25 + 0.75) = 0.25$. Summen av de åtte bidragene er $8\cdot\frac18\cdot(0.3125 + 0.25)$:
+$$
+m \approx \underline{\underline{0.563\ \mathrm{kg}}}
+$$
+Eksakt: $0.583\ \mathrm{kg}$. Leddet $yz$ blir eksakt, mens $x^2$ gir hele feilen, $0.021\ \mathrm{kg}$.
+:::
+:::
+
+## Dimensjonenes forbannelse
+
+Med $n$ punkter per retning trenger vi $n$ punkter i 1D, $n^2$ i 2D og $n^3$ i 3D. Midtpunktsregelen har feil $O(h^2) = O(n^{-2})$. Med $N = n^d$ punkter totalt i $d$ dimensjoner er feilen derfor
+$$
+O\big(N^{-2/d}\big)
+$$
+I 3D betyr det at tusen ganger flere punkter bare gir hundre ganger mindre feil. I høyere dimensjoner, som i statistisk fysikk og finans, blir rutenett håpløse.
+
+## Monte Carlo-integrasjon
+
+Idéen er enkel: Kast $N$ tilfeldige punkter jevnt fordelt i en boks med volum $V_B$ som inneholder området $D$. Da er
+$$
+\iiint_D f\,\mathrm{d}V \approx V_B\cdot\frac1N\sum_{k=1}^{N} f(\mathbf{x}_k)\,\chi_D(\mathbf{x}_k)
+$$
+der $\chi_D = 1$ inne i $D$ og $0$ utenfor. Med $f = 1$ får vi volumet av $D$: boksvolumet ganger andelen punkter som havnet inne.
+
+::: {.callout-important title="Feilen i Monte Carlo"}
+Feilen er tilfeldig og avtar som
+$$
+\frac{1}{\sqrt N}
+$$
+*uansett dimensjon*. Hundre ganger flere punkter gir ti ganger mindre feil. I 1D og 2D er det dårlig, men fra omtrent fire dimensjoner og oppover slår Monte Carlo rutenettene.
+:::
+
+Monte Carlo har en stor praktisk fordel til: Det er like enkelt for et vrient område som for en boks. Vi trenger bare å kunne avgjøre om et punkt ligger inne eller ute.
+
+::: {.eksempel}
+**Eksempel: Volumet av en kule.** Tilnærm volumet av enhetskula $x^2 + y^2 + z^2 \le 1$ ved å kaste punkter i terningen $[-1, 1]^3$ med volum 8. Eksakt volum er $\frac43\pi = 4.18879$.
+
+::: {.losning}
+| $N$ | $10^2$ | $10^4$ | $10^6$ |
+|---|---|---|---|
+| Monte Carlo | $4.08$ | $4.21$ | $4.193$ |
+| feil | $-0.11$ | $0.024$ | $0.0045$ |
+| forventet feil, $\approx 8\sqrt{p(1 - p)/N}$ | $0.40$ | $0.040$ | $0.0040$ |
+
+Her er $p$ andelen treff. Feilen blir omtrent ti ganger mindre for hver hundredobling av $N$, slik teorien sier. Midtpunktsregelen med maske og $40^3 = 64000$ punkter gir $4.194$, omtrent som Monte Carlo med en million punkter. I 3D er rutenettet altså fortsatt best for glatte problemer.
+:::
+:::
+
+## Prøv selv
+
+```{.python .kjor}
+import numpy as np
+from scipy import integrate
+
+rng = np.random.default_rng()
+
+# Monte Carlo: volum av kula
+for N in [10**2, 10**4, 10**6]:
+    P = rng.uniform(-1, 1, size=(N, 3))
+    inne = (P**2).sum(axis=1) <= 1
+    print(f"N = {N:>8}: V ≈ {8*inne.mean():.4f}   (eksakt {4/3*np.pi:.4f})")
+
+# Snittet av to sylindere x² + y² ≤ 1 og x² + z² ≤ 1 (eksakt 16/3)
+N = 10**6
+P = rng.uniform(-1, 1, size=(N, 3))
+inne = (P[:, 0]**2 + P[:, 1]**2 <= 1) & (P[:, 0]**2 + P[:, 2]**2 <= 1)
+print("To sylindere:", 8*inne.mean(), "eksakt", 16/3)
+
+# SciPy: tplquad integrerer f(z, y, x) med z innerst
+masse, _ = integrate.tplquad(lambda z, y, x: x**2 + y*z, 0, 1, 0, 1, 0, 1)
+print("Masse av terningen:", masse)
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Tell punkter"}
+Hvor mange funksjonsverdier trenger midtpunktsregelen med 100 delintervaller per retning i 1D, 2D, 3D og 6D?
+
+::: {.losning}
+$\underline{\underline{10^2,\ 10^4,\ 10^6\ \text{og}\ 10^{12}}}$. Det siste tar flere timer selv på en rask datamaskin.
+:::
+:::
+
+::: {.oppgave tittel="Hvor mange punkter?" niva="Middels"}
+Monte Carlo ga feil omtrent $0.04$ med $10^4$ punkter for kulevolumet. Hvor mange punkter trengs for feil omtrent $0.001$?
+
+::: {.losning}
+Feilen skal ned med en faktor 40, og feilen går som $\frac{1}{\sqrt N}$. Da må $N$ opp med $40^2 = 1600$: $\underline{\underline{N \approx 1.6\cdot 10^7}}$.
+:::
+:::
+
+::: {.oppgave tittel="Tyngdepunkt med Monte Carlo" niva="Middels"}
+Finn $z$-koordinaten til tyngdepunktet av halvkula $x^2 + y^2 + z^2 \le 1$, $z \ge 0$, med Monte Carlo. Eksakt svar er $\frac38$.
+
+::: {.losning}
+Kast punkter i $[-1, 1]^2 \times [0, 1]$, behold dem som ligger i halvkula, og ta gjennomsnittet av $z$-koordinatene: $\bar z = \frac{\iiint z\,\mathrm{d}V}{\iiint\mathrm{d}V}$ blir snittet av $z$ over punktene inne. Med $10^6$ punkter blir $\bar z \approx \underline{\underline{0.375}}$.
+:::
+:::
+
+::: {.oppgave tittel="Kurven i log-log" niva="Utfordrende"}
+Lag et log-log-plott av feilen i kulevolumet mot $N$ for Monte Carlo (gjennomsnitt over 20 kjøringer for hver $N$) og for midtpunktsregelen med maske. Hvilke stigningstall får du?
+
+::: {.losning}
+Monte Carlo gir stigningstall omtrent $-0.5$ ($N^{-1/2}$). Maskemetoden gir omtrent $-\frac13$ til $-\frac12$, fordi kanten av kula gir en feil av første orden i $h = N^{-1/3}$. For glatte funksjoner over bokser (uten maske) ville rutenettet gitt $-\frac23$.
+:::
+:::
+
+::::

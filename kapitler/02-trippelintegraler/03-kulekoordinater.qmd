@@ -1,0 +1,19 @@
+---
+title: "Kulekoordinater"
+tema: trippelintegraler
+undertema: kulekoordinater
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/02-03-kulekoordinater) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Volumelementet ρ² sin φ
+- Kuler og kuleskall

@@ -1,0 +1,160 @@
+---
+title: "Kildeledd og fluks på randen"
+tema: endelig-volum
+undertema: kilder-og-rand
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/08-03-kildeledd-og-randfluks) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+Varme kan produseres inne i materialet, for eksempel av elektrisk strøm, eller forsvinne til omgivelsene, som i en kjøleribbe. Og på randen kjenner vi ikke alltid temperaturen, men kanskje fluksen: En isolert ende slipper ikke gjennom noe varme. I endelig volum-metoden havner alt dette i to tall per celle: $S_u$ og $S_P$.
+
+## Kildeleddet
+
+Integralet av kilden over cellen tilnærmes med verdien i noden, $\bar{S}A\,\delta x$. Avhenger kilden av temperaturen, skriver vi den som en rett linje i $T_P$:
+$$
+\bar{S}A\,\delta x = S_u + S_PT_P
+$$
+
+::: {.kort}
+- **Konstant kilde** (jevn varmeproduksjon $q$): $S_u = qA\,\delta x$, $S_P = 0$.
+- **Varmetap til omgivelser** med temperatur $T_\infty$, proporsjonalt med $T - T_\infty$: tapet $-\beta(T_P - T_\infty)A\,\delta x$ gir $S_u = \beta T_\infty A\,\delta x$ og $S_P = -\beta A\,\delta x$.
+:::
+
+::: {.callout-important title="Hold S_P negativ"}
+Sørg for at $S_P \le 0$. Da blir $a_P = a_W + a_E - S_P \ge a_W + a_E$, og systemet er diagonaldominant. Det gir fysisk fornuftige løsninger, og Jacobi og Gauss–Seidel konvergerer. Legger du et temperaturavhengig sluk inn i $S_u$ i stedet, kan iterasjonen divergere.
+:::
+
+::: {.eksempel}
+**Eksempel: Plate med varmeproduksjon.** En $0.10\ \mathrm{m}$ tykk plate med $\kappa = 2.0\ \mathrm{W/(m\,K)}$ produserer $q = 50\ \mathrm{kW/m^3}$ jevnt fordelt. Begge sidene holdes på $20\ \mathrm{°C}$. Løs med fem celler og sammenlign med den eksakte løsningen $T = 20 + \frac{q}{2\kappa}x(L - x)$.
+
+::: {.losning}
+$\delta x = 0.020\ \mathrm{m}$, $A = 1\ \mathrm{m^2}$: $\frac{\kappa A}{\delta x} = 100\ \mathrm{W/K}$ og $qA\,\delta x = 1000\ \mathrm{W}$.
+
+Indre celler: $a_W = a_E = 100$, $a_P = 200$, $S_u = 1000$. Randceller: $S_P = -200$, $S_u = 1000 + 200\cdot 20 = 5000$, $a_P = 300$.
+
+| celle | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|
+| numerisk (°C) | $32.50$ | $47.50$ | $52.50$ | $47.50$ | $32.50$ |
+| eksakt (°C) | $31.25$ | $46.25$ | $51.25$ | $46.25$ | $31.25$ |
+
+Avviket er nøyaktig $1.25\ \mathrm{°C}$ i *alle* cellene. Det kommer fra den halve randcellen: Mellom randen og første node er temperaturen krum, men vi har tilnærmet den med en rett linje. Avviket er $\frac{q\,\delta x^2}{8\kappa}$, så det deles på fire hver gang cellene halveres.
+
+Energibalansen stemmer likevel eksakt: Fluksen ut på hver side er $200\cdot(32.50 - 20) = 2500\ \mathrm{W}$, til sammen $5000\ \mathrm{W}$, som er hele produksjonen $50\ \mathrm{kW/m^3}\cdot 0.10\ \mathrm{m^3}$.
+:::
+:::
+
+## Kjent fluks på randen
+
+Er fluksen $q_B$ *inn* gjennom en randflate kjent, trenger vi ingen tilnærming der i det hele tatt. Vi setter den rett inn i regnskapet:
+
+::: {.callout-important title="Kjent fluks på randen"}
+Koblingen til randen kuttes ($a_E = 0$ ved høyre rand), og fluksen legges til kilden:
+$$
+S_u \leftarrow S_u + q_BA
+$$
+En **isolert** rand har $q_B = 0$: Vi kutter bare koblingen.
+:::
+
+Sammenlign med endelige differanser, der vi trengte et fiktivt punkt for å få andre orden. Her kommer fluksbetingelsen helt naturlig, fordi metoden er bygd på flukser.
+
+::: {.eksempel}
+**Eksempel: Isolert bakside.** Platen over isoleres på høyre side, mens venstre side fortsatt holdes på $20\ \mathrm{°C}$. Hva blir temperaturen ved den isolerte siden?
+
+::: {.losning}
+Bare celle 5 endres: $a_E = 0$, $S_P = 0$, $S_u = 1000$, så $a_P = 100$.
+
+Løsningen blir $T = (45,\ 85,\ 115,\ 135,\ 145)\ \mathrm{°C}$, og den eksakte løsningen $T = 20 + \frac{q}{2\kappa}x(2L - x)$ gir $1.25\ \mathrm{°C}$ mindre i hver node. Ved selve den isolerte flaten er den eksakte temperaturen $\underline{\underline{145\ \mathrm{°C}}}$. All varmen, $5000\ \mathrm{W}$, går nå ut gjennom venstre side.
+:::
+:::
+
+::: {.eksempel}
+**Eksempel: Kjølepinne.** En tynn metallpinne med lengde $0.50\ \mathrm{m}$ har basen på $80\ \mathrm{°C}$ og taper varme til luft på $20\ \mathrm{°C}$. Tuppen regnes som isolert. Med konstant tverrsnitt er likningen
+$$
+T'' - n^2(T - T_\infty) = 0, \qquad n^2 = 16\ \mathrm{m^{-2}}
+$$
+Løs med fem celler.
+
+::: {.losning}
+Vi deler likningen på $\kappa A$, så $a_W = a_E = \frac{1}{\delta x} = 10$. Sluket gir $S_P = -n^2\delta x = -1.6$ og $S_u = n^2\delta x\,T_\infty = 32$.
+
+| celle | $a_W$ | $a_E$ | $S_P$ | $S_u$ | $a_P$ |
+|---|---|---|---|---|---|
+| 1 (base) | $0$ | $10$ | $-1.6 - 20$ | $32 + 20\cdot 80$ | $31.6$ |
+| 2–4 | $10$ | $10$ | $-1.6$ | $32$ | $21.6$ |
+| 5 (isolert) | $10$ | $0$ | $-1.6$ | $32$ | $11.6$ |
+
+Løsningen er $T = (68.7,\ 53.8,\ 44.3,\ 38.7,\ 36.2)\ \mathrm{°C}$. Den eksakte løsningen $T = T_\infty + (T_b - T_\infty)\frac{\cosh(n(L - x))}{\cosh(nL)}$ gir $(69.6,\ 54.3,\ 44.6,\ 38.9,\ 36.3)\ \mathrm{°C}$. Største avvik er under $1\ \mathrm{°C}$ med bare fem celler.
+:::
+:::
+
+## Prøv selv
+
+```{.python .kjor}
+import numpy as np
+
+def evm_1d(n, L, kappa, venstre, hoyre, q=0.0, beta=0.0, T_inf=0.0):
+    """(kappa T')' + q - beta (T - T_inf) = 0, A = 1.
+    venstre/hoyre: ('T', verdi) for kjent temperatur, ('fluks', q_B) for kjent fluks inn."""
+    dx = L/n; a = kappa/dx
+    A = np.zeros((n, n)); F = np.zeros(n)
+    for i in range(n):
+        aW = a if i > 0 else 0
+        aE = a if i < n - 1 else 0
+        SP = -beta*dx
+        Su = q*dx + beta*T_inf*dx
+        for side, rand in [(0, venstre), (n - 1, hoyre)]:
+            if i == side:
+                if rand[0] == 'T':
+                    SP -= 2*a; Su += 2*a*rand[1]
+                else:
+                    Su += rand[1]
+        A[i, i] = aW + aE - SP
+        if i > 0:     A[i, i-1] = -aW
+        if i < n - 1: A[i, i+1] = -aE
+        F[i] = Su
+    return np.linalg.solve(A, F)
+
+print(np.round(evm_1d(5, 0.10, 2.0, ('T', 20), ('T', 20), q=5e4), 2))
+print(np.round(evm_1d(5, 0.10, 2.0, ('T', 20), ('fluks', 0), q=5e4), 2))
+print(np.round(evm_1d(5, 0.50, 1.0, ('T', 80), ('fluks', 0), beta=16, T_inf=20), 2))
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Fyll inn tabellen"}
+En celle har $\frac{\kappa A}{\delta x} = 50\ \mathrm{W/K}$ til hver nabo og varmetap $-\beta(T_P - 15)A\,\delta x$ med $\beta A\,\delta x = 4\ \mathrm{W/K}$. Finn $S_u$, $S_P$ og $a_P$.
+
+::: {.losning}
+$\underline{\underline{S_u = 4\cdot 15 = 60\ \mathrm{W}}}$, $\underline{\underline{S_P = -4\ \mathrm{W/K}}}$ og $\underline{\underline{a_P = 50 + 50 + 4 = 104\ \mathrm{W/K}}}$.
+:::
+:::
+
+::: {.oppgave tittel="Varme inn i enden" niva="Middels"}
+En stav med lengde $1.0\ \mathrm{m}$ og $\kappa A = 1\ \mathrm{W\,m/K}$ har $T = 0\ \mathrm{°C}$ i venstre ende og får $q_B = 10\ \mathrm{W}$ inn gjennom høyre ende. Det er ingen kilder. Hva blir temperaturene med fire celler? Hva er den eksakte løsningen?
+
+::: {.losning}
+Eksakt: Fluksen $10\ \mathrm{W}$ går gjennom hele staven, så $T' = 10$ og $T = 10x$. Koden gir $T = (1.25,\ 3.75,\ 6.25,\ 8.75)\ \mathrm{°C}$ i nodene $x = 0.125, 0.375, \dots$, som er eksakt.
+:::
+:::
+
+::: {.oppgave tittel="Konvergens" niva="Middels"}
+Løs platen med varmeproduksjon med $n = 5,\ 10,\ 20$ celler og regn ut avviket fra den eksakte løsningen i nodene. Stemmer formelen $\frac{q\,\delta x^2}{8\kappa}$?
+
+::: {.losning}
+Avvikene blir $1.25$, $0.3125$ og $0.078\ \mathrm{°C}$, og formelen gir nøyaktig det. Metoden er av **andre orden**.
+:::
+:::
+
+::: {.oppgave tittel="Varmen fra kjølepinnen" niva="Utfordrende"}
+Hvor mye varme avgir kjølepinnen per $\kappa A$, regnet med fem celler? Sammenlign med det eksakte svaret $(T_b - T_\infty)\,n\tanh(nL)$. Vis at summen av varmetapet fra alle cellene er lik fluksen inn gjennom basen.
+
+::: {.losning}
+Fluks inn gjennom basen: $\frac{2}{\delta x}(80 - T_1) = 20\cdot(80 - 68.67) = \underline{\underline{227\ \mathrm{K/m}}}$ (ganget med $\kappa A$ gir det watt). Eksakt: $60\cdot 4\tanh 2 = 231\ \mathrm{K/m}$.
+
+Summen av tapene $\sum n^2\delta x\,(T_i - 20)$ blir også $227\ \mathrm{K/m}$. Det følger av at fluksene gjennom de indre flatene kansellerer når vi summerer cellelikningene.
+:::
+:::
+
+::::

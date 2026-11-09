@@ -1,0 +1,19 @@
+---
+title: "Stokes' teorem"
+tema: integralsetninger
+undertema: stokes
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/05-05-stokes-teorem) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Sirkulasjon rundt en kurve
+- Faradays lov

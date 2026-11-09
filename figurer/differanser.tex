@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=1.25]
+\draw[akse] (-0.2,0)--(6.3,0) node[right]{$x$};
+\draw[akse] (0,-0.2)--(0,4.3) node[above]{$y$};
+\draw[very thick,domain=0.4:5.6,samples=80] plot (\x,{0.9+0.5*\x+0.5*sin(57.3*(\x-1.2))+0.04*\x*\x}) node[below right]{$f$};
+% x-h=2, x=3, x+h=4
+\pgfmathsetmacro{\fa}{0.9+0.5*2+0.5*sin(57.3*(2-1.2))+0.04*4}
+\pgfmathsetmacro{\fb}{0.9+0.5*3+0.5*sin(57.3*(3-1.2))+0.04*9}
+\pgfmathsetmacro{\fc}{0.9+0.5*4+0.5*sin(57.3*(4-1.2))+0.04*16}
+\draw[rod,thick] (1.3,{\fb+(\fc-\fb)*(1.3-3)})--(5.3,{\fb+(\fc-\fb)*(5.3-3)}) node[below right]{fremover};
+\draw[bla,thick] (0.9,{\fb+(\fb-\fa)*(0.9-3)})--(5.1,{\fb+(\fb-\fa)*(5.1-3)}) node[above right]{bakover};
+\draw[gronn,very thick,dashed] (0.9,{\fb+(\fc-\fa)/2*(0.9-3)}) node[left]{sentral} -- (0.9,{\fb+(\fc-\fa)/2*(0.9-3)})--(5.4,{\fb+(\fc-\fa)/2*(5.4-3)});
+\foreach \x/\f in {2/\fa,3/\fb,4/\fc} { \draw[dotted] (\x,0)--(\x,\f); \fill (\x,\f) circle (2pt); }
+\node[below] at (2,0) {$x-h$}; \node[below] at (3,0) {$x$}; \node[below] at (4,0) {$x+h$};
+\end{tikzpicture}

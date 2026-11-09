@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=1.0]
+% Eksplisitt Euler
+\begin{scope}
+\draw[black!30] (0,0) grid (4,2);
+\draw[akse] (-0.3,-0.5)--(4.6,-0.5) node[right]{$x$}; \draw[akse] (-0.6,-0.8)--(-0.6,2.7) node[above]{$t$};
+\draw[rod,very thick] (1,1)--(3,1) (2,1)--(2,2);
+\foreach \p in {(1,1),(2,1),(3,1)} \fill[bla] \p circle (3pt);
+\fill[rod] (2,2) circle (3.5pt);
+\node[right] at (2.05,2.25) {$U_i^{n+1}$};
+\node[left] at (-0.65,1) {$n$}; \node[left] at (-0.65,2) {$n+1$};
+\node at (2,-1.2) {eksplisitt Euler (varme)};
+\end{scope}
+% Leapfrog
+\begin{scope}[xshift=6.5cm]
+\draw[black!30] (0,0) grid (4,2);
+\draw[akse] (-0.3,-0.5)--(4.6,-0.5) node[right]{$x$}; \draw[akse] (-0.6,-0.8)--(-0.6,2.7) node[above]{$t$};
+\draw[rod,very thick] (1,1)--(3,1) (2,0)--(2,2);
+\foreach \p in {(1,1),(2,1),(3,1),(2,0)} \fill[bla] \p circle (3pt);
+\fill[rod] (2,2) circle (3.5pt);
+\node[right] at (2.05,2.25) {$U_i^{n+1}$};
+\node[left] at (-0.65,0) {$n-1$}; \node[left] at (-0.65,1) {$n$}; \node[left] at (-0.65,2) {$n+1$};
+\node at (2,-1.2) {leapfrog (bølge)};
+\end{scope}
+\end{tikzpicture}

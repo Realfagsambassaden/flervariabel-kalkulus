@@ -1,0 +1,10 @@
+\begin{tikzpicture}[scale=1.2]
+\draw[black!35] (0,0) grid[step=2] (6,6);
+\fill[bla!18] (2,2) rectangle (4,4); \draw[thick] (2,2) rectangle (4,4);
+\foreach \p/\l in {(3,3)/P,(1,3)/W,(5,3)/E,(3,1)/S,(3,5)/N} { \fill[bla] \p circle (2.5pt); \node[above right] at \p {$\l$}; }
+\node[left] at (2,3.35) {$w$}; \node[right] at (4,3.35) {$e$}; \node[below] at (2.6,2) {$s$}; \node[above] at (2.6,4) {$n$};
+\draw[gronn,->,very thick] (1.6,2.6)--(2.4,2.6); \draw[gronn,->,very thick] (3.6,2.6)--(4.4,2.6);
+\draw[gronn,->,very thick] (3.4,1.6)--(3.4,2.4); \draw[gronn,->,very thick] (3.4,3.6)--(3.4,4.4);
+\draw[<->] (2,-0.35)--(4,-0.35) node[midway,below]{$\delta x$};
+\draw[<->] (6.35,2)--(6.35,4) node[midway,right]{$\delta y$};
+\end{tikzpicture}

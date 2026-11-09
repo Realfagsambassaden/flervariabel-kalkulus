@@ -1,0 +1,159 @@
+---
+title: "Bølgelikningen og leapfrog-metoden"
+tema: endelige-differanser
+undertema: bolgelikningen
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/07-07-bolgelikningen-leapfrog) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+En gitarstreng, en pianostreng og en trommehinne følger **bølgelikningen** $u_{tt} = c^2u_{xx}$. Den er av *andre* orden i tid, så eksplisitt Euler passer ikke rett fram. I stedet bruker vi sentraldifferanser i både rom og tid. Det gir **leapfrog-metoden**, eller hoppe bukk-metoden, en av de enkleste og beste metodene for bølger.
+
+## Utledning
+
+Lag et rutenett i rom og tid, $x_i = i\Delta x$ og $t_n = n\Delta t$, med $U_i^n \approx u(x_i, t_n)$. Bytt ut begge de andrederiverte med differanseformelen:
+$$
+\frac{U_i^{n+1} - 2U_i^n + U_i^{n-1}}{\Delta t^2} = c^2\,\frac{U_{i+1}^n - 2U_i^n + U_{i-1}^n}{\Delta x^2}
+$$
+Den eneste ukjente er $U_i^{n+1}$. Gang med $\Delta t^2$ og løs:
+
+::: {.callout-important title="Leapfrog-metoden"}
+$$
+U_i^{n+1} = 2U_i^n - U_i^{n-1} + r^2\big(U_{i+1}^n - 2U_i^n + U_{i-1}^n\big), \qquad r = \frac{c\,\Delta t}{\Delta x}
+$$
+Den nye verdien bruker *to* tidligere tidsnivåer: tre punkter på nivå $n$ og ett på nivå $n - 1$. Metoden «hopper bukk» over nivå $n$ i midten.
+:::
+
+## Oppstart
+
+For å regne ut $U^2$ trenger vi både $U^1$ og $U^0$. Startbetingelsene er posisjonen $u(x, 0) = f(x)$ og farten $u_t(x, 0) = g(x)$. Den første gir $U_i^0 = f(x_i)$. For $U^1$ bruker vi et Taylorpolynom i tid:
+$$
+u(x, \Delta t) \approx u(x, 0) + \Delta t\,u_t(x, 0) + \frac{\Delta t^2}{2}u_{tt}(x, 0)
+$$
+Vi kjenner $u$ og $u_t$ ved start, og $u_{tt}$ får vi fra selve likningen: $u_{tt} = c^2u_{xx} = c^2f''(x)$.
+
+::: {.callout-important title="Oppstartsformelen"}
+$$
+U_i^1 = f(x_i) + \Delta t\,g(x_i) + \frac{r^2}{2}\big(f(x_{i+1}) - 2f(x_i) + f(x_{i-1})\big)
+$$
+Slippes strengen fra ro, er $g = 0$, og det midterste leddet faller bort.
+:::
+
+Randbetingelsene brukes i *hvert* tidssteg. For en streng med faste ender er $U_0^n = U_M^n = 0$, og formlene brukes bare i de indre punktene.
+
+::: {.eksempel}
+**Eksempel: Pianohammer.** En pianostreng med lengde 1 og $c = 1$ ligger i ro, $f = 0$, og får et slag som gir farten $g(x) = \sin(\pi x)$. Regn ut to tidssteg med $\Delta x = 0.25$ og $r = 0.5$. Den eksakte løsningen er $u(x, t) = \frac{1}{\pi}\sin(\pi x)\sin(\pi t)$.
+
+::: {.losning}
+$\Delta t = r\Delta x/c = 0.125$. Siden $f = 0$, er $U^0 = 0$ og $U_i^1 = \Delta t\,g(x_i) = 0.125\sin(\pi x_i)$:
+$$
+U^1 = (0,\ 0.08839,\ 0.12500,\ 0.08839,\ 0)
+$$
+Leapfrog med $r^2 = 0.25$:
+
+$U_1^2 = 2\cdot 0.08839 - 0 + 0.25(0.12500 - 2\cdot 0.08839 + 0) = \underline{\underline{0.16383}}$
+
+$U_2^2 = 2\cdot 0.12500 - 0 + 0.25(0.08839 - 2\cdot 0.12500 + 0.08839) = \underline{\underline{0.23169}}$
+
+Eksakt ved $t = 0.25$: $u(0.25) = 0.15915$ og $u(0.5) = 0.22508$. Feilen er 3 % med bare tre indre punkter.
+:::
+:::
+
+## Stabilitet
+
+::: {.callout-important title="CFL-betingelsen for bølgelikningen"}
+Leapfrog er stabil når
+$$
+r = \frac{c\,\Delta t}{\Delta x} \le 1
+$$
+I 2D, med $\Delta x = \Delta y = h$, er kravet $r \le \frac{1}{\sqrt2}$.
+:::
+
+Tolkningen er fin: På ett tidssteg flytter bølgen seg $c\Delta t$. Metoden henter informasjon bare fra nabopunktene, altså en avstand $\Delta x$. Går bølgen lenger enn det på ett steg, kan ikke metoden «se» hvor den kommer fra. Merk også at kravet er lineært, $\Delta t \propto \Delta x$, ikke kvadratisk som for varmelikningen.
+
+::: {.kort}
+- **Varmelikningen, eksplisitt Euler** $\Delta t \le \frac{\Delta x^2}{2\alpha}$. Finere rutenett koster mye.
+- **Bølgelikningen, leapfrog** $\Delta t \le \frac{\Delta x}{c}$. Halvert $\Delta x$ gir bare dobbelt så mange tidssteg.
+:::
+
+## Prøv selv: plukket streng
+
+Strengen trekkes ut i et punkt og slippes. Endre `r` til `1.05` og se hva som skjer.
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+c, M, r = 1.0, 60, 0.9
+dx = 1/M; dt = r*dx/c
+x = np.linspace(0, 1, M + 1)
+f = np.where(x < 0.3, x/0.3, (1 - x)/0.7)        # plukket i x = 0.3
+g = np.zeros_like(x)                             # slippes fra ro
+
+U0 = f.copy()
+U1 = U0.copy()
+U1[1:-1] = U0[1:-1] + dt*g[1:-1] + r**2/2*(U0[2:] - 2*U0[1:-1] + U0[:-2])
+
+fig, akser = plt.subplots(4, 1, figsize=(6, 7), sharex=True)
+bilder = [0, 20, 45, 67]                          # tidssteg vi viser
+k = 0
+for n in range(1, 70):
+    if n - 1 in bilder:
+        akser[k].plot(x, U0, 'b'); akser[k].set_ylim(-1.1, 1.1)
+        akser[k].set_title(f't = {(n - 1)*dt:.2f}', fontsize=9); k += 1
+    U2 = np.zeros_like(U1)
+    U2[1:-1] = 2*U1[1:-1] - U0[1:-1] + r**2*(U1[2:] - 2*U1[1:-1] + U1[:-2])
+    U0, U1 = U1, U2
+plt.xlabel('x'); plt.tight_layout(); plt.show()
+```
+
+## To romdimensjoner
+
+For en trommehinne, $u_{tt} = c^2(u_{xx} + u_{yy})$, bytter vi $u_{xx}$ ut med fempunktsformelen:
+$$
+U_{i,j}^{n+1} = 2U_{i,j}^n - U_{i,j}^{n-1} + r^2\Big(U_{i-1,j}^n + U_{i+1,j}^n + U_{i,j-1}^n + U_{i,j+1}^n - 4U_{i,j}^n\Big)
+$$
+med $r = c\Delta t/h \le \frac{1}{\sqrt2}$. Oppstarten er den samme, med fempunktsformelen brukt på $f$.
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Tidssteg for en gitarstreng"}
+En gitarstreng har bølgefart $c = 400\ \mathrm{m/s}$ og lengde $0.65\ \mathrm{m}$. Den deles i 100 intervaller. Hvor stort kan tidssteget være, og hvor mange tidssteg trengs for $1.0\ \mathrm{s}$ lyd?
+
+::: {.losning}
+$\Delta x = 6.5\cdot 10^{-3}\ \mathrm{m}$. $\Delta t \le \frac{\Delta x}{c} = \underline{\underline{1.6\cdot 10^{-5}\ \mathrm{s}}}$, altså minst $\underline{\underline{6.2\cdot 10^{4}}}$ tidssteg.
+:::
+:::
+
+::: {.oppgave tittel="Oppstart fra ro" niva="Middels"}
+En streng slippes fra ro med $f = (0,\ 0.2,\ 0.4,\ 0.2,\ 0)$ i punktene $x_0, \dots, x_4$. Regn ut $U^1$ med $r = 1$.
+
+::: {.losning}
+$U_i^1 = f_i + \frac12(f_{i+1} - 2f_i + f_{i-1})$:
+
+$U_1^1 = 0.2 + \frac12(0.4 - 0.4 + 0) = 0.2$, $\quad U_2^1 = 0.4 + \frac12(0.2 - 0.8 + 0.2) = 0.2$, $\quad U_3^1 = 0.2$.
+
+$\underline{\underline{U^1 = (0,\ 0.2,\ 0.2,\ 0.2,\ 0)}}$. Toppen er i ferd med å dele seg i to bølger som går hver sin vei.
+:::
+:::
+
+::: {.oppgave tittel="Konvergens" niva="Middels"}
+Bruk pianohammer-eksempelet med $r = 0.8$ og $M = 10,\ 20,\ 40$ til $t \approx 0.5$. Hvilken orden har metoden?
+
+::: {.losning}
+Største feil blir omtrent $3.8\cdot 10^{-3}$, $9.4\cdot 10^{-4}$ og $2.4\cdot 10^{-4}$. Fire ganger mindre for hver dobling: **andre orden** i både rom og tid.
+:::
+:::
+
+::: {.oppgave tittel="Magisk tidssteg" niva="Utfordrende"}
+Vis at med $r = 1$ blir leapfrog $U_i^{n+1} = U_{i+1}^n + U_{i-1}^n - U_i^{n-1}$. Prøv i koden: Hvorfor beholder bølgeformen sine skarpe hjørner helt nøyaktig?
+
+::: {.losning}
+Med $r^2 = 1$: $2U_i^n - U_i^{n-1} + U_{i+1}^n - 2U_i^n + U_{i-1}^n = U_{i+1}^n + U_{i-1}^n - U_i^{n-1}$.
+
+Den eksakte løsningen er $u = F(x - ct) + G(x + ct)$. Med $c\Delta t = \Delta x$ flytter hver bølge seg nøyaktig ett gitterpunkt per tidssteg, og formelen over er da eksakt for slike løsninger. I 1D gir $r = 1$ derfor ingen feil i gitterpunktene (bortsett fra feilen i oppstarten).
+:::
+:::
+
+::::

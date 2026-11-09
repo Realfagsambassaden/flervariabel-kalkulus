@@ -1,0 +1,20 @@
+---
+title: "Linjeintegraler av funksjoner"
+tema: kurve-og-flateintegraler
+undertema: linjeintegraler
+plassholder: true
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/03-01-linjeintegraler) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+::: {.callout-note title="Kommer snart"}
+Denne siden skrives nå. Innholdet kommer snart.
+:::
+
+## Dette kommer på siden
+
+- Buelengde
+- Linjeintegral med hensyn på buelengde
+- Masse av en tråd

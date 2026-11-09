@@ -1,0 +1,133 @@
+---
+title: "Tidsavhengige problemer"
+tema: endelig-volum
+undertema: tidsavhengig
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/08-05-tidsavhengige-problemer) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+En vegg som plutselig får kald luft på utsiden, kjøles ikke ned med en gang. Det tar tid før kulda trenger inn. For å regne på det tar vi med tidsleddet i bevaringsloven: Endringen av varmen i en celle per tid er lik nettofluksen inn pluss produksjonen.
+
+## Regnskap over et tidssteg
+
+Varmelikningen er $\rho c\,\frac{\partial T}{\partial t} = \frac{\partial}{\partial x}\left(\kappa\frac{\partial T}{\partial x}\right) + S$. Vi integrerer over cellen *og* over et tidssteg fra $t_n$ til $t_{n+1} = t_n + \Delta t$. Venstresiden blir endringen av varmeinnholdet i cellen:
+$$
+\rho c\,A\,\delta x\,\big(T_P^{n+1} - T_P^n\big)
+$$
+Høyresiden er fluksene og kilden, integrert over tidssteget. Den enkleste tilnærmingen er å regne dem ut med temperaturene ved *starten* av steget. Det gir en **eksplisitt** metode.
+
+::: {.callout-important title="Eksplisitt endelig volum-metode"}
+$$
+a_P^0\,T_P^{n+1} = a_WT_W^n + a_ET_E^n + \big(a_P^0 - a_W - a_E + S_P\big)T_P^n + S_u
+$$
+der $a_P^0 = \dfrac{\rho c\,A\,\delta x}{\Delta t}$ og $a_W$, $a_E$, $S_P$ og $S_u$ er de samme som i det stasjonære tilfellet.
+:::
+
+Alt på høyresiden er kjent, så hver ny temperatur regnes rett ut. Deler vi på $a_P^0$ i en indre celle med konstant $\kappa$, får vi
+$$
+T_P^{n+1} = T_P^n + r\big(T_W^n - 2T_P^n + T_E^n\big), \qquad r = \frac{\alpha\,\Delta t}{\delta x^2}, \quad \alpha = \frac{\kappa}{\rho c}
+$$
+som er nøyaktig eksplisitt Euler for varmelikningen med endelige differanser.
+
+## Hvor stort tidssteg?
+
+Koeffisienten foran $T_P^n$ forteller hvordan den gamle temperaturen i cellen påvirker den nye. Blir den negativ, vil en varm celle bli *kaldere* av å være varm. Det er ufysisk.
+
+::: {.callout-important title="Krav til tidssteget"}
+Alle koeffisienter skal være positive: $a_P^0 \ge a_W + a_E - S_P$.
+
+- **Indre celle:** $\dfrac{\rho c\,\delta x}{\Delta t} \ge \dfrac{2\kappa}{\delta x}$ gir $\Delta t \le \dfrac{\rho c\,\delta x^2}{2\kappa}$. Dette er stabilitetsgrensen $r \le \frac12$.
+- **Randcelle med kjent temperatur:** Her er $S_P = -\frac{2\kappa}{\delta x}$, så $\Delta t \le \dfrac{\rho c\,\delta x^2}{3\kappa}$.
+:::
+
+Bryter vi grensen for de indre cellene, eksploderer løsningen. Ligger tidssteget mellom de to grensene, eksploderer den ikke, men temperaturen i randcellene svinger opp og ned fra steg til steg før den roer seg. Den strengeste grensen er derfor den trygge.
+
+I 2D med kvadratiske celler har en indre celle fire naboer, og kravet blir $\Delta t \le \frac{\rho c\,h^2}{4\kappa}$. Randceller og hjørneceller gir tilsvarende strengere krav ($\frac{\rho c\,h^2}{5\kappa}$ og $\frac{\rho c\,h^2}{6\kappa}$).
+
+::: {.eksempel}
+**Eksempel: Betongvegg i kulde.** En $0.20\ \mathrm{m}$ tykk betongvegg har $\rho = 2300\ \mathrm{kg/m^3}$, $c = 880\ \mathrm{J/(kg\,K)}$ og $\kappa = 1.4\ \mathrm{W/(m\,K)}$. Hele veggen er $20\ \mathrm{°C}$ da utetemperaturen plutselig faller til $-10\ \mathrm{°C}$. Innsiden holdes på $20\ \mathrm{°C}$. Bruk ti celler. Hvor stort tidssteg kan vi bruke, og hvordan utvikler temperaturen seg?
+
+::: {.losning}
+$\delta x = 0.020\ \mathrm{m}$. Grensene:
+$$
+\frac{\rho c\,\delta x^2}{2\kappa} = \frac{2300\cdot 880\cdot 0.020^2}{2\cdot 1.4}\ \mathrm{s} = 289\ \mathrm{s}, \qquad \frac{\rho c\,\delta x^2}{3\kappa} = \underline{\underline{193\ \mathrm{s}}}
+$$
+Med $\Delta t = 180\ \mathrm{s}$ gir koden under denne temperaturen midt i veggen:
+
+| tid | $1\ \mathrm{h}$ | $6\ \mathrm{h}$ | $24\ \mathrm{h}$ |
+|---|---|---|---|
+| midt i veggen | $15.2\ \mathrm{°C}$ | $5.5\ \mathrm{°C}$ | $5.0\ \mathrm{°C}$ |
+
+Etter et døgn er veggen i likevekt: Temperaturen går lineært fra $20$ til $-10\ \mathrm{°C}$, med $5.0\ \mathrm{°C}$ i midten. Den karakteristiske tiden er omtrent $\frac{L^2}{\pi^2\alpha} = 1.6\ \mathrm{h}$, og etter noen slike tider har veggen funnet likevekten.
+:::
+:::
+
+## Prøv selv
+
+Kjør med `dt = 180`, `dt = 240` og `dt = 300`. Med 240 s svinger temperaturen i den ytterste cellen de første stegene. Med 300 s eksploderer løsningen.
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+rho, c, kappa, L, n = 2300, 880, 1.4, 0.20, 10
+dx = L/n; a = kappa/dx
+TV, TH = 20, -10                       # inne og ute (°C)
+dt = 180                               # sekunder: prøv 240 og 300
+aP0 = rho*c*dx/dt
+
+T = np.full(n, 20.0)
+x = (np.arange(n) + 0.5)*dx
+ytterste = []
+for steg in range(1, int(24*3600/dt) + 1):
+    Tn = T.copy()
+    for i in range(n):
+        aW = a if i > 0 else 0
+        aE = a if i < n - 1 else 0
+        SP, Su = 0.0, 0.0
+        if i == 0:     SP -= 2*a; Su += 2*a*TV
+        if i == n - 1: SP -= 2*a; Su += 2*a*TH
+        TW = T[i-1] if i > 0 else 0
+        TE = T[i+1] if i < n - 1 else 0
+        Tn[i] = (aW*TW + aE*TE + (aP0 - aW - aE + SP)*T[i] + Su)/aP0
+    T = Tn
+    ytterste.append(T[-1])
+    if steg*dt in (3600, 6*3600, 24*3600):
+        plt.plot(x*100, T, 'o-', label=f'{steg*dt/3600:.0f} h')
+plt.xlabel('x (cm)'); plt.ylabel('T (°C)'); plt.legend(); plt.show()
+print("Ytterste celle, første steg:", np.round(ytterste[:6], 2))
+```
+
+::: {.callout-tip title="Implisitte metoder"}
+Regner vi fluksene ut med temperaturene ved *slutten* av steget, får vi en **implisitt** metode. Den er stabil for alle tidssteg, men vi må løse et likningssystem i hvert steg. For lange simuleringer med fint rutenett lønner det seg ofte.
+:::
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Tidssteg for kobber"}
+Kobber har $\alpha = 1.1\cdot 10^{-4}\ \mathrm{m^2/s}$. Hvor stort kan tidssteget være med celler på $5.0\ \mathrm{mm}$, i det indre og ved en rand med kjent temperatur?
+
+::: {.losning}
+Med $\alpha = \frac{\kappa}{\rho c}$: indre $\Delta t \le \frac{\delta x^2}{2\alpha} = \frac{(5.0\cdot 10^{-3})^2}{2\cdot 1.1\cdot 10^{-4}}\ \mathrm{s} = \underline{\underline{0.11\ \mathrm{s}}}$, rand $\frac{\delta x^2}{3\alpha} = \underline{\underline{0.076\ \mathrm{s}}}$.
+:::
+:::
+
+::: {.oppgave tittel="Ett steg for hånd" niva="Middels"}
+En indre celle har $T_W = 30$, $T_P = 20$ og $T_E = 16\ \mathrm{°C}$, og $r = \frac{\alpha\Delta t}{\delta x^2} = 0.25$. Hva er $T_P$ etter ett tidssteg?
+
+::: {.losning}
+$T_P^{n+1} = 20 + 0.25(30 - 40 + 16) = \underline{\underline{21.5\ \mathrm{°C}}}$.
+:::
+:::
+
+::: {.oppgave tittel="Isolert innside" niva="Utfordrende"}
+Endre koden slik at innsiden av betongveggen er isolert i stedet for å holdes på $20\ \mathrm{°C}$. Hva skjer med veggen over tid? Hvilket tidssteg er nå trygt?
+
+::: {.losning}
+For celle 1: kutt koblingen ($a_W = 0$) uten bidrag til $S_P$ og $S_u$. Da kjøles hele veggen etter hvert ned mot $-10\ \mathrm{°C}$. Den isolerte randcellen har bare én nabo, så kravet der er svakere ($\frac{\rho c\,\delta x^2}{\kappa}$). Den kalde randcellen krever fortsatt $\Delta t \le 193\ \mathrm{s}$.
+:::
+:::
+
+::::
