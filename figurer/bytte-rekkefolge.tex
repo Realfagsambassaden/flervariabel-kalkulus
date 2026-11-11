@@ -1,0 +1,33 @@
+\begin{tikzpicture}[scale=3.6]
+% Venstre: slik integralet er gitt (vannrett stripe)
+\begin{scope}
+\fill[black!10] (0,0) -- plot[domain=0:1,samples=40] (\x,{\x*\x}) -- (1,0) -- cycle;
+\draw[akse] (-0.08,0)--(1.3,0) node[right]{$x$};
+\draw[akse] (0,-0.08)--(0,1.2) node[above]{$y$};
+\draw[thick,bla] plot[domain=0:1,samples=40] (\x,{\x*\x});
+\draw[thick] (1,0)--(1,1);
+\def\ys{0.36}\def\dy{0.06}
+\fill[black!35] ({sqrt(\ys)},\ys) -- (1,\ys) -- (1,{\ys+\dy}) -- plot[domain={sqrt(\ys+\dy)}:{sqrt(\ys)},samples=8] (\x,{\x*\x}) -- cycle;
+\draw[->,thick] ({sqrt(\ys+0.03)-0.14},{\ys+0.03}) -- (1.12,{\ys+0.03});
+\node[left,font=\small] at (0,1) {$1$};
+\draw[dashed,black!50] (0,1)--(1,1);
+\node[below,font=\small] at (1,0) {$1$};
+\node[left,font=\small,bla] at (0.62,0.75) {$x = \sqrt{y}$};
+\node[right,font=\small] at (1.02,0.85) {$x = 1$};
+\node[font=\small,align=center] at (0.55,-0.25) {gitt: $x$ fra $\sqrt{y}$ til $1$,\\ $y$ fra $0$ til $1$};
+\end{scope}
+% Høyre: etter bytte (vertikal stripe)
+\begin{scope}[xshift=1.95cm]
+\fill[black!10] (0,0) -- plot[domain=0:1,samples=40] (\x,{\x*\x}) -- (1,0) -- cycle;
+\draw[akse] (-0.08,0)--(1.3,0) node[right]{$x$};
+\draw[akse] (0,-0.08)--(0,1.2) node[above]{$y$};
+\draw[thick,bla] plot[domain=0:1,samples=40] (\x,{\x*\x});
+\draw[thick] (1,0)--(1,1);
+\def\xs{0.68}\def\dx{0.06}
+\fill[black!35] (\xs,0) -- ({\xs+\dx},0) -- plot[domain={\xs+\dx}:\xs,samples=8] (\x,{\x*\x}) -- cycle;
+\draw[->,thick] ({\xs+0.03},-0.06) -- ({\xs+0.03},{(\xs+0.03)^2+0.16});
+\node[below,font=\small] at (1,0) {$1$};
+\node[left,font=\small,bla] at (0.62,0.75) {$y = x^2$};
+\node[font=\small,align=center] at (0.55,-0.25) {byttet: $y$ fra $0$ til $x^2$,\\ $x$ fra $0$ til $1$};
+\end{scope}
+\end{tikzpicture}

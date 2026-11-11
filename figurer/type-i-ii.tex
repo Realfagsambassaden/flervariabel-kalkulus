@@ -1,0 +1,40 @@
+\begin{tikzpicture}[scale=4]
+% Venstre: type I, vertikal stripe
+\begin{scope}
+\fill[black!10] plot[domain=0:1,samples=40] (\x,{\x*\x}) -- (1,1) -- (0,0) -- cycle;
+\draw[akse] (-0.08,0)--(1.25,0) node[right]{$x$};
+\draw[akse] (0,-0.08)--(0,1.2) node[above]{$y$};
+\draw[thick] (0,0)--node[pos=0.32,above,sloped,font=\small]{$y = x$}(1,1);
+\draw[thick,bla] plot[domain=0:1,samples=40] (\x,{\x*\x});
+\def\xs{0.55}\def\dx{0.06}
+\fill[black!35] (\xs,{\xs*\xs}) -- plot[domain=\xs:\xs+\dx,samples=8] (\x,{\x*\x}) -- ({\xs+\dx},{\xs+\dx}) -- (\xs,\xs) -- cycle;
+\draw (\xs,{\xs*\xs}) -- (\xs,\xs); \draw ({\xs+\dx},{(\xs+\dx)^2}) -- ({\xs+\dx},{\xs+\dx});
+\draw[dashed,black!50] ({\xs+0.03},0) -- ({\xs+0.03},{(\xs+0.03)^2});
+\node[below,font=\small] at ({\xs+0.03},0) {$x$};
+\node[below,font=\small] at (1,0) {$1$};
+\draw[dashed,black!50] (1,0)--(1,1);
+\node[right,font=\small,bla] at (0.8,0.5) {$y = x^2$};
+\draw[->] (0.86,0.52) to[bend left=10] (0.78,0.615);
+\draw[->,thick] ({\xs+0.03},{(\xs+0.03)^2-0.12}) -- ({\xs+0.03},{\xs+0.03+0.14});
+\node[font=\small,align=center] at (0.5,-0.25) {type I: $x$ fast,\\ $y$ fra $x^2$ til $x$};
+\end{scope}
+% Høyre: type II, vannrett stripe
+\begin{scope}[xshift=1.9cm]
+\fill[black!10] plot[domain=0:1,samples=40] (\x,{\x*\x}) -- (1,1) -- (0,0) -- cycle;
+\draw[akse] (-0.08,0)--(1.25,0) node[right]{$x$};
+\draw[akse] (0,-0.08)--(0,1.2) node[above]{$y$};
+\draw[thick] (0,0)--node[pos=0.72,above,sloped,font=\small]{$x = y$}(1,1);
+\draw[thick,bla] plot[domain=0:1,samples=40] (\x,{\x*\x});
+\def\ys{0.40}\def\dy{0.06}
+\fill[black!35] (\ys,\ys) -- ({\ys+\dy},{\ys+\dy}) -- plot[domain={sqrt(\ys+\dy)}:{sqrt(\ys)},samples=8] (\x,{\x*\x}) -- cycle;
+\draw (\ys,\ys) -- ({sqrt(\ys)},\ys); \draw ({\ys+\dy},{\ys+\dy}) -- ({sqrt(\ys+\dy)},{\ys+\dy});
+\draw[dashed,black!50] (0,{\ys+0.03}) -- ({\ys+0.03},{\ys+0.03});
+\node[left,font=\small] at (0,{\ys+0.03}) {$y$};
+\node[left,font=\small] at (0,1) {$1$};
+\draw[dashed,black!50] (0,1)--(1,1);
+\node[right,font=\small,bla] at (0.92,0.22) {$x = \sqrt{y}$};
+\draw[->] (1.0,0.3) to[bend right=15] (0.92,0.83);
+\draw[->,thick] ({\ys-0.13},{\ys+0.03}) -- ({sqrt(\ys+0.03)+0.14},{\ys+0.03});
+\node[font=\small,align=center] at (0.5,-0.25) {type II: $y$ fast,\\ $x$ fra $y$ til $\sqrt{y}$};
+\end{scope}
+\end{tikzpicture}
