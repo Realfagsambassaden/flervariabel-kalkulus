@@ -1,0 +1,16 @@
+\begin{tikzpicture}[scale=1.2]
+% Riemann-sum med midtpunkter under en kurve
+\draw[akse] (-0.2,0)--(6.0,0) node[right]{$x$};
+\draw[akse] (0,-0.2)--(0,3.4) node[above]{$y$};
+\foreach \i in {0,...,5}{
+  \pgfmathsetmacro{\xa}{0.5+0.8*\i}\pgfmathsetmacro{\xm}{\xa+0.4}
+  \pgfmathsetmacro{\h}{1+0.9*sin(deg(\xm*0.9))+0.12*\xm}
+  \fill[black!14] (\xa,0) rectangle ({\xa+0.8},\h);
+  \draw (\xa,0) rectangle ({\xa+0.8},\h);
+  \fill (\xm,\h) circle (1.2pt);
+}
+\draw[very thick,domain=0.3:5.6,samples=80] plot (\x,{1+0.9*sin(deg(\x*0.9))+0.12*\x}) node[right]{$y=f(x)$};
+\node[below] at (0.5,0) {$a$};\node[below] at (5.3,0) {$b$};
+\draw[<->] (0.5,-0.45)--node[below,font=\small]{$\Delta x$}(1.3,-0.45);
+\node[font=\small] at (2.1,0.45) {$f(x_i^*)$};
+\end{tikzpicture}

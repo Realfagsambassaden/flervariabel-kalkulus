@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=1.15]
+% Nivåkurver x^2+y^2=c og gradienten i P=(1,1)
+\draw[akse] (-2.4,0)--(2.6,0) node[right]{$x$};
+\draw[akse] (0,-2.4)--(0,2.6) node[above]{$y$};
+\foreach \r/\c in {1/1,1.4142/2,2/4}{\draw[black!45] (0,0) circle (\r);}
+\draw[very thick,bla] (0,0) circle (1.4142);
+\node[bla,font=\small] at (-1.55,1.45) {$f=2$};
+\node[black!55,font=\small] at (-0.78,0.48) {$f=1$};
+\node[black!55,font=\small] at (-1.95,1.95) {$f=4$};
+\draw[thick,gronn,dashed] (0.1,1.9)--(1.9,0.1);
+\node[gronn,font=\small] at (2.3,0.35) {tangent};
+\draw[vek,rod] (1,1)--(2.0,2.0) node[above right]{$\nabla f=(2,2)$};
+\fill (1,1) circle (1.6pt) node[below left]{$P$};
+\end{tikzpicture}

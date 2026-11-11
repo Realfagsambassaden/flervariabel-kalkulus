@@ -1,0 +1,13 @@
+\begin{tikzpicture}[scale=1.1]
+% Et plan gjennom P0 med normalvektor n, og vektoren P0P i planet
+\fill[black!10] (0,0)--(4.4,0)--(5.6,1.8)--(1.2,1.8)--cycle;
+\draw[thick] (0,0)--(4.4,0)--(5.6,1.8)--(1.2,1.8)--cycle;
+\coordinate (P0) at (2.2,0.8);
+\coordinate (P) at (4.1,1.2);
+\draw[vek] (P0)--(P);
+\node[font=\small,below] at ($(P0)!0.55!(P)$) {$\overrightarrow{P_0P}$};
+\draw[vek,rod] (P0)--(2.2,3.1) node[above]{$\mathbf{n}=(a,b,c)$};
+\draw[rod] (2.2,1.1)--(2.45,1.15)--(2.45,0.85);
+\fill (P0) circle (1.6pt) node[below left]{$P_0$};
+\fill (P) circle (1.6pt) node[right]{$P$};
+\end{tikzpicture}

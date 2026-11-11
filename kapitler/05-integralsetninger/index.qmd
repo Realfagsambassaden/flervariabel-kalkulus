@@ -3,6 +3,15 @@ title: "Integralsetningene"
 toc: false
 ---
 
+<!-- plan: Egne ord, eksempler og figurer (temaguide fra donasjon, sak #8):
+- 01-fluks-i-planet: normalvektor til en kurve, fluks gjennom en kurve, fluks over et linjestykke.
+- 02-greens-teorem: sirkulasjons- og fluksformen, oppdeling av områder, områder med hull (ring), punktert plan, arealberegning med Greens teorem.
+- 03-fluks-i-rommet: lukkede flater og orientering, fluks gjennom en graf og gjennom en parametrisert flate, sammensatte flater.
+- 04-divergenssetningen: fluks ut av en kube, Gauss' lov for elektrisk felt, Arkimedes' lov som anvendelse.
+- 05-stokes-teorem: sirkulasjon og curl, valg av flate med samme rand, Faradays lov som anvendelse.
+- 06-oppgaver: blandede oppgaver.
+-->
+
 ::: {.intro}
 
 Greens teorem, divergenssetningen og Stokes' teorem knytter integraler over et område til integraler over randen. De er grunnlaget for bevaringslover, Maxwells likninger og endelig volum-metoden.

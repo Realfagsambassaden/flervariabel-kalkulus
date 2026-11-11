@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=1.25]
+% Ulike veier inn mot origo for f(x,y) = 2xy/(x^2+y^2)
+\draw[akse] (-2.3,0)--(2.4,0) node[right]{$x$};
+\draw[akse] (0,-2.0)--(0,2.3) node[above]{$y$};
+\draw[very thick,bla,->] (-2,0)--(-0.12,0);
+\node[bla,font=\small,above] at (-1.4,0) {$y=0$: $f=0$};
+\draw[very thick,rod,->] (1.8,1.8)--(0.1,0.1);
+\node[rod,font=\small,left] at (1.1,1.55) {$y=x$: $f=1$};
+\draw[very thick,gronn,->] (1.8,-1.8)--(0.1,-0.1);
+\node[gronn,font=\small,left] at (1.1,-1.55) {$y=-x$: $f=-1$};
+\draw[thick,lilla,->,domain=1.9:0.25,samples=60] plot ({\x},{0.4*\x*\x});
+\node[lilla,font=\small,right] at (1.95,0.75) {$y=kx^2$: $f\to 0$};
+\filldraw[fill=white] (0,0) circle (2.2pt);
+\end{tikzpicture}
