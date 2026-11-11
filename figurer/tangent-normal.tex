@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=0.95]
+% f(x) = x^2/2 med tangent og normal i x0 = 2
+\draw[akse] (-1.2,0)--(4.6,0) node[right]{$x$};
+\draw[akse] (0,-1.2)--(0,4.6) node[above]{$y$};
+\draw[very thick,domain=-1.0:2.95,samples=80] plot (\x,{0.5*\x*\x});
+\node[left] at (-0.95,0.75) {$y=\tfrac12x^2$};
+\draw[thick,rod,domain=0.6:3.3] plot (\x,{2*\x-2}) node[above right]{tangent};
+\draw[thick,gronn,dashed,domain=-0.6:4.4] plot (\x,{-0.5*\x+3}) node[below]{normal};
+\draw[vek,rod] (2,2)--(2.6,3.2) node[right,font=\small]{$\mathbf{t}=(1,2)$};
+\draw[vek,gronn] (2,2)--(1.0,2.5);
+\node[gronn,font=\small] at (1.25,3.3) {$\mathbf{n}=(-2,1)$};
+\fill (2,2) circle (1.6pt);
+\node[font=\small] at (1.55,1.6) {$(2,2)$};
+\end{tikzpicture}

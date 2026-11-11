@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=1.2]
+% Et punkt P med kartesiske og polare koordinater
+\foreach \rr in {1,2,3}{\draw[black!25] (0,0) circle (\rr);}
+\foreach \a in {30,60,...,330}{\draw[black!25] (0,0)--(\a:3.2);}
+\draw[akse] (-3.4,0)--(3.7,0) node[right]{$x$};
+\draw[akse] (0,-3.4)--(0,3.6) node[above]{$y$};
+\coordinate (P) at (40:2.6);
+\draw[very thick,bla] (0,0)--(P) node[midway,above left]{$r$};
+\draw[dashed] (P)--(P|-0,0) node[below]{$x=r\cos\theta$};
+\draw[dashed] (P)--(0,0|-P) node[left]{$y=r\sin\theta$};
+\draw[->,thick,rod] (0.8,0) arc[start angle=0,end angle=40,radius=0.8];
+\node[rod] at (20:1.1) {$\theta$};
+\fill (P) circle (1.7pt) node[above right]{$P$};
+\node[below left] at (0,0) {$O$};
+\end{tikzpicture}

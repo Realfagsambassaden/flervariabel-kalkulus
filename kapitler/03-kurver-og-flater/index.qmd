@@ -3,6 +3,13 @@ title: "Kurver og flater"
 toc: false
 ---
 
+<!-- plan: Egne ord, eksempler og figurer (temaguide fra donasjon, sak #8):
+- 01-linjeintegraler: parametrisering, tangentvektor, buelengde, linjeintegral av en funksjon (ds), uavhengig av orientering, stykkevis glatte kurver, buelengden til en sirkel.
+- 02-parametriske-flater: sylinder, kule, omdreiningsflater og plane trekanter som parametriske flater, tangentvektorene r_u og r_v, normalvektoren r_u x r_v, grafer z = g(x, y) som spesialtilfelle, tangentplan.
+- 03-flateintegraler: dS = |r_u x r_v| du dv, areal av en flate (f.eks. del av en paraboloide), flateintegral av en funksjon (masse av et skall).
+- 04-oppgaver: blandede oppgaver.
+-->
+
 ::: {.intro}
 
 Vi integrerer langs kurver og over krumme flater. Parametrisering er nøkkelen: Den gjør et integral over en kurve eller flate om til et vanlig integral.

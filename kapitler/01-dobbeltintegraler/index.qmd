@@ -3,6 +3,12 @@ title: "Dobbeltintegraler"
 toc: false
 ---
 
+<!-- plan: Plassholderne fylles med egne ord, egne eksempler og egne figurer (temaguide fra en donasjon, sak #8 i donasjoner; kopier ingenting):
+- 04-variabelbytte: transformasjon (u, v) -> (x, y), jacobideterminanten som skaleringsfaktor for areal, lineært bytte for parallellogram-områder, arealet av en ellipse med x = a u, y = b v (pi a b), og polarkoordinater (r) som spesialtilfelle.
+- 05-anvendelser: volum mellom to flater, middelverdi over et område, masse og tyngdepunkt for en plate med variabel tetthet, og kraften fra vanntrykk p = rho g (h - z) på en demning som dobbeltintegral (ingeniøranvendelse).
+- 07-oppgaver: blandede oppgaver fra hele kapitlet, inkludert valg av rekkefølge og bytte til polarkoordinater.
+-->
+
 ::: {.intro}
 
 Et dobbeltintegral summerer en funksjon over et område i planet. Det gir volum under en flate, masse av en plate og tyngdepunkt, og kan regnes ut i kartesiske koordinater, i polarkoordinater eller numerisk.

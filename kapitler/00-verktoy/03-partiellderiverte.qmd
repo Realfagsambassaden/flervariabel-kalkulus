@@ -1,0 +1,168 @@
+---
+title: "Partiellderiverte"
+tema: flervariable-funksjoner
+undertema: partiellderiverte
+bidrag: "Tufs Tufsesen"
+---
+
+<!-- video: kommer (videoer/flervariabel-kalkulus/00-03-partiellderiverte) -->
+![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
+
+<!-- tillegg: Claude -->
+Temperaturen i et rom avhenger av hvor du står, $T(x, y, z)$. Hvor fort endrer den seg? Det kommer an på hvilken vei du går. Den enkleste måten å svare på er å gå langs én akse om gangen og holde de andre koordinatene fast. Da er funksjonen i praksis en vanlig funksjon av én variabel, og vi kan derivere slik vi alltid har gjort.
+
+## Definisjon og notasjon
+
+::: {.callout-note title="Definisjon: Partiellderivert"}
+Den partiellderiverte av $f(x, y)$ med hensyn på $x$ er
+$$
+\frac{\partial f}{\partial x}(x, y) = \lim_{h\to 0} \frac{f(x + h, y) - f(x, y)}{h},
+$$
+der $y$ holdes fast. Tilsvarende for $\dfrac{\partial f}{\partial y}$, der $x$ holdes fast, og for funksjoner av flere variabler.
+:::
+
+Vi skriver også $f_x = \dfrac{\partial f}{\partial x}$ og $f_y = \dfrac{\partial f}{\partial y}$. I praksis betyr definisjonen: **behandle de andre variablene som konstanter, og deriver med de vanlige reglene.**
+
+Geometrisk er $f_x(a, b)$ stigningstallet til flaten $z = f(x, y)$ når vi går i $x$-retning gjennom punktet $(a, b)$, altså stigningen til kurven vi får ved å skjære flaten med planet $y = b$.
+
+::: {.eksempel}
+**Eksempel: Et polynom og en sammensatt funksjon.** Finn $f_x$ og $f_y$ for
+$$
+\text{a)}\ f(x, y) = x^3y^2 - 4xy + y^3 \qquad \text{b)}\ g(x, y) = \sin(x^2y)
+$$
+
+::: {.losning}
+a) Med $y$ konstant er $y^2$ en koeffisient og $y^3$ en konstant:
+$$
+f_x = 3x^2y^2 - 4y .
+$$
+Med $x$ konstant:
+$$
+f_y = 2x^3y - 4x + 3y^2 .
+$$
+
+b) Kjerneregelen med kjernen $u = x^2y$:
+$$
+g_x = \cos(x^2y)\cdot 2xy, \qquad g_y = \cos(x^2y)\cdot x^2 .
+$$
+:::
+:::
+
+## Høyere ordens partiellderiverte
+
+Vi kan derivere på nytt. Med to variabler finnes fire andreordens partiellderiverte:
+$$
+f_{xx} = \frac{\partial^2 f}{\partial x^2}, \quad f_{yy} = \frac{\partial^2 f}{\partial y^2}, \quad f_{xy} = \frac{\partial}{\partial y}\!\left(\frac{\partial f}{\partial x}\right), \quad f_{yx} = \frac{\partial}{\partial x}\!\left(\frac{\partial f}{\partial y}\right).
+$$
+$f_{xy}$ betyr «først $x$, så $y$».
+
+::: {.callout-important title="Blandede partiellderiverte er like"}
+Er $f_{xy}$ og $f_{yx}$ kontinuerlige, er $f_{xy} = f_{yx}$. Rekkefølgen spiller da ingen rolle.
+:::
+
+For funksjonen i eksemplet over er $f_{xy} = \dfrac{\partial}{\partial y}(3x^2y^2 - 4y) = 6x^2y - 4$ og $f_{yx} = \dfrac{\partial}{\partial x}(2x^3y - 4x + 3y^2) = 6x^2y - 4$. De er like, som de skal være.
+
+Andreordens partiellderiverte er byggesteinene i de partielle differensiallikningene senere: varmelikningen $u_t = \alpha\,u_{xx}$, bølgelikningen $u_{tt} = c^2u_{xx}$ og Laplace-likningen $u_{xx} + u_{yy} = 0$.
+
+## Partiellderiverte er ikke hele historien
+
+For funksjoner av én variabel betyr «deriverbar» at funksjonen har en tangent, og da er den også kontinuerlig. I flere variabler er det ikke slik: De partiellderiverte ser bare langs aksene og kan finnes selv om funksjonen hopper i andre retninger.
+
+::: {.eksempel}
+**Eksempel: Partiellderiverte uten kontinuitet.** Funksjonen $f(x, y) = \dfrac{2xy}{x^2 + y^2}$ med $f(0, 0) = 0$ er ikke kontinuerlig i origo (se [grenseverdier og kontinuitet](02-kontinuitet.qmd)). Finn likevel $f_x(0, 0)$ og $f_y(0, 0)$.
+
+::: {.losning}
+Langs $x$-aksen er $f(h, 0) = 0$ for alle $h$, så
+$$
+f_x(0, 0) = \lim_{h\to 0} \frac{f(h, 0) - f(0, 0)}{h} = \lim_{h\to 0}\frac{0 - 0}{h} = 0 .
+$$
+På samme måte er $f_y(0, 0) = 0$. Begge partiellderiverte finnes, men funksjonen er ikke engang kontinuerlig i punktet. De partiellderiverte alene garanterer altså ikke at funksjonen oppfører seg pent.
+:::
+:::
+
+Funksjonene vi jobber med videre, er nesten alltid pene: De har kontinuerlige partiellderiverte, og da er alt i orden.
+
+## Prøv selv
+
+Programmet sammenligner $f_x$ regnet for hånd med en numerisk tilnærming $\dfrac{f(x + h, y) - f(x, y)}{h}$. Gjør $h$ mindre og se tilnærmingen nærme seg.
+
+```{.python .kjor}
+import numpy as np
+
+def f(x, y):
+    return x**3 * y**2 - 4 * x * y + y**3
+
+def fx(x, y):                      # regnet for hånd
+    return 3 * x**2 * y**2 - 4 * y
+
+x, y = 1.0, 2.0
+for h in (0.1, 0.01, 0.001):
+    tilnaerming = (f(x + h, y) - f(x, y)) / h
+    print(f"h = {h:6}:  {tilnaerming:.5f}")
+print(f"eksakt:       {fx(x, y):.5f}")
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Deriver"}
+Finn $f_x$ og $f_y$ for $f(x, y) = x^2\,\mathrm{e}^{3y} + \ln(x)$, $x > 0$.
+
+::: {.losning}
+$$
+f_x = 2x\,\mathrm{e}^{3y} + \frac{1}{x}, \qquad f_y = 3x^2\,\mathrm{e}^{3y}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Tre variabler"}
+Finn alle de tre partiellderiverte av $T(x, y, z) = xy^2z^3$ i punktet $(1, 2, -1)$.
+
+::: {.losning}
+$$
+T_x = y^2z^3, \qquad T_y = 2xyz^3, \qquad T_z = 3xy^2z^2
+$$
+I $(1, 2, -1)$:
+$$
+T_x = 4\cdot(-1) = \underline{\underline{-4}}, \qquad T_y = 2\cdot 1\cdot 2\cdot(-1) = \underline{\underline{-4}}, \qquad T_z = 3\cdot 1\cdot 4\cdot 1 = \underline{\underline{12}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Ideell gass" niva="Middels"}
+For en ideell gass er trykket $p(V, T) = \dfrac{nRT}{V}$, der $n$ og $R$ er konstanter.
+
+a) Finn $\dfrac{\partial p}{\partial V}$ og $\dfrac{\partial p}{\partial T}$, og tolk fortegnene.
+
+b) For $n = 1.00\ \mathrm{mol}$, $T = 300\ \mathrm{K}$ og $V = 0.0250\ \mathrm{m^3}$: Omtrent hvor mye endres trykket om volumet øker med $1.0\ \mathrm{L} = 0.0010\ \mathrm{m^3}$? Bruk $R = 8.314\ \mathrm{J/(mol\,K)}$.
+
+::: {.losning}
+a)
+$$
+\frac{\partial p}{\partial V} = -\frac{nRT}{V^2} < 0, \qquad \frac{\partial p}{\partial T} = \frac{nR}{V} > 0 .
+$$
+Trykket synker når volumet øker (ved fast temperatur), og stiger når temperaturen øker (ved fast volum).
+
+b)
+$$
+\frac{\partial p}{\partial V} = -\frac{1.00\cdot 8.314\cdot 300}{0.0250^2}\ \mathrm{Pa/m^3} = -3.99\cdot 10^{6}\ \mathrm{Pa/m^3}
+$$
+$$
+\Delta p \approx \frac{\partial p}{\partial V}\,\Delta V = -3.99\cdot 10^{6}\cdot 0.0010\ \mathrm{Pa} \approx \underline{\underline{-4.0\ \mathrm{kPa}}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Laplace-likningen" niva="Utfordrende"}
+Vis at $u(x, y) = \mathrm{e}^{x}\cos y$ oppfyller Laplace-likningen $u_{xx} + u_{yy} = 0$, og at $f_{xy} = f_{yx}$ for denne funksjonen.
+
+::: {.losning}
+$$
+u_x = \mathrm{e}^{x}\cos y, \quad u_{xx} = \mathrm{e}^{x}\cos y, \qquad u_y = -\mathrm{e}^{x}\sin y, \quad u_{yy} = -\mathrm{e}^{x}\cos y
+$$
+Dermed er $u_{xx} + u_{yy} = \mathrm{e}^{x}\cos y - \mathrm{e}^{x}\cos y = 0$. ✓
+
+Blandede: $u_{xy} = \dfrac{\partial}{\partial y}(\mathrm{e}^{x}\cos y) = -\mathrm{e}^{x}\sin y$ og $u_{yx} = \dfrac{\partial}{\partial x}(-\mathrm{e}^{x}\sin y) = -\mathrm{e}^{x}\sin y$. Like. ✓
+:::
+:::
+
+::::

@@ -3,6 +3,14 @@ title: "Vektorfelt"
 toc: false
 ---
 
+<!-- plan: Egne ord, eksempler og figurer (temaguide fra donasjon, sak #8):
+- 01-vektorfelt: vektorfelt i 2D og 3D, skisser, nabla-operatoren, gradientfelt og sammenhengen med nivåkurver (se kapittelet om verktøy).
+- 02-divergens-og-curl: definisjoner og tolkning (kilde og virvel), sentralsymmetriske felt, Laplace-operatoren, regneregler.
+- 03-linjeintegraler-av-vektorfelt: arbeid langs en kurve, orientering betyr noe, flere skrivemåter.
+- 04-konservative-felt: potensial, veiuavhengighet, lukkede kurver, kriteriet curl F = 0 på enkeltsammenhengende områder, moteksempelet (-y, x)/(x^2 + y^2) rundt origo.
+- 05-oppgaver: blandede oppgaver.
+-->
+
 ::: {.intro}
 
 Vindfelt, strømning og elektriske felt er vektorfelt. Divergens og curl måler kilder og virvler, og linjeintegralet av et felt er arbeid. Konservative felt har et potensial, og da blir arbeidet uavhengig av veien.

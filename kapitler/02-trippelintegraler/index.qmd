@@ -3,6 +3,14 @@ title: "Trippelintegraler"
 toc: false
 ---
 
+<!-- plan: Egne ord, eksempler og figurer (temaguide fra donasjon, sak #8):
+- 01-trippelintegraler: Riemann-sum i tre dimensjoner, itererte integraler, områder mellom to flater over et område i planet (z-enkle) og tilsvarende x- og y-enkle, masse og tyngdepunkt med tetthet.
+- 02-sylinderkoordinater: dV = r dz dr dtheta, sylindre, kjegler og paraboloider, volum og masse.
+- 03-kulekoordinater: dV = rho^2 sin(phi) drho dphi dtheta, kule, området mellom en kjegle og en kule («iskrem»), volumet av en ellipsoide ved skalering.
+- 04-treghetsmoment: I = trippelintegral av (avstand til aksen)^2 * tetthet, for sylinder og kule, med fysikkeksempel.
+- 06-oppgaver: blandede oppgaver.
+-->
+
 ::: {.intro}
 
 Med trippelintegraler summerer vi over et område i rommet: volum, masse, tyngdepunkt og treghetsmoment. Sylinder- og kulekoordinater gjør runde områder enkle, og numeriske metoder tar resten.

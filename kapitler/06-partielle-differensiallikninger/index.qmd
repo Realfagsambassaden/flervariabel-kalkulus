@@ -3,6 +3,14 @@ title: "Partielle differensiallikninger"
 toc: false
 ---
 
+<!-- plan: Egne ord, eksempler og figurer (temaguide fra donasjon, sak #8):
+- 01-hva-er-en-pde: orden, lineær, kvasilineær og homogen, generell løsning, de klassiske likningene (bølge, varme, Laplace, Poisson, Helmholtz) med fysisk tolkning.
+- 02-rand-og-initialbetingelser: Dirichlet, Neumann (normalderivert) og Cauchy-betingelser, velstilte problemer, et Cauchy-problem for Laplace-likningen som ikke er velstilt.
+- 03-separasjon-av-variabler: produktløsninger og superposisjon, til orientering.
+- 04-bevaringslover: varmekapasitet per volum, varmeledningsevne og Fouriers lov, utledning av varmelikningen fra energibevaring i et kontrollvolum (kobler til endelig volum-kapitlet).
+- 05-oppgaver: blandede oppgaver.
+-->
+
 ::: {.intro}
 
 Varme som sprer seg, en streng som svinger og et potensial i ro: Alle beskrives av partielle differensiallikninger. Her ser vi på de tre klassiske likningene, rand- og initialbetingelser, og hvordan bevaringslover gir likningene.

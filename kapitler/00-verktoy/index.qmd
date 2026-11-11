@@ -1,0 +1,37 @@
+---
+title: "Verktøy fra kalkulus og vektorregning"
+toc: false
+---
+
+<!-- tillegg: Claude -->
+::: {.intro}
+
+Flervariabel analyse bygger på det du kan fra før: vektorer, derivasjon, integrasjon og koordinatsystemer. Dette kapitlet frisker opp de verktøyene vi bruker hele tiden videre, og viser hvordan de henger sammen når funksjonene får flere variabler.
+
+:::
+
+::: {.spm}
+[Spørsmål vi jobber med i dette kapitlet]{.spm-tittel}
+
+1.  Hvordan regner vi med vektorer i $\mathbb{R}^n$, og hva forteller skalarproduktet og vektorproduktet geometrisk?
+
+2.  Hva betyr kontinuitet og partiellderivasjon for en funksjon av flere variabler?
+
+3.  Hvorfor står gradienten vinkelrett på nivåkurvene?
+
+4.  Hvordan beskriver vi linjer, tangenter og plan med vektorer?
+
+5.  Hvordan henger integralet sammen med Riemann-summer, og hvordan bytter vi til polarkoordinater?
+
+:::
+
+::: {.kort}
+- **[Vektorer og vektorproduktet](01-vektorer-og-vektorproduktet.qmd)** Notasjon, skalarprodukt, determinanter og kryssprodukt.
+- **[Grenseverdier og kontinuitet](02-kontinuitet.qmd)** Når grensen avhenger av veien inn mot punktet.
+- **[Partiellderiverte](03-partiellderiverte.qmd)** Derivasjon med én variabel om gangen.
+- **[Nivåkurver og gradient](04-nivakurver-og-gradient.qmd)** Høydekart og retningen der funksjonen vokser mest.
+- **[Tangenter og normaler](05-tangenter-og-normaler.qmd)** Normallinjen med skalarproduktet.
+- **[Linjer og plan](06-linjer-og-plan.qmd)** Parametrisering og planlikningen.
+- **[Integralet som grense av summer](07-integrasjon.qmd)** Riemann-summer, fundamentalteoremet og integrasjonsteknikker.
+- **[Polarkoordinater](08-polarkoordinater.qmd)** Avstand og vinkel i stedet for $x$ og $y$.
+:::
