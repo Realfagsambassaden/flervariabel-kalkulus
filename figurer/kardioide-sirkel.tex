@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=1.25]
+\draw[akse] (-0.8,0)--(3.6,0) node[right]{$x$};
+\draw[akse] (0,-1.9)--(0,1.9) node[above]{$y$};
+\fill[black!18] plot[domain=-60:60,samples=120] (\x:{3*cos(\x)}) -- plot[domain=60:-60,samples=120] (\x:{1+cos(\x)}) -- cycle;
+\draw[thick,bla] plot[domain=0:360,samples=240] (\x:{1+cos(\x)});
+\draw[thick,rod] plot[domain=-90:90,samples=240] (\x:{3*cos(\x)});
+\draw[dashed] (0,0)--(60:1.5);\draw[dashed] (0,0)--(-60:1.5);
+\fill (60:1.5) circle (1.5pt);\fill (-60:1.5) circle (1.5pt);
+\draw[->] (0.45,0) arc[start angle=0,end angle=60,radius=0.45];
+\node[font=\small] at (30:0.72) {$\tfrac{\pi}{3}$};
+\node[bla,font=\small,left] at (120:1.05) {$r = 1+\cos\theta$};
+\node[rod,font=\small,right] at (35:2.6) {$r = 3\cos\theta$};
+\node[font=\small] at (2.3,0.25) {$D$};
+\node[below right,font=\small] at (3,0) {$3$};\node[below right,font=\small] at (2,0) {$2$};
+\end{tikzpicture}

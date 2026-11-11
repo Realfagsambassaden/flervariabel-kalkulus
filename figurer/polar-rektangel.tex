@@ -1,0 +1,35 @@
+\begin{tikzpicture}[scale=1.0]
+% Venstre: polart rutenett og ett lite polart rektangel
+\begin{scope}
+\draw[akse] (-0.3,0)--(5.4,0) node[right]{$x$};
+\draw[akse] (0,-0.3)--(0,5.0) node[above]{$y$};
+\foreach \rr in {1,2,3,4}{\draw[black!35] (\rr,0) arc[start angle=0,end angle=90,radius=\rr];}
+\foreach \a in {15,30,...,75}{\draw[black!35] (0,0)--(\a:4.3);}
+\fill[black!18] (30:2) arc[start angle=30,end angle=45,radius=2]--(45:3) arc[start angle=45,end angle=30,radius=3]--cycle;
+\draw[very thick] (30:2) arc[start angle=30,end angle=45,radius=2]--(45:3) arc[start angle=45,end angle=30,radius=3]--cycle;
+\node[font=\small] at (37.5:2.5) {$\Delta A$};
+\draw[->,thick,bla] (0.9,0) arc[start angle=0,end angle=30,radius=0.9];
+\node[bla,font=\small] at (15:1.25) {$\theta$};
+\fill (0,0) circle (1.5pt);
+\node[below left] at (0,0) {$O$};
+\end{scope}
+% Høyre: forstørret
+\begin{scope}[xshift=6.4cm,yshift=-0.3cm]
+\def\ra{3.0}\def\rb{4.8}\def\ta{15}\def\tb{55}
+\draw[dashed,black!50] (0,0)--(\ta:\ra);\draw[dashed,black!50] (0,0)--(\tb:\ra);
+\fill[black!18] (\ta:\ra) arc[start angle=\ta,end angle=\tb,radius=\ra]--(\tb:\rb) arc[start angle=\tb,end angle=\ta,radius=\rb]--cycle;
+\draw[very thick] (\ta:\ra) arc[start angle=\ta,end angle=\tb,radius=\ra]--(\tb:\rb) arc[start angle=\tb,end angle=\ta,radius=\rb]--cycle;
+\draw[->,thick,bla] (\ta:1.1) arc[start angle=\ta,end angle=\tb,radius=1.1];
+\node[bla,font=\small] at ({(\ta+\tb)/2}:1.5) {$\Delta\theta$};
+% r og Delta r langs nedre stråle
+\draw[decorate,decoration={brace,amplitude=5pt,mirror}] ($(0,0)+(\ta-90:0.2)$)--node[below right=2pt,font=\small]{$r$}($(\ta:\ra)+(\ta-90:0.2)$);
+\draw[<->] ($(\ta:\ra)+(\ta-90:0.3)$)--node[below right=1pt,font=\small]{$\Delta r$}($(\ta:\rb)+(\ta-90:0.3)$);
+% r Delta theta langs indre bue
+\draw[<->,rod] ({\ta+1}:{\ra-0.25}) arc[start angle={\ta+1},end angle={\tb-1},radius={\ra-0.25}];
+\node[rod,font=\small] at ({(\ta+\tb)/2}:{\ra-0.75}) {$r\,\Delta\theta$};
+\fill (0,0) circle (1.5pt);
+\node[below left] at (0,0) {$O$};
+\node[font=\small] at ({(\ta+\tb)/2}:{(\ra+\rb)/2}) {$\Delta A$};
+\node[font=\small,right] at (\tb:{\rb+0.1}) {$\Delta A \approx r\,\Delta r\,\Delta\theta$};
+\end{scope}
+\end{tikzpicture}
