@@ -129,16 +129,17 @@ $$
 :::
 
 ::: {.oppgave tittel="Ideell gass" niva="Middels"}
-For en ideell gass er trykket $p(V, T) = \dfrac{nRT}{V}$, der $n$ og $R$ er konstanter.
+For en ideell gass er trykket $p(V, T) = \dfrac{n\mathrm{R}T}{V}$, der $n$ er stoffmengden og $\mathrm{R}$ er den molare gasskonstanten.
+<!-- tillegg: Claude: notasjon, gasskonstanten R i rett skrift -->
 
 a) Finn $\dfrac{\partial p}{\partial V}$ og $\dfrac{\partial p}{\partial T}$, og tolk fortegnene.
 
-b) For $n = 1.00\ \mathrm{mol}$, $T = 300\ \mathrm{K}$ og $V = 0.0250\ \mathrm{m^3}$: Omtrent hvor mye endres trykket om volumet øker med $1.0\ \mathrm{L} = 0.0010\ \mathrm{m^3}$? Bruk $R = 8.314\ \mathrm{J/(mol\,K)}$.
+b) For $n = 1.00\ \mathrm{mol}$, $T = 300\ \mathrm{K}$ og $V = 0.0250\ \mathrm{m^3}$: Omtrent hvor mye endres trykket om volumet øker med $1.0\ \mathrm{L} = 0.0010\ \mathrm{m^3}$? Bruk $\mathrm{R} = 8.314\ \mathrm{J/(mol\,K)}$.
 
 ::: {.losning}
 a)
 $$
-\frac{\partial p}{\partial V} = -\frac{nRT}{V^2} < 0, \qquad \frac{\partial p}{\partial T} = \frac{nR}{V} > 0 .
+\frac{\partial p}{\partial V} = -\frac{n\mathrm{R}T}{V^2} < 0, \qquad \frac{\partial p}{\partial T} = \frac{n\mathrm{R}}{V} > 0 .
 $$
 Trykket synker når volumet øker (ved fast temperatur), og stiger når temperaturen øker (ved fast volum).
 
