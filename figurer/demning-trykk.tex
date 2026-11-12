@@ -1,0 +1,27 @@
+\begin{tikzpicture}[scale=0.22]
+% vegg sett fra siden (venstre) og forfra (hoyre)
+\begin{scope}
+\fill[bla!12] (0,0) rectangle (16,20);
+\draw[bla,thick] (0,20)--(16,20);
+\node[bla,font=\small,above] at (8,20) {vannflaten};
+\fill[black!30] (16,-1) rectangle (19,23);
+\draw[thick] (16,-1) rectangle (19,23);
+\draw[thick] (-1,0)--(19,0);
+\foreach \z in {2,5,...,17} \draw[->,thick,rod] ({16-0.55*(20-\z)},\z)--(15.8,\z);
+\draw[<->] (-1.5,0)--node[left,font=\small]{$h$}(-1.5,20);
+\draw[dashed] (0,9)--(16,9); \node[font=\small,left] at (0,9) {$z$}; \node[font=\small,right] at (6.4,14.5) {$h-z$};
+\draw[<->] (6.2,9)--(6.2,20);
+\node[font=\small,below] at (9,0) {side};
+\end{scope}
+\begin{scope}[xshift=28cm]
+\draw[thick] (0,0) rectangle (30,20);
+\fill[black!20] (0,9) rectangle (30,10.5);
+\draw (0,9)--(30,9); \draw (0,10.5)--(30,10.5);
+\node[font=\small,right] at (30.5,9.75) {$\mathrm{d}A = b\,\mathrm{d}z$};
+\draw[akse] (-2,0)--(-2,23) node[above]{$z$};
+\node[font=\small,left] at (-2,0) {$0$}; \node[font=\small,left] at (-2,20) {$h$};
+\node[font=\small,left] at (-2,9.75) {$z$};
+\draw[<->] (0,-1.5)--node[below,font=\small]{$b$}(30,-1.5);
+\node[font=\small,above] at (15,20) {forfra};
+\end{scope}
+\end{tikzpicture}
