@@ -1,0 +1,20 @@
+\begin{tikzpicture}[scale=3.2,x={(-0.55cm,-0.45cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+% grunnflate D (trekant i xy-planet)
+\fill[black!10] (0,0,0)--(1,0,0)--(0,1,0)--cycle;
+% sideflater
+\fill[black!5,opacity=0.6] (1,0,0)--(0,1,0)--(0,0,1)--cycle;
+\draw[akse] (0,0,0)--(1.35,0,0) node[below left]{$x$};
+\draw[akse] (0,0,0)--(0,1.35,0) node[right]{$y$};
+\draw[akse] (0,0,0)--(0,0,1.3) node[above]{$z$};
+\draw[thick] (1,0,0)--(0,1,0)--(0,0,1)--cycle;
+\draw[thick,bla] (1,0,0)--(0,1,0);
+\node[font=\small] at (0.55,0.15,0) {$D$};
+\node[font=\small,bla,below right] at (0.5,0.5,0) {$x + y = 1$};
+% stav
+\def\a{0.3}\def\b{0.3}
+\fill[black!45] (\a,\b,0)--(\a,\b+0.06,0)--(\a,\b+0.06,{1-\a-\b-0.06})--(\a,\b,{1-\a-\b})--cycle;
+\draw[thick] (\a,\b,0)--(\a,\b,{1-\a-\b});
+\draw[->,thick,rod] (\a,\b+0.1,0.02)--(\a,\b+0.1,{1-\a-\b-0.08});
+\node[font=\small,rod,right] at (\a,\b+0.1,0.25) {$z$};
+\node[font=\small,above right] at (0,0.5,0.5) {$x + y + z = 1$};
+\end{tikzpicture}
