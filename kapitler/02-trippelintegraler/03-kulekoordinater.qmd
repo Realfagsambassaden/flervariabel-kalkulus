@@ -2,18 +2,244 @@
 title: "Kulekoordinater"
 tema: trippelintegraler
 undertema: kulekoordinater
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/02-03-kulekoordinater) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Hvor tung er jorda? Tettheten er størst i jernkjernen og minst i skorpa, og den avhenger nesten bare av avstanden fra sentrum. Med $x$, $y$ og $z$ blir det et kronglete integral over en kule. Med **kulekoordinater**, der ett av tallene *er* avstanden fra sentrum, blir kula like enkel som en boks: Alle grensene er konstanter. Kulekoordinater er det naturlige valget for alt som er symmetrisk om et punkt: kuler, kuleskall, planeter, elektriske felt rundt en ladning.
+
+## Koordinatene
+
+Et punkt $P$ beskrives med avstanden fra origo og to vinkler, omtrent som når vi angir et sted på jorda med breddegrad og lengdegrad:
+
+![](../../bilder/figurer/kulekoordinater.svg){.tikz-fig style="width:360px" fig-alt="Kulekoordinatene til et punkt P. rho er lengden av linjestykket fra origo til P. phi er vinkelen mellom den positive z-aksen og linjestykket. theta er vinkelen i xy-planet fra den positive x-aksen til projeksjonen av P. Projeksjonen ned i xy-planet har lengden r lik rho sinus phi, og høyden er z lik rho cosinus phi."}
+
+::: {.kort}
+- **$\rho$** Avstanden fra origo til punktet. $\rho \ge 0$.
+- **$\varphi$** Vinkelen ned fra den positive $z$-aksen. $0 \le \varphi \le \pi$: $\varphi = 0$ er rett opp, $\varphi = \tfrac{\pi}{2}$ er i $xy$-planet, og $\varphi = \pi$ er rett ned.
+- **$\theta$** Den samme vinkelen som i sylinderkoordinater, målt i $xy$-planet. $0 \le \theta < 2\pi$.
 :::
 
-## Dette kommer på siden
+Figuren viser hvordan vi finner $x$, $y$ og $z$. Høyden er $z = \rho\cos\varphi$, og avstanden fra $z$-aksen er $r = \rho\sin\varphi$. Den avstanden deler vi opp i $x$ og $y$ som i polarkoordinater:
 
-- Volumelementet ρ² sin φ
-- Kuler og kuleskall
+::: {.graa}
+$$
+x = \rho\sin\varphi\cos\theta, \qquad y = \rho\sin\varphi\sin\theta, \qquad z = \rho\cos\varphi, \qquad\qquad \rho^2 = x^2 + y^2 + z^2
+$$
+:::
+
+::: {.callout-warning title="Symbolene varierer"}
+Bøker og programmer bruker ulike navn: Noen bytter om $\varphi$ og $\theta$, og fysikere skriver ofte $r$ for avstanden. Sjekk alltid hvilken vinkel som måles fra $z$-aksen. På denne siden bruker vi $\rho$ for avstanden, og skriver derfor tettheten med $\delta$.
+:::
+
+Tre typer flater får konstante grenser:
+
+| Flate | Kartesisk | Kulekoordinater |
+|---|---|---|
+| Kule med radius $a$ | $x^2 + y^2 + z^2 = a^2$ | $\rho = a$ |
+| Kjegle om $z$-aksen | $z = \sqrt{x^2 + y^2}$ | $\varphi = \tfrac{\pi}{4}$ |
+| Halvplan | $y = x,\ x > 0$ | $\theta = \tfrac{\pi}{4}$ |
+| $xy$-planet | $z = 0$ | $\varphi = \tfrac{\pi}{2}$ |
+
+## Volumelementet $\mathrm{d}V = \rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta$
+
+Endrer vi hver koordinat litt, får vi en liten buet kloss. Vi finner kantene ved å se på hvor langt punktet flytter seg:
+
+::: {.kort}
+- **Endre $\rho$** Punktet går rett utover. Kanten er $\mathrm{d}\rho$.
+- **Endre $\varphi$** Punktet går langs en lengdesirkel med radius $\rho$. Kanten er $\rho\,\mathrm{d}\varphi$.
+- **Endre $\theta$** Punktet går langs en breddesirkel om $z$-aksen. Den har radius $r = \rho\sin\varphi$, så kanten er $\rho\sin\varphi\,\mathrm{d}\theta$.
+:::
+
+Kantene står vinkelrett på hverandre, så volumet er produktet:
+
+::: {.callout-important title="Trippelintegral i kulekoordinater"}
+$$
+\iiint_E f\,\mathrm{d}V = \iiint f(\rho\sin\varphi\cos\theta,\ \rho\sin\varphi\sin\theta,\ \rho\cos\varphi)\;\rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta
+$$
+:::
+
+Faktoren $\rho^2\sin\varphi$ er jacobideterminanten. Den har en tydelig mening: $\rho^2$ sier at kuleskall langt ute har større areal, og $\sin\varphi$ sier at breddesirklene er korte nær polene ($\varphi \approx 0$ eller $\pi$) og lengst ved ekvator ($\varphi = \tfrac{\pi}{2}$).
+
+::: {.eksempel}
+**Eksempel: Volumet av en kule.** Vis at kula med radius $a$ har volumet $\tfrac43\pi a^3$.
+
+::: {.losning}
+Kula er $0 \le \rho \le a$, $0 \le \varphi \le \pi$, $0 \le \theta \le 2\pi$. Alle grensene er konstanter, og integranden er et produkt, så integralet deler seg i tre:
+$$
+V = \int_0^{2\pi}\!\!\int_0^{\pi}\!\!\int_0^a \rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta = \int_0^{2\pi}\mathrm{d}\theta\cdot\int_0^{\pi}\sin\varphi\,\mathrm{d}\varphi\cdot\int_0^a \rho^2\,\mathrm{d}\rho = 2\pi\cdot2\cdot\frac{a^3}{3} = \underline{\underline{\tfrac43\pi a^3}}
+$$
+Tallet $2\pi\cdot 2 = 4\pi$ er hele romvinkelen: Kuleflaten med radius $\rho$ har arealet $4\pi\rho^2$, og vi summerer kuleskall med tykkelse $\mathrm{d}\rho$.
+:::
+:::
+
+::: {.eksempel}
+**Eksempel: Iskremen igjen.** Legemet ligger over kjeglen $z = \sqrt{x^2 + y^2}$ og inni kula $x^2 + y^2 + z^2 \le 2$. Finn volumet.
+
+::: {.losning}
+I [sylinderkoordinater](02-sylinderkoordinater.qmd) måtte vi finne skjæringen og bruke en substitusjon. I kulekoordinater er kjeglen $\varphi = \tfrac{\pi}{4}$ og kula $\rho = \sqrt2$, så legemet er
+$$
+0 \le \rho \le \sqrt2, \qquad 0 \le \varphi \le \tfrac{\pi}{4}, \qquad 0 \le \theta \le 2\pi
+$$
+$$
+V = \int_0^{2\pi}\mathrm{d}\theta\cdot\int_0^{\pi/4}\sin\varphi\,\mathrm{d}\varphi\cdot\int_0^{\sqrt2}\rho^2\,\mathrm{d}\rho = 2\pi\Big(1 - \tfrac{\sqrt2}{2}\Big)\cdot\frac{2\sqrt2}{3}
+$$
+Multipliserer vi ut, blir $\big(1 - \tfrac{\sqrt2}{2}\big)\cdot 2\sqrt2 = 2\sqrt2 - 2$, så
+$$
+V = \frac{2\pi}{3}\big(2\sqrt2 - 2\big) = \underline{\underline{\tfrac{4\pi}{3}\big(\sqrt2 - 1\big)}} \approx 1.735
+$$
+Samme svar som med sylinderkoordinater, men på tre linjer.
+:::
+:::
+
+::: {.eksempel}
+**Eksempel: Jordas masse.** En enkel modell av jorda lar tettheten avta lineært fra $\delta_{\text{s}} = 13.0\cdot10^3\ \mathrm{kg/m^3}$ i sentrum til $\delta_{\text{o}} = 3.0\cdot10^3\ \mathrm{kg/m^3}$ ved overflaten:
+$$
+\delta(\rho) = \delta_{\text{s}} - \big(\delta_{\text{s}} - \delta_{\text{o}}\big)\frac{\rho}{R}, \qquad R = 6.37\cdot10^6\ \mathrm{m}
+$$
+Finn massen og middeltettheten.
+
+::: {.losning}
+Tettheten avhenger bare av $\rho$, så vinkelintegralene gir bare $4\pi$:
+$$
+M = 4\pi\int_0^R \delta(\rho)\,\rho^2\,\mathrm{d}\rho = 4\pi\Big[\delta_{\text{s}}\frac{R^3}{3} - \big(\delta_{\text{s}} - \delta_{\text{o}}\big)\frac{R^3}{4}\Big] = 4\pi R^3\Big(\frac{\delta_{\text{s}}}{3} - \frac{\delta_{\text{s}} - \delta_{\text{o}}}{4}\Big)
+$$
+$$
+M = 4\pi\cdot\big(6.37\cdot10^6\ \mathrm{m}\big)^3\cdot\big(4333 - 2500\big)\ \mathrm{kg/m^3} = \underline{\underline{5.95\cdot10^{24}\ \mathrm{kg}}}
+$$
+Middeltettheten er $M$ delt på volumet $\tfrac43\pi R^3$:
+$$
+\bar\delta = 3\Big(\frac{\delta_{\text{s}}}{3} - \frac{\delta_{\text{s}} - \delta_{\text{o}}}{4}\Big) = \underline{\underline{5.50\cdot10^3\ \mathrm{kg/m^3}}}
+$$
+Den målte massen er $5.97\cdot10^{24}\ \mathrm{kg}$, så den enkle modellen treffer svært godt. Middeltettheten er nærmere overflateverdien enn sentrumsverdien, fordi mesteparten av volumet ligger langt ute ($\rho^2$).
+:::
+:::
+
+## Prøv selv
+
+Programmet regner ut massen av jorda med `tplquad` i kulekoordinater. Husk at du selv må gange med $\rho^2\sin\varphi$. Endre tettheten i sentrum og se hvordan massen endres. Prøv også å bytte ut den lineære modellen med en jernkjerne og en steinmantel.
+
+```{.python .kjor}
+import numpy as np
+from scipy.integrate import tplquad
+
+R = 6.37e6                 # jordradius i m
+d_s, d_o = 13.0e3, 3.0e3   # tetthet i sentrum og ved overflaten, kg/m^3
+
+def delta(rho):
+    return d_s - (d_s - d_o) * rho / R
+
+# f(rho, phi, theta): innerst rho, så phi, ytterst theta
+M, _ = tplquad(lambda rho, phi, th: delta(rho) * rho**2 * np.sin(phi),
+               0, 2 * np.pi,                      # theta
+               lambda th: 0, lambda th: np.pi,    # phi
+               lambda th, phi: 0, lambda th, phi: R)   # rho
+V = 4 / 3 * np.pi * R**3
+print(f"Masse: {M:.3e} kg (målt 5.97e24 kg)")
+print(f"Middeltetthet: {M / V:.0f} kg/m^3")
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Fram og tilbake"}
+a) Skriv punktet $(x, y, z) = (0,\ 2,\ 2)$ i kulekoordinater.
+
+b) Skriv punktet $(\rho, \varphi, \theta) = \big(4,\ \tfrac{\pi}{6},\ \pi\big)$ i kartesiske koordinater.
+
+::: {.losning}
+**a)** $\rho = \sqrt{0 + 4 + 4} = 2\sqrt2$. Vinkelen fra $z$-aksen: $\cos\varphi = z/\rho = 2/(2\sqrt2) = \tfrac{1}{\sqrt2}$, så $\varphi = \tfrac{\pi}{4}$. Punktet ligger over den positive $y$-aksen, så $\theta = \tfrac{\pi}{2}$:
+$$
+(\rho, \varphi, \theta) = \underline{\underline{\big(2\sqrt2,\ \tfrac{\pi}{4},\ \tfrac{\pi}{2}\big)}}
+$$
+
+**b)**
+$$
+x = 4\sin\tfrac{\pi}{6}\cos\pi = 4\cdot\tfrac12\cdot(-1) = -2, \qquad y = 4\sin\tfrac{\pi}{6}\sin\pi = 0, \qquad z = 4\cos\tfrac{\pi}{6} = 2\sqrt3
+$$
+$$
+(x, y, z) = \underline{\underline{\big(-2,\ 0,\ 2\sqrt3\big)}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Et integral som bare går i kulekoordinater"}
+Regn ut $\displaystyle\iiint_B \mathrm{e}^{(x^2 + y^2 + z^2)^{3/2}}\,\mathrm{d}V$ der $B$ er enhetskula $x^2 + y^2 + z^2 \le 1$.
+
+::: {.losning}
+Med $x^2 + y^2 + z^2 = \rho^2$ er integranden $\mathrm{e}^{\rho^3}$:
+$$
+\int_0^{2\pi}\!\!\int_0^{\pi}\!\!\int_0^1 \mathrm{e}^{\rho^3}\rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta = 4\pi\int_0^1 \mathrm{e}^{\rho^3}\rho^2\,\mathrm{d}\rho
+$$
+Med $u = \rho^3$ er $\mathrm{d}u = 3\rho^2\,\mathrm{d}\rho$:
+$$
+4\pi\cdot\tfrac13\int_0^1 \mathrm{e}^u\,\mathrm{d}u = \underline{\underline{\tfrac{4\pi}{3}(\mathrm{e} - 1)}} \approx 7.20
+$$
+Faktoren $\rho^2$ fra volumelementet er akkurat det som trengs for substitusjonen. I kartesiske koordinater finnes det ingen enkel antiderivert.
+:::
+:::
+
+::: {.oppgave tittel="Kuleskallet" niva="Middels"}
+Regn ut $\displaystyle\iiint_E \frac{1}{\sqrt{x^2 + y^2 + z^2}}\,\mathrm{d}V$ der $E$ er kuleskallet $1 \le x^2 + y^2 + z^2 \le 4$.
+
+::: {.losning}
+Skallet er $1 \le \rho \le 2$ med alle vinkler. Integranden er $1/\rho$:
+$$
+\int_0^{2\pi}\!\!\int_0^{\pi}\!\!\int_1^2 \frac{1}{\rho}\,\rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta = 4\pi\int_1^2 \rho\,\mathrm{d}\rho = 4\pi\cdot\tfrac32 = \underline{\underline{6\pi}}
+$$
+Integranden går mot uendelig i origo, men origo er ikke med i skallet. (Selv for hele kula går det bra: $\rho^2$ fra volumelementet demper $1/\rho$.)
+:::
+:::
+
+::: {.oppgave tittel="Tyngdepunktet i en halvkule" niva="Middels"}
+Finn tyngdepunktet i den massive halvkula $x^2 + y^2 + z^2 \le a^2$, $z \ge 0$, med konstant tetthet.
+
+::: {.losning}
+Av symmetri er $\bar x = \bar y = 0$. Halvkula er $0 \le \rho \le a$, $0 \le \varphi \le \tfrac{\pi}{2}$, med volum $\tfrac23\pi a^3$. Med $z = \rho\cos\varphi$:
+$$
+\iiint z\,\mathrm{d}V = \int_0^{2\pi}\!\!\int_0^{\pi/2}\!\!\int_0^a \rho\cos\varphi\cdot\rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta = 2\pi\cdot\Big[\tfrac12\sin^2\varphi\Big]_0^{\pi/2}\cdot\frac{a^4}{4} = \frac{\pi a^4}{4}
+$$
+$$
+\bar z = \frac{\pi a^4/4}{2\pi a^3/3} = \underline{\underline{\tfrac38 a}}
+$$
+Tyngdepunktet ligger under midten av høyden ($\tfrac12 a$), fordi halvkula er bredest nederst.
+:::
+:::
+
+::: {.oppgave tittel="Atmosfærens masse" niva="Utfordrende"}
+Lufttettheten avtar omtrent eksponentielt med høyden over bakken:
+$$
+\delta(\rho) = \delta_0\,\mathrm{e}^{-(\rho - R)/H}, \qquad \rho \ge R,
+$$
+der $R = 6.37\cdot10^6\ \mathrm{m}$ er jordradien, $\delta_0 = 1.2\ \mathrm{kg/m^3}$ og $H = 8.5\ \mathrm{km}$.
+
+a) Vis at massen av atmosfæren er $M = 4\pi\delta_0 H\big(R^2 + 2RH + 2H^2\big)$. (Integrer helt ut til $\rho \to \infty$.)
+
+b) Regn ut $M$.
+
+c) Siden $H \ll R$, er $M \approx 4\pi R^2\cdot\delta_0 H$. Forklar dette med ord, og finn hvor mange prosent tilnærmingen bommer.
+
+::: {.losning}
+**a)** Vinkelintegralene gir $4\pi$:
+$$
+M = 4\pi\delta_0\int_R^{\infty}\rho^2\,\mathrm{e}^{-(\rho - R)/H}\,\mathrm{d}\rho
+$$
+Sett $s = \rho - R$, så $\rho^2 = R^2 + 2Rs + s^2$. Vi trenger $\int_0^\infty s^n\mathrm{e}^{-s/H}\,\mathrm{d}s$ for $n = 0, 1, 2$, som er $H$, $H^2$ og $2H^3$ (delvis integrasjon). Dermed
+$$
+M = 4\pi\delta_0\big(R^2 H + 2R H^2 + 2H^3\big) = 4\pi\delta_0 H\big(R^2 + 2RH + 2H^2\big)
+$$
+
+**b)**
+$$
+M = 4\pi\cdot1.2\ \mathrm{kg/m^3}\cdot8.5\cdot10^3\ \mathrm{m}\cdot\big((6.37\cdot10^6)^2 + 2\cdot6.37\cdot10^6\cdot8.5\cdot10^3 + 2\cdot(8.5\cdot10^3)^2\big)\ \mathrm{m^2} = \underline{\underline{5.2\cdot10^{18}\ \mathrm{kg}}}
+$$
+
+**c)** $4\pi R^2$ er arealet av jordoverflaten, og $\delta_0 H$ er massen av en luftsøyle med grunnflate $1\ \mathrm{m^2}$ (integralet av $\delta_0\mathrm{e}^{-s/H}$ over høyden). Atmosfæren er så tynn i forhold til jorda at den nesten er et flatt lag. Det relative avviket er
+$$
+\frac{2RH + 2H^2}{R^2} \approx \frac{2H}{R} = \frac{2\cdot8.5\cdot10^3}{6.37\cdot10^6} = 0.0027 = \underline{\underline{0.27\ \%}}
+$$
+:::
+:::
+
+::::
