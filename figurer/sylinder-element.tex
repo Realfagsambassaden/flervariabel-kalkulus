@@ -1,0 +1,28 @@
+\begin{tikzpicture}[scale=1.3,x={(-0.55cm,-0.45cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\def\ra{2.2}\def\rb{3.0}\def\ta{50}\def\tb{68}\def\za{1.6}\def\zb{2.4}
+\draw[akse] (0,0,0)--(3.6,0,0) node[below left]{$x$};
+\draw[akse] (0,0,0)--(0,3.8,0) node[right]{$y$};
+\draw[akse] (0,0,0)--(0,0,3.2) node[above]{$z$};
+% vinkel og radius i xy-planet
+\draw[dashed,black!50] (0,0,0)--({\ra*cos(\ta)},{\ra*sin(\ta)},0);
+\draw[dashed,black!50] (0,0,0)--({\ra*cos(\tb)},{\ra*sin(\tb)},0);
+\draw[domain=0:\ta,samples=20] plot ({0.8*cos(\x)},{0.8*sin(\x)},0);
+\node[font=\small] at ({1.1*cos(25)},{1.1*sin(25)},0) {$\theta$};
+\draw[<->] (0,0,0)--node[above,font=\small]{$r$}({\ra*cos(\ta)},{\ra*sin(\ta)},-0.08);
+\draw[dotted] ({\ra*cos(\ta)},{\ra*sin(\ta)},0)--({\ra*cos(\ta)},{\ra*sin(\ta)},\za);
+\draw[dotted] ({\ra*cos(\tb)},{\ra*sin(\tb)},0)--({\ra*cos(\tb)},{\ra*sin(\tb)},\za);
+% toppflaten
+\fill[black!8] plot[domain=\ta:\tb,samples=12] ({\ra*cos(\x)},{\ra*sin(\x)},\zb) -- plot[domain=\tb:\ta,samples=12] ({\rb*cos(\x)},{\rb*sin(\x)},\zb) -- cycle;
+% ytre buet flate
+\fill[black!22] plot[domain=\ta:\tb,samples=12] ({\rb*cos(\x)},{\rb*sin(\x)},\zb) -- plot[domain=\tb:\ta,samples=12] ({\rb*cos(\x)},{\rb*sin(\x)},\za) -- cycle;
+% side ved theta_a
+\fill[black!14] ({\ra*cos(\ta)},{\ra*sin(\ta)},\za)--({\rb*cos(\ta)},{\rb*sin(\ta)},\za)--({\rb*cos(\ta)},{\rb*sin(\ta)},\zb)--({\ra*cos(\ta)},{\ra*sin(\ta)},\zb)--cycle;
+\draw[thick,domain=\ta:\tb,samples=12] plot ({\ra*cos(\x)},{\ra*sin(\x)},\zb);
+\draw[thick,domain=\ta:\tb,samples=12] plot ({\rb*cos(\x)},{\rb*sin(\x)},\zb);
+\draw[thick,domain=\ta:\tb,samples=12] plot ({\rb*cos(\x)},{\rb*sin(\x)},\za);
+\draw[thick] ({\ra*cos(\ta)},{\ra*sin(\ta)},\za)--({\rb*cos(\ta)},{\rb*sin(\ta)},\za)--({\rb*cos(\ta)},{\rb*sin(\ta)},\zb)--({\ra*cos(\ta)},{\ra*sin(\ta)},\zb)--cycle;
+\draw[thick] ({\rb*cos(\tb)},{\rb*sin(\tb)},\za)--({\rb*cos(\tb)},{\rb*sin(\tb)},\zb)--({\ra*cos(\tb)},{\ra*sin(\tb)},\zb);
+\node[font=\small,above left] at ({2.6*cos(\ta)},{2.6*sin(\ta)},\zb) {$\mathrm{d}r$};
+\node[font=\small,right] at ({\rb*cos(\tb)},{\rb*sin(\tb)},2.0) {$\mathrm{d}z$};
+\node[font=\small,below] at ({\rb*cos(59)},{\rb*sin(59)},\za) {$r\,\mathrm{d}\theta$};
+\end{tikzpicture}
