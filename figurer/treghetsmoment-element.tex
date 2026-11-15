@@ -1,0 +1,21 @@
+\begin{tikzpicture}[scale=1.15]
+% aksen
+\draw[akse] (0,-2.6)--(0,2.9) node[above]{$z$ (akse)};
+% legemet: en avrundet klump
+\draw[thick] plot[smooth cycle,tension=0.8] coordinates {(-2.0,-0.6) (-1.4,1.6) (0.4,2.1) (2.3,1.3) (2.6,-0.5) (1.2,-2.0) (-1.0,-1.9)};
+\node at (-1.3,-1.25) {$E$};
+% et lite volumelement
+\pgfmathsetmacro{\ex}{1.6}\pgfmathsetmacro{\ey}{0.55}
+\draw[thick,fill=black!25] (\ex-0.14,\ey-0.14) rectangle (\ex+0.14,\ey+0.14);
+\draw[thick] (\ex-0.14,\ey+0.14)--(\ex,\ey+0.26)--(\ex+0.28,\ey+0.26)--(\ex+0.14,\ey+0.14);
+\draw[thick] (\ex+0.14,\ey-0.14)--(\ex+0.28,\ey-0.02)--(\ex+0.28,\ey+0.26);
+\node[below] at (\ex+0.07,\ey-0.18) {masse $\delta\,\mathrm{d}V$};
+% avstand til aksen
+\draw[<->,thick] (0,\ey)--node[above]{$d$}(\ex-0.16,\ey);
+\draw (0.22,\ey)--(0.22,\ey+0.22)--(0,\ey+0.22);
+% rotasjonspil
+\draw[->,thick] (-0.5,2.45) arc[start angle=200,end angle=520,x radius=0.5,y radius=0.16];
+\node[right] at (0.55,2.55) {$\omega$};
+% formel
+\node[align=left] at (0.3,-3.15) {$\mathrm{d}I = d^{\,2}\,\delta\,\mathrm{d}V$};
+\end{tikzpicture}
