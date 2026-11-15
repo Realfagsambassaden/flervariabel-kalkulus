@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=1.5]
+\draw[akse] (-2.5,0)--(2.7,0) node[right]{$r$};
+\draw[akse] (0,-0.3)--(0,2.5) node[above]{$z$};
+% kalotten skravert
+\fill[black!15] (-1.732,1) arc[start angle=150,end angle=30,radius=2] -- cycle;
+\draw[thick] (2,0) arc[start angle=0,end angle=180,radius=2];
+\draw[thick] (-2.3,1)--(2.3,1) node[right]{$z = 1$};
+% radius til skjæringen
+\draw[thick,dashed] (0,0)--(1.732,1) node[pos=0.55,below right]{$\rho = 2$};
+\draw[dotted] (1.732,1)--(1.732,-0.25);
+\draw[<->] (0,-0.2)--node[below]{$r = \sqrt3$}(1.732,-0.2);
+% vinkel phi
+\draw (0,0.55) arc[start angle=90,end angle=30,radius=0.55];
+\node at (0.36,0.7) {$\varphi$};
+\node at (0,1.45) {$E$};
+\node[below left] at (0,0) {$0$};
+\node[above left] at (0,2) {$2$};
+\end{tikzpicture}
