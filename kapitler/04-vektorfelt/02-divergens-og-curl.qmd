@@ -2,19 +2,298 @@
 title: "Divergens og curl"
 tema: vektorfelt
 undertema: divergens-og-curl
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/04-02-divergens-og-curl) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Se for deg et vannfelt, for eksempel overflaten av en elv. To spørsmål er naturlige i hvert punkt: Kommer det vann *til* her, som fra en kilde, eller forsvinner det, som i et sluk? Og: Hvis vi slipper et lite padlehjul her, vil det begynne å snurre? Det første måles av **divergensen**, det andre av **curl** (også kalt rotasjonen eller virvelen). Begge regnes ut med partielle deriverte og nabla-operatoren fra [vektorfelt og gradientfelt](01-vektorfelt.qmd), og begge er hovedpersoner i integralsetningene til slutt.
+
+![Til venstre et felt som peker rett ut fra origo. Rundt det lille kvadratet strømmer det mer ut enn inn, så divergensen er positiv. Til høyre et skjærfelt der strømmen går fortere jo høyere opp vi er. Et padlehjul blir skjøvet mer på oversiden enn undersiden og begynner å snurre med klokka.](../../bilder/figurer/divergens-curl.svg){.tikz-fig style="width:560px" fig-alt="To ruter. Venstre: piler som peker rett ut fra origo og blir lengre utover. Et lite stiplet kvadrat har korte piler inn på venstre og nedre side og lange piler ut på høyre og øvre side. Teksten under sier at divergensen er positiv: mer strømmer ut enn inn, en kilde. Høyre: vannrette piler som peker mot høyre over x-aksen og mot venstre under, lengre jo lenger fra aksen. Et padlehjul med fire blader står på aksen, og buede piler viser at det snurrer med klokka. Teksten under sier at curl ikke er null: et padlehjul begynner å snurre."}
+
+## Divergens: kilder og sluk
+
+::: {.callout-note title="Definisjon: Divergens"}
+<!-- tillegg: Claude -->
+For $\vec F = [P,\ Q,\ R]$ er **divergensen**
+$$
+\operatorname{div}\vec F = \nabla\cdot\vec F = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}
+$$
+I planet sløyfer vi det siste leddet. Divergensen er et tall (en skalar) i hvert punkt.
 :::
 
-## Dette kommer på siden
+<!-- tillegg: Claude -->
+Skrivemåten $\nabla\cdot\vec F$ er en huskeregel: «prikkproduktet» av $\big[\tfrac{\partial}{\partial x},\ \tfrac{\partial}{\partial y},\ \tfrac{\partial}{\partial z}\big]$ og $[P,\ Q,\ R]$.
 
-- Kilder og sluk
-- Virvler
-- Regneregler
+**Hvorfor måler dette kilder?** Se på en liten boks med sider $\Delta x$ og $\Delta y$ i et strømningsfelt. Gjennom den høyre siden strømmer det ut omtrent $P(x + \Delta x, y)\,\Delta y$ per tidsenhet, og gjennom den venstre strømmer det inn $P(x, y)\,\Delta y$. Netto ut i $x$-retning er
+$$
+\big(P(x + \Delta x, y) - P(x, y)\big)\,\Delta y \approx \frac{\partial P}{\partial x}\,\Delta x\,\Delta y
+$$
+Det samme for oversiden og undersiden gir $\tfrac{\partial Q}{\partial y}\,\Delta x\,\Delta y$. Til sammen strømmer det ut $\big(P_x + Q_y\big)\,\Delta x\,\Delta y$. Divergensen er altså **netto utstrømning per areal** (eller per volum i rommet):
+
+::: {.kort}
+- **$\nabla\cdot\vec F > 0$:** Mer strømmer ut enn inn. Punktet er en **kilde**, eller væsken utvider seg.
+- **$\nabla\cdot\vec F < 0$:** Mer strømmer inn enn ut. Punktet er et **sluk**, eller væsken presses sammen.
+- **$\nabla\cdot\vec F = 0$:** Like mye inn som ut. Feltet er **divergensfritt**. Fartsfeltet til vann, som nesten ikke kan presses sammen, er slik.
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Divergensen til tre felt.** Finn divergensen til $[x,\ y]$, $[-y,\ x]$ og $[x,\ -y]$.
+
+::: {.losning}
+$$
+\nabla\cdot[x,\ y] = 1 + 1 = \underline{\underline{2}}, \qquad \nabla\cdot[-y,\ x] = 0 + 0 = \underline{\underline{0}}, \qquad \nabla\cdot[x,\ -y] = 1 - 1 = \underline{\underline{0}}
+$$
+Det radielle feltet er en kilde overalt, med samme styrke i hvert punkt: Det er fartsfeltet til en gass som utvider seg jevnt. Rotasjonsfeltet bare går rundt, og ingenting samles opp. I $[x,\ -y]$ strømmer vannet inn langs $y$-aksen og ut langs $x$-aksen, like mye ut som inn.
+:::
+:::
+
+## Curl: virvler
+
+::: {.callout-note title="Definisjon: Curl"}
+<!-- tillegg: Claude -->
+For $\vec F = [P,\ Q,\ R]$ er **curl** (rotasjonen) vektorfeltet
+$$
+\operatorname{curl}\vec F = \nabla\times\vec F = \Big[\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z},\ \ \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x},\ \ \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\Big]
+$$
+For et felt $[P,\ Q]$ i planet er bare den siste komponenten med, og vi bruker tallet
+$$
+\operatorname{curl}\vec F = \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+$$
+:::
+
+<!-- tillegg: Claude -->
+Huskeregelen er kryssproduktet $\nabla\times\vec F$, regnet ut som [vektorproduktet](../00-verktoy/01-vektorer-og-vektorproduktet.qmd) med de deriverte i første rad.
+
+**Hvorfor måler dette virvler?** Sett et lite padlehjul i punktet. Hvis $Q$ øker når $x$ øker, blir bladet til høyre skjøvet mer oppover enn bladet til venstre, og hjulet vil snurre mot klokka. Det er leddet $Q_x$. Hvis $P$ øker når $y$ øker, blir det øverste bladet skjøvet mer mot høyre enn det nederste, og hjulet vil snurre med klokka. Det er leddet $-P_y$. Curl er summen av de to effektene:
+
+::: {.kort}
+- **Retningen** til $\nabla\times\vec F$ er aksen padlehjulet snurrer om (høyrehåndsregelen: krum fingrene i omdreiningsretningen, tommelen peker langs curl).
+- **Lengden** er dobbelt så stor som vinkelfarten til padlehjulet.
+- **$\nabla\times\vec F = \vec 0$:** Feltet er **virvelfritt**. Et padlehjul blir bare ført med, uten å snurre.
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Rotasjonsfeltet og skjærfeltet.** Finn curl til
+
+a) $\vec F = [-y,\ x]$, fartsfeltet til en plate som roterer med vinkelfarten $1$,
+
+b) $\vec F = [y,\ 0]$, et skjærfelt der strømlinjene er rette linjer.
+
+::: {.losning}
+**a)**
+$$
+\nabla\times\vec F = \frac{\partial x}{\partial x} - \frac{\partial(-y)}{\partial y} = 1 + 1 = \underline{\underline{2}}
+$$
+Det er dobbelt vinkelfarten, som lovet. Positivt fortegn betyr mot klokka.
+
+**b)**
+$$
+\nabla\times\vec F = \frac{\partial 0}{\partial x} - \frac{\partial y}{\partial y} = \underline{\underline{-1}}
+$$
+Selv om alle strømlinjene er rette, er curl ikke null. Vannet over padlehjulet går fortere enn vannet under, så hjulet snurrer med klokka (negativt fortegn), slik figuren øverst viser. Curl handler om hvordan farten *varierer på tvers*, ikke om strømlinjene er krumme.
+:::
+:::
+
+## Sentralsymmetriske felt
+
+<!-- tillegg: Claude -->
+Mange felt i fysikken peker rett ut fra (eller inn mot) et sentrum og har en styrke som bare avhenger av avstanden. Det viktigste er feltet som avtar med kvadratet av avstanden, som tyngdefeltet og det elektriske feltet rundt en punktladning:
+$$
+\vec F = \frac{\vec r}{|\vec r|^3} = \frac{[x,\ y,\ z]}{\rho^3}, \qquad \rho = \sqrt{x^2 + y^2 + z^2}
+$$
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Kvadratloven er divergensfri.** Vis at $\nabla\cdot\vec F = 0$ for $\vec F = \vec r/\rho^3$ overalt unntatt i origo.
+
+::: {.losning}
+Vi bruker $\dfrac{\partial\rho}{\partial x} = \dfrac x\rho$ og produktregelen:
+$$
+\frac{\partial}{\partial x}\Big(\frac{x}{\rho^3}\Big) = \frac{1}{\rho^3} + x\cdot(-3)\rho^{-4}\cdot\frac x\rho = \frac{1}{\rho^3} - \frac{3x^2}{\rho^5}
+$$
+På samme måte for $y$ og $z$. Summen er
+$$
+\nabla\cdot\vec F = \frac{3}{\rho^3} - \frac{3(x^2 + y^2 + z^2)}{\rho^5} = \frac{3}{\rho^3} - \frac{3\rho^2}{\rho^5} = \underline{\underline{0}}
+$$
+Feltet er divergensfritt utenfor origo. Tolkningen: Gjennom et kuleskall med radius $\rho$ går feltstyrken $1/\rho^2$ ganger arealet $4\pi\rho^2$, altså $4\pi$, uansett radius. Det som strømmer ut gjennom et lite skall, strømmer også ut gjennom et stort, så ingenting kommer til eller forsvinner mellom dem. All «kilden» sitter i origo, der feltet ikke er definert. Det er kjernen i Gauss' lov.
+:::
+:::
+
+## Laplace-operatoren
+
+<!-- tillegg: Claude -->
+Tar vi divergensen av et gradientfelt, får vi summen av de rene annenderiverte. Den kalles **Laplace-operatoren**:
+
+::: {.graa}
+$$
+\nabla^2 f = \nabla\cdot\nabla f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}
+$$
+:::
+
+<!-- tillegg: Claude -->
+$\nabla^2 f$ måler hvor mye $f$ i et punkt avviker fra gjennomsnittet rundt punktet. Er $\nabla^2 f > 0$, er $f$ i punktet lavere enn rundt, som bunnen av en skål. Derfor dukker Laplace-operatoren opp i varmelikningen $T_t = k\,\nabla^2 T$: Et punkt som er kaldere enn omgivelsene, blir varmere. Funksjoner med $\nabla^2 f = 0$ kalles **harmoniske**. De beskriver blant annet temperaturen i en plate i likevekt og potensialet i et område uten ladninger. Mer om dette under [partielle differensiallikninger](../06-partielle-differensiallikninger/01-hva-er-en-pde.qmd).
+
+## Regneregler
+
+<!-- tillegg: Claude -->
+To regler følger direkte av at blandede annenderiverte er like ($f_{xy} = f_{yx}$, se [partiellderiverte](../00-verktoy/03-partiellderiverte.qmd)):
+
+::: {.callout-important title="To nuller"}
+<!-- tillegg: Claude -->
+$$
+\nabla\times(\nabla f) = \vec 0, \qquad \nabla\cdot(\nabla\times\vec F) = 0
+$$
+Et gradientfelt har ingen virvler, og et curlfelt har ingen kilder.
+:::
+
+<!-- tillegg: Claude -->
+Den første regelen i planet: Med $\vec F = \nabla f = [f_x,\ f_y]$ er $\nabla\times\vec F = (f_y)_x - (f_x)_y = f_{yx} - f_{xy} = 0$. Den gir en rask test: **Har et felt curl forskjellig fra null, kan det ikke være et gradientfelt.** Rotasjonsfeltet $[-y,\ x]$ har curl $2$ og har derfor ikke noe potensial. Om den motsatte veien (curl null gir potensial) holder, er tema for [konservative felt](04-konservative-felt.qmd).
+
+Divergens og curl er lineære: $\nabla\cdot(a\vec F + b\vec G) = a\,\nabla\cdot\vec F + b\,\nabla\cdot\vec G$, og tilsvarende for curl. For et produkt av en funksjon og et felt gjelder en produktregel:
+$$
+\nabla\cdot(f\vec F) = \nabla f\cdot\vec F + f\,\nabla\cdot\vec F
+$$
+
+## Prøv selv: divergens og curl numerisk
+
+<!-- tillegg: Claude -->
+Programmet regner ut divergens og curl i planet med sentrale differanser og tegner curl som farge bak feltet. Endre `P` og `Q`. Prøv skjærfeltet `P = Y, Q = 0*X`, eller virvelen `P = -Y/(X**2 + Y**2), Q = X/(X**2 + Y**2)` (som er spesiell, se oppgavene).
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 2, 41)
+X, Y = np.meshgrid(x, x)
+P = -Y + 0.5 * X       # x-komponenten
+Q = X + 0.5 * Y        # y-komponenten
+
+h = x[1] - x[0]
+dPdy, dPdx = np.gradient(P, h)        # np.gradient gir først d/dy (rader), så d/dx
+dQdy, dQdx = np.gradient(Q, h)
+div = dPdx + dQdy
+curl = dQdx - dPdy
+print("divergens i (1, 1):", div[30, 30])
+print("curl i (1, 1):     ", curl[30, 30])
+
+fig, ax = plt.subplots(figsize=(5, 5))
+ax.pcolormesh(X, Y, curl, cmap="coolwarm", shading="auto", vmin=-3, vmax=3)
+ax.quiver(X[::4, ::4], Y[::4, ::4], P[::4, ::4], Q[::4, ::4])
+ax.set_aspect("equal"); ax.set_title("curl som farge")
+plt.show()
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Regn ut divergens og curl"}
+<!-- tillegg: Claude -->
+Finn $\nabla\cdot\vec F$ og $\nabla\times\vec F$ for $\vec F = \big[x^2y,\ xyz,\ -y^2\big]$.
+
+::: {.losning}
+Med $P = x^2y$, $Q = xyz$ og $R = -y^2$:
+$$
+\nabla\cdot\vec F = 2xy + xz + 0 = \underline{\underline{2xy + xz}}
+$$
+$$
+\nabla\times\vec F = \big[R_y - Q_z,\ P_z - R_x,\ Q_x - P_y\big] = \underline{\underline{\big[-2y - xy,\ 0,\ yz - x^2\big]}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="En spiral"}
+<!-- tillegg: Claude -->
+Feltet $\vec F = [x - y,\ x + y]$ er summen av det radielle feltet og rotasjonsfeltet. Finn divergensen og curl, og beskriv strømlinjene med ord.
+
+::: {.losning}
+$$
+\nabla\cdot\vec F = 1 + 1 = \underline{\underline{2}}, \qquad \nabla\times\vec F = \frac{\partial(x + y)}{\partial x} - \frac{\partial(x - y)}{\partial y} = 1 + 1 = \underline{\underline{2}}
+$$
+Divergens og curl er lineære, så vi kunne også lagt sammen: $[x,\ y]$ gir divergens $2$ og curl $0$, $[-y,\ x]$ gir divergens $0$ og curl $2$. Strømlinjene går rundt origo mot klokka og samtidig utover: **spiraler** som vikler seg ut fra origo.
+:::
+:::
+
+::: {.oppgave tittel="Gradientfelt har ingen virvler" niva="Middels"}
+<!-- tillegg: Claude -->
+Vis at $\nabla\times(\nabla f) = \vec 0$ for en vilkårlig funksjon $f(x, y, z)$ med kontinuerlige annenderiverte.
+
+::: {.losning}
+$\nabla f = [f_x,\ f_y,\ f_z]$, så $P = f_x$, $Q = f_y$ og $R = f_z$:
+$$
+\nabla\times\nabla f = \big[(f_z)_y - (f_y)_z,\ (f_x)_z - (f_z)_x,\ (f_y)_x - (f_x)_y\big] = \big[f_{zy} - f_{yz},\ f_{xz} - f_{zx},\ f_{yx} - f_{xy}\big]
+$$
+Blandede annenderiverte er like når de er kontinuerlige, så alle tre komponentene er $0$: $\underline{\underline{\nabla\times\nabla f = \vec 0}}$.
+:::
+:::
+
+::: {.oppgave tittel="En harmonisk funksjon" niva="Middels"}
+<!-- tillegg: Claude -->
+Vis at $f(x, y) = \ln(x^2 + y^2)$ er harmonisk, altså at $\nabla^2 f = 0$, overalt unntatt i origo.
+
+::: {.losning}
+$$
+f_x = \frac{2x}{x^2 + y^2}, \qquad f_{xx} = \frac{2(x^2 + y^2) - 2x\cdot2x}{(x^2 + y^2)^2} = \frac{2y^2 - 2x^2}{(x^2 + y^2)^2}
+$$
+Av symmetri (bytt $x$ og $y$) er
+$$
+f_{yy} = \frac{2x^2 - 2y^2}{(x^2 + y^2)^2}
+$$
+Summen er $\underline{\underline{\nabla^2 f = 0}}$. Funksjonen beskriver for eksempel temperaturen rundt et tynt, varmt rør gjennom en plate: Den avhenger bare av avstanden til røret og avtar logaritmisk.
+:::
+:::
+
+::: {.oppgave tittel="Uten kilder og uten virvler" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+La $\vec F = \big[ax + y,\ bx - 3y\big]$, der $a$ og $b$ er konstanter.
+
+a) Finn $a$ og $b$ slik at $\vec F$ både er divergensfritt og virvelfritt.
+
+b) Finn et potensial $f$ med $\nabla f = \vec F$ for disse verdiene.
+
+c) Vis at $f$ er harmonisk.
+
+::: {.losning}
+**a)** $\nabla\cdot\vec F = a - 3 = 0$ gir $\underline{\underline{a = 3}}$, og $\nabla\times\vec F = b - 1 = 0$ gir $\underline{\underline{b = 1}}$. Feltet er $\vec F = [3x + y,\ x - 3y]$.
+
+**b)** $f_x = 3x + y$ gir $f = \tfrac32x^2 + xy + g(y)$. Da er $f_y = x + g'(y)$, som skal være $x - 3y$, så $g'(y) = -3y$ og $g = -\tfrac32y^2$:
+$$
+\underline{\underline{f(x, y) = \tfrac32x^2 + xy - \tfrac32y^2}}
+$$
+Kontroll: $\nabla f = [3x + y,\ x - 3y]$.
+
+**c)** $f_{xx} + f_{yy} = 3 - 3 = 0$. Det er ingen tilfeldighet: $\nabla^2 f = \nabla\cdot\nabla f = \nabla\cdot\vec F = 0$.
+:::
+:::
+
+::: {.oppgave tittel="Virvelen rundt origo" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+La
+$$
+\vec F(x, y) = \left[\frac{-y}{x^2 + y^2},\ \frac{x}{x^2 + y^2}\right], \qquad (x, y) \ne (0, 0)
+$$
+
+a) Vis at feltet går rundt origo mot klokka, og at lengden er $1/r$, der $r$ er avstanden til origo.
+
+b) Vis at $\nabla\cdot\vec F = 0$ og $\nabla\times\vec F = 0$ overalt der feltet er definert.
+
+::: {.losning}
+**a)** $\vec F$ er rotasjonsfeltet $[-y,\ x]$ delt på $r^2$. Retningen er den samme, rundt origo mot klokka, og lengden er $r/r^2 = \underline{\underline{1/r}}$.
+
+**b)** Skriv $r^2 = x^2 + y^2$. Kvotientregelen gir
+$$
+P_x = \frac{\partial}{\partial x}\Big(\frac{-y}{r^2}\Big) = \frac{2xy}{r^4}, \qquad Q_y = \frac{\partial}{\partial y}\Big(\frac{x}{r^2}\Big) = \frac{-2xy}{r^4}
+$$
+så $\nabla\cdot\vec F = \underline{\underline{0}}$. Videre er
+$$
+P_y = \frac{-r^2 + y\cdot2y}{r^4} = \frac{y^2 - x^2}{r^4}, \qquad Q_x = \frac{r^2 - x\cdot2x}{r^4} = \frac{y^2 - x^2}{r^4}
+$$
+så $\nabla\times\vec F = Q_x - P_y = \underline{\underline{0}}$.
+
+Feltet går rundt origo, men et padlehjul snurrer ikke noe sted! Farten er større nær origo, og det motvirker akkurat at strømlinjene krummer. Hele virvelen sitter i origo, der feltet ikke er definert. Dette feltet blir et viktig moteksempel under konservative felt.
+:::
+:::
+
+::::
