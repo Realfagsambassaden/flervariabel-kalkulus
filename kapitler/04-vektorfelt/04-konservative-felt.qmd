@@ -2,19 +2,349 @@
 title: "Konservative felt og potensialer"
 tema: vektorfelt
 undertema: konservative
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/04-04-konservative-felt) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Bærer du en sekk fra parkeringsplassen opp til en hytte, gjør tyngdekraften det samme arbeidet på sekken enten du tar den bratte snarveien eller den lange slake veien: Bare høydeforskjellen teller. Drar du en kasse over et gulv, er det motsatt: Jo lengre vei, jo mer arbeid går tapt til friksjon. Felt av den første typen kalles **konservative**. For dem finnes det en funksjon, et **potensial**, som gjør [linjeintegralet](03-linjeintegraler-av-vektorfelt.qmd) til en enkel subtraksjon. Her ser vi hvordan vi kjenner igjen et slikt felt, og hvordan vi finner potensialet.
+
+![Til venstre tre veier fra A til B. Er feltet en gradient, gir alle tre veiene samme linjeintegral. Til høyre virvelen rundt origo: Den har curl lik null overalt der den er definert, men linjeintegralet rundt en sirkel om hullet i origo er 2π. Rundt en sirkel som ikke omslutter origo, er det null.](../../bilder/figurer/konservative-veier.svg){.tikz-fig style="width:600px" fig-alt="To ruter. Venstre: punktene A og B forbundet med tre kurver, C1 en rett linje, C2 en bue over og C3 en bue under. Teksten under sier at for F lik gradienten til f er arbeidet det samme langs alle veiene og lik f(B) minus f(A). Høyre: piler som går rundt origo mot klokka, lengst nær origo. Origo er merket med en åpen ring. En sirkel C rundt origo er orientert mot klokka. En liten stiplet sirkel til høyre omslutter ikke origo og er merket integral lik null. Teksten under sier at curl er null utenom origo, men integralet rundt C er 2 pi rundt hullet."}
+
+## Potensial og gradientfelt
+
+::: {.callout-note title="Definisjon: Konservativt felt"}
+<!-- tillegg: Claude -->
+Et vektorfelt $\vec F$ er **konservativt** i et område $D$ hvis det finnes en funksjon $f$ med
+$$
+\vec F = \nabla f \quad\text{i hele } D
+$$
+Funksjonen $f$ kalles et **potensial** (eller en potensialfunksjon) for $\vec F$. Potensialet er bestemt bare opp til en konstant: $f + C$ har samme gradient.
 :::
 
-## Dette kommer på siden
+<!-- tillegg: Claude -->
+Et konservativt felt er altså det samme som et gradientfelt, slik vi møtte dem under [vektorfelt og gradientfelt](01-vektorfelt.qmd). Gradienten står vinkelrett på nivåkurvene til $f$ og peker dit $f$ øker mest. I fysikken bruker vi ofte motsatt fortegn: Den **potensielle energien** er $U = -f$, slik at $\vec F = -\nabla U$ og kraften peker dit den potensielle energien *avtar*. Matematisk er det samme sak.
 
-- Potensialfunksjon
-- Veiuavhengighet
-- Test med curl
+## Fundamentalteoremet for linjeintegraler
+
+<!-- tillegg: Claude -->
+La $C$ være en kurve fra $A$ til $B$ med parametriseringen $\vec r(t)$, $a \le t \le b$. Er $\vec F = \nabla f$, blir integranden i linjeintegralet en derivert. Kjerneregelen gir nemlig
+$$
+\frac{\mathrm{d}}{\mathrm{d}t}\,f\big(\vec r(t)\big) = f_x\,x'(t) + f_y\,y'(t) + f_z\,z'(t) = \nabla f\big(\vec r(t)\big)\cdot\vec r\,'(t)
+$$
+Integranden $\vec F(\vec r(t))\cdot\vec r\,'(t)$ er altså den deriverte av $f(\vec r(t))$, og analysens fundamentalteorem gjør resten:
+
+::: {.callout-important title="Fundamentalteoremet for linjeintegraler"}
+<!-- tillegg: Claude -->
+Er $\vec F = \nabla f$ og $C$ en glatt kurve fra $A$ til $B$, er
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = \int_a^b \nabla f\big(\vec r(t)\big)\cdot\vec r\,'(t)\,\mathrm{d}t = f(B) - f(A)
+$$
+:::
+
+<!-- tillegg: Claude -->
+Det er den samme ideen som $\int_a^b F'(x)\,\mathrm{d}x = F(b) - F(a)$ i én variabel, bare langs en kurve i stedet for langs $x$-aksen. To ting følger med en gang:
+
+::: {.kort}
+- **Veiuavhengighet:** Integralet avhenger bare av endepunktene, ikke av hvilken vei vi går. Alle tre veiene i figuren øverst gir samme svar.
+- **Lukkede kurver gir null:** Går kurven rundt og ender der den startet ($A = B$), er $\oint_C \vec F\cdot\mathrm{d}\vec r = f(A) - f(A) = 0$.
+- **Og omvendt:** Er linjeintegralet uavhengig av veien i et sammenhengende område, er feltet konservativt der. Potensialet kan da *defineres* som $f(P) = \int_{P_0}^{P}\vec F\cdot\mathrm{d}\vec r$ fra et fast punkt $P_0$.
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: To veier, to felt.** Regn ut linjeintegralet fra $(0, 0)$ til $(1, 1)$ langs den rette linjen $y = x$ og langs parabelen $y = x^2$, for
+
+a) $\vec F = [y,\ x]$,
+
+b) $\vec G = [-y,\ x]$.
+
+::: {.losning}
+Linjen: $\vec r(t) = [t,\ t]$, $\vec r\,'(t) = [1,\ 1]$. Parabelen: $\vec r(t) = [t,\ t^2]$, $\vec r\,'(t) = [1,\ 2t]$. I begge er $0 \le t \le 1$.
+
+**a)** Langs linjen: $\vec F\cdot\vec r\,' = t + t = 2t$, og $\int_0^1 2t\,\mathrm{d}t = 1$. Langs parabelen: $\vec F\cdot\vec r\,' = t^2 + t\cdot2t = 3t^2$, og $\int_0^1 3t^2\,\mathrm{d}t = 1$. Begge veiene gir $\underline{\underline{1}}$.
+
+Det er ingen tilfeldighet: $\vec F = \nabla(xy)$, så svaret er $f(1, 1) - f(0, 0) = 1 - 0 = 1$ langs *alle* veier.
+
+**b)** Langs linjen: $\vec G\cdot\vec r\,' = -t + t = 0$, så integralet er $\underline{\underline{0}}$. Langs parabelen: $\vec G\cdot\vec r\,' = -t^2 + t\cdot2t = t^2$, og $\int_0^1 t^2\,\mathrm{d}t = \underline{\underline{\tfrac13}}$.
+
+To veier gir to svar, så $\vec G$ kan ikke være konservativt. Det stemmer med at rotasjonsfeltet har curl $2$ (se [divergens og curl](02-divergens-og-curl.qmd)).
+:::
+:::
+
+## Testen: curl lik null
+
+<!-- tillegg: Claude -->
+Det er tungvint å sjekke veiuavhengighet ved å prøve alle veier. Heldigvis finnes en test med derivasjon. Vi så under [divergens og curl](02-divergens-og-curl.qmd) at $\nabla\times(\nabla f) = \vec 0$. Et konservativt felt har derfor alltid curl null. I planet betyr det
+$$
+\vec F = [P,\ Q] = [f_x,\ f_y] \quad\Rightarrow\quad \frac{\partial Q}{\partial x} = f_{yx} = f_{xy} = \frac{\partial P}{\partial y}
+$$
+Det motsatte gjelder også, men bare når området ikke har hull:
+
+::: {.callout-important title="Kriteriet for konservative felt"}
+<!-- tillegg: Claude -->
+La $\vec F$ ha kontinuerlige partielle deriverte i et område $D$.
+
+- Er $\vec F$ konservativt i $D$, er $\nabla\times\vec F = \vec 0$ i $D$.
+- Er $D$ **enkeltsammenhengende** og $\nabla\times\vec F = \vec 0$ i $D$, er $\vec F$ konservativt i $D$.
+
+I planet er testen $\dfrac{\partial Q}{\partial x} = \dfrac{\partial P}{\partial y}$. I rommet er den $R_y = Q_z$, $P_z = R_x$ og $Q_x = P_y$.
+:::
+
+<!-- tillegg: Claude -->
+Et område er **enkeltsammenhengende** når det henger sammen og enhver lukket kurve i det kan trekkes sammen til et punkt uten å forlate området. En disk, et rektangel, hele planet og hele rommet er enkeltsammenhengende. Planet uten origo er det *ikke*: En sirkel rundt origo kan ikke trekkes sammen uten å passere hullet. (I rommet er rommet uten ett punkt enkeltsammenhengende, mens rommet uten en hel linje ikke er det.)
+
+Hvorfor er kravet nødvendig? Det henger sammen med [Greens teorem](../05-integralsetninger/02-greens-teorem.qmd): Er curl null overalt *inni* en lukket kurve, er sirkulasjonen rundt kurven null. Har området et hull, kan noe gjemme seg i hullet.
+
+### Moteksempelet: virvelen rundt origo
+
+<!-- tillegg: Claude -->
+Se på feltet fra oppgavene under [divergens og curl](02-divergens-og-curl.qmd):
+$$
+\vec F(x, y) = \left[\frac{-y}{x^2 + y^2},\ \frac{x}{x^2 + y^2}\right], \qquad (x, y) \ne (0, 0)
+$$
+Der viste vi at $\nabla\times\vec F = 0$ overalt der feltet er definert. Men regn ut linjeintegralet rundt enhetssirkelen $\vec r(t) = [\cos t,\ \sin t]$, $0 \le t \le 2\pi$, mot klokka. På sirkelen er $x^2 + y^2 = 1$, så $\vec F = [-\sin t,\ \cos t]$, og $\vec r\,'(t) = [-\sin t,\ \cos t]$:
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi}\big(\sin^2 t + \cos^2 t\big)\,\mathrm{d}t = \int_0^{2\pi} 1\,\mathrm{d}t = 2\pi
+$$
+En lukket kurve gir *ikke* null, så feltet er ikke konservativt i planet uten origo, selv om curl er null. Det er ingen motsigelse: Området har et hull, og kriteriet krever et område uten hull. Hele virvelen sitter i origo, der feltet ikke er definert.
+
+<!-- tillegg: Claude -->
+I et område uten hull, for eksempel halvplanet $x > 0$, er feltet konservativt. Der er potensialet vinkelen $\theta = \arctan(y/x)$ i polarkoordinater (se oppgavene). Linjeintegralet måler altså *hvor mye vinkelen øker* langs kurven. Én runde rundt origo gir $2\pi$, og en kurve som ikke går rundt origo, gir $0$, slik figuren øverst viser.
+
+## Slik finner du et potensial
+
+<!-- tillegg: Claude -->
+Vet vi at feltet er konservativt, finner vi $f$ ved å integrere én komponent om gangen.
+
+::: {.steg}
+1. **Sjekk curl.** Er $\nabla\times\vec F \ne \vec 0$, finnes det ikke noe potensial, og vi er ferdige.
+2. **Integrer $P$ med hensyn på $x$.** Det gir $f = \int P\,\mathrm{d}x + g(y, z)$, der «konstanten» $g$ kan avhenge av de andre variablene.
+3. **Deriver med hensyn på $y$ og sammenlikn med $Q$.** Det bestemmer $g$ opp til en funksjon av $z$.
+4. **Gjenta med $z$ og $R$.** Det bestemmer resten.
+5. **Kontroller** at $\nabla f = \vec F$.
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Potensial i rommet.** La $\vec F = \big[2xy + z^2,\ x^2 + 3y^2,\ 2xz\big]$.
+
+a) Vis at $\vec F$ er konservativt i hele rommet, og finn et potensial.
+
+b) Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$ langs en hvilken som helst kurve fra $(0, 0, 0)$ til $(1, 2, 1)$.
+
+::: {.losning}
+**a)** Med $P = 2xy + z^2$, $Q = x^2 + 3y^2$ og $R = 2xz$:
+$$
+R_y - Q_z = 0 - 0 = 0, \qquad P_z - R_x = 2z - 2z = 0, \qquad Q_x - P_y = 2x - 2x = 0
+$$
+Curl er null i hele rommet, som er enkeltsammenhengende, så $\vec F$ er konservativt.
+
+Integrer $P$ med hensyn på $x$:
+$$
+f = \int(2xy + z^2)\,\mathrm{d}x = x^2y + xz^2 + g(y, z)
+$$
+Deriver med hensyn på $y$: $f_y = x^2 + g_y$. Dette skal være $Q = x^2 + 3y^2$, så $g_y = 3y^2$ og $g = y^3 + h(z)$. Nå er $f = x^2y + xz^2 + y^3 + h(z)$. Deriver med hensyn på $z$: $f_z = 2xz + h'(z)$, som skal være $R = 2xz$. Altså er $h' = 0$, og $h$ er en konstant, som vi kan sette lik null:
+$$
+\underline{\underline{f(x, y, z) = x^2y + xz^2 + y^3}}
+$$
+Kontroll: $\nabla f = \big[2xy + z^2,\ x^2 + 3y^2,\ 2xz\big]$.
+
+**b)** Fundamentalteoremet gir
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = f(1, 2, 1) - f(0, 0, 0) = (2 + 1 + 8) - 0 = \underline{\underline{11}}
+$$
+uansett hvilken kurve vi følger.
+:::
+:::
+
+## Konservative krefter i fysikken
+
+<!-- tillegg: Claude -->
+Linjeintegralet av en kraft er arbeidet kraften gjør. For en konservativ kraft $\vec F = -\nabla U$ gir fundamentalteoremet
+$$
+W_{A\to B} = \int_C \vec F\cdot\mathrm{d}\vec r = U(A) - U(B)
+$$
+Arbeidet er lik nedgangen i potensiell energi, uansett vei. Derfor kan vi i det hele tatt snakke om potensiell energi: Den er bare veldefinert når arbeidet er uavhengig av veien.
+
+::: {.kort}
+- **Tyngden** nær jordoverflaten: $\vec G = [0,\ 0,\ -m\mathrm{g}]$ med $z$ oppover. Potensialet er $U = m\mathrm{g}z$, siden $-\nabla U = [0,\ 0,\ -m\mathrm{g}]$.
+- **Fjærkraften:** $\vec F = -k\vec r$, der $\vec r$ er utslaget fra likevekt. Potensialet er $U = \tfrac12 k|\vec r|^2 = \tfrac12 k\big(x^2 + y^2 + z^2\big)$.
+- **Gravitasjon og elektrisk kraft** fra en punktmasse eller punktladning: $\vec F = -\dfrac{K}{\rho^2}\,\dfrac{\vec r}{\rho}$ med potensial $U = -\dfrac{K}{\rho}$, der $K$ er en positiv konstant. Området (rommet uten origo) er enkeltsammenhengende, så curl null er nok.
+- **Friksjon og luftmotstand er ikke konservative.** De peker alltid mot bevegelsen, så arbeidet er negativt langs hver bit av veien og blir større i tallverdi jo lengre veien er. Rundt en lukket kurve er arbeidet ikke null.
+:::
+
+## Prøv selv: er arbeidet uavhengig av veien?
+
+<!-- tillegg: Claude -->
+Programmet regner ut linjeintegralet fra $(0, 0)$ til $(1, 1)$ langs kurvene $y = x^n$ for flere verdier av $n$, og tegner kurvene oppå feltet. Med `P = Y, Q = X` blir alle svarene like. Bytt til rotasjonsfeltet `P = -Y, Q = X`, og se at svarene sprer seg. Prøv også et felt du har laget selv, og sjekk curl først.
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def F(x, y):
+    P = y          # x-komponenten
+    Q = x          # y-komponenten
+    return P, Q
+
+t = np.linspace(0, 1, 2001)
+fig, ax = plt.subplots(figsize=(5, 5))
+for n in [0.5, 1, 2, 4]:
+    x, y = t, t**n                         # kurven y = x^n
+    dx, dy = np.gradient(x, t), np.gradient(y, t)
+    P, Q = F(x, y)
+    g = P*dx + Q*dy
+    W = np.sum((g[1:] + g[:-1]) / 2 * np.diff(t))   # trapesmetoden
+    print(f"n = {n}: integral = {W:.4f}")
+    ax.plot(x, y, label=f"n = {n}")
+
+X, Y = np.meshgrid(np.linspace(0, 1, 11), np.linspace(0, 1, 11))
+ax.quiver(X, Y, *F(X, Y), color="gray")
+ax.set_aspect("equal"); ax.legend()
+plt.show()
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Konservativt eller ikke?"}
+<!-- tillegg: Claude -->
+Avgjør om feltene er konservative i hele planet. Finn et potensial når det finnes.
+
+a) $\vec F = \big[3x^2y,\ x^3 + 2y\big]$
+
+b) $\vec G = \big[y^2,\ x^2\big]$
+
+::: {.losning}
+**a)** $Q_x = 3x^2$ og $P_y = 3x^2$. De er like, og planet er enkeltsammenhengende, så $\vec F$ er konservativt. Integrer $P$: $f = x^3y + g(y)$. Da er $f_y = x^3 + g'(y)$, som skal være $x^3 + 2y$, så $g = y^2$:
+$$
+\underline{\underline{f(x, y) = x^3y + y^2}}
+$$
+
+**b)** $Q_x = 2x$ og $P_y = 2y$. De er ulike (unntatt på linjen $y = x$), så curl er $2x - 2y \ne 0$, og $\vec G$ er $\underline{\underline{\text{ikke konservativt}}}$.
+:::
+:::
+
+::: {.oppgave tittel="Snarvei gjennom potensialet"}
+<!-- tillegg: Claude -->
+La $\vec F = \big[yz,\ xz + 2y,\ xy\big]$ og la $C$ være kurven
+$$
+\vec r(t) = \big[1 + t,\ 3t^2,\ 2 - t^3\big], \qquad 0 \le t \le 1
+$$
+
+a) Finn et potensial for $\vec F$.
+
+b) Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$.
+
+::: {.losning}
+**a)** Curl: $R_y - Q_z = x - x = 0$, $P_z - R_x = y - y = 0$ og $Q_x - P_y = z - z = 0$. Feltet er konservativt i hele rommet. Integrer $P$: $f = xyz + g(y, z)$. Da er $f_y = xz + g_y = xz + 2y$, så $g = y^2 + h(z)$. Til slutt er $f_z = xy + h'(z) = xy$, så $h$ er konstant:
+$$
+\underline{\underline{f(x, y, z) = xyz + y^2}}
+$$
+
+**b)** Kurven starter i $\vec r(0) = (1, 0, 2)$ og slutter i $\vec r(1) = (2, 3, 1)$. Vi trenger ikke parametriseringen ellers:
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = f(2, 3, 1) - f(1, 0, 2) = (6 + 9) - 0 = \underline{\underline{15}}
+$$
+Å regne direkte med $\vec F(\vec r(t))\cdot\vec r\,'(t)$ gir det samme, men med et mye styggere polynom.
+:::
+:::
+
+::: {.oppgave tittel="Finn konstantene" niva="Middels"}
+<!-- tillegg: Claude -->
+La $\vec F = \big[axy - z,\ x^2 + bz,\ -x + 2y\big]$.
+
+a) Finn $a$ og $b$ slik at $\vec F$ er konservativt.
+
+b) Finn et potensial, og regn ut arbeidet fra origo til $(1, 2, 3)$.
+
+::: {.losning}
+**a)** Curl skal være null:
+$$
+R_y - Q_z = 2 - b = 0, \qquad P_z - R_x = -1 - (-1) = 0, \qquad Q_x - P_y = 2x - ax = 0
+$$
+Det gir $\underline{\underline{a = 2}}$ og $\underline{\underline{b = 2}}$, så $\vec F = \big[2xy - z,\ x^2 + 2z,\ -x + 2y\big]$.
+
+**b)** $f = \int(2xy - z)\,\mathrm{d}x = x^2y - xz + g(y, z)$. Da er $f_y = x^2 + g_y = x^2 + 2z$, så $g = 2yz + h(z)$. Til slutt er $f_z = -x + 2y + h'(z) = -x + 2y$, så $h$ er konstant:
+$$
+f(x, y, z) = x^2y - xz + 2yz
+$$
+Kontroll: $\nabla f = \big[2xy - z,\ x^2 + 2z,\ -x + 2y\big]$. Arbeidet er
+$$
+W = f(1, 2, 3) - f(0, 0, 0) = 2 - 3 + 12 = \underline{\underline{11}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Tyngde og friksjon" niva="Middels"}
+<!-- tillegg: Claude -->
+a) En sekk med masse $2.0\ \mathrm{kg}$ bæres opp en spiraltrapp: $\vec r(t) = \big[3\cos t,\ 3\sin t,\ \tfrac{150}{4\pi}\,t\big]$ (i meter), $0 \le t \le 4\pi$. Finn arbeidet tyngden gjør på sekken. Bruk $\mathrm{g} = 9.81\ \mathrm{m/s^2}$.
+
+b) En kloss med masse $1.5\ \mathrm{kg}$ skyves én gang rundt en sirkel med radius $2.0\ \mathrm{m}$ på et vannrett bord. Friksjonstallet er $\mu_k = 0.30$. Finn arbeidet friksjonen gjør. Hvorfor viser svaret at friksjon ikke er en konservativ kraft?
+
+::: {.losning}
+**a)** Tyngden $\vec G = [0,\ 0,\ -m\mathrm{g}]$ er konservativ med $U = m\mathrm{g}z$. Trappa starter i $z = 0$ og slutter i $z = \tfrac{150}{4\pi}\cdot4\pi = 150\ \mathrm{m}$. Arbeidet er
+$$
+W = U(A) - U(B) = -m\mathrm{g}\,\Delta z = -2.0\ \mathrm{kg}\cdot9.81\ \mathrm{m/s^2}\cdot150\ \mathrm{m} = -2943\ \mathrm{J} \approx \underline{\underline{-2.9\ \mathrm{kJ}}}
+$$
+Svingene i trappa spiller ingen rolle. Direkte: $\vec G\cdot\vec r\,'(t) = -m\mathrm{g}\cdot\tfrac{150}{4\pi}$ er konstant, og ganget med lengden $4\pi$ av intervallet gir det det samme.
+
+**b)** Friksjonen har størrelse $f = \mu_k m\mathrm{g}$ og peker alltid mot bevegelsen, så $\vec f\cdot\mathrm{d}\vec r = -f\,\mathrm{d}s$. Rundt sirkelen er veilengden $2\pi R$:
+$$
+W = -\mu_k m\mathrm{g}\cdot2\pi R = -0.30\cdot1.5\ \mathrm{kg}\cdot9.81\ \mathrm{m/s^2}\cdot2\pi\cdot2.0\ \mathrm{m} = \underline{\underline{-55\ \mathrm{J}}}
+$$
+Klossen er tilbake der den startet, men arbeidet er ikke null. For et konservativt felt er linjeintegralet rundt en lukket kurve alltid null, så friksjonen kan ikke være konservativ. Den har ingen potensiell energi.
+:::
+:::
+
+::: {.oppgave tittel="Virvelen og vinkelen" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+La $\vec F = \left[\dfrac{-y}{x^2 + y^2},\ \dfrac{x}{x^2 + y^2}\right]$.
+
+a) Vis at $\theta(x, y) = \arctan(y/x)$ er et potensial for $\vec F$ i halvplanet $x > 0$.
+
+b) Regn ut $\oint_C \vec F\cdot\mathrm{d}\vec r$ når $C$ er sirkelen med sentrum $(3, 0)$ og radius $1$, gjennomløpt mot klokka.
+
+c) Regn ut $\oint_C \vec F\cdot\mathrm{d}\vec r$ når $C$ er sirkelen med sentrum i origo og radius $5$, gjennomløpt mot klokka.
+
+::: {.losning}
+**a)** Med $u = y/x$ er $\dfrac{\mathrm{d}}{\mathrm{d}u}\arctan u = \dfrac{1}{1 + u^2}$:
+$$
+\theta_x = \frac{1}{1 + y^2/x^2}\cdot\Big(-\frac{y}{x^2}\Big) = \frac{-y}{x^2 + y^2}, \qquad \theta_y = \frac{1}{1 + y^2/x^2}\cdot\frac1x = \frac{x}{x^2 + y^2}
+$$
+Altså er $\nabla\theta = \vec F$ når $x > 0$.
+
+**b)** Sirkelen ligger helt i halvplanet $x > 0$ (den går fra $x = 2$ til $x = 4$). Der er feltet konservativt, og en lukket kurve gir $\underline{\underline{0}}$. Vinkelen går litt opp og ned igjen, men ender der den startet.
+
+**c)** Med $\vec r(t) = [5\cos t,\ 5\sin t]$ er $x^2 + y^2 = 25$, $\vec F = \tfrac15[-\sin t,\ \cos t]$ og $\vec r\,'(t) = 5[-\sin t,\ \cos t]$. Prikkproduktet er $\sin^2 t + \cos^2 t = 1$, så
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} 1\,\mathrm{d}t = \underline{\underline{2\pi}}
+$$
+Det samme som for enhetssirkelen. Radien spiller ingen rolle, bare at kurven går én gang rundt origo og vinkelen øker med $2\pi$. Kurven går ut av halvplanet $x > 0$, så potensialet fra a) gjelder ikke langs hele kurven.
+:::
+:::
+
+::: {.oppgave tittel="Fjærpotensialet" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+En partikkel er festet til origo med en fjær med fjærstivhet $k = 200\ \mathrm{N/m}$, slik at kraften er $\vec F = -k\vec r$.
+
+a) Vis at $\vec F$ er konservativt, og finn den potensielle energien $U$ med $U(\vec 0) = 0$.
+
+b) Partikkelen flyttes fra $(0.10, 0, 0)$ til $(0, 0.30, 0)$ (i meter) langs en svingete vei. Finn arbeidet fjærkraften gjør.
+
+::: {.losning}
+**a)** $\vec F = [-kx,\ -ky,\ -kz]$. Hver komponent avhenger bare av sin egen variabel, så alle blandede deriverte er null, og curl er $\vec 0$ i hele rommet. Med $U = \tfrac12k\big(x^2 + y^2 + z^2\big)$ er $-\nabla U = [-kx,\ -ky,\ -kz] = \vec F$, og $U(\vec 0) = 0$:
+$$
+\underline{\underline{U = \tfrac12 k|\vec r|^2}}
+$$
+
+**b)**
+$$
+W = U(A) - U(B) = \tfrac12\cdot200\ \mathrm{N/m}\cdot\big((0.10\ \mathrm{m})^2 - (0.30\ \mathrm{m})^2\big) = 100\ \mathrm{N/m}\cdot(-0.080\ \mathrm{m^2}) = \underline{\underline{-8.0\ \mathrm{J}}}
+$$
+Fjæra strekkes mer, så den gjør negativt arbeid. Veien spiller ingen rolle.
+:::
+:::
+
+::::

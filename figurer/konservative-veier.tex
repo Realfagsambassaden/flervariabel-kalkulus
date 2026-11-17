@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=0.8]
+% venstre: tre veier fra A til B
+\begin{scope}
+\fill (0,0) circle (2.2pt) node[below left] {$A$};
+\fill (4,3) circle (2.2pt) node[above right] {$B$};
+\draw[very thick,bla,->,shorten >=2pt] (0,0)--(4,3) node[pos=0.55,below right,black] {$C_1$};
+\draw[very thick,rod,->,shorten >=2pt] (0,0) .. controls (-0.5,3.5) and (2,2) .. (4,3) node[pos=0.35,left,black] {$C_2$};
+\draw[very thick,gronn,->,shorten >=2pt] (0,0) .. controls (3.5,-1.2) and (5.2,1.0) .. (4,3) node[pos=0.5,right,black] {$C_3$};
+\node[font=\small,align=center] at (2,-2.0) {$\vec F = \nabla f$: samme arbeid langs alle veiene,\\$\int_C \vec F\cdot\mathrm{d}\vec r = f(B) - f(A)$};
+\end{scope}
+% høyre: virvelen rundt origo
+\begin{scope}[shift={(9.5,1.2)}]
+\foreach \r in {0.9,2.0,2.8} \foreach \a in {0,45,...,315} {
+  \pgfmathsetmacro{\L}{0.85/\r}
+  \draw[-{Stealth[length=1.6mm]},black!55] (\a:\r) -- ++({\a+90}:\L); }
+\draw[thick,fill=white] (0,0) circle (0.12);
+\draw[very thick,bla,->,shorten >=2pt] (1.6,0) arc (0:350:1.6);
+\node[bla!80!black,font=\small] at (-1.45,1.45) {$C$};
+\draw[very thick,rod,dashed] (2.45,-0.9) circle (0.45);
+\node[font=\small] at (3.45,-1.3) {$\oint = 0$};
+\node[font=\small,align=center] at (0,-3.2) {curl $=0$ utenom origo, men\\$\oint_C \vec F\cdot\mathrm{d}\vec r = 2\pi$ rundt hullet};
+\end{scope}
+\end{tikzpicture}
