@@ -2,19 +2,309 @@
 title: "Linjeintegraler av vektorfelt"
 tema: vektorfelt
 undertema: linjeintegraler
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/04-03-linjeintegraler-av-vektorfelt) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Du sykler en svingete vei mens vinden blåser. På noen strekninger har du medvind, på andre motvind, og der vinden kommer rett fra siden, hjelper den verken fram eller tilbake. Hvor mye arbeid gjør vinden på deg på hele turen? I hvert lille steg teller bare den delen av kraften som peker *langs* veien. Summerer vi alle de små bidragene, får vi et **linjeintegral av et vektorfelt**. Vi har allerede regnet med [linjeintegraler av funksjoner](../03-kurver-og-flater/01-linjeintegraler.qmd), der vi summerte en størrelse ganger lengde. Nå summerer vi i stedet et prikkprodukt, og da får retningen betydning.
+
+![En kraft $\vec F$ virker på et legeme som flytter seg langs kurven $C$ fra $A$ til $B$. I hvert lille steg $\Delta\vec r$ er arbeidet $\vec F\cdot\Delta\vec r$. Det er positivt når kraften har en komponent med bevegelsen, null når kraften står vinkelrett på den, og negativt når kraften har en komponent mot bevegelsen.](../../bilder/figurer/arbeid-langs-kurve.svg){.tikz-fig style="width:560px" fig-alt="En buet kurve C fra punktet A til punktet B. I tre punkter på kurven er det tegnet et kort steg Delta r langs kurven og en kraft F. I det første punktet peker kraften skrått framover, og teksten under sier positivt arbeid. I det midterste står kraften vinkelrett på steget, og teksten sier ikke noe arbeid. I det siste peker kraften skrått bakover, og teksten sier negativt arbeid."}
+
+## Arbeid langs en kurve
+
+<!-- tillegg: Claude -->
+Når en konstant kraft $\vec F$ flytter et legeme et rett stykke $\Delta\vec r$, er arbeidet prikkproduktet
+$$
+W = \vec F\cdot\Delta\vec r = |\vec F|\,|\Delta\vec r|\cos\theta
+$$
+der $\theta$ er vinkelen mellom kraften og forflytningen. Langs en krum vei, og med en kraft som varierer fra sted til sted, deler vi veien i mange små, nesten rette steg $\Delta\vec r_i$. I hvert steg er kraften nesten konstant, så arbeidet er omtrent $\vec F(\vec r_i)\cdot\Delta\vec r_i$. Summen blir et integral når stegene blir uendelig små:
+$$
+W \approx \sum_i \vec F(\vec r_i)\cdot\Delta\vec r_i \quad\longrightarrow\quad W = \int_C \vec F\cdot\mathrm{d}\vec r
+$$
+
+Hvordan regner vi det ut? Akkurat som før: Vi beskriver kurven med en parameter, $\vec r(t)$ for $a \le t \le b$. Et lite steg i $t$ gir forflytningen $\mathrm{d}\vec r = \vec r\,'(t)\,\mathrm{d}t$, så integralet blir et vanlig integral over $t$.
+
+::: {.callout-note title="Definisjon: Linjeintegral av et vektorfelt"}
+<!-- tillegg: Claude -->
+La $C$ være en kurve med parametriseringen $\vec r(t)$, $a \le t \le b$, som går fra $\vec r(a)$ til $\vec r(b)$. Linjeintegralet av vektorfeltet $\vec F$ langs $C$ er
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = \int_a^b \vec F\big(\vec r(t)\big)\cdot\vec r\,'(t)\,\mathrm{d}t
+$$
+Er $\vec F$ en kraft, er integralet **arbeidet** kraften gjør langs $C$.
 :::
 
-## Dette kommer på siden
+::: {.steg}
+<!-- tillegg: Claude -->
+1. **Parametriser kurven:** Finn $\vec r(t)$ og grensene $a$ og $b$. Pass på at $t$ går fra start til slutt.
+2. **Deriver:** Regn ut tangentvektoren $\vec r\,'(t)$.
+3. **Sett inn:** Skriv feltet langs kurven, $\vec F\big(\vec r(t)\big)$, ved å bytte $x$, $y$ og $z$ med $x(t)$, $y(t)$ og $z(t)$.
+4. **Prikk og integrer:** Regn ut $\vec F\big(\vec r(t)\big)\cdot\vec r\,'(t)$, som er en vanlig funksjon av $t$, og integrer fra $a$ til $b$.
+:::
 
-- Arbeid langs en kurve
-- Orientering
-- Sirkulasjon
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: To veier i rotasjonsfeltet.** Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$ for $\vec F = [-y,\ x]$ fra $(1, 0)$ til $(0, 1)$
+
+a) langs kvartsirkelen med radius $1$ om origo,
+
+b) langs linjestykket mellom punktene.
+
+::: {.losning}
+**a)** Kvartsirkelen er $\vec r(t) = [\cos t,\ \sin t]$ med $0 \le t \le \tfrac\pi2$. Da er $\vec r\,'(t) = [-\sin t,\ \cos t]$, og feltet langs kurven er $\vec F = [-\sin t,\ \cos t]$. Prikkproduktet er
+$$
+\vec F\cdot\vec r\,' = \sin^2 t + \cos^2 t = 1
+$$
+så
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = \int_0^{\pi/2} 1\,\mathrm{d}t = \underline{\underline{\frac\pi2}}
+$$
+Feltet peker hele veien langs sirkelen, så hele kraften gjør arbeid.
+
+**b)** Linjestykket er $\vec r(t) = [1 - t,\ t]$ med $0 \le t \le 1$. Da er $\vec r\,'(t) = [-1,\ 1]$ og $\vec F = [-t,\ 1 - t]$:
+$$
+\vec F\cdot\vec r\,' = t + (1 - t) = 1, \qquad \int_C \vec F\cdot\mathrm{d}\vec r = \int_0^1 1\,\mathrm{d}t = \underline{\underline{1}}
+$$
+Samme start og samme slutt, men to forskjellige svar! For dette feltet avhenger arbeidet av veien. Felt der det *ikke* gjør det, er tema for [konservative felt](04-konservative-felt.qmd).
+:::
+:::
+
+## Retningen betyr noe
+
+<!-- tillegg: Claude -->
+Går vi samme kurve baklengs, fra $B$ til $A$, peker hvert steg $\mathrm{d}\vec r$ motsatt vei. Da skifter hvert bidrag $\vec F\cdot\mathrm{d}\vec r$ fortegn:
+
+::: {.graa}
+$$
+\int_{-C} \vec F\cdot\mathrm{d}\vec r = -\int_C \vec F\cdot\mathrm{d}\vec r
+$$
+:::
+
+<!-- tillegg: Claude -->
+Det passer med fysikken: Får du hjelp av medvinden på vei ut, får du like mye motvind på vei hjem langs samme vei (hvis vinden ikke snur). En kurve med en valgt retning kalles **orientert**, og $-C$ er samme kurve med motsatt orientering.
+
+Her er en viktig forskjell fra linjeintegralet av en funksjon, $\int_C f\,\mathrm{d}s$. Der er $\mathrm{d}s$ en lengde, som alltid er positiv, så retningen spiller ingen rolle: Gjerdet har like mye areal uansett hvilken ende du begynner å male fra.
+
+Vi kan også se sammenhengen direkte. Skriv $\vec r\,'(t) = |\vec r\,'(t)|\,\vec T$, der $\vec T$ er enhetstangenten i fartsretningen. Siden $\mathrm{d}s = |\vec r\,'(t)|\,\mathrm{d}t$, er
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = \int_C \vec F\cdot\vec T\,\mathrm{d}s
+$$
+Linjeintegralet av vektorfeltet er altså linjeintegralet av funksjonen $\vec F\cdot\vec T$, **tangentkomponenten** til feltet. Snur vi retningen, snur $\vec T$, og fortegnet skifter.
+
+## Andre skrivemåter
+
+<!-- tillegg: Claude -->
+Med $\vec F = [P,\ Q,\ R]$ og $\mathrm{d}\vec r = [\mathrm{d}x,\ \mathrm{d}y,\ \mathrm{d}z]$ blir prikkproduktet $P\,\mathrm{d}x + Q\,\mathrm{d}y + R\,\mathrm{d}z$. Derfor ser du ofte
+
+::: {.graa}
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = \int_C P\,\mathrm{d}x + Q\,\mathrm{d}y + R\,\mathrm{d}z
+$$
+:::
+
+<!-- tillegg: Claude -->
+Skrivemåten er nyttig når du skal regne: Bytt $\mathrm{d}x$ med $x'(t)\,\mathrm{d}t$, $\mathrm{d}y$ med $y'(t)\,\mathrm{d}t$ og så videre.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Langs en parabel.** Regn ut $\displaystyle\int_C y\,\mathrm{d}x + x^2\,\mathrm{d}y$, der $C$ er parabelen $y = x^2$ fra $(0, 0)$ til $(1, 1)$.
+
+::: {.losning}
+Bruk $x$ selv som parameter: $x = t$ og $y = t^2$ med $0 \le t \le 1$. Da er $\mathrm{d}x = \mathrm{d}t$ og $\mathrm{d}y = 2t\,\mathrm{d}t$:
+$$
+\int_C y\,\mathrm{d}x + x^2\,\mathrm{d}y = \int_0^1 \big(t^2 + t^2\cdot2t\big)\,\mathrm{d}t = \int_0^1 \big(t^2 + 2t^3\big)\,\mathrm{d}t = \frac13 + \frac12 = \underline{\underline{\frac56}}
+$$
+:::
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Arbeidet til tyngdekraften i en sklie.** En pakke med massen $2.0\ \mathrm{kg}$ glir ned en sklie formet som en kvartsirkel med radius $3.0\ \mathrm{m}$, fra toppen $(0,\ 3.0\ \mathrm{m})$ til bunnen $(3.0\ \mathrm{m},\ 0)$. Regn ut arbeidet tyngdekraften gjør, som et linjeintegral.
+
+::: {.losning}
+Tyngdekraften er $\vec G = [0,\ -m\mathrm{g}]$, med $y$-aksen oppover. Kvartsirkelen kan skrives
+$$
+\vec r(t) = [3.0\sin t,\ 3.0\cos t]\ \mathrm{m}, \qquad 0 \le t \le \tfrac\pi2
+$$
+som starter på toppen ($t = 0$) og slutter i bunnen ($t = \pi/2$). Da er $\vec r\,'(t) = [3.0\cos t,\ -3.0\sin t]\ \mathrm{m}$, og
+$$
+\vec G\cdot\vec r\,' = 0\cdot3.0\cos t + (-m\mathrm{g})(-3.0\sin t) = 3.0\ \mathrm{m}\cdot m\mathrm{g}\sin t
+$$
+$$
+W = \int_0^{\pi/2} 3.0\ \mathrm{m}\cdot m\mathrm{g}\sin t\,\mathrm{d}t = 3.0\ \mathrm{m}\cdot m\mathrm{g} = 3.0\ \mathrm{m}\cdot2.0\ \mathrm{kg}\cdot9.81\ \mathrm{m/s^2} = \underline{\underline{59\ \mathrm{J}}}
+$$
+Svaret er $m\mathrm{g}h$ med høydeforskjellen $h = 3.0\ \mathrm{m}$, akkurat som om pakken hadde falt rett ned. Det er ingen tilfeldighet: Tyngdekraften er et [konservativt felt](04-konservative-felt.qmd).
+:::
+:::
+
+## Sirkulasjon: rundt en lukket kurve
+
+<!-- tillegg: Claude -->
+Når kurven slutter der den startet, kalles den **lukket**, og vi skriver integralet med en ring:
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r
+$$
+Er $\vec F$ fartsfeltet til en væske, kalles dette **sirkulasjonen** rundt $C$: Den måler hvor mye væsken strømmer *rundt* langs kurven. Er sirkulasjonen positiv, strømmer det mest i samme retning som kurven er orientert. Hvis ikke annet er sagt, går en lukket kurve i planet **mot klokka** (positiv orientering).
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Sirkulasjonen i rotasjonsfeltet.** Finn sirkulasjonen til $\vec F = [-y,\ x]$ rundt sirkelen med radius $R$ om origo, mot klokka.
+
+::: {.losning}
+Med $\vec r(t) = [R\cos t,\ R\sin t]$, $0 \le t \le 2\pi$, er $\vec r\,'(t) = [-R\sin t,\ R\cos t]$ og $\vec F = [-R\sin t,\ R\cos t]$. Prikkproduktet er $R^2\sin^2 t + R^2\cos^2 t = R^2$, så
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} R^2\,\mathrm{d}t = \underline{\underline{2\pi R^2}}
+$$
+Legg merke til at svaret er $2\cdot\pi R^2$: [curl](02-divergens-og-curl.qmd) til feltet ($2$) ganger arealet inni sirkelen ($\pi R^2$). Curl er virvlingen per areal, og sirkulasjonen rundt kanten samler opp all virvlingen inni. Den sammenhengen holder generelt og kalles Greens teorem.
+:::
+:::
+
+## Prøv selv: linjeintegral numerisk
+
+<!-- tillegg: Claude -->
+Programmet regner ut linjeintegralet ved å dele kurven i mange små steg og summere $\vec F\cdot\Delta\vec r$, akkurat som i definisjonen. Det tegner også feltet og kurven. Endre feltet `F` og kurven `r`, og trykk **Kjør**. Prøv kvartsirkelen og linjestykket fra det første eksempelet, eller bytt fortegn på `t` for å gå baklengs.
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def F(x, y):
+    return -y, x                    # feltet [P, Q]
+
+def r(t):
+    return np.cos(t), np.sin(t)     # kurven [x(t), y(t)]
+
+a, b = 0, np.pi / 2                 # t går fra a til b
+n = 1000                            # antall steg
+
+t = np.linspace(a, b, n + 1)
+x, y = r(t)
+tm = (t[:-1] + t[1:]) / 2           # midt i hvert steg
+P, Q = F(*r(tm))
+W = np.sum(P * np.diff(x) + Q * np.diff(y))
+print("linjeintegralet ≈", W)
+
+g = np.linspace(-1.5, 1.5, 13)
+X, Y = np.meshgrid(g, g)
+U, V = F(X, Y)
+fig, ax = plt.subplots(figsize=(5, 5))
+ax.quiver(X, Y, U, V, color="gray")
+ax.plot(x, y, lw=3)
+ax.annotate("", xy=(x[-1], y[-1]), xytext=(x[-20], y[-20]), arrowprops=dict(arrowstyle="->", lw=3))
+ax.set_aspect("equal"); ax.set_title(f"W ≈ {W:.4f}")
+plt.show()
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Langs et linjestykke, fram og tilbake"}
+<!-- tillegg: Claude -->
+La $\vec F = [xy,\ y^2]$.
+
+a) Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$, der $C$ er linjestykket fra $(0, 0)$ til $(2, 1)$.
+
+b) Hva blir integralet langs det samme linjestykket fra $(2, 1)$ til $(0, 0)$?
+
+::: {.losning}
+**a)** Linjestykket er $\vec r(t) = [2t,\ t]$ med $0 \le t \le 1$, så $\vec r\,'(t) = [2,\ 1]$. Langs kurven er $\vec F = [2t\cdot t,\ t^2] = [2t^2,\ t^2]$, og
+$$
+\vec F\cdot\vec r\,' = 4t^2 + t^2 = 5t^2, \qquad \int_C \vec F\cdot\mathrm{d}\vec r = \int_0^1 5t^2\,\mathrm{d}t = \underline{\underline{\frac53}}
+$$
+
+**b)** Samme kurve med motsatt orientering gir motsatt fortegn: $\underline{\underline{-\tfrac53}}$. Du kan sjekke det med $\vec r(t) = [2 - 2t,\ 1 - t]$, som gir $\vec r\,' = [-2,\ -1]$ og $\vec F\cdot\vec r\,' = -5(1 - t)^2$.
+:::
+:::
+
+::: {.oppgave tittel="Uten å regne"}
+<!-- tillegg: Claude -->
+Det radielle feltet $\vec F = [x,\ y]$ peker rett ut fra origo. Hva er $\oint_C \vec F\cdot\mathrm{d}\vec r$ rundt sirkelen med radius $2$ om origo? Forklar uten å regne, og kontroller så med en parametrisering.
+
+::: {.losning}
+Feltet peker rett ut fra origo, altså langs radien, mens sirkelen hele tiden går vinkelrett på radien. Feltet står derfor vinkelrett på $\mathrm{d}\vec r$ overalt, tangentkomponenten er null, og integralet er $\underline{\underline{0}}$.
+
+Kontroll: $\vec r(t) = [2\cos t,\ 2\sin t]$ gir $\vec r\,' = [-2\sin t,\ 2\cos t]$ og $\vec F\cdot\vec r\,' = -4\cos t\sin t + 4\sin t\cos t = 0$.
+:::
+:::
+
+::: {.oppgave tittel="Langs en skruelinje" niva="Middels"}
+<!-- tillegg: Claude -->
+Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$ for $\vec F = [-y,\ x,\ z]$ langs skruelinjen $\vec r(t) = [\cos t,\ \sin t,\ t]$ fra $t = 0$ til $t = 2\pi$ (én omdreining).
+
+::: {.losning}
+$\vec r\,'(t) = [-\sin t,\ \cos t,\ 1]$, og langs kurven er $\vec F = [-\sin t,\ \cos t,\ t]$. Da er
+$$
+\vec F\cdot\vec r\,' = \sin^2 t + \cos^2 t + t = 1 + t
+$$
+$$
+\int_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} (1 + t)\,\mathrm{d}t = 2\pi + \frac{(2\pi)^2}{2} = \underline{\underline{2\pi + 2\pi^2 \approx 26.0}}
+$$
+Leddet $2\pi$ kommer fra rotasjonen rundt $z$-aksen, og $2\pi^2$ fra $z$-komponenten, som gjør mer og mer arbeid jo høyere opp vi kommer.
+:::
+:::
+
+::: {.oppgave tittel="Friksjon rundt et kvadrat" niva="Middels"}
+<!-- tillegg: Claude -->
+En kasse med massen $5.0\ \mathrm{kg}$ skyves langs gulvet rundt et kvadrat med sider $2.0\ \mathrm{m}$ og tilbake til startpunktet. Friksjonstallet er $\mu_k = 0.30$.
+
+a) Hvor stort arbeid gjør friksjonskraften?
+
+b) Kassen er tilbake der den startet. Hvorfor er arbeidet likevel ikke null?
+
+::: {.losning}
+**a)** Friksjonskraften har størrelsen $f = \mu_k m\mathrm{g}$ og peker hele tiden mot bevegelsen, altså $\vec f = -f\,\vec T$. Da er $\vec f\cdot\mathrm{d}\vec r = -f\,\mathrm{d}s$, og
+$$
+W = \oint_C \vec f\cdot\mathrm{d}\vec r = -f\cdot(\text{lengden av veien}) = -0.30\cdot5.0\ \mathrm{kg}\cdot9.81\ \mathrm{m/s^2}\cdot8.0\ \mathrm{m} = \underline{\underline{-0.12\ \mathrm{kJ}}}
+$$
+(mer nøyaktig $-118\ \mathrm{J}$, men dataene har to gjeldende siffer).
+
+**b)** Friksjonskraften er ikke et fast felt i rommet: Den avhenger av hvilken vei kassen beveger seg, og snur når kassen snur. Den tar alltid energi, uansett retning, så bidragene kan aldri oppheve hverandre. Arbeidet rundt en lukket vei blir null bare for konservative krefter, som tyngdekraften.
+:::
+:::
+
+::: {.oppgave tittel="Areal fra et linjeintegral" niva="Middels"}
+<!-- tillegg: Claude -->
+a) Regn ut $\displaystyle\frac12\oint_C x\,\mathrm{d}y - y\,\mathrm{d}x$ rundt ellipsen $\vec r(t) = [a\cos t,\ b\sin t]$, $0 \le t \le 2\pi$, der $a$ og $b$ er positive konstanter.
+
+b) Sammenlikn med arealet av ellipsen, $\pi ab$. Hva blir svaret for en sirkel med radius $R$?
+
+::: {.losning}
+**a)** $x = a\cos t$, $y = b\sin t$, $\mathrm{d}x = -a\sin t\,\mathrm{d}t$ og $\mathrm{d}y = b\cos t\,\mathrm{d}t$:
+$$
+x\,\mathrm{d}y - y\,\mathrm{d}x = \big(ab\cos^2 t + ab\sin^2 t\big)\,\mathrm{d}t = ab\,\mathrm{d}t
+$$
+$$
+\frac12\oint_C x\,\mathrm{d}y - y\,\mathrm{d}x = \frac12\int_0^{2\pi} ab\,\mathrm{d}t = \underline{\underline{\pi ab}}
+$$
+
+**b)** Det er nøyaktig arealet av ellipsen. For en sirkel ($a = b = R$) får vi $\pi R^2$. Integralet er $\tfrac12$ ganger sirkulasjonen til $[-y,\ x]$, som har curl $2$, så det blir $\tfrac12\cdot2\cdot\text{areal}$. Slik måler et planimeter arealet av en figur ved å følge kanten.
+:::
+:::
+
+::: {.oppgave tittel="Sirkulasjon og curl" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+La $\vec F = [y^2,\ 2xy + x]$, og la $C$ være enhetssirkelen, mot klokka.
+
+a) Regn ut sirkulasjonen $\oint_C \vec F\cdot\mathrm{d}\vec r$ med en parametrisering.
+
+b) Finn curl til $\vec F$, og sammenlikn sirkulasjonen med curl ganger arealet inni sirkelen.
+
+::: {.losning}
+**a)** $\vec r(t) = [\cos t,\ \sin t]$ gir $\vec r\,' = [-\sin t,\ \cos t]$ og $\vec F = [\sin^2 t,\ 2\cos t\sin t + \cos t]$:
+$$
+\vec F\cdot\vec r\,' = -\sin^3 t + 2\cos^2 t\sin t + \cos^2 t
+$$
+Over en hel periode er $\int_0^{2\pi}\sin^3 t\,\mathrm{d}t = 0$ (oddetall potens av sinus) og $\int_0^{2\pi}\cos^2 t\sin t\,\mathrm{d}t = \big[-\tfrac13\cos^3 t\big]_0^{2\pi} = 0$, mens $\int_0^{2\pi}\cos^2 t\,\mathrm{d}t = \pi$. Altså er
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \underline{\underline{\pi}}
+$$
+
+**b)**
+$$
+\nabla\times\vec F = \frac{\partial}{\partial x}(2xy + x) - \frac{\partial}{\partial y}\big(y^2\big) = 2y + 1 - 2y = 1
+$$
+Curl er $1$ overalt, og arealet inni enhetssirkelen er $\pi$, så curl ganger areal er $1\cdot\pi = \pi$. Det stemmer med sirkulasjonen, akkurat som for rotasjonsfeltet. Greens teorem sier at sirkulasjonen rundt kanten alltid er lik integralet av curl over området inni.
+:::
+:::
+
+::::
