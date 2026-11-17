@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: kurver og flater"
+title: "Sammensatte oppgaver: kurver og flater"
 tema: kurve-og-flateintegraler
 undertema: oppgaver
 ---
@@ -17,7 +17,7 @@ Velg parametrisering etter formen: linjestykker med $\vec P + t(\vec Q - \vec P)
 
 :::: {.oppgaver}
 
-::: {.oppgave tittel="Finn en parametrisering"}
+::: {.oppgave tittel="Finn en parametrisering" krever="kurve-og-flateintegraler/linjeintegraler"}
 <!-- tillegg: Claude -->
 Skriv opp en parametrisering med parameterområde for
 
@@ -40,7 +40,7 @@ d) den delen av sylinderen $x^2 + z^2 = 1$ som ligger mellom $y = 0$ og $y = 3$.
 :::
 :::
 
-::: {.oppgave tittel="Buelengden til en graf"}
+::: {.oppgave tittel="Buelengden til en graf" krever="kurve-og-flateintegraler/linjeintegraler"}
 <!-- tillegg: Claude -->
 Finn lengden av kurven $y = x^{3/2}$ fra $x = 0$ til $x = 4$.
 
@@ -57,7 +57,7 @@ Kontroll: Den rette linja fra $(0, 0)$ til $(4, 8)$ har lengden $\sqrt{16 + 64} 
 :::
 :::
 
-::: {.oppgave tittel="Linjeintegral langs en kvartsirkel"}
+::: {.oppgave tittel="Linjeintegral langs en kvartsirkel" krever="kurve-og-flateintegraler/linjeintegraler"}
 <!-- tillegg: Claude -->
 Regn ut $\displaystyle\int_C xy\;\mathrm{d}s$, der $C$ er kvartsirkelen $x^2 + y^2 = 4$ i første kvadrant.
 
@@ -69,7 +69,7 @@ $$
 :::
 :::
 
-::: {.oppgave tittel="Tangentplan til en parametrisk flate" niva="Middels"}
+::: {.oppgave tittel="Tangentplan til en parametrisk flate" niva="Middels" krever="kurve-og-flateintegraler/parametriske-flater"}
 <!-- tillegg: Claude -->
 Flaten $S$ er gitt ved $\vec r(u, v) = [u + v,\ u - v,\ uv]$.
 
@@ -97,7 +97,7 @@ Det er det samme planet, $x - z = 1$.
 :::
 :::
 
-::: {.oppgave tittel="Området nord for polarsirkelen" niva="Middels"}
+::: {.oppgave tittel="Området nord for polarsirkelen" niva="Middels" krever="kurve-og-flateintegraler/flateintegraler"}
 <!-- tillegg: Claude -->
 En kulekalott er den delen av kula med radius $R$ som ligger over planet $z = h$, der $0 \le h < R$.
 
@@ -123,7 +123,7 @@ $$
 :::
 :::
 
-::: {.oppgave tittel="Et symmetritriks" niva="Middels"}
+::: {.oppgave tittel="Et symmetritriks" niva="Middels" krever="kurve-og-flateintegraler/flateintegraler, trippelintegraler/kulekoordinater"}
 <!-- tillegg: Claude -->
 La $S$ være enhetskula $x^2 + y^2 + z^2 = 1$.
 
@@ -145,7 +145,7 @@ fordi $x^2 + y^2 + z^2 = 1$ på hele flaten. Hvert av de tre integralene er da $
 :::
 :::
 
-::: {.oppgave tittel="Lampeskjermen" niva="Utfordrende"}
+::: {.oppgave tittel="Lampeskjermen" niva="Utfordrende" krever="kurve-og-flateintegraler/flateintegraler"}
 <!-- tillegg: Claude -->
 En lampeskjerm har form som den delen av kjeglen $z = \sqrt{x^2 + y^2}$ som ligger mellom $z = 1$ og $z = 2$ (lengder i dm). Stoffet er tettest øverst, med masse per areal $\delta = z$ (i g/dm²).
 
@@ -172,7 +172,7 @@ Tyngdepunktet ligger over midten ($1.5\ \mathrm{dm}$) av to grunner: Skjermen er
 :::
 :::
 
-::: {.oppgave tittel="Omkretsen av en ellipse" niva="Utfordrende"}
+::: {.oppgave tittel="Omkretsen av en ellipse" niva="Utfordrende" krever="kurve-og-flateintegraler/linjeintegraler, dobbeltintegraler/numerisk"}
 <!-- tillegg: Claude -->
 Omkretsen av ellipsen $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$ kan ikke regnes ut med vanlige funksjoner.
 

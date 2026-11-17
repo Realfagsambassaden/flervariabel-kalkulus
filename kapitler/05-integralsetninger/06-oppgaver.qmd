@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: integralsetningene"
+title: "Sammensatte oppgaver: integralsetningene"
 tema: integralsetninger
 undertema: oppgaver
 plassholder: true

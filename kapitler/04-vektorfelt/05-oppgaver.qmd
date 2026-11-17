@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: vektorfelt"
+title: "Sammensatte oppgaver: vektorfelt"
 tema: vektorfelt
 undertema: oppgaver
 ---
@@ -17,7 +17,7 @@ Prøv selv før du åpner løsningen.
 
 :::: {.oppgaver}
 
-::: {.oppgave tittel="Arbeid langs to veier"}
+::: {.oppgave tittel="Arbeid langs to veier" krever="vektorfelt/linjeintegraler"}
 <!-- tillegg: Claude -->
 La $\vec F(x, y) = [2x,\ xy]$.
 
@@ -46,7 +46,7 @@ $$
 :::
 :::
 
-::: {.oppgave tittel="Tre veier i rotasjonsfeltet"}
+::: {.oppgave tittel="Tre veier i rotasjonsfeltet" krever="vektorfelt/linjeintegraler"}
 <!-- tillegg: Claude -->
 Rotasjonsfeltet $\vec F = [-y,\ x]$ og tre veier fra $A = (1, 0)$ til $B = (-1, 0)$: $C_1$ er den øvre halvdelen av enhetssirkelen, $C_2$ den nedre, og $C_3$ er linjestykket langs $x$-aksen.
 
@@ -67,7 +67,7 @@ $C_3$: På $x$-aksen er $y = 0$, så $\vec F = [0,\ x]$ peker loddrett, mens vei
 :::
 :::
 
-::: {.oppgave tittel="Hvilke felt er konservative?"}
+::: {.oppgave tittel="Hvilke felt er konservative?" krever="vektorfelt/konservative"}
 <!-- tillegg: Claude -->
 Avgjør om feltene er konservative i hele rommet. Finn et potensial der det finnes.
 
@@ -88,7 +88,7 @@ Hele rommet har ingen hull, så curl $= \vec 0$ betyr at det finnes et potensial
 :::
 :::
 
-::: {.oppgave tittel="Arbeidet til en fjær i planet"}
+::: {.oppgave tittel="Arbeidet til en fjær i planet" krever="vektorfelt/linjeintegraler, vektorfelt/konservative"}
 <!-- tillegg: Claude -->
 En kule ligger på et glatt bord og er festet til en fjær med stivhet $k = 50\ \mathrm{N/m}$. Fjæra er festet i origo og har null lengde i hvile, så kraften på kula er $\vec F = -k\,[x,\ y]$. Kula flyttes fra $A = (0.10,\ 0)\ \mathrm{m}$ til $B = (0,\ 0.20)\ \mathrm{m}$.
 
@@ -107,7 +107,7 @@ Arbeidet er negativt fordi kula ender lenger fra origo, og fjæra strekkes mer. 
 :::
 :::
 
-::: {.oppgave tittel="Potensial sparer regning" niva="Middels"}
+::: {.oppgave tittel="Potensial sparer regning" niva="Middels" krever="vektorfelt/konservative"}
 <!-- tillegg: Claude -->
 La $\vec F(x, y) = [y\cos x,\ \sin x + 2y]$.
 
@@ -129,7 +129,7 @@ $$
 :::
 :::
 
-::: {.oppgave tittel="Sirkulasjon i en spiral" niva="Middels"}
+::: {.oppgave tittel="Sirkulasjon i en spiral" niva="Middels" krever="vektorfelt/divergens-og-curl, vektorfelt/linjeintegraler"}
 <!-- tillegg: Claude -->
 Feltet $\vec F = [x - y,\ x + y]$ har curl $2$ overalt. Regn ut sirkulasjonen $\oint_C \vec F\cdot\mathrm{d}\vec r$ rundt enhetssirkelen mot klokka, og sammenlikn med curl ganger arealet av sirkelskiva.
 
@@ -146,7 +146,7 @@ Curl ganger areal er $2\cdot\pi\cdot1^2 = 2\pi$, det samme. Den radielle delen $
 :::
 :::
 
-::: {.oppgave tittel="Sirkulasjon i et skjærfelt" niva="Middels"}
+::: {.oppgave tittel="Sirkulasjon i et skjærfelt" niva="Middels" krever="vektorfelt/divergens-og-curl, vektorfelt/linjeintegraler"}
 <!-- tillegg: Claude -->
 Vann mellom to plater har fartsfeltet $\vec v = [y,\ 0]$ (skjærfeltet). Regn ut sirkulasjonen rundt kvadratet med hjørner $(0, 0)$, $(1, 0)$, $(1, 1)$ og $(0, 1)$, gjennomløpt mot klokka. Sammenlikn med curl.
 
@@ -162,7 +162,7 @@ Sirkulasjonen er $\underline{\underline{-1}}$. Curl er $Q_x - P_y = 0 - 1 = -1$,
 :::
 :::
 
-::: {.oppgave tittel="Finn konstanten" niva="Utfordrende"}
+::: {.oppgave tittel="Finn konstanten" niva="Utfordrende" krever="vektorfelt/konservative"}
 <!-- tillegg: Claude -->
 La $\vec F = \big[2xy + z^3,\ x^2 + az,\ 3xz^2 + y\big]$, der $a$ er en konstant.
 
@@ -191,7 +191,7 @@ $$
 :::
 :::
 
-::: {.oppgave tittel="Virvelen og hullet i origo" niva="Utfordrende"}
+::: {.oppgave tittel="Virvelen og hullet i origo" niva="Utfordrende" krever="vektorfelt/konservative, vektorfelt/divergens-og-curl"}
 <!-- tillegg: Claude -->
 Virvelen
 $$

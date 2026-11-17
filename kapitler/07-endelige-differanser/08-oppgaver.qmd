@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: endelige differanser"
+title: "Sammensatte oppgaver: endelige differanser"
 tema: endelige-differanser
 undertema: oppgaver
 ---
@@ -9,7 +9,7 @@ Oppgavene blander randverdiproblemer, iterasjon, varme- og bølgelikningen. Prø
 
 :::: {.oppgaver}
 
-::: {.oppgave tittel="Hvilken type problem?"}
+::: {.oppgave tittel="Hvilken type problem?" krever="endelige-differanser/randverdiproblem, endelige-differanser/varmelikningen"}
 Er problemene randverdiproblemer (løses samlet) eller initialverdiproblemer (løses steg for steg)?
 
 a) $u'' = -1$, $u(0) = 0$, $u(2) = 0$ b) $u'' = -1$, $u(0) = 0$, $u'(0) = 1$ c) $u_t = u_{xx}$ med $u(x, 0)$, $u(0, t)$ og $u(1, t)$ gitt
@@ -21,7 +21,7 @@ Det som avgjør, er *hvor* betingelsene står, ikke hva variabelen heter.
 :::
 :::
 
-::: {.oppgave tittel="Tau som henger" niva="Middels"}
+::: {.oppgave tittel="Tau som henger" niva="Middels" krever="endelige-differanser/randverdiproblem"}
 Et tau som henger mellom to festepunkter i samme høyde, har nedbøyning $y(x)$ som oppfyller $y'' = 0.02$ (i m⁻¹) for $0 \le x \le 10\ \mathrm{m}$ med $y(0) = y(10) = 0$. Sett opp og løs differanselikningene med $N = 5$. Hvor mye henger tauet ned på midten? Er svaret eksakt?
 
 ::: {.losning}
@@ -31,7 +31,7 @@ Eksakt løsning: $y = 0.01x(x - 10)$, som gir de samme verdiene. Svaret er eksak
 :::
 :::
 
-::: {.oppgave tittel="Stabilt eller ikke?" niva="Middels"}
+::: {.oppgave tittel="Stabilt eller ikke?" niva="Middels" krever="endelige-differanser/varmelikningen, endelige-differanser/bolgelikningen"}
 Avgjør om valgene er stabile.
 
 a) Varmelikningen $u_t = 0.5u_{xx}$ med $\Delta x = 0.1$ og $\Delta t = 0.01$ (eksplisitt Euler).
@@ -45,7 +45,7 @@ c) $r = \frac{0.003}{0.01} = 0.3 > 0.25$: **ustabilt**.
 :::
 :::
 
-::: {.oppgave tittel="Hjørnet på en plate" niva="Middels"}
+::: {.oppgave tittel="Hjørnet på en plate" niva="Middels" krever="endelige-differanser/laplace-poisson"}
 En kvadratisk plate deles med $h = \frac13$ av sidelengden (fire indre punkter). Venstre kant har $0\ \mathrm{°C}$, høyre kant $90\ \mathrm{°C}$, og topp og bunn $0\ \mathrm{°C}$. Finn de fire temperaturene.
 
 ::: {.losning}
@@ -55,7 +55,7 @@ $4a = 0 + 0 + a + b$ gir $3a = b$. $4b = 90 + 0 + b + a$ gir $3b - a = 90$. Alts
 :::
 :::
 
-::: {.oppgave tittel="Avkjøling med isolert ende" niva="Utfordrende"}
+::: {.oppgave tittel="Avkjøling med isolert ende" niva="Utfordrende" krever="endelige-differanser/varmelikningen, endelige-differanser/neumann"}
 En stav har $u_t = u_{xx}$ på $[0, 1]$ med $u(x, 0) = 1$. Venstre ende holdes på $u(0, t) = 0$, og høyre ende er isolert, $u_x(1, t) = 0$. Skriv oppdateringsformelen for randpunktet $x_M$ med fiktiv rand. Implementer metoden og finn $u(1, t)$ ved $t = 0.5$.
 
 ::: {.losning}
