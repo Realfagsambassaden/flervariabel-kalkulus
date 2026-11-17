@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: dobbeltintegraler"
+title: "Sammensatte oppgaver: dobbeltintegraler"
 tema: dobbeltintegraler
 undertema: oppgaver
 ---
@@ -20,7 +20,7 @@ Prøv selv før du åpner løsningen.
 
 :::: {.oppgaver}
 
-::: {.oppgave tittel="Hvilket verktøy?"}
+::: {.oppgave tittel="Hvilket verktøy?" krever="dobbeltintegraler/rektangler, dobbeltintegraler/generelle-omrader, dobbeltintegraler/polarkoordinater, dobbeltintegraler/variabelbytte"}
 <!-- tillegg: Claude -->
 Du skal ikke regne ut integralene. Avgjør bare hvilken framgangsmåte som passer best, og begrunn svaret.
 
@@ -43,7 +43,7 @@ d)  $\displaystyle\iint_{[0,1]^2} \cos(x^2 y^3)\,\mathrm{d}A$
 :::
 :::
 
-::: {.oppgave tittel="Over et rektangel"}
+::: {.oppgave tittel="Over et rektangel" krever="dobbeltintegraler/rektangler"}
 <!-- tillegg: Claude -->
 Regn ut $\displaystyle\iint_R (6x^2y + 2)\,\mathrm{d}A$ der $R = [0, 1] \times [0, 2]$.
 
@@ -60,7 +60,7 @@ Kontroll: Den andre rekkefølgen gir $\int_0^1 \big[3x^2y^2 + 2y\big]_0^2\,\math
 :::
 :::
 
-::: {.oppgave tittel="Den lure rekkefølgen"}
+::: {.oppgave tittel="Den lure rekkefølgen" krever="dobbeltintegraler/rektangler"}
 <!-- tillegg: Claude -->
 Regn ut $\displaystyle\iint_R x\cos(xy)\,\mathrm{d}A$ der $R = [0, 1] \times [0, \tfrac{\pi}{2}]$. Hvilken rekkefølge er enklest?
 
@@ -76,7 +76,7 @@ $$
 :::
 :::
 
-::: {.oppgave tittel="Mellom en parabel og en linje"}
+::: {.oppgave tittel="Mellom en parabel og en linje" krever="dobbeltintegraler/generelle-omrader"}
 <!-- tillegg: Claude -->
 La $D$ være området mellom parabelen $y = x^2$ og linja $y = 2x$.
 
@@ -114,7 +114,7 @@ Høyden på stripen, $2x - x^2 = 1 - (x - 1)^2$, er symmetrisk om $x = 1$. Derfo
 :::
 :::
 
-::: {.oppgave tittel="Bytt rekkefølge" niva="Middels"}
+::: {.oppgave tittel="Bytt rekkefølge" niva="Middels" krever="dobbeltintegraler/generelle-omrader"}
 <!-- tillegg: Claude -->
 Regn ut
 $$
@@ -138,7 +138,7 @@ $$
 :::
 :::
 
-::: {.oppgave tittel="Polarkoordinater gjør det enkelt" niva="Middels"}
+::: {.oppgave tittel="Polarkoordinater gjør det enkelt" niva="Middels" krever="dobbeltintegraler/polarkoordinater"}
 <!-- tillegg: Claude -->
 Regn ut
 $$
@@ -155,7 +155,7 @@ Det er faktoren $r$ som gjør integralet mulig: Telleren $r$ er (nesten) den der
 :::
 :::
 
-::: {.oppgave tittel="Et skjevt parallellogram" niva="Middels"}
+::: {.oppgave tittel="Et skjevt parallellogram" niva="Middels" krever="dobbeltintegraler/variabelbytte"}
 <!-- tillegg: Claude -->
 La $D$ være parallellogrammet avgrenset av linjene $x + y = 1$, $x + y = 3$, $x - 2y = 0$ og $x - 2y = 3$. Regn ut
 $$
@@ -181,7 +181,7 @@ Kontroll av faktoren: Arealet av $D$ blir $\tfrac13\cdot2\cdot3 = 2$. Hjørnene 
 :::
 :::
 
-::: {.oppgave tittel="Trykket mot en rund luke" niva="Middels"}
+::: {.oppgave tittel="Trykket mot en rund luke" niva="Middels" krever="dobbeltintegraler/polarkoordinater, dobbeltintegraler/anvendelser"}
 <!-- tillegg: Claude -->
 En sirkulær luke med radius $0.50\ \mathrm{m}$ sitter i en loddrett vegg i et vannbasseng. Midten av luka er $3.0\ \mathrm{m}$ under vannflaten. Trykket fra vannet (utover lufttrykket) er $p = \rho\,\mathrm{g}\,d$, der $d$ er dybden. Bruk $\rho = 1.00\cdot10^3\ \mathrm{kg/m^3}$ og $\mathrm{g} = 9.81\ \mathrm{m/s^2}$.
 
@@ -207,7 +207,7 @@ Kraften er altså trykket i midten av luka ganger arealet. Det gjelder for alle 
 :::
 :::
 
-::: {.oppgave tittel="Når ingen antiderivert finnes" niva="Utfordrende"}
+::: {.oppgave tittel="Når ingen antiderivert finnes" niva="Utfordrende" krever="dobbeltintegraler/numerisk"}
 <!-- tillegg: Claude -->
 Integralet
 $$

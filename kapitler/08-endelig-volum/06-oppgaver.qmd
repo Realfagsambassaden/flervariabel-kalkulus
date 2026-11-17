@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: endelig volum-metoden"
+title: "Sammensatte oppgaver: endelig volum-metoden"
 tema: endelig-volum
 undertema: oppgaver
 ---
@@ -9,7 +9,7 @@ Oppgavene blander randbetingelser, kilder, 2D og tid. Prøv selv før du åpner 
 
 :::: {.oppgaver}
 
-::: {.oppgave tittel="Endelig volum eller endelige differanser?"}
+::: {.oppgave tittel="Endelig volum eller endelige differanser?" krever="endelig-volum/kontrollvolum"}
 Nevn to situasjoner der endelig volum-metoden har en klar fordel framfor endelige differanser.
 
 ::: {.losning}
@@ -17,7 +17,7 @@ For eksempel: et materiale med flere lag med ulik varmeledningsevne (fluksen er 
 :::
 :::
 
-::: {.oppgave tittel="Gulvvarme" niva="Middels"}
+::: {.oppgave tittel="Gulvvarme" niva="Middels" krever="endelig-volum/diffusjon-1d, endelig-volum/kilder-og-rand"}
 En $0.060\ \mathrm{m}$ tykk betongplate med $\kappa = 1.4\ \mathrm{W/(m\,K)}$ har varmekabler som gir $q = 2.0\ \mathrm{kW/m^3}$ jevnt fordelt. Undersiden er isolert, og oversiden holdes på $22\ \mathrm{°C}$ av romlufta. Hva er den høyeste temperaturen i platen? Bruk endelig volum-metoden med tre celler, og sammenlign med det eksakte svaret.
 
 ::: {.losning}
@@ -29,7 +29,7 @@ Løsningen er $T = (24.57,\ 24.00,\ 22.86)\ \mathrm{°C}$, mot eksakt $(24.50,\ 
 :::
 :::
 
-::: {.oppgave tittel="Hjørnecelle" niva="Middels"}
+::: {.oppgave tittel="Hjørnecelle" niva="Middels" krever="endelig-volum/diffusjon-2d, endelig-volum/kilder-og-rand"}
 Skriv opp likningen for hjørnecellen øverst til høyre i en 2D-plate med kvadratiske celler og $\kappa = 1$, når høyre vegg er isolert og øvre vegg holdes på $50\ \mathrm{°C}$.
 
 ::: {.losning}
@@ -37,7 +37,7 @@ Naboer $W$ og $S$ gir $a_W = a_S = 1$. Høyre vegg er isolert og gir ingenting. 
 :::
 :::
 
-::: {.oppgave tittel="Fra ODE til tidssteg" niva="Utfordrende"}
+::: {.oppgave tittel="Fra ODE til tidssteg" niva="Utfordrende" krever="endelig-volum/tidsavhengig"}
 Vis at den eksplisitte metoden for en indre celle uten kilde er stabil for $r \le \frac12$ ved å se på en sagtannfeil $e_i = (-1)^i\varepsilon$.
 
 ::: {.losning}

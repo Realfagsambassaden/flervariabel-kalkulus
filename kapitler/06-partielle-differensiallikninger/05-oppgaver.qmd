@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: PDE-er"
+title: "Sammensatte oppgaver: PDE-er"
 tema: partielle-differensiallikninger
 undertema: oppgaver
 plassholder: true

@@ -1,5 +1,5 @@
 ---
-title: "Blandede oppgaver: trippelintegraler"
+title: "Sammensatte oppgaver: trippelintegraler"
 tema: trippelintegraler
 undertema: oppgaver
 ---
@@ -18,7 +18,7 @@ Prøv selv før du åpner løsningen.
 
 :::: {.oppgaver}
 
-::: {.oppgave tittel="Hvilke koordinater?"}
+::: {.oppgave tittel="Hvilke koordinater?" krever="trippelintegraler/kartesiske, trippelintegraler/sylinderkoordinater, trippelintegraler/kulekoordinater"}
 <!-- tillegg: Claude -->
 Du skal ikke regne ut integralene. Avgjør bare hvilke koordinater som passer best, og skriv opp grensene.
 
@@ -37,7 +37,7 @@ c) $\displaystyle\iiint_E y\,\mathrm{d}V$, der $E$ er tetraederet avgrenset av k
 :::
 :::
 
-::: {.oppgave tittel="Bytt rekkefølge"}
+::: {.oppgave tittel="Bytt rekkefølge" krever="trippelintegraler/kartesiske"}
 <!-- tillegg: Claude -->
 Skriv integralet
 $$
@@ -58,7 +58,7 @@ Begge gir $\tfrac16$. Området er en av seks like store biter av enhetskuben: De
 :::
 :::
 
-::: {.oppgave tittel="Tetraederet"}
+::: {.oppgave tittel="Tetraederet" krever="trippelintegraler/kartesiske"}
 <!-- tillegg: Claude -->
 Tetraederet $E$ er avgrenset av koordinatplanene og planet $x + 2y + z = 2$.
 
@@ -86,7 +86,7 @@ Kontroll: Tyngdepunktet i et tetraeder er gjennomsnittet av hjørnene, $\bar x =
 :::
 :::
 
-::: {.oppgave tittel="Skrått avkappet sylinder"}
+::: {.oppgave tittel="Skrått avkappet sylinder" krever="trippelintegraler/sylinderkoordinater"}
 <!-- tillegg: Claude -->
 Finn volumet av legemet inni sylinderen $x^2 + y^2 \le 1$, over planet $z = 0$ og under planet $z = 2 - x$.
 
@@ -99,7 +99,7 @@ Cosinusleddet blir null over en hel runde. Det er rimelig: Det skrå taket er li
 :::
 :::
 
-::: {.oppgave tittel="Kulekalotten på to måter" niva="Middels"}
+::: {.oppgave tittel="Kulekalotten på to måter" niva="Middels" krever="trippelintegraler/sylinderkoordinater, trippelintegraler/kulekoordinater"}
 <!-- tillegg: Claude -->
 Legemet $E$ er den delen av kula $x^2 + y^2 + z^2 \le 4$ som ligger over planet $z = 1$.
 
@@ -126,7 +126,7 @@ Planet er ikke en «kuleflate», så avstanden fra origo til planet avhenger av 
 :::
 :::
 
-::: {.oppgave tittel="Tyngdepunktet i en tung kjegle" niva="Middels"}
+::: {.oppgave tittel="Tyngdepunktet i en tung kjegle" niva="Middels" krever="trippelintegraler/sylinderkoordinater, trippelintegraler/anvendelser"}
 <!-- tillegg: Claude -->
 Et legeme fyller området mellom kjeglen $z = \sqrt{x^2 + y^2}$ og planet $z = 1$. Tettheten øker oppover: $\delta = z$. Finn massen og tyngdepunktet.
 
@@ -146,7 +146,7 @@ Med konstant tetthet ville $\bar z$ vært $\tfrac34$. Den tunge toppen trekker t
 :::
 :::
 
-::: {.oppgave tittel="Røret" niva="Middels"}
+::: {.oppgave tittel="Røret" niva="Middels" krever="trippelintegraler/sylinderkoordinater, trippelintegraler/anvendelser"}
 <!-- tillegg: Claude -->
 Et rør med konstant tetthet har indre radius $R_1$, ytre radius $R_2$ og lengden $h$. Vis at treghetsmomentet om røraksen er $I = \tfrac12 m\big(R_1^2 + R_2^2\big)$. Kontroller svaret for $R_1 = 0$ og for $R_1 \to R_2$.
 
@@ -163,7 +163,7 @@ For $R_1 = 0$ får vi den massive sylinderen, $\tfrac12 mR_2^2$. For et tynt rø
 :::
 :::
 
-::: {.oppgave tittel="Gauss-integralet i tre dimensjoner" niva="Utfordrende"}
+::: {.oppgave tittel="Gauss-integralet i tre dimensjoner" niva="Utfordrende" krever="trippelintegraler/kulekoordinater"}
 <!-- tillegg: Claude -->
 La $J = \displaystyle\int_{-\infty}^{\infty}\mathrm{e}^{-x^2}\,\mathrm{d}x$. Funksjonen $\mathrm{e}^{-x^2}$ har ingen antiderivert med vanlige funksjoner, men vi kan likevel finne $J$.
 
@@ -190,7 +190,7 @@ Altså er $J^3 = 4\pi\cdot\tfrac14 J = \pi J$.
 :::
 :::
 
-::: {.oppgave tittel="Tre sylindre som krysser hverandre" niva="Utfordrende"}
+::: {.oppgave tittel="Tre sylindre som krysser hverandre" niva="Utfordrende" krever="trippelintegraler/kartesiske"}
 <!-- tillegg: Claude -->
 Tre sylindre med radius $1$ ligger langs hver sin akse: $x^2 + y^2 \le 1$, $y^2 + z^2 \le 1$ og $x^2 + z^2 \le 1$. Felles del er et rundt legeme som er vanskelig å sette grenser for. Bruk Monte Carlo-integrasjon til å anslå volumet, og sammenlikn med den eksakte verdien $8\big(2 - \sqrt2\big)$.
 
