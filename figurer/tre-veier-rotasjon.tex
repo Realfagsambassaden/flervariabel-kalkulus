@@ -1,0 +1,21 @@
+\begin{tikzpicture}[scale=1.6]
+% rotasjonsfeltet [-y, x], skalert
+\foreach \x in {-1.5,-1,-0.5,0,0.5,1,1.5} \foreach \y in {-1.5,-1,-0.5,0,0.5,1,1.5} {
+  \draw[->,black!40,>={Stealth[length=1.6mm]}] (\x,\y)--++({-0.22*\y},{0.22*\x}); }
+\draw[akse] (-1.9,0)--(1.95,0) node[right] {$x$};
+\draw[akse] (0,-1.9)--(0,1.95) node[above] {$y$};
+% C1: øvre halvsirkel mot klokka
+\draw[very thick,bla] (1,0) arc (0:180:1);
+% C2: nedre halvsirkel med klokka
+\draw[very thick,rod] (1,0) arc (0:-180:1);
+\draw[->,very thick,bla] (0.06,1)--(-0.06,1);
+\draw[->,very thick,rod] (0.06,-1)--(-0.06,-1);
+% C3: linjestykket
+\draw[very thick,gronn] (1,0)--(-1,0);
+\draw[->,very thick,gronn] (0.66,0)--(0.5,0);
+\fill (1,0) circle (0.04) node[below right] {$A$};
+\fill (-1,0) circle (0.04) node[below left] {$B$};
+\node[bla] at (0.55,1.12) {$C_1$};
+\node[rod] at (0.55,-1.12) {$C_2$};
+\node[gronn,above] at (0.45,0) {$C_3$};
+\end{tikzpicture}
