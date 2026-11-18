@@ -2,18 +2,265 @@
 title: "Fluks gjennom en kurve"
 tema: integralsetninger
 undertema: fluks
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/05-01-fluks-i-planet) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Du står på en bro og ser ned på en elv. Hvor mye vann renner forbi under broen hvert sekund? Det avhenger ikke av hvor fort vannet renner *langs* broen, bare av hvor fort det renner *gjennom* linja under den. Den mengden kalles **fluksen** gjennom linja. Under [linjeintegraler av vektorfelt](../04-vektorfelt/03-linjeintegraler-av-vektorfelt.qmd) summerte vi tangentkomponenten til feltet langs en kurve og fikk arbeid og sirkulasjon. Nå summerer vi i stedet komponenten *på tvers* av kurven. Det er den andre halvdelen av historien, og sammen gir de to Greens teorem.
+
+![Til venstre: Vann med farten $\vec F$ krysser et lite linjestykke $\Delta s$. På tiden $\Delta t$ fyller vannet som har krysset, et parallellogram. Høyden er normalkomponenten $(\vec F\cdot\vec n)\,\Delta t$, så arealet er $(\vec F\cdot\vec n)\,\Delta s\,\Delta t$. Bare normalkomponenten teller. Til høyre: Langs en orientert kurve står enhetsnormalen $\vec n$ vinkelrett på enhetstangenten $\vec T$ og peker mot høyre for bevegelsesretningen.](../../bilder/figurer/fluks-kurve.svg){.tikz-fig style="width:620px" fig-alt="To deler. Til venstre et vannrett linjestykke Delta s med en normalvektor n rett opp. En skrå vektor F Delta t går fra høyre ende, og et skyggelagt parallellogram er utspent av linjestykket og vektoren. Høyden av parallellogrammet er merket F prikk n ganger Delta t. Teksten under sier at arealet som krysser på tiden Delta t er F prikk n ganger Delta s ganger Delta t. Til høyre en buet kurve C med en pil som viser retningen. I to punkter er enhetstangenten T tegnet langs kurven og enhetsnormalen n vinkelrett på den, mot høyre for bevegelsesretningen."}
+
+## Hva krysser et lite linjestykke?
+
+<!-- tillegg: Claude -->
+Tenk på vannet i elva som et tynt lag, så vi kan regne i planet. Farten i hvert punkt er vektorfeltet $\vec F$. Se på et lite, rett linjestykke med lengden $\Delta s$ og en enhetsnormal $\vec n$ som står vinkelrett på det. På den korte tiden $\Delta t$ flytter hver vanndråpe seg $\vec F\,\Delta t$. Vannet som har krysset linjestykket, fyller da parallellogrammet i figuren. Grunnlinja er $\Delta s$, og høyden er den delen av $\vec F\,\Delta t$ som peker langs $\vec n$, altså $(\vec F\cdot\vec n)\,\Delta t$.
+
+Arealet som krysser per tid er derfor $(\vec F\cdot\vec n)\,\Delta s$. Tre ting er verdt å legge merke til:
+
+- Renner vannet **langs** linjestykket ($\vec F\perp\vec n$), er parallellogrammet flatt, og ingenting krysser.
+- Renner det **rett gjennom** ($\vec F$ parallell med $\vec n$), krysser mest, $|\vec F|\,\Delta s$.
+- Renner det **motsatt vei** av $\vec n$, blir bidraget negativt. Fluksen har fortegn, og normalen bestemmer hvilken vei som er positiv.
+
+## Normalvektoren til en kurve
+
+<!-- tillegg: Claude -->
+En kurve $C$ er gitt ved $\vec r(t) = [x(t),\ y(t)]$, $a \le t \le b$. Tangentvektoren er $\vec r\,'(t) = [x',\ y']$. Dreier vi den $90^\circ$ med klokka, får vi en vektor som står vinkelrett på kurven og peker mot **høyre** for bevegelsesretningen:
+$$
+[x',\ y'] \quad\longrightarrow\quad [y',\ -x']
+$$
+Sjekk: $[x',\ y']\cdot[y',\ -x'] = x'y' - y'x' = 0$, og de to vektorene er like lange. Enhetsnormalen er derfor
+$$
+\vec n = \frac{[y',\ -x']}{|\vec r\,'|}
+$$
+Går kurven rundt et område **mot klokka**, peker denne normalen **ut** av området. Det er derfor vi velger høyre side: Den passer med den vanlige orienteringen av lukkede kurver. Den andre normalen, $-\vec n$, er like gyldig, men da må vi si fra.
+
+## Fluks gjennom en kurve
+
+<!-- tillegg: Claude -->
+Del kurven i mange små, nesten rette biter. Hver bit bidrar med omtrent $(\vec F\cdot\vec n)\,\Delta s$, og summen blir et integral. Med $\mathrm{d}s = |\vec r\,'(t)|\,\mathrm{d}t$ forsvinner lengden $|\vec r\,'|$ fra nevneren i $\vec n$, og vi står igjen med et enkelt integral over $t$.
+
+::: {.callout-note title="Definisjon: Fluks gjennom en kurve"}
+<!-- tillegg: Claude -->
+La $C$ være en orientert kurve $\vec r(t) = [x(t),\ y(t)]$, $a \le t \le b$, med enhetsnormalen $\vec n$ mot høyre for bevegelsesretningen. Fluksen til $\vec F = [P,\ Q]$ gjennom $C$ er
+$$
+\Phi = \int_C \vec F\cdot\vec n\,\mathrm{d}s = \int_a^b \Big(P\,y'(t) - Q\,x'(t)\Big)\,\mathrm{d}t = \int_C P\,\mathrm{d}y - Q\,\mathrm{d}x
+$$
+Er $\vec F$ fartsfeltet til et tynt lag væske, er $\Phi$ arealet som krysser kurven per tid. Med dybden $h$ blir volumstrømmen $h\,\Phi$.
 :::
 
-## Dette kommer på siden
+::: {.graa}
+| | Arbeid og sirkulasjon | Fluks |
+|---|---|---|
+| Hvilken komponent teller? | langs kurven, $\vec F\cdot\vec T$ | på tvers av kurven, $\vec F\cdot\vec n$ |
+| Integralet | $\displaystyle\int_C P\,\mathrm{d}x + Q\,\mathrm{d}y$ | $\displaystyle\int_C P\,\mathrm{d}y - Q\,\mathrm{d}x$ |
+| Rundt en lukket kurve måler den | hvor mye feltet strømmer *rundt* | hvor mye feltet strømmer *ut* |
+:::
 
-- Normalvektor til en kurve
-- Fluks i planet
+::: {.steg}
+<!-- tillegg: Claude -->
+1. **Parametriser kurven** med $\vec r(t)$, og sjekk at retningen gir normalen du vil ha (mot høyre for bevegelsen).
+2. **Finn normalvektoren** $\vec n\,\mathrm{d}s = [y'(t),\ -x'(t)]\,\mathrm{d}t$.
+3. **Sett inn** $x(t)$ og $y(t)$ i $P$ og $Q$.
+4. **Prikk og integrer:** $\int_a^b \big(P\,y' - Q\,x'\big)\,\mathrm{d}t$.
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Konstant felt gjennom et linjestykke.** Finn fluksen til $\vec F = [3,\ 1]$ gjennom linjestykket fra $(0, 0)$ til $(2, 2)$, med normalen mot høyre for retningen fra $(0, 0)$ til $(2, 2)$.
+
+::: {.losning}
+Linjestykket er $\vec r(t) = [2t,\ 2t]$ med $0 \le t \le 1$, så $x' = 2$ og $y' = 2$. Normalvektoren er $\vec n\,\mathrm{d}s = [2,\ -2]\,\mathrm{d}t$, som peker skrått ned mot høyre. Da er
+$$
+\Phi = \int_0^1 \big(3\cdot2 - 1\cdot2\big)\,\mathrm{d}t = \underline{\underline{4}}
+$$
+Kontroll med geometri: Enhetsnormalen er $\vec n = [1,\ -1]/\sqrt2$, så $\vec F\cdot\vec n = (3 - 1)/\sqrt2 = \sqrt2$. Linjestykket er $2\sqrt2$ langt, og $\sqrt2\cdot2\sqrt2 = 4$. For et konstant felt og et rett linjestykke er fluksen bare normalkomponenten ganger lengden.
+:::
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: To felt gjennom en sirkel.** Finn fluksen ut av sirkelen med radius $R$ om origo for
+
+a) det radielle feltet $\vec F = [x,\ y]$,
+
+b) rotasjonsfeltet $\vec F = [-y,\ x]$.
+
+::: {.losning}
+Sirkelen mot klokka er $\vec r(t) = [R\cos t,\ R\sin t]$, $0 \le t \le 2\pi$. Da er $x' = -R\sin t$ og $y' = R\cos t$, og normalen $[y',\ -x']\,\mathrm{d}t = [R\cos t,\ R\sin t]\,\mathrm{d}t$ peker rett ut, som den skal.
+
+**a)** $P\,y' - Q\,x' = R\cos t\cdot R\cos t + R\sin t\cdot R\sin t = R^2$, så
+$$
+\Phi = \int_0^{2\pi} R^2\,\mathrm{d}t = \underline{\underline{2\pi R^2}}
+$$
+
+**b)** $P\,y' - Q\,x' = -R\sin t\cdot R\cos t - R\cos t\cdot\big(-R\sin t\big) = 0$, så $\Phi = \underline{\underline{0}}$.
+
+Rotasjonsfeltet strømmer bare rundt og rundt, så ingenting kommer ut. Det radielle feltet strømmer ut overalt. Svaret i a) er $2\cdot\pi R^2$: [divergensen](../04-vektorfelt/02-divergens-og-curl.qmd) til feltet ($2$) ganger arealet inni sirkelen. Divergensen er kildestyrken per areal, og fluksen ut gjennom randen samler opp alle kildene inni. Det er den andre formen av Greens teorem.
+:::
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Vannføringen i en kanal.** En kanal er $4.0\ \mathrm{m}$ bred og $1.5\ \mathrm{m}$ dyp. Vannet renner i $x$-retningen, fortest på midten og saktere mot kantene:
+$$
+\vec F = \Big[\,1.2\Big(1 - \big(\tfrac{y}{2.0}\big)^2\Big),\ 0\Big]\ \mathrm{m/s}, \qquad -2.0\ \mathrm{m} \le y \le 2.0\ \mathrm{m}
+$$
+
+a) Finn vannføringen (volum per tid) gjennom en rett linje tvers over kanalen, $x = 0$.
+
+b) Finn fluksen gjennom en skrå linje fra $(0,\ -2.0)$ til $(3.0,\ 2.0)$ (i meter). Hvorfor får du det samme?
+
+::: {.losning}
+**a)** Linja $x = 0$ går fra $y = -2.0$ til $y = 2.0$, så $x' = 0$, $y' = 1$ med $y$ selv som parameter. Normalen mot høyre er $[1,\ 0]$, i strømretningen. Da er
+$$
+\Phi = \int_{-2.0}^{2.0} 1.2\Big(1 - \frac{y^2}{4.0}\Big)\,\mathrm{d}y = 1.2\Big(4.0 - \frac{16}{12}\Big)\ \mathrm{m^2/s} = 3.2\ \mathrm{m^2/s}
+$$
+Med dybden $1.5\ \mathrm{m}$ blir vannføringen $1.5\ \mathrm{m}\cdot3.2\ \mathrm{m^2/s} = \underline{\underline{4.8\ \mathrm{m^3/s}}}$.
+
+**b)** Den skrå linja er $\vec r(t) = [3.0t,\ -2.0 + 4.0t]$ med $0 \le t \le 1$, så $x' = 3.0$ og $y' = 4.0$. Siden $Q = 0$, er
+$$
+\Phi = \int_0^1 P\,y'\,\mathrm{d}t = \int_0^1 4.0\cdot1.2\Big(1 - (2t - 1)^2\Big)\,\mathrm{d}t = 4.8\cdot\frac23\ \mathrm{m^2/s} = 3.2\ \mathrm{m^2/s}
+$$
+Samme svar. Vannet kan ikke hope seg opp mellom de to linjene (feltet har divergens null), så alt som går inn gjennom den ene, må ut gjennom den andre. Den skrå linja er lengre, men vannet krysser den mer på skrå, og de to virkningene veier nøyaktig opp for hverandre.
+:::
+:::
+
+## Prøv selv: fluks numerisk
+
+<!-- tillegg: Claude -->
+Programmet deler kurven i mange små biter, finner normalvektoren $[\Delta y,\ -\Delta x]$ for hver bit og summerer $\vec F\cdot\vec n\,\Delta s$. Det tegner feltet, kurven og noen normalvektorer. Endre feltet `F` og kurven `r`, og trykk **Kjør**. Prøv rotasjonsfeltet `return -y, x`, eller flytt sirkelen bort fra origo og se om fluksen til det radielle feltet endrer seg.
+
+```{.python .kjor}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def F(x, y):
+    return x, y                     # feltet [P, Q]
+
+def r(t):
+    R = 1.0
+    return R*np.cos(t), R*np.sin(t) # kurven [x(t), y(t)]
+
+a, b = 0, 2*np.pi                   # t går fra a til b
+n = 2000
+
+t = np.linspace(a, b, n + 1)
+x, y = r(t)
+dx, dy = np.diff(x), np.diff(y)
+P, Q = F(*r((t[:-1] + t[1:]) / 2))
+fluks = np.sum(P*dy - Q*dx)         # summen av F·n Δs
+print("fluksen ≈", fluks)
+
+g = np.linspace(-1.6, 1.6, 13)
+X, Y = np.meshgrid(g, g)
+U, V = F(X, Y)
+fig, ax = plt.subplots(figsize=(5, 5))
+ax.quiver(X, Y, U, V, color="gray")
+ax.plot(x, y, lw=3)
+k = np.arange(0, n, n // 12)        # noen normalvektorer
+ds = np.hypot(dx[k], dy[k])
+ax.quiver(x[k], y[k], dy[k]/ds, -dx[k]/ds, color="C3", scale=8)
+ax.set_aspect("equal"); ax.set_title(f"fluks ≈ {fluks:.4f}")
+plt.show()
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Konstant felt gjennom et linjestykke"}
+<!-- tillegg: Claude -->
+Finn fluksen til $\vec F = [2,\ -1]$ gjennom linjestykket fra $(0, 0)$ til $(3, 4)$, med normalen mot høyre for bevegelsesretningen. Kontroller svaret med normalkomponent ganger lengde.
+
+::: {.losning}
+$\vec r(t) = [3t,\ 4t]$, $0 \le t \le 1$, gir $x' = 3$ og $y' = 4$. Da er
+$$
+\Phi = \int_0^1 \big(P\,y' - Q\,x'\big)\,\mathrm{d}t = \int_0^1 \big(2\cdot4 - (-1)\cdot3\big)\,\mathrm{d}t = \underline{\underline{11}}
+$$
+Kontroll: Linjestykket er $5$ langt, og enhetsnormalen er $\vec n = [4,\ -3]/5$. Da er $\vec F\cdot\vec n = (8 + 3)/5 = \tfrac{11}{5}$, og $\tfrac{11}{5}\cdot5 = 11$.
+:::
+:::
+
+::: {.oppgave tittel="Radielt felt gjennom en loddrett linje"}
+<!-- tillegg: Claude -->
+Finn fluksen til $\vec F = [x,\ y]$ gjennom linjestykket $x = 1$ fra $(1, -1)$ til $(1, 1)$. Hvilken vei peker normalen?
+
+::: {.losning}
+Med $\vec r(t) = [1,\ t]$, $-1 \le t \le 1$, er $x' = 0$ og $y' = 1$, så normalen $[y',\ -x'] = [1,\ 0]$ peker i positiv $x$-retning, bort fra origo. Da er
+$$
+\Phi = \int_{-1}^{1} \big(P\cdot1 - Q\cdot0\big)\,\mathrm{d}t = \int_{-1}^{1} 1\,\mathrm{d}t = \underline{\underline{2}}
+$$
+($P = x = 1$ langs hele linja.) Feltet har også en $y$-komponent, men den går langs linja og bidrar ikke.
+:::
+:::
+
+::: {.oppgave tittel="Ut av et kvadrat, side for side" niva="Middels"}
+<!-- tillegg: Claude -->
+La $\vec F = [x^2,\ y]$, og la $C$ være randen av enhetskvadratet $0 \le x \le 1$, $0 \le y \le 1$, mot klokka.
+
+a) Finn fluksen ut gjennom hver av de fire sidene, og legg sammen.
+
+b) Regn ut $\iint (\nabla\cdot\vec F)\,\mathrm{d}A$ over kvadratet, og sammenlikn.
+
+::: {.losning}
+**a)** På hver side er utovernormalen enkel, og $\vec F\cdot\vec n$ kan leses av direkte:
+
+- Nede ($y = 0$, $\vec n = [0,\ -1]$): $\vec F\cdot\vec n = -y = 0$, så fluksen er $0$.
+- Til høyre ($x = 1$, $\vec n = [1,\ 0]$): $\vec F\cdot\vec n = x^2 = 1$ langs en side med lengde $1$, så fluksen er $1$.
+- Oppe ($y = 1$, $\vec n = [0,\ 1]$): $\vec F\cdot\vec n = y = 1$, så fluksen er $1$.
+- Til venstre ($x = 0$, $\vec n = [-1,\ 0]$): $\vec F\cdot\vec n = -x^2 = 0$, så fluksen er $0$.
+
+Til sammen er fluksen ut $\underline{\underline{2}}$.
+
+**b)** $\nabla\cdot\vec F = 2x + 1$, og
+$$
+\int_0^1\!\!\int_0^1 (2x + 1)\,\mathrm{d}x\,\mathrm{d}y = \int_0^1 (1 + 1)\,\mathrm{d}y = 2
+$$
+Det samme. Fluksen ut av randen er lik summen av divergensen inni. Det er fluksformen av Greens teorem.
+:::
+:::
+
+::: {.oppgave tittel="Gjennom en parabelbue" niva="Middels"}
+<!-- tillegg: Claude -->
+Parabelbuen $y = 1 - x^2$, fra $(1, 0)$ til $(-1, 0)$, ligger over $x$-aksen.
+
+a) Finn fluksen til $\vec F = [x,\ y]$ gjennom buen. Med denne retningen peker normalen oppover og ut fra området under buen.
+
+b) Området under buen og over $x$-aksen har arealet $\tfrac43$. Bruk resultatet fra eksempelet med de to feltene gjennom en sirkel til å forklare svaret i a).
+
+::: {.losning}
+**a)** Bruk $x = t$, $y = 1 - t^2$, med $t$ fra $1$ til $-1$. Da er $x' = 1$ og $y' = -2t$:
+$$
+P\,y' - Q\,x' = t\cdot(-2t) - (1 - t^2)\cdot1 = -t^2 - 1
+$$
+$$
+\Phi = \int_{1}^{-1} \big(-t^2 - 1\big)\,\mathrm{d}t = \int_{-1}^{1} \big(t^2 + 1\big)\,\mathrm{d}t = \frac23 + 2 = \underline{\underline{\frac83}}
+$$
+
+**b)** Feltet har divergensen $2$ overalt, så kildene inni området gir til sammen $2\cdot\tfrac43 = \tfrac83$. Gjennom bunnen ($y = 0$, normal $[0,\ -1]$) er $\vec F\cdot\vec n = -y = 0$, så ingenting går ut der. Derfor må alt, $\tfrac83$, gå ut gjennom buen.
+:::
+:::
+
+::: {.oppgave tittel="En punktkilde" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+Feltet
+$$
+\vec F = \frac{[x,\ y]}{x^2 + y^2}
+$$
+beskriver vann som strømmer ut fra en kilde i origo og sprer seg likt i alle retninger.
+
+a) Finn fluksen ut av sirkelen med radius $R$ om origo.
+
+b) Svaret avhenger ikke av $R$. Forklar hvorfor, og si hva det betyr for vannet.
+
+::: {.losning}
+**a)** Med $\vec r(t) = [R\cos t,\ R\sin t]$ er $[y',\ -x'] = [R\cos t,\ R\sin t]$, og langs sirkelen er $\vec F = [R\cos t,\ R\sin t]/R^2$. Da er
+$$
+P\,y' - Q\,x' = \frac{R^2\cos^2 t + R^2\sin^2 t}{R^2} = 1, \qquad \Phi = \int_0^{2\pi} 1\,\mathrm{d}t = \underline{\underline{2\pi}}
+$$
+
+**b)** Feltstyrken er $1/R$ på sirkelen, og omkretsen er $2\pi R$. Produktet er $2\pi$ uansett radius: Feltet blir svakere utover i nøyaktig samme takt som sirkelen blir lengre. Like mye vann krysser en liten og en stor sirkel per tid, så det kommer ikke noe vann til eller forsvinner mellom dem. Hele kilden sitter i origo, og den gir $2\pi$ (i enheten areal per tid). Utenfor origo er feltet divergensfritt, noe du kan sjekke ved å derivere.
+:::
+:::
+
+::::
