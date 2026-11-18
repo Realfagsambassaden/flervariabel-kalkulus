@@ -171,7 +171,7 @@ Overflaten av en boks, en sylinder med lokk og bunn eller paraboloiden med bunn 
 
 ::: {.callout-tip title="Lur sjekk"}
 <!-- tillegg: Claude -->
-Er flaten lukket, kan du kontrollere svaret med divergenssetningen: Fluksen ut er lik volumintegralet av $\nabla\cdot\vec F$ over området inni. Eksemplene med paraboloiden og kula over stemmer begge: $\nabla\cdot[x,\ y,\ z] = 3$, og $3\cdot\tfrac43\pi a^3 = 4\pi a^3$.
+Er flaten lukket, kan du kontrollere svaret med [divergenssetningen](04-divergenssetningen.qmd): Fluksen ut er lik volumintegralet av $\nabla\cdot\vec F$ over området inni. Eksemplene med paraboloiden og kula over stemmer begge: $\nabla\cdot[x,\ y,\ z] = 3$, og $3\cdot\tfrac43\pi a^3 = 4\pi a^3$.
 :::
 
 ## Prøv selv: fluks numerisk

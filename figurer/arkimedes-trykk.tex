@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=1.0]
+% vannflate og vann
+\draw[thick,bla] (-3.2,0)--(3.2,0);
+\node[bla,right] at (3.25,0) {$z = 0$};
+% legemet
+\def\leg{(0,-0.9) .. controls (1.6,-0.8) and (1.9,-2.0) .. (1.3,-2.9) .. controls (0.6,-3.6) and (-0.9,-3.5) .. (-1.5,-2.7) .. controls (-2.0,-1.9) and (-1.3,-0.95) .. (0,-0.9)}
+\fill[bla!10,even odd rule] (-3.2,-4.2) rectangle (3.2,0) \leg; \draw[very thick] \leg;
+\node at (-0.2,-2.15) {$E$};
+\node at (1.95,-1.3) {$S$};
+% trykkpiler, lengre jo dypere (inn mot legemet, langs -n)
+\draw[vek] (0,-0.3)--(0,-0.85);
+\draw[vek] (1.55,-0.75)--(1.15,-1.05);
+\draw[vek] (2.35,-2.1)--(1.75,-2.0);
+\draw[vek] (1.7,-3.75)--(1.05,-3.15);
+\draw[vek] (-0.2,-4.15)--(-0.25,-3.45);
+\draw[vek] (-2.2,-3.45)--(-1.45,-2.85);
+\draw[vek] (-2.45,-1.85)--(-1.8,-1.85);
+\draw[vek] (-1.35,-0.45)--(-1.0,-0.85);
+\node[font=\small,align=center] at (0,-4.85) {trykket $p = p_0 - \rho_v\mathrm{g}z$ er størst nederst};
+% oppdrift
+\draw[vek,rod,line width=1.6pt] (-0.2,-1.9)--(-0.2,-0.95);
+\node[rod,left] at (-0.25,-1.3) {$\vec F_\mathrm{B}$};
+\end{tikzpicture}
