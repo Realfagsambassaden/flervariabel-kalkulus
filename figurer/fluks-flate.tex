@@ -1,0 +1,31 @@
+\begin{tikzpicture}[scale=1.0]
+% Venstre: åpen flate med valgt normal
+\begin{scope}
+\fill[black!12] (0,0.4) .. controls (1.3,0.0) and (2.6,0.1) .. (3.8,0.7)
+  .. controls (3.9,1.4) and (4.0,2.0) .. (3.9,2.6)
+  .. controls (2.7,2.1) and (1.3,2.0) .. (0.1,2.4)
+  .. controls (0.1,1.7) and (0.0,1.0) .. (0,0.4);
+\draw[thick] (0,0.4) .. controls (1.3,0.0) and (2.6,0.1) .. (3.8,0.7)
+  .. controls (3.9,1.4) and (4.0,2.0) .. (3.9,2.6)
+  .. controls (2.7,2.1) and (1.3,2.0) .. (0.1,2.4)
+  .. controls (0.1,1.7) and (0.0,1.0) .. (0,0.4);
+\node at (0.45,0.75) {$S$};
+\foreach \p/\d in {{(1.0,1.3)}/{(-0.25,1.1)}, {(2.0,1.2)}/{(0,1.15)}, {(3.0,1.35)}/{(0.25,1.1)}}
+  {\fill \p circle (1.5pt); \draw[vek] \p --++ \d;}
+\node at (1.8,2.55) {$\vec n$};
+% feltpil gjennom flaten
+\draw[vek,bla] (2.6,-0.55)--(3.2,0.95) node[right] {$\vec F$};
+\node[font=\small,align=center] at (1.9,-1.45) {vi velger hvilken side $\vec n$ peker mot,\\ og bare $\vec F\cdot\vec n$ teller};
+\end{scope}
+% Høyre: lukket flate med utovernormal
+\begin{scope}[xshift=7.6cm,yshift=1.2cm]
+\fill[black!8] (0,0) circle (1.35);
+\draw[thick] (0,0) circle (1.35);
+\draw[thin,dashed] (1.35,0) arc (0:180:1.35 and 0.38);
+\draw[thin] (-1.35,0) arc (180:360:1.35 and 0.38);
+\foreach \a in {20,90,160,230,310}
+  {\draw[vek] ({1.35*cos(\a)},{1.35*sin(\a)}) --++ ({0.75*cos(\a)},{0.75*sin(\a)});}
+\node at (0.95,1.75) {$\vec n$};
+\node[font=\small,align=center] at (0,-2.65) {lukket flate:\\ $\vec n$ peker ut};
+\end{scope}
+\end{tikzpicture}
