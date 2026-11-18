@@ -2,18 +2,296 @@
 title: "Fluks gjennom en flate"
 tema: integralsetninger
 undertema: fluks
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/05-03-fluks-i-rommet) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Hvor mye luft blåser inn gjennom et åpent vindu hvert sekund? Hvor mye vann renner gjennom et fiskegarn som står ute i en elv? Og hvor mange elektriske feltlinjer går ut gjennom en kule rundt en ladning? Alle tre spørsmålene handler om **fluks gjennom en flate**. Det er den samme ideen som [fluks gjennom en kurve](01-fluks-i-planet.qmd), bare ett trinn opp: Nå summerer vi normalkomponenten til feltet over en flate i stedet for langs en kurve. Vi bruker [parametriske flater](../03-kurver-og-flater/02-parametriske-flater.qmd) og arealelementet fra [flateintegraler](../03-kurver-og-flater/03-flateintegraler.qmd), og den eneste nye ingrediensen er en retning: Hvilken side av flaten regner vi som «ut»?
+
+![Til venstre: En åpen flate $S$ har to sider. Vi velger en enhetsnormal $\vec n$ som skifter jevnt over flaten, og fluksen teller det som går gjennom flaten mot den siden $\vec n$ peker. Bare normalkomponenten $\vec F\cdot\vec n$ bidrar. Til høyre: For en lukket flate, som en kule, velger vi alltid normalen som peker ut.](../../bilder/figurer/fluks-flate.svg){.tikz-fig style="width:620px" fig-alt="To deler. Til venstre en svakt buet flate S med tre normalvektorer n som alle peker opp fra samme side av flaten, og en feltvektor F som går skrått opp gjennom flaten nedenfra. Teksten under sier at vi velger hvilken side n peker mot, og at bare F prikk n teller. Til høyre en kule med fem normalvektorer som peker rett ut fra overflaten i ulike retninger. Teksten under sier at for en lukket flate peker n ut."}
+
+## Orientering: hvilken side er ut?
+
+<!-- tillegg: Claude -->
+En flate i rommet har to sider, og i hvert punkt to normaler som peker motsatt vei. For å regne fluks må vi velge én av dem, og valget må henge sammen: Normalen skal skifte jevnt over flaten og ikke plutselig hoppe til den andre siden. En flate med et slikt valg kalles **orientert**.
+
+- For en **graf** $z = g(x, y)$ velger vi som regel normalen **oppover** (positiv $z$-komponent).
+- For en **lukket flate**, som en kule eller overflaten av en boks, velger vi normalen **ut** av det innesluttede området. Det er alltid denne retningen vi bruker for lukkede flater hvis ikke annet er sagt.
+
+Det finnes flater som ikke kan orienteres. Det kjente eksempelet er **Möbiusbåndet**, et papirbånd med en vridning før endene limes sammen. Følger du normalen én runde rundt båndet, kommer den tilbake og peker motsatt vei. Et slikt bånd har bare én side, og fluks gjennom det gir ingen mening. Alle flatene vi regner med, kan orienteres.
+
+## Fluksintegralet
+
+<!-- tillegg: Claude -->
+Akkurat som i planet krysser det per tid omtrent $(\vec F\cdot\vec n)\,\Delta S$ gjennom en liten flatebit med areal $\Delta S$: Feltet langs flaten bidrar ikke, bare feltet gjennom den. Summen over alle flatebitene blir et flateintegral.
+
+Med en parametrisering $\vec r(u, v)$ over et område $D$ står kryssproduktet $\vec r_u\times\vec r_v$ vinkelrett på flaten, og lengden er arealfaktoren. Derfor er
+$$
+\vec n\,\mathrm{d}S = \frac{\vec r_u\times\vec r_v}{|\vec r_u\times\vec r_v|}\cdot|\vec r_u\times\vec r_v|\,\mathrm{d}u\,\mathrm{d}v = \big(\vec r_u\times\vec r_v\big)\,\mathrm{d}u\,\mathrm{d}v
+$$
+Lengden forkorter seg bort, slik den gjorde for kurver. Vi trenger verken å normere normalen eller regne ut noen kvadratrot.
+
+::: {.callout-note title="Definisjon: Fluks gjennom en flate"}
+<!-- tillegg: Claude -->
+La $S$ være en orientert flate med enhetsnormalen $\vec n$. Fluksen til vektorfeltet $\vec F$ gjennom $S$ er
+$$
+\Phi = \iint_S \vec F\cdot\vec n\,\mathrm{d}S = \iint_D \vec F\big(\vec r(u, v)\big)\cdot\big(\vec r_u\times\vec r_v\big)\,\mathrm{d}u\,\mathrm{d}v
+$$
+der parametriseringen er valgt slik at $\vec r_u\times\vec r_v$ peker samme vei som $\vec n$. Peker kryssproduktet feil vei, bytter vi fortegn (eller rekkefølgen på $u$ og $v$). Er $\vec F$ fartsfeltet til en væske, er $\Phi$ volumet som går gjennom flaten per tid.
 :::
 
-## Dette kommer på siden
+::: {.steg}
+<!-- tillegg: Claude -->
+1. **Parametriser flaten** med $\vec r(u, v)$ over et område $D$.
+2. **Regn ut** $\vec r_u\times\vec r_v$, og sjekk at den peker mot den siden du vil ha. Bytt fortegn hvis ikke.
+3. **Sett inn** $\vec r(u, v)$ i $\vec F$.
+4. **Prikk og integrer** $\vec F\cdot\big(\vec r_u\times\vec r_v\big)$ over $D$.
+:::
 
-- Orientering av flater
-- Fluksintegral
+## Fluks gjennom en graf
+
+<!-- tillegg: Claude -->
+For en graf $z = g(x, y)$ over et område $D$ i $xy$-planet kan vi bruke $x$ og $y$ som parametre: $\vec r(x, y) = [x,\ y,\ g(x, y)]$. Da er $\vec r_x = [1,\ 0,\ g_x]$ og $\vec r_y = [0,\ 1,\ g_y]$, og
+$$
+\vec r_x\times\vec r_y = [-g_x,\ -g_y,\ 1]
+$$
+som har positiv $z$-komponent og altså peker oppover. Med $\vec F = [P,\ Q,\ R]$ blir fluksen oppover
+
+::: {.graa}
+$$
+\iint_S \vec F\cdot\vec n\,\mathrm{d}S = \iint_D \Big(-P\,\frac{\partial g}{\partial x} - Q\,\frac{\partial g}{\partial y} + R\Big)\,\mathrm{d}x\,\mathrm{d}y
+$$
+:::
+
+<!-- tillegg: Claude -->
+Legg merke til et spesialtilfelle: Er flaten vannrett ($g$ konstant), står bare $R$ igjen. Da teller bare den loddrette komponenten av feltet, som det skal.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Gjennom et skrått plan.** Finn fluksen til $\vec F = [1,\ 2,\ 3]$ oppover gjennom den delen av planet $x + y + z = 1$ som ligger i første oktant.
+
+::: {.losning}
+Planet er grafen til $g(x, y) = 1 - x - y$, med $g_x = g_y = -1$. Over $xy$-planet ligger det over trekanten $D$ med hjørner $(0, 0)$, $(1, 0)$ og $(0, 1)$, som har arealet $\tfrac12$. Integranden er
+$$
+-P\,g_x - Q\,g_y + R = 1 + 2 + 3 = 6
+$$
+så
+$$
+\Phi = \iint_D 6\,\mathrm{d}A = 6\cdot\frac12 = \underline{\underline{3}}
+$$
+Kontroll med geometri: Enhetsnormalen er $\vec n = [1,\ 1,\ 1]/\sqrt3$, så $\vec F\cdot\vec n = 6/\sqrt3$. Trekanten i planet har sider $\sqrt2$ og arealet $\tfrac{\sqrt3}{2}$, og $\tfrac{6}{\sqrt3}\cdot\tfrac{\sqrt3}{2} = 3$.
+:::
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Gjennom en paraboloide, og ut av en lukket flate.** La $S_1$ være paraboloiden $z = 4 - x^2 - y^2$ over $xy$-planet, og $\vec F = [x,\ y,\ z]$.
+
+a) Finn fluksen oppover gjennom $S_1$.
+
+b) Lukk flaten med bunnen $S_2$, disken $x^2 + y^2 \le 4$ i planet $z = 0$. Finn fluksen ut av den lukkede flaten.
+
+::: {.losning}
+**a)** $g = 4 - x^2 - y^2$ gir $g_x = -2x$ og $g_y = -2y$. Integranden er
+$$
+-x(-2x) - y(-2y) + \big(4 - x^2 - y^2\big) = x^2 + y^2 + 4
+$$
+Paraboloiden ligger over disken med radius $2$. I polarkoordinater er integranden $r^2 + 4$:
+$$
+\Phi_1 = \int_0^{2\pi}\!\!\int_0^2 \big(r^2 + 4\big)\,r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\Big(\frac{2^4}{4} + 2\cdot2^2\Big) = 2\pi\cdot12 = \underline{\underline{24\pi}}
+$$
+
+**b)** På bunnen peker utovernormalen *ned*, $\vec n = [0,\ 0,\ -1]$, så $\vec F\cdot\vec n = -z = 0$. Bunnen bidrar ikke, og fluksen ut av den lukkede flaten er $24\pi + 0 = \underline{\underline{24\pi}}$.
+
+Sammenlikn med divergensen: $\nabla\cdot\vec F = 3$, og volumet under paraboloiden er $\int_0^{2\pi}\!\int_0^2 (4 - r^2)\,r\,\mathrm{d}r\,\mathrm{d}\theta = 8\pi$. Divergensen ganger volumet er $3\cdot8\pi = 24\pi$, det samme. Det er divergenssetningen.
+:::
+:::
+
+## Fluks gjennom en parametrisert flate
+
+<!-- tillegg: Claude -->
+Mange flater er ikke grafer, eller er lettere å beskrive med andre parametre. Da bruker vi den generelle formelen med $\vec r_u\times\vec r_v$. For kuler og sylindre om origo er det ofte lettere å se normalen direkte: På kula med radius $a$ er $\vec n = \vec r/a$, og på sylinderflaten $x^2 + y^2 = a^2$ er $\vec n = [x,\ y,\ 0]/a$.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Ut av en kule og ut av en sylinderflate.** Finn fluksen til det radielle feltet $\vec F = [x,\ y,\ z]$
+
+a) ut av kula med radius $a$ om origo,
+
+b) ut gjennom sideflaten til sylinderen $x^2 + y^2 = a^2$, $0 \le z \le h$.
+
+::: {.losning}
+**a)** På kula er $\vec n = [x,\ y,\ z]/a$, så $\vec F\cdot\vec n = (x^2 + y^2 + z^2)/a = a^2/a = a$. Feltet har samme normalkomponent overalt på kula, så fluksen er $a$ ganger arealet $4\pi a^2$:
+$$
+\Phi = a\cdot4\pi a^2 = \underline{\underline{4\pi a^3}}
+$$
+
+**b)** Parametriser med vinkelen $u$ og høyden $v$: $\vec r(u, v) = [a\cos u,\ a\sin u,\ v]$ med $0 \le u \le 2\pi$ og $0 \le v \le h$. Da er $\vec r_u = [-a\sin u,\ a\cos u,\ 0]$ og $\vec r_v = [0,\ 0,\ 1]$, og
+$$
+\vec r_u\times\vec r_v = [a\cos u,\ a\sin u,\ 0]
+$$
+som peker rett ut fra $z$-aksen. Langs flaten er $\vec F = [a\cos u,\ a\sin u,\ v]$, og
+$$
+\vec F\cdot\big(\vec r_u\times\vec r_v\big) = a^2\cos^2 u + a^2\sin^2 u + 0 = a^2
+$$
+$$
+\Phi = \int_0^h\!\!\int_0^{2\pi} a^2\,\mathrm{d}u\,\mathrm{d}v = \underline{\underline{2\pi a^2 h}}
+$$
+Den loddrette komponenten $z$ går langs sideflaten og bidrar ikke.
+:::
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Elektrisk fluks rundt en punktladning.** En punktladning $q = 2.0\ \mathrm{nC}$ sitter i origo. Det elektriske feltet er
+$$
+\vec E = \mathrm{k_e}\,\frac{q}{\rho^2}\,\hat{\vec r}, \qquad \mathrm{k_e} = \frac{1}{4\pi\varepsilon_0}
+$$
+der $\rho$ er avstanden til origo og $\hat{\vec r}$ er enhetsvektoren rett ut. Finn den elektriske fluksen ut av en kule med radius $\rho$ om ladningen.
+
+::: {.losning}
+På kula er $\vec n = \hat{\vec r}$, så $\vec E\cdot\vec n = \mathrm{k_e}\,q/\rho^2$, det samme overalt. Fluksen er normalkomponenten ganger arealet:
+$$
+\Phi_E = \mathrm{k_e}\,\frac{q}{\rho^2}\cdot4\pi\rho^2 = 4\pi\mathrm{k_e}\,q = \frac{q}{\varepsilon_0}
+$$
+Radien forsvant. Med tall:
+$$
+\Phi_E = \frac{2.0\cdot10^{-9}\ \mathrm{C}}{8.854\cdot10^{-12}\ \mathrm{C^2/(N\,m^2)}} = \underline{\underline{2.3\cdot10^2\ \mathrm{N\,m^2/C}}}
+$$
+Feltet blir svakere som $1/\rho^2$, mens arealet vokser som $\rho^2$, så like mye fluks går ut gjennom en liten og en stor kule. Det er kjernen i **Gauss' lov**: Fluksen ut av en lukket flate er ladningen inni delt på $\varepsilon_0$.
+:::
+:::
+
+## Sammensatte flater
+
+<!-- tillegg: Claude -->
+Overflaten av en boks, en sylinder med lokk og bunn eller paraboloiden med bunn over består av flere glatte deler. Fluksen ut av hele flaten er summen av fluksene ut gjennom hver del, med normalen som peker ut av området på hver av dem. Ofte er flere av delene plane, og da kan normalen leses rett av: På lokket til en sylinder er $\vec n = [0,\ 0,\ 1]$, på bunnen $[0,\ 0,\ -1]$.
+
+::: {.callout-tip title="Lur sjekk"}
+<!-- tillegg: Claude -->
+Er flaten lukket, kan du kontrollere svaret med divergenssetningen: Fluksen ut er lik volumintegralet av $\nabla\cdot\vec F$ over området inni. Eksemplene med paraboloiden og kula over stemmer begge: $\nabla\cdot[x,\ y,\ z] = 3$, og $3\cdot\tfrac43\pi a^3 = 4\pi a^3$.
+:::
+
+## Prøv selv: fluks numerisk
+
+<!-- tillegg: Claude -->
+Programmet regner ut fluksen gjennom en parametrisert flate ved å legge et rutenett i parameterområdet, finne $\vec r_u\times\vec r_v$ med differanser og summere $\vec F\cdot\big(\vec r_u\times\vec r_v\big)\,\Delta u\,\Delta v$. Det er satt opp for paraboloiden i eksempelet, med $u = r$ og $v = \theta$. Endre feltet `F` eller flaten `flate`, og trykk **Kjør**. Prøv kula med `u` som polarvinkel og `v` som asimut, eller sylinderflaten.
+
+```{.python .kjor}
+import numpy as np
+
+def F(x, y, z):
+    return x, y, z
+
+def flate(u, v):                      # paraboloiden z = 4 - r^2
+    return u*np.cos(v), u*np.sin(v), 4 - u**2
+
+u0, u1 = 0, 2                         # u = r
+v0, v1 = 0, 2*np.pi                   # v = vinkelen
+n = 400
+
+du, dv = (u1 - u0)/n, (v1 - v0)/n
+u = u0 + (np.arange(n) + 0.5)*du      # midtpunkt i hver rute
+v = v0 + (np.arange(n) + 0.5)*dv
+U, V = np.meshgrid(u, v)
+h = 1e-6
+ru = (np.array(flate(U + h, V)) - np.array(flate(U - h, V)))/(2*h)
+rv = (np.array(flate(U, V + h)) - np.array(flate(U, V - h)))/(2*h)
+N = np.cross(ru, rv, axis=0)          # r_u x r_v
+Fx, Fy, Fz = F(*flate(U, V))
+fluks = np.sum(Fx*N[0] + Fy*N[1] + Fz*N[2])*du*dv
+print("fluksen ≈", round(fluks, 4))
+print("24*pi   =", round(24*np.pi, 4))
+```
+
+<!-- tillegg: Claude -->
+Sjekk alltid at $\vec r_u\times\vec r_v$ peker riktig vei. Bytter du rekkefølgen på `u` og `v` i parametriseringen, skifter fluksen fortegn.
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Gjennom et skrått tak"}
+<!-- tillegg: Claude -->
+Finn fluksen til $\vec F = [2,\ 0,\ 1]$ oppover gjennom flaten $z = x$ over kvadratet $0 \le x \le 1$, $0 \le y \le 1$. Hva betyr fortegnet?
+
+::: {.losning}
+$g(x, y) = x$ gir $g_x = 1$ og $g_y = 0$. Integranden er
+$$
+-P\,g_x - Q\,g_y + R = -2\cdot1 - 0 + 1 = -1
+$$
+og kvadratet har arealet $1$, så $\Phi = \underline{\underline{-1}}$.
+
+Feltet peker mest i $x$-retning, og taket heller oppover i $x$-retning. Normalen oppover, $[-1,\ 0,\ 1]$, heller derfor bakover. Feltet går altså gjennom taket fra oversiden og ned, og fluksen oppover blir negativ.
+:::
+:::
+
+::: {.oppgave tittel="Halvkule eller disk?"}
+<!-- tillegg: Claude -->
+La $\vec F = [0,\ 0,\ 1]$, et jevnt felt rett opp.
+
+a) Finn fluksen oppover gjennom halvkula $z = \sqrt{a^2 - x^2 - y^2}$.
+
+b) Finn fluksen oppover gjennom disken $x^2 + y^2 \le a^2$ i planet $z = 0$. Hvorfor blir svarene like?
+
+::: {.losning}
+**a)** Med grafformelen er integranden $-P\,g_x - Q\,g_y + R = 0 + 0 + 1 = 1$, så fluksen er arealet av området under halvkula, disken med radius $a$: $\Phi = \underline{\underline{\pi a^2}}$. (Integranden har ingen problemer ved randen, selv om $g_x$ og $g_y$ blir uendelige der, fordi de ganges med $P = Q = 0$.)
+
+**b)** Disken har $\vec n = [0,\ 0,\ 1]$ og $\vec F\cdot\vec n = 1$, så $\Phi = \underline{\underline{\pi a^2}}$.
+
+Feltet har divergens null: Det som kommer inn gjennom disken nedenfra, må ut gjennom halvkula, fordi ingenting kan hope seg opp i mellom. Fluksen gjennom en flate i et divergensfritt felt avhenger bare av randen til flaten.
+:::
+:::
+
+::: {.oppgave tittel="Ut av en terning" niva="Middels"}
+<!-- tillegg: Claude -->
+Finn fluksen til $\vec F = [x,\ y,\ z]$ ut av overflaten til terningen $0 \le x \le 1$, $0 \le y \le 1$, $0 \le z \le 1$. Sammenlikn med divergensen ganger volumet.
+
+::: {.losning}
+Terningen har seks plane sideflater, alle med areal $1$:
+
+- $x = 1$, $\vec n = [1,\ 0,\ 0]$: $\vec F\cdot\vec n = x = 1$, fluks $1$.
+- $x = 0$, $\vec n = [-1,\ 0,\ 0]$: $\vec F\cdot\vec n = -x = 0$, fluks $0$.
+- På samme måte gir $y = 1$ og $z = 1$ fluks $1$ hver, mens $y = 0$ og $z = 0$ gir $0$.
+
+Til sammen er fluksen ut $\underline{\underline{3}}$. Divergensen er $3$ og volumet $1$, så divergensen ganger volumet er også $3$.
+:::
+:::
+
+::: {.oppgave tittel="Ut av en lukket sylinder" niva="Middels"}
+<!-- tillegg: Claude -->
+Finn fluksen til $\vec F = [x,\ y,\ z]$ ut av den lukkede sylinderen $x^2 + y^2 \le 1$, $0 \le z \le 2$ (sideflate, lokk og bunn).
+
+::: {.losning}
+- **Sideflaten:** Fra eksempelet er fluksen $2\pi a^2 h = 2\pi\cdot1^2\cdot2 = 4\pi$.
+- **Lokket** ($z = 2$, $\vec n = [0,\ 0,\ 1]$): $\vec F\cdot\vec n = z = 2$ over en disk med areal $\pi$, så fluksen er $2\pi$.
+- **Bunnen** ($z = 0$, $\vec n = [0,\ 0,\ -1]$): $\vec F\cdot\vec n = -z = 0$, så fluksen er $0$.
+
+Til sammen $4\pi + 2\pi + 0 = \underline{\underline{6\pi}}$. Kontroll: divergensen $3$ ganger volumet $\pi\cdot1^2\cdot2 = 2\pi$ gir også $6\pi$.
+:::
+:::
+
+::: {.oppgave tittel="Langs en kjegle" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+Kjegleflaten $z = \sqrt{x^2 + y^2}$, $0 \le z \le 1$, har spissen i origo.
+
+a) Vis at fluksen til $\vec F = [x,\ y,\ z]$ gjennom kjegleflaten er null, både ved regning og med et geometrisk argument.
+
+b) Finn fluksen til det samme feltet ut av den lukkede kjeglen (kjegleflaten og lokket $x^2 + y^2 \le 1$ i planet $z = 1$), og sammenlikn med divergensen ganger volumet. Volumet av en kjegle er $\tfrac13\pi r^2 h$.
+
+::: {.losning}
+**a)** Med $g = \sqrt{x^2 + y^2} = r$ er $g_x = x/r$ og $g_y = y/r$. Integranden er
+$$
+-x\cdot\frac{x}{r} - y\cdot\frac{y}{r} + r = -\frac{x^2 + y^2}{r} + r = -r + r = 0
+$$
+så fluksen er $\underline{\underline{0}}$.
+
+Geometrisk: Kjegleflaten består av rette linjer ut fra spissen i origo, og det radielle feltet peker langs disse linjene. Feltet går overalt *langs* flaten og aldri gjennom den.
+
+**b)** På lokket er $\vec n = [0,\ 0,\ 1]$ og $\vec F\cdot\vec n = z = 1$, over en disk med areal $\pi$. Fluksen ut av den lukkede kjeglen er derfor $0 + \pi = \underline{\underline{\pi}}$.
+
+Kontroll: Volumet er $\tfrac13\pi\cdot1^2\cdot1 = \tfrac\pi3$, og divergensen $3$ ganger volumet er $\pi$. Det stemmer.
+:::
+:::
+
+::::
