@@ -8,7 +8,7 @@ undertema: fluks
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-Du står på en bro og ser ned på en elv. Hvor mye vann renner forbi under broen hvert sekund? Det avhenger ikke av hvor fort vannet renner *langs* broen, bare av hvor fort det renner *gjennom* linja under den. Den mengden kalles **fluksen** gjennom linja. Under [linjeintegraler av vektorfelt](../04-vektorfelt/03-linjeintegraler-av-vektorfelt.qmd) summerte vi tangentkomponenten til feltet langs en kurve og fikk arbeid og sirkulasjon. Nå summerer vi i stedet komponenten *på tvers* av kurven. Det er den andre halvdelen av historien, og sammen gir de to Greens teorem.
+Du står på en bro og ser ned på en elv. Hvor mye vann renner forbi under broen hvert sekund? Det avhenger ikke av hvor fort vannet renner *langs* broen, bare av hvor fort det renner *gjennom* linja under den. Den mengden kalles **fluksen** gjennom linja. Under [linjeintegraler av vektorfelt](../04-vektorfelt/03-linjeintegraler-av-vektorfelt.qmd) summerte vi tangentkomponenten til feltet langs en kurve og fikk arbeid og sirkulasjon. Nå summerer vi i stedet komponenten *på tvers* av kurven. Det er den andre halvdelen av historien, og sammen gir de to [Greens teorem](02-greens-teorem.qmd).
 
 ![Til venstre: Vann med farten $\vec F$ krysser et lite linjestykke $\Delta s$. På tiden $\Delta t$ fyller vannet som har krysset, et parallellogram. Høyden er normalkomponenten $(\vec F\cdot\vec n)\,\Delta t$, så arealet er $(\vec F\cdot\vec n)\,\Delta s\,\Delta t$. Bare normalkomponenten teller. Til høyre: Langs en orientert kurve står enhetsnormalen $\vec n$ vinkelrett på enhetstangenten $\vec T$ og peker mot høyre for bevegelsesretningen.](../../bilder/figurer/fluks-kurve.svg){.tikz-fig style="width:620px" fig-alt="To deler. Til venstre et vannrett linjestykke Delta s med en normalvektor n rett opp. En skrå vektor F Delta t går fra høyre ende, og et skyggelagt parallellogram er utspent av linjestykket og vektoren. Høyden av parallellogrammet er merket F prikk n ganger Delta t. Teksten under sier at arealet som krysser på tiden Delta t er F prikk n ganger Delta s ganger Delta t. Til høyre en buet kurve C med en pil som viser retningen. I to punkter er enhetstangenten T tegnet langs kurven og enhetsnormalen n vinkelrett på den, mot høyre for bevegelsesretningen."}
 
@@ -216,7 +216,7 @@ Til sammen er fluksen ut $\underline{\underline{2}}$.
 $$
 \int_0^1\!\!\int_0^1 (2x + 1)\,\mathrm{d}x\,\mathrm{d}y = \int_0^1 (1 + 1)\,\mathrm{d}y = 2
 $$
-Det samme. Fluksen ut av randen er lik summen av divergensen inni. Det er fluksformen av Greens teorem.
+Det samme. Fluksen ut av randen er lik summen av divergensen inni. Det er [fluksformen av Greens teorem](02-greens-teorem.qmd).
 :::
 :::
 

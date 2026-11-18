@@ -156,7 +156,7 @@ Med $\vec r(t) = [R\cos t,\ R\sin t]$, $0 \le t \le 2\pi$, er $\vec r\,'(t) = [-
 $$
 \oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} R^2\,\mathrm{d}t = \underline{\underline{2\pi R^2}}
 $$
-Legg merke til at svaret er $2\cdot\pi R^2$: [curl](02-divergens-og-curl.qmd) til feltet ($2$) ganger arealet inni sirkelen ($\pi R^2$). Curl er virvlingen per areal, og sirkulasjonen rundt kanten samler opp all virvlingen inni. Den sammenhengen holder generelt og kalles Greens teorem.
+Legg merke til at svaret er $2\cdot\pi R^2$: [curl](02-divergens-og-curl.qmd) til feltet ($2$) ganger arealet inni sirkelen ($\pi R^2$). Curl er virvlingen per areal, og sirkulasjonen rundt kanten samler opp all virvlingen inni. Den sammenhengen holder generelt og kalles [Greens teorem](../05-integralsetninger/02-greens-teorem.qmd).
 :::
 :::
 
@@ -303,7 +303,7 @@ $$
 $$
 \nabla\times\vec F = \frac{\partial}{\partial x}(2xy + x) - \frac{\partial}{\partial y}\big(y^2\big) = 2y + 1 - 2y = 1
 $$
-Curl er $1$ overalt, og arealet inni enhetssirkelen er $\pi$, så curl ganger areal er $1\cdot\pi = \pi$. Det stemmer med sirkulasjonen, akkurat som for rotasjonsfeltet. Greens teorem sier at sirkulasjonen rundt kanten alltid er lik integralet av curl over området inni.
+Curl er $1$ overalt, og arealet inni enhetssirkelen er $\pi$, så curl ganger areal er $1\cdot\pi = \pi$. Det stemmer med sirkulasjonen, akkurat som for rotasjonsfeltet. [Greens teorem](../05-integralsetninger/02-greens-teorem.qmd) sier at sirkulasjonen rundt kanten alltid er lik integralet av curl over området inni.
 :::
 :::
 
