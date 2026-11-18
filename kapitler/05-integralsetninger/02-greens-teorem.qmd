@@ -2,19 +2,315 @@
 title: "Greens teorem"
 tema: integralsetninger
 undertema: green
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/05-02-greens-teorem) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Tenk deg en stor folkemengde på et torg der alle går i små ringer. Står du ved kanten av torget, merker du bare de som går forbi deg langs kanten. Likevel forteller det deg noe om hele torget: Går folk mest mot klokka i ringene sine, går de også mest mot klokka langs kanten. **Greens teorem** gjør dette presist. Det sier at sirkulasjonen rundt randen av et område er lik summen av all virvlingen ([curl](../04-vektorfelt/02-divergens-og-curl.qmd)) inni. Vi så det allerede for rotasjonsfeltet under [linjeintegraler av vektorfelt](../04-vektorfelt/03-linjeintegraler-av-vektorfelt.qmd): sirkulasjonen $2\pi R^2$ var curl ganger arealet. Nå ser vi hvorfor det alltid er slik, og hvordan teoremet gjør vanskelige linjeintegraler enkle, finner arealer og forklarer felt med hull.
+
+![Til venstre: Området $D$ er delt i små ruter, og vi går rundt hver rute mot klokka. Langs en indre kant går den ene ruta opp og naboruta ned, så bidragene opphever hverandre. Igjen står bare bidragene langs randen $C$. Til høyre: Et område med hull har to randkurver. Den ytre går mot klokka og den indre med klokka, slik at området hele tiden ligger til venstre.](../../bilder/figurer/green-celler.svg){.tikz-fig style="width:620px" fig-alt="To deler. Til venstre et rektangel D delt i seks små ruter, med en liten buet pil mot klokka i hver rute og piler mot klokka langs randen C. På en indre kant mellom to ruter er det to piler ved siden av hverandre, én opp og én ned, og teksten sier at indre kanter gås like mye fram og tilbake. Til høyre en ring D mellom to sirkler. Den ytre sirkelen C1 har en pil mot klokka, og den indre sirkelen C2 har en pil med klokka."}
+
+## Ideen: små virvler legges sammen
+
+<!-- tillegg: Claude -->
+Del området $D$ i mange små ruter, og regn ut sirkulasjonen rundt hver av dem, alle mot klokka. Hva skjer når vi legger sammen? Se på en kant mellom to naboruter. Den venstre ruta går opp langs kanten, og den høyre går ned langs den samme kanten. Bidragene er like store med motsatt fortegn, så de opphever hverandre. Det gjelder alle indre kanter. Igjen står bare de ytterste kantene, og de utgjør til sammen randen $C$:
+$$
+\sum_{\text{alle ruter}} \big(\text{sirkulasjonen rundt ruta}\big) = \oint_C \vec F\cdot\mathrm{d}\vec r
+$$
+Og sirkulasjonen rundt en liten rute er nettopp det curl måler: virvling per areal, ganger arealet $\Delta A$. Summen blir derfor et dobbeltintegral av curl når rutene blir uendelig små.
+
+Hvorfor er sirkulasjonen rundt en liten rute curl ganger areal? Ta ruta $[x,\ x + \Delta x]\times[y,\ y + \Delta y]$ og $\vec F = [P,\ Q]$. Langs nedre og øvre kant teller bare $P$, og de to kantene går motsatt vei:
+$$
+P(x,\ y)\,\Delta x - P(x,\ y + \Delta y)\,\Delta x \approx -\frac{\partial P}{\partial y}\,\Delta y\,\Delta x
+$$
+Langs høyre og venstre kant teller bare $Q$:
+$$
+Q(x + \Delta x,\ y)\,\Delta y - Q(x,\ y)\,\Delta y \approx \frac{\partial Q}{\partial x}\,\Delta x\,\Delta y
+$$
+Til sammen er sirkulasjonen omtrent $\Big(\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y}\Big)\,\Delta A$.
+
+::: {.callout-important title="Greens teorem"}
+<!-- tillegg: Claude -->
+La $D$ være et begrenset område i planet med en stykkevis glatt rand $C$, orientert slik at $D$ ligger til **venstre** når vi går langs $C$ (mot klokka for et område uten hull). Har $P$ og $Q$ kontinuerlige partielle deriverte i et åpent område som inneholder hele $D$, er
+$$
+\oint_C P\,\mathrm{d}x + Q\,\mathrm{d}y = \iint_D \Big(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\Big)\,\mathrm{d}A
+$$
+Venstre side er sirkulasjonen rundt randen, høyre side er integralet av curl over området.
 :::
 
-## Dette kommer på siden
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Begge sider rundt en trekant.** Kontroller Greens teorem for $\oint_C xy\,\mathrm{d}x + x^2\,\mathrm{d}y$, der $C$ er randen av trekanten med hjørner $(0, 0)$, $(1, 0)$ og $(1, 1)$, mot klokka.
 
-- Sirkulasjon og curl
-- Områder med hull
-- Areal med Greens teorem
+::: {.losning}
+**Dobbeltintegralet:** $P = xy$ og $Q = x^2$, så $\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y} = 2x - x = x$. Trekanten er $0 \le x \le 1$, $0 \le y \le x$:
+$$
+\iint_D x\,\mathrm{d}A = \int_0^1\!\!\int_0^x x\,\mathrm{d}y\,\mathrm{d}x = \int_0^1 x^2\,\mathrm{d}x = \frac13
+$$
+
+**Linjeintegralet,** én side om gangen:
+
+- Fra $(0, 0)$ til $(1, 0)$: $y = 0$ og $\mathrm{d}y = 0$, så bidraget er $0$.
+- Fra $(1, 0)$ til $(1, 1)$: $x = 1$ og $\mathrm{d}x = 0$, så bidraget er $\int_0^1 1\,\mathrm{d}y = 1$.
+- Fra $(1, 1)$ til $(0, 0)$: $y = x$ og $\mathrm{d}y = \mathrm{d}x$, med $x$ fra $1$ til $0$. Bidraget er $\int_1^0 \big(x^2 + x^2\big)\,\mathrm{d}x = -\frac23$.
+
+Summen er $0 + 1 - \frac23 = \frac13$. Begge sider gir $\underline{\underline{\tfrac13}}$.
+:::
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Et umulig linjeintegral blir enkelt.** Regn ut
+$$
+\oint_C \big(y + \mathrm{e}^{x^2}\big)\,\mathrm{d}x + \big(2x + \cos y^2\big)\,\mathrm{d}y
+$$
+der $C$ er ellipsen $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$, mot klokka.
+
+::: {.losning}
+Med en parametrisering ville vi fått $\mathrm{e}^{9\cos^2 t}$ og $\cos(4\sin^2 t)$ i integranden, som ikke har noen enkel antiderivert. Greens teorem gir i stedet
+$$
+\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 2 - 1 = 1
+$$
+De vanskelige leddene $\mathrm{e}^{x^2}$ og $\cos y^2$ forsvant, fordi $\mathrm{e}^{x^2}$ ikke avhenger av $y$ og $\cos y^2$ ikke avhenger av $x$. Integralet er derfor lik arealet av ellipsen, $\pi ab$ med halvaksene $a = 3$ og $b = 2$:
+$$
+\oint_C \ldots = \iint_D 1\,\mathrm{d}A = \pi\cdot3\cdot2 = \underline{\underline{6\pi}}
+$$
+:::
+:::
+
+## Areal fra randen
+
+<!-- tillegg: Claude -->
+Velger vi $P$ og $Q$ slik at $\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y} = 1$, blir høyre side i Greens teorem rett og slett arealet av $D$. Tre valg som virker er $[0,\ x]$, $[-y,\ 0]$ og gjennomsnittet av dem:
+
+::: {.graa}
+$$
+\text{Areal}(D) = \oint_C x\,\mathrm{d}y = -\oint_C y\,\mathrm{d}x = \frac12\oint_C x\,\mathrm{d}y - y\,\mathrm{d}x
+$$
+:::
+
+<!-- tillegg: Claude -->
+Det betyr at vi kan finne arealet av en figur bare ved å gå rundt kanten. Et **planimeter**, et gammelt måleinstrument for kart, gjør akkurat det: Du følger kanten med en nål, og et hjul summerer opp integralet.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Arealet av en mangekant.** Vis at arealet av en mangekant med hjørnene $(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$, tatt mot klokka, er
+$$
+A = \frac12\sum_{i=1}^{n} \big(x_i\,y_{i+1} - x_{i+1}\,y_i\big), \qquad (x_{n+1}, y_{n+1}) = (x_1, y_1)
+$$
+og bruk formelen på firkanten med hjørnene $(0, 0)$, $(4, 0)$, $(5, 3)$ og $(1, 4)$.
+
+::: {.losning}
+Bruk $A = \frac12\oint_C x\,\mathrm{d}y - y\,\mathrm{d}x$ og ta én side om gangen. Siden fra $(x_1, y_1)$ til $(x_2, y_2)$ er $x = x_1 + t\,\Delta x$, $y = y_1 + t\,\Delta y$ med $0 \le t \le 1$, der $\Delta x = x_2 - x_1$ og $\Delta y = y_2 - y_1$. Da er
+$$
+x\,\mathrm{d}y - y\,\mathrm{d}x = \big[(x_1 + t\,\Delta x)\,\Delta y - (y_1 + t\,\Delta y)\,\Delta x\big]\,\mathrm{d}t = \big(x_1\,\Delta y - y_1\,\Delta x\big)\,\mathrm{d}t
+$$
+fordi leddene med $t$ opphever hverandre. Integralet fra $0$ til $1$ blir $x_1(y_2 - y_1) - y_1(x_2 - x_1) = x_1 y_2 - x_2 y_1$. Summen over alle sidene, ganget med $\frac12$, er formelen.
+
+For firkanten:
+$$
+A = \frac12\big[(0\cdot0 - 4\cdot0) + (4\cdot3 - 5\cdot0) + (5\cdot4 - 1\cdot3) + (1\cdot0 - 0\cdot4)\big] = \frac12(0 + 12 + 17 + 0) = \underline{\underline{14.5}}
+$$
+Formelen kalles ofte **skolisseformelen**, fordi kryssproduktene i tabellen av hjørner ligner snøring av en sko. Den brukes for eksempel til å regne ut arealet av en tomt fra koordinatene til hjørnene.
+:::
+:::
+
+## Fluksformen: divergens inni, fluks ut
+
+<!-- tillegg: Claude -->
+Under [fluks gjennom en kurve](01-fluks-i-planet.qmd) så vi at fluksen av det radielle feltet ut av en sirkel var divergensen ganger arealet. Det følger også av Greens teorem. Fluksen ut av $C$ er $\oint_C P\,\mathrm{d}y - Q\,\mathrm{d}x$. Det er sirkulasjonen til feltet $[-Q,\ P]$, så Greens teorem brukt på det feltet gir
+$$
+\oint_C (-Q)\,\mathrm{d}x + P\,\mathrm{d}y = \iint_D \Big(\frac{\partial P}{\partial x} - \frac{\partial(-Q)}{\partial y}\Big)\,\mathrm{d}A = \iint_D \Big(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y}\Big)\,\mathrm{d}A
+$$
+
+::: {.callout-important title="Greens teorem på fluksform"}
+<!-- tillegg: Claude -->
+Med de samme kravene som over og $\vec n$ som utovernormal til $D$:
+$$
+\oint_C \vec F\cdot\vec n\,\mathrm{d}s = \iint_D \nabla\cdot\vec F\,\mathrm{d}A
+$$
+Fluksen ut gjennom randen er lik integralet av divergensen, altså summen av alle kildene og slukene inni.
+:::
+
+<!-- tillegg: Claude -->
+Begrunnelsen med små ruter virker her også: Det som strømmer ut av én rute gjennom en indre kant, strømmer inn i naboruta. Bare fluksen gjennom randen blir igjen. Denne formen er utgangspunktet for divergenssetningen i rommet, og for endelig volum-metoden, der regnskapet føres for hver rute.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Fluks ut av en sirkel.** Finn fluksen til $\vec F = [x^3,\ y^3]$ ut av sirkelen med radius $R$ om origo.
+
+::: {.losning}
+$\nabla\cdot\vec F = 3x^2 + 3y^2 = 3r^2$ i polarkoordinater, og $\mathrm{d}A = r\,\mathrm{d}r\,\mathrm{d}\theta$:
+$$
+\oint_C \vec F\cdot\vec n\,\mathrm{d}s = \int_0^{2\pi}\!\!\int_0^R 3r^2\cdot r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\cdot\frac{3R^4}{4} = \underline{\underline{\frac{3\pi R^4}{2}}}
+$$
+Direkte langs sirkelen måtte vi ha integrert $R^4(\cos^4 t + \sin^4 t)$ fra $0$ til $2\pi$. Det går, men det er mer arbeid.
+:::
+:::
+
+## Områder med hull
+
+<!-- tillegg: Claude -->
+Greens teorem gjelder også for en ring eller et annet område med hull. Da består randen av flere kurver, og regelen er at området alltid skal ligge til venstre: Den ytre randen går mot klokka og den indre med klokka (figuren øverst). Begrunnelsen er den samme som før. Vi kan dele ringen i to halvdeler med to snitt. Snittene gås én gang hver vei og opphever hverandre, og igjen står den ytre sirkelen mot klokka og den indre med klokka.
+
+Dette gir et nyttig resultat. La $C_1$ være den ytre og $C_2$ den indre randen, **begge** mot klokka. Da er randen av ringen $C_1$ og $-C_2$, og Greens teorem gir
+$$
+\oint_{C_1} \vec F\cdot\mathrm{d}\vec r - \oint_{C_2} \vec F\cdot\mathrm{d}\vec r = \iint_{\text{ringen}} \Big(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\Big)\,\mathrm{d}A
+$$
+Er curl null i ringen, har de to kurvene **samme sirkulasjon**. Vi kan altså bytte en vanskelig kurve med en enkel, for eksempel en liten sirkel, så lenge curl er null i området mellom dem.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Virvelen rundt en hvilken som helst kurve.** Virvelfeltet
+$$
+\vec F = \frac{[-y,\ x]}{x^2 + y^2}
+$$
+har curl null overalt unntatt i origo, der det ikke er definert. Rundt enhetssirkelen er sirkulasjonen $2\pi$. Finn sirkulasjonen rundt en hvilken som helst enkel lukket kurve $C$ mot klokka
+
+a) som går rundt origo,
+
+b) som ikke går rundt origo.
+
+::: {.losning}
+**a)** Legg en liten sirkel $C_2$ om origo inni $C$. I området mellom $C$ og $C_2$ er feltet definert og curl er null, så de to kurvene har samme sirkulasjon. Rundt en sirkel med radius $\varepsilon$ er $\vec r = [\varepsilon\cos t,\ \varepsilon\sin t]$ og $\vec F = [-\sin t,\ \cos t]/\varepsilon$, så $\vec F\cdot\vec r\,' = 1$ og sirkulasjonen er $2\pi$. Altså er $\oint_C \vec F\cdot\mathrm{d}\vec r = \underline{\underline{2\pi}}$, uansett hvilken form $C$ har.
+
+**b)** Da ligger origo utenfor området inni $C$, så feltet er glatt i hele området, og Greens teorem gir $\iint_D 0\,\mathrm{d}A = \underline{\underline{0}}$.
+:::
+:::
+
+::: {.callout-warning title="Kravene i teoremet betyr noe"}
+<!-- tillegg: Claude -->
+For virvelen og enhetsdisken er curl null overalt der feltet er definert, men sirkulasjonen rundt kanten er $2\pi$, ikke $0$. Det er ingen motsigelse: Feltet er ikke definert i origo, som ligger inni disken, så Greens teorem gjelder ikke der. All virvlingen sitter på en måte i ett punkt. Det er også grunnen til at virvelen ikke er [konservativ](../04-vektorfelt/04-konservative-felt.qmd), selv om curl er null: Det **punkterte planet** (planet uten origo) har et hull, og en kurve rundt hullet kan ikke trekkes sammen til et punkt uten å krysse det.
+:::
+
+## Prøv selv: sjekk teoremet numerisk
+
+<!-- tillegg: Claude -->
+Programmet regner ut begge sider av Greens teorem for en ellipse: linjeintegralet rundt kanten med mange små steg, og dobbeltintegralet av curl med et rutenett av små ruter. Endre `P`, `Q` og halvaksene `a` og `b`, og trykk **Kjør**. Prøv virvelen `P = -y/(x**2 + y**2)`, `Q = x/(x**2 + y**2)` og se hva som går galt med dobbeltintegralet.
+
+```{.python .kjor}
+import numpy as np
+
+def P(x, y): return x*y
+def Q(x, y): return x**2 + x
+a, b = 2.0, 1.0                     # halvaksene til ellipsen
+
+# Venstre side: linjeintegralet rundt ellipsen
+n = 4000
+t = np.linspace(0, 2*np.pi, n + 1)
+x, y = a*np.cos(t), b*np.sin(t)
+xm, ym = (x[:-1] + x[1:])/2, (y[:-1] + y[1:])/2
+venstre = np.sum(P(xm, ym)*np.diff(x) + Q(xm, ym)*np.diff(y))
+
+# Høyre side: curl summert over små ruter inni ellipsen
+m, h = 800, 1e-5
+gx = np.linspace(-a, a, m); gy = np.linspace(-b, b, m)
+X, Y = np.meshgrid(gx, gy)
+curl = (Q(X + h, Y) - Q(X - h, Y))/(2*h) - (P(X, Y + h) - P(X, Y - h))/(2*h)
+inni = (X/a)**2 + (Y/b)**2 <= 1
+dA = (gx[1] - gx[0])*(gy[1] - gy[0])
+hoyre = np.sum(curl[inni])*dA
+
+print("linjeintegralet:   ", round(venstre, 4))
+print("dobbeltintegralet: ", round(hoyre, 4))
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Rundt en sirkel med Greens teorem"}
+<!-- tillegg: Claude -->
+Regn ut $\displaystyle\oint_C \big(y + \mathrm{e}^x\big)\,\mathrm{d}x + \big(3x + \cos y\big)\,\mathrm{d}y$, der $C$ er sirkelen med radius $2$ om origo, mot klokka.
+
+::: {.losning}
+$\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y} = 3 - 1 = 2$, og arealet inni sirkelen er $\pi\cdot2^2 = 4\pi$. Greens teorem gir
+$$
+\oint_C \ldots = \iint_D 2\,\mathrm{d}A = 2\cdot4\pi = \underline{\underline{8\pi \approx 25.1}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Rundt et rektangel"}
+<!-- tillegg: Claude -->
+Bruk Greens teorem til å regne ut $\displaystyle\oint_C -y^2\,\mathrm{d}x + xy\,\mathrm{d}y$, der $C$ er randen av rektangelet $0 \le x \le 2$, $0 \le y \le 1$, mot klokka.
+
+::: {.losning}
+$P = -y^2$ og $Q = xy$, så $\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y} = y - (-2y) = 3y$. Da er
+$$
+\oint_C \ldots = \int_0^2\!\!\int_0^1 3y\,\mathrm{d}y\,\mathrm{d}x = \int_0^2 \frac32\,\mathrm{d}x = \underline{\underline{3}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Arealet av en tomt" niva="Middels"}
+<!-- tillegg: Claude -->
+En tomt har form som en firkant. Hjørnene er målt til $(0, 0)$, $(42.0, 0)$, $(51.0, 30.0)$ og $(12.0, 38.0)$, i meter, tatt mot klokka. Finn arealet av tomta.
+
+::: {.losning}
+Skolisseformelen gir
+$$
+A = \frac12\big[(0\cdot0 - 42.0\cdot0) + (42.0\cdot30.0 - 51.0\cdot0) + (51.0\cdot38.0 - 12.0\cdot30.0) + (12.0\cdot0 - 0\cdot38.0)\big]\ \mathrm{m^2}
+$$
+$$
+A = \frac12\big(0 + 1260 + 1578 + 0\big)\ \mathrm{m^2} = 1419\ \mathrm{m^2} = \underline{\underline{1.42\cdot10^3\ \mathrm{m^2}}}
+$$
+med tre gjeldende siffer som i målingene.
+:::
+:::
+
+::: {.oppgave tittel="Fluks ut av en ellipse" niva="Middels"}
+<!-- tillegg: Claude -->
+Finn fluksen til $\vec F = [3x,\ y + \sin x]$ ut av ellipsen $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$.
+
+::: {.losning}
+Bruk fluksformen. $\nabla\cdot\vec F = \dfrac{\partial}{\partial x}(3x) + \dfrac{\partial}{\partial y}(y + \sin x) = 3 + 1 = 4$, og arealet av ellipsen er $\pi\cdot3\cdot2 = 6\pi$:
+$$
+\oint_C \vec F\cdot\vec n\,\mathrm{d}s = \iint_D 4\,\mathrm{d}A = 4\cdot6\pi = \underline{\underline{24\pi \approx 75.4}}
+$$
+Leddet $\sin x$ i $Q$ avhenger ikke av $y$, så det bidrar ikke til divergensen.
+:::
+:::
+
+::: {.oppgave tittel="Arealet under en sykloide" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+Et punkt på kanten av et hjul med radius $1$ som ruller langs $x$-aksen, følger sykloiden
+$$
+\vec r(t) = [t - \sin t,\ 1 - \cos t], \qquad 0 \le t \le 2\pi
+$$
+Finn arealet mellom én bue av sykloiden og $x$-aksen. Bruk $A = -\oint_C y\,\mathrm{d}x$.
+
+::: {.losning}
+Randen mot klokka består av to deler: $x$-aksen fra $(0, 0)$ til $(2\pi, 0)$, og så sykloidebuen *baklengs* fra $(2\pi, 0)$ tilbake til $(0, 0)$. Langs $x$-aksen er $y = 0$, så den delen bidrar ikke. Langs buen baklengs skifter integralet fortegn:
+$$
+A = -\oint_C y\,\mathrm{d}x = -\Big(-\int_0^{2\pi} y\,x'(t)\,\mathrm{d}t\Big) = \int_0^{2\pi} (1 - \cos t)(1 - \cos t)\,\mathrm{d}t
+$$
+$$
+A = \int_0^{2\pi} \big(1 - 2\cos t + \cos^2 t\big)\,\mathrm{d}t = 2\pi - 0 + \pi = \underline{\underline{3\pi}}
+$$
+Arealet er nøyaktig tre ganger arealet av hjulet. Galileo prøvde å finne det ved å klippe ut og veie papirmodeller, og på 1600-tallet viste Roberval og Torricelli at svaret er nøyaktig tre.
+:::
+:::
+
+::: {.oppgave tittel="Virvelen rundt to kvadrater" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+La $\vec F = [-y,\ x]/(x^2 + y^2)$ være virvelfeltet. Finn sirkulasjonen mot klokka rundt
+
+a) kvadratet med hjørner $(\pm1, \pm1)$,
+
+b) kvadratet med hjørner $(2, 2)$, $(3, 2)$, $(3, 3)$ og $(2, 3)$.
+
+Du trenger ikke parametrisere sidene.
+
+::: {.losning}
+Curl til virvelen er null overalt unntatt i origo (se eksempelet over).
+
+**a)** Kvadratet går rundt origo. I området mellom kvadratet og en liten sirkel om origo er curl null, så sirkulasjonen er den samme som rundt sirkelen: $\underline{\underline{2\pi}}$.
+
+**b)** Origo ligger utenfor kvadratet, så feltet er glatt inni, og Greens teorem gir $\iint 0\,\mathrm{d}A = \underline{\underline{0}}$.
+
+Tolkning: $\oint \vec F\cdot\mathrm{d}\vec r$ for virvelen er $2\pi$ ganger antall ganger kurven går rundt origo. Feltet er $\nabla\theta$, der $\theta$ er polarvinkelen, og integralet måler hvor mye vinkelen øker langs kurven.
+:::
+:::
+
+::::

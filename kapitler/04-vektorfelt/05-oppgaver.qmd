@@ -142,7 +142,7 @@ så
 $$
 \oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} 1\,\mathrm{d}t = \underline{\underline{2\pi}}
 $$
-Curl ganger areal er $2\cdot\pi\cdot1^2 = 2\pi$, det samme. Den radielle delen $[x,\ y]$ står vinkelrett på sirkelen og bidrar ikke. Bare rotasjonsdelen gir sirkulasjon. At sirkulasjonen er summen av all curl inni, er Greens teorem, som kommer under integralsetningene.
+Curl ganger areal er $2\cdot\pi\cdot1^2 = 2\pi$, det samme. Den radielle delen $[x,\ y]$ står vinkelrett på sirkelen og bidrar ikke. Bare rotasjonsdelen gir sirkulasjon. At sirkulasjonen er summen av all curl inni, er [Greens teorem](../05-integralsetninger/02-greens-teorem.qmd).
 :::
 :::
 
