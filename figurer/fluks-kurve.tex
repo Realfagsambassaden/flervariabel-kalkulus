@@ -1,0 +1,27 @@
+\begin{tikzpicture}[scale=1.0]
+% Venstre: vann som krysser et lite linjestykke
+\begin{scope}
+\fill[bla!15] (0,0)--(3,0)--(4.2,1.6)--(1.2,1.6)--cycle;
+\draw[very thick] (0,0)--(3,0) node[midway,below] {$\Delta s$};
+\draw[dashed] (1.2,1.6)--(4.2,1.6);
+\draw[dashed] (0,0)--(1.2,1.6); \draw[dashed] (3,0)--(4.2,1.6);
+\draw[vek,bla] (3,0)--(4.2,1.6) node[right] {$\vec F\,\Delta t$};
+\draw[vek] (0,0)--(0,1.2) node[left] {$\vec n$};
+\draw[<->,thick] (-0.9,0)--(-0.9,1.6) node[midway,left,align=right] {$(\vec F\cdot\vec n)\,\Delta t$};
+\draw[thin] (-1.0,1.6)--(1.2,1.6);
+\node[font=\small,align=center] at (1.8,-1.25) {arealet som krysser på tiden $\Delta t$:\\ $(\vec F\cdot\vec n)\,\Delta s\,\Delta t$};
+\end{scope}
+% Høyre: tangent og normal langs en orientert kurve
+\begin{scope}[xshift=7cm]
+\draw[very thick] (0,0) .. controls (1.5,2.2) and (3.5,-0.8) .. (5,1.4);
+\draw[->,very thick] (4.678,1.011)--++(0.20,0.195);
+\node at (5.25,0.85) {$C$};
+\fill (1.052,0.808) circle (1.6pt);
+\draw[vek,rod] (1.052,0.808)--++(0.873,0.217) node[above] {$\vec T$};
+\draw[vek] (1.052,0.808)--++(0.217,-0.873) node[right] {$\vec n$};
+\fill (3.128,0.574) circle (1.6pt);
+\draw[vek,rod] (3.128,0.574)--++(0.891,-0.128) node[above] {$\vec T$};
+\draw[vek] (3.128,0.574)--++(-0.128,-0.891) node[left] {$\vec n$};
+\node[font=\small,align=center] at (2.5,-1.4) {$\vec n$ står vinkelrett på $\vec T$,\\ til høyre for bevegelsesretningen};
+\end{scope}
+\end{tikzpicture}
