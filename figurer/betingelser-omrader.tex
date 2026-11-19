@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+% --- Venstre: varme/bølge i (x, t) ---
+\begin{scope}
+\fill[black!8] (0,0) rectangle (4,3);
+\draw[akse] (-0.3,0)--(4.6,0) node[right]{$x$};
+\draw[akse] (0,-0.3)--(0,3.6) node[above]{$t$};
+\draw[bla,line width=2.2pt] (0,0)--(4,0);
+\draw[rod,line width=2.2pt] (0,0)--(0,3);
+\draw[rod,line width=2.2pt] (4,0)--(4,3);
+\draw[black!45,dashed] (0,3)--(4,3);
+\node[below,bla] at (2,-0.05) {$u(x,0)$ gitt};
+\node[bla,below] at (2,-0.5) {\small initialbetingelse};
+\node[rod,rotate=90,above] at (0,1.5) {\small $u(0,t)$ gitt};
+\node[rod,rotate=90,below] at (4,1.5) {\small $u(L,t)$ gitt};
+\node[below] at (0,0) {$0$}; \node[below] at (4,0) {$L$};
+\draw[gronn,->,very thick] (2,0.5)--(2,2.3);
+\node[gronn,align=center,fill=black!8,inner sep=1pt] at (2,2.75) {\small ingen betingelse};
+\node[gronn,right] at (2.05,1.45) {\small marsjerer};
+\node[gronn,right] at (2.05,1.05) {\small framover};
+\node at (2,4.05) {\textbf{Varme og bølger}};
+\end{scope}
+% --- Høyre: Laplace i (x, y) ---
+\begin{scope}[xshift=7.4cm,yshift=1.5cm]
+\fill[black!8] plot[smooth cycle,tension=0.8] coordinates {(-1.9,-0.6) (-1.2,1.3) (0.6,1.5) (2.0,0.7) (1.6,-1.2) (-0.4,-1.4)};
+\draw[rod,line width=2.2pt] plot[smooth cycle,tension=0.8] coordinates {(-1.9,-0.6) (-1.2,1.3) (0.6,1.5) (2.0,0.7) (1.6,-1.2) (-0.4,-1.4)};
+\node at (-0.1,0.05) {$\Omega$};
+\node at (-0.1,-0.5) {\small $u_{xx}+u_{yy}=0$};
+\coordinate (P) at (2.0,0.7);
+\fill (P) circle (2pt);
+\draw[vek] (P)--++(0.75,0.6) node[above right]{$\vec n$};
+\node[rod,right] at (1.85,-1.35) {\small randen $\partial\Omega$};
+\node at (0,2.55) {\textbf{Likevekt (Laplace)}};
+\node[rod,align=center] at (0,-2.05) {\small én betingelse i hvert punkt\\[-1pt]\small på \emph{hele} randen};
+\end{scope}
+\end{tikzpicture}
