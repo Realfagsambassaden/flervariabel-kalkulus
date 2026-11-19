@@ -1,0 +1,19 @@
+\begin{tikzpicture}[scale=1.15]
+% bakre halvdel av ringen
+\draw[very thick] (1.9,0) arc[start angle=0,end angle=180,x radius=1.9,y radius=0.55];
+% flaten S (disken) svakt skyggelagt
+\fill[black!8] (0,0) ellipse[x radius=1.9,y radius=0.55];
+% magnetfeltet gjennom ringen
+\foreach \x/\y in {-1.15/0.05, -0.45/-0.2, 0.35/0.15, 1.05/-0.12}
+  {\draw[vek,bla] (\x,{\y-1.35}) -- (\x,{\y+1.55});}
+\node[bla] at (1.45,1.55) {$\vec B$};
+% fremre halvdel av ringen
+\draw[very thick] (-1.9,0) arc[start angle=180,end angle=360,x radius=1.9,y radius=0.55];
+% indusert felt langs ringen: med klokka sett ovenfra
+\draw[very thick,->,rod] (0.35,-0.545) -- (-0.15,-0.55);
+\draw[very thick,->,rod] (-0.35,0.545) -- (0.15,0.55);
+\node[rod] at (0.1,-0.85) {$\vec E$};
+\node at (2.25,-0.2) {$C$};
+\node at (-1.55,-0.05) {$S$};
+\node[font=\small,align=center] at (0,-2.05) {$\vec B$ øker: $\vec E$ går rundt ringen\\ med klokka sett ovenfra};
+\end{tikzpicture}
