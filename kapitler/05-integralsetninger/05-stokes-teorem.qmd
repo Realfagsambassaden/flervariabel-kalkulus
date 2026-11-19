@@ -2,18 +2,441 @@
 title: "Stokes' teorem"
 tema: integralsetninger
 undertema: stokes
-plassholder: true
 ---
 
 <!-- video: kommer (videoer/flervariabel-kalkulus/05-05-stokes-teorem) -->
 ![Video kommer](../../bilder/video-kommer.png){fig-alt="Video kommer"}
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Bøy en ståltråd til en ring, og dypp den i såpevann. Det blir en hinne i ringen. Blås forsiktig på den, så bukter hinnen seg ut som en boble, men kanten sitter fortsatt fast i den samme ringen. **Stokes' teorem** handler om akkurat dette bildet: Sirkulasjonen til et vektorfelt rundt ringen er lik summen av all virvlingen ([curl](../04-vektorfelt/02-divergens-og-curl.qmd)) gjennom hinnen, og det spiller ingen rolle hvordan hinnen bukter seg. Teoremet er [Greens teorem](02-greens-teorem.qmd) løftet opp i rommet, der kurven ikke lenger trenger å ligge i et plan. I fysikken er det broen mellom to former av Maxwells likninger: Det forklarer hvorfor et magnetfelt som endrer seg, driver strøm rundt en ledningssløyfe (Faradays lov), som er prinsippet bak generatorer, transformatorer og induksjonskomfyrer.
+
+![Til venstre: Flaten $S$ er delt i små ruter, og vi går rundt hver rute i samme omløpsretning. Langs en indre kant går den ene ruta den ene veien og naboruta den andre, så bidragene opphever hverandre. Igjen står bare randkurven $C$. Til høyre: To ulike flater, en plan disk $S_1$ og en kuppel $S_2$, med samme rand $C$ og normalen samme vei. Stokes' teorem gir samme integral for begge.](../../bilder/figurer/stokes-flate.svg){.tikz-fig style="width:640px" fig-alt="To deler. Til venstre en kuppelformet flate S delt i ruter av sirkler og linjer fra toppen ned til kanten. I fire av rutene er det en liten buet pil som viser omløpsretningen, og en normalvektor n peker skrått ut fra flaten. Randkurven C nederst er en ellipse med en pil mot høyre på framsiden. Teksten under sier at indre kanter gås begge veier og opphever hverandre. Til høyre den samme randkurven C med en skyggelagt plan disk S1 og en stiplet kuppel S2 over. Begge har en normalvektor n som peker opp. Teksten under sier at to flater med samme rand C gir samme integral."}
+
+## Sirkulasjon rundt en kurve
+
+<!-- tillegg: Claude -->
+La $C$ være en lukket kurve i rommet med en omløpsretning, og $\vec F$ et vektorfelt. **Sirkulasjonen** til $\vec F$ rundt $C$ er [linjeintegralet](../04-vektorfelt/03-linjeintegraler-av-vektorfelt.qmd)
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \int_a^b \vec F\big(\vec r(t)\big)\cdot\vec r\,'(t)\,\mathrm{d}t
+$$
+der $\vec r(t)$, $a \le t \le b$, går én gang rundt kurven i den valgte retningen. Bare tangentkomponenten av feltet teller. Er $\vec F$ fartsfeltet til en væske, måler sirkulasjonen hvor mye væsken strømmer *langs* kurven, rundt og rundt. Er $\vec F$ en kraft, er sirkulasjonen arbeidet kraften gjør på én runde. For et [konservativt felt](../04-vektorfelt/04-konservative-felt.qmd) er sirkulasjonen alltid null: Vi kommer tilbake til samme potensial.
+
+### Curl er sirkulasjon per flate
+
+<!-- tillegg: Claude -->
+Under Greens teorem så vi at sirkulasjonen rundt en liten rute i planet er $\Big(\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y}\Big)\,\Delta A$, og det tallet er $z$-komponenten av $\nabla\times\vec F$. I rommet kan en liten sløyfe stå på skrå. Legg en liten sirkel $C_\varepsilon$ med radius $\varepsilon$ rundt et punkt, i et plan med enhetsnormalen $\vec n$, og gå rundt den mot klokka sett fra spissen av $\vec n$. Vi kan alltid snu koordinatsystemet slik at $\vec n$ peker langs den nye $z$-aksen, og da sier rute-argumentet at sirkulasjonen er komponenten av curl langs $\vec n$, ganger arealet:
+
+::: {.graa}
+$$
+(\nabla\times\vec F)\cdot\vec n = \lim_{\varepsilon\to0}\frac{1}{\pi\varepsilon^2}\oint_{C_\varepsilon} \vec F\cdot\mathrm{d}\vec r
+$$
 :::
 
-## Dette kommer på siden
+<!-- tillegg: Claude -->
+Curl er altså **sirkulasjon per flate**. Retningen til $\nabla\times\vec F$ er den retningen sløyfa (eller padlehjulet) skal stå vinkelrett på for å få størst mulig sirkulasjon, og lengden er denne største sirkulasjonen per areal. Står sløyfa slik at $\vec n$ er vinkelrett på curl, er sirkulasjonen null. Denne tolkningen avhenger ikke av koordinatsystemet, og den er kjernen i Stokes' teorem.
 
-- Sirkulasjon rundt en kurve
-- Faradays lov
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Hvordan skal padlehjulet stå?** La $\vec F = [z - y,\ x,\ -x]$. Finn sirkulasjonen per flate for en liten sløyfe med normalen $\vec n = [0,\ 0,\ 1]$, med normalen $\vec n = [1,\ 0,\ 0]$, og den største mulige.
+
+::: {.losning}
+Med $P = z - y$, $Q = x$ og $R = -x$ er
+$$
+\nabla\times\vec F = \Big[\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z},\ \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x},\ \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\Big] = [0 - 0,\ 1 - (-1),\ 1 - (-1)] = [0,\ 2,\ 2]
+$$
+Med $\vec n = [0,\ 0,\ 1]$ (sløyfa i et vannrett plan) er sirkulasjonen per flate $[0,\ 2,\ 2]\cdot[0,\ 0,\ 1] = \underline{\underline{2}}$. Med $\vec n = [1,\ 0,\ 0]$ er den $\underline{\underline{0}}$: Sløyfa står slik at feltet ikke virvler i dens plan.
+
+Størst blir den når $\vec n$ peker langs curl, $\vec n = [0,\ 1,\ 1]/\sqrt2$. Da er sirkulasjonen per flate lengden av curl:
+$$
+|\nabla\times\vec F| = \sqrt{0^2 + 2^2 + 2^2} = \underline{\underline{2\sqrt2 \approx 2.83}}
+$$
+:::
+:::
+
+## Stokes' teorem
+
+<!-- tillegg: Claude -->
+Nå gjør vi det samme som for Greens teorem, bare på en buet flate. La $S$ være en flate med randkurven $C$, og del $S$ i mange små ruter (figuren øverst). Gå rundt hver rute i samme omløpsretning. Langs en kant mellom to naboruter går den ene ruta den ene veien og naboruta den andre, så bidragene opphever hverandre. Når vi legger sammen sirkulasjonen rundt alle rutene, står bare bidragene langs den ytre randen $C$ igjen:
+$$
+\sum_{\text{alle ruter}} \big(\text{sirkulasjonen rundt ruta}\big) = \oint_C \vec F\cdot\mathrm{d}\vec r
+$$
+Hver rute er så liten at den nesten er plan, så sirkulasjonen rundt den er omtrent $(\nabla\times\vec F)\cdot\vec n\,\Delta S$. Når rutene blir uendelig små, blir summen et [fluksintegral](03-fluks-i-rommet.qmd) av curl.
+
+::: {.callout-important title="Stokes' teorem"}
+<!-- tillegg: Claude -->
+La $S$ være en orientert, stykkevis glatt flate med enhetsnormalen $\vec n$, og la randen $C$ være en enkel, lukket, stykkevis glatt kurve, orientert etter høyrehåndsregelen. Har $\vec F$ kontinuerlige partielle deriverte i et åpent område som inneholder $S$, er
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S
+$$
+Venstre side er sirkulasjonen rundt randen, høyre side er fluksen av curl gjennom flaten.
+:::
+
+### Orientering: høyrehåndsregelen
+
+<!-- tillegg: Claude -->
+Omløpsretningen på $C$ og normalen på $S$ må passe sammen, ellers får vi feil fortegn. Regelen kan sies på to måter som betyr det samme:
+
+::: {.kort}
+- **Høyrehåndsregelen:** Krum fingrene på høyre hånd i omløpsretningen langs $C$. Da peker tommelen samme vei som $\vec n$.
+- **Gå langs kanten:** Gå langs $C$ med hodet i retningen til $\vec n$. Da ligger flaten til venstre for deg.
+- **Vanlig valg:** Peker normalen oppover, går $C$ mot klokka sett ovenfra. Det er samme valg som i Greens teorem.
+:::
+
+<!-- tillegg: Claude -->
+I praksis velger vi ofte omløpsretningen først (den er gitt i oppgaven) og finner normalen etterpå. Med en parametrisering $\vec r(u, v)$ er $\vec n\,\mathrm{d}S = (\vec r_u\times\vec r_v)\,\mathrm{d}u\,\mathrm{d}v$, og for en graf $z = g(x, y)$ med normalen oppover er $\vec n\,\mathrm{d}S = [-g_x,\ -g_y,\ 1]\,\mathrm{d}x\,\mathrm{d}y$, som under [fluks gjennom en flate](03-fluks-i-rommet.qmd).
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Begge sider for en halvkule.** Kontroller Stokes' teorem for $\vec F = [-y,\ x,\ xz]$, der $S$ er den øvre halvkula $x^2 + y^2 + z^2 = 1$, $z \ge 0$, med normalen ut.
+
+::: {.losning}
+**Randen:** $C$ er enhetssirkelen i $xy$-planet. Normalen ut peker oppover på toppen av halvkula, så $C$ går mot klokka sett ovenfra: $\vec r(t) = [\cos t,\ \sin t,\ 0]$, $0 \le t \le 2\pi$. Der er $\vec F = [-\sin t,\ \cos t,\ 0]$ og $\vec r\,'(t) = [-\sin t,\ \cos t,\ 0]$, så
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} \big(\sin^2 t + \cos^2 t\big)\,\mathrm{d}t = 2\pi
+$$
+
+**Flaten:** Curl er
+$$
+\nabla\times\vec F = \Big[\frac{\partial(xz)}{\partial y} - \frac{\partial x}{\partial z},\ \frac{\partial(-y)}{\partial z} - \frac{\partial(xz)}{\partial x},\ \frac{\partial x}{\partial x} - \frac{\partial(-y)}{\partial y}\Big] = [0,\ -z,\ 2]
+$$
+På enhetskula er $\vec n = [x,\ y,\ z]$, så $(\nabla\times\vec F)\cdot\vec n = -yz + 2z$. Leddet $-yz$ skifter fortegn når $y$ skifter fortegn, og halvkula er symmetrisk om planet $y = 0$, så det gir null. I kulekoordinater er $z = \cos\varphi$ og $\mathrm{d}S = \sin\varphi\,\mathrm{d}\varphi\,\mathrm{d}\theta$:
+$$
+\iint_S 2z\,\mathrm{d}S = \int_0^{2\pi}\!\!\int_0^{\pi/2} 2\cos\varphi\sin\varphi\,\mathrm{d}\varphi\,\mathrm{d}\theta = 2\pi\cdot\Big[\sin^2\varphi\Big]_0^{\pi/2} = 2\pi
+$$
+Begge sider gir $\underline{\underline{2\pi}}$.
+
+**En enklere flate:** Enhetsdisken i $xy$-planet har samme rand, og med normalen $[0,\ 0,\ 1]$ samme orientering. Der er $(\nabla\times\vec F)\cdot\vec n = 2$, og integralet er $2\cdot\pi = 2\pi$ uten noe regnearbeid. Det er ingen tilfeldighet, se neste avsnitt.
+:::
+:::
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Et linjeintegral langs en skrå ellipse.** Kurven $C$ er skjæringen mellom sylinderen $x^2 + y^2 = 1$ og planet $z = 3 - x$, med omløpsretning mot klokka sett ovenfra. Regn ut
+$$
+\oint_C \big(z - y^3\big)\,\mathrm{d}x + x^3\,\mathrm{d}y + x\,\mathrm{d}z
+$$
+
+::: {.losning}
+Kurven er en ellipse som ligger på skrå. Vi kunne parametrisert den med $\vec r(t) = [\cos t,\ \sin t,\ 3 - \cos t]$, men da får vi en lang integrand med $\sin^4 t$, $\cos^4 t$ og flere andre ledd. Med Stokes' teorem velger vi heller flaten $S$: den delen av planet $z = 3 - x$ som ligger inni sylinderen.
+
+**Curl:** Med $\vec F = [z - y^3,\ x^3,\ x]$ er
+$$
+\nabla\times\vec F = \Big[\frac{\partial x}{\partial y} - \frac{\partial x^3}{\partial z},\ \frac{\partial(z - y^3)}{\partial z} - \frac{\partial x}{\partial x},\ \frac{\partial x^3}{\partial x} - \frac{\partial(z - y^3)}{\partial y}\Big] = \big[0,\ 0,\ 3x^2 + 3y^2\big]
+$$
+
+**Orientering:** Mot klokka sett ovenfra betyr normalen oppover. Planet er grafen til $g(x, y) = 3 - x$ over enhetsdisken $D$, så $\vec n\,\mathrm{d}S = [-g_x,\ -g_y,\ 1]\,\mathrm{d}A = [1,\ 0,\ 1]\,\mathrm{d}A$.
+
+**Integralet:** $(\nabla\times\vec F)\cdot[1,\ 0,\ 1] = 3x^2 + 3y^2 = 3r^2$ i polarkoordinater:
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \iint_D 3r^2\,\mathrm{d}A = \int_0^{2\pi}\!\!\int_0^1 3r^2\cdot r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\cdot\frac34 = \underline{\underline{\frac{3\pi}{2} \approx 4.71}}
+$$
+Programmet nederst på siden regner ut linjeintegralet direkte og gir det samme.
+:::
+:::
+
+## Samme rand, samme svar
+
+<!-- tillegg: Claude -->
+Venstre side av Stokes' teorem handler bare om randen $C$. Derfor må høyre side bli den samme for **alle** flater med randen $C$, så lenge orienteringen passer og feltet er glatt på flaten. Såpehinnen kan bukte seg så mye den vil: Fluksen av curl gjennom den endrer seg ikke.
+
+Det kan også ses uten Stokes' teorem. To flater $S_1$ og $S_2$ med samme rand avgrenser sammen et lukket område $E$ (figuren øverst, til høyre). Siden $\nabla\cdot(\nabla\times\vec F) = 0$ (et curlfelt har ingen kilder), gir [divergenssetningen](04-divergenssetningen.qmd) at fluksen av curl ut av $E$ er null. Utovernormalen på den ene flaten peker motsatt vei av den valgte normalen, så de to fluksene er like store.
+
+::: {.kort}
+- **Velg den enkleste flaten:** Er randen en plan kurve, er den plane flaten inni nesten alltid lettest. Det var trikset i eksemplene over.
+- **Bytt retning:** Noen ganger er linjeintegralet lettest. Da regner vi ut et vanskelig flateintegral av curl ved å gå rundt kanten.
+- **Virvelfrie felt:** Er $\nabla\times\vec F = \vec 0$ på en flate med rand $C$, er sirkulasjonen rundt $C$ null. Det er grunnen til at virvelfrie felt i et område uten hull er konservative.
+:::
+
+::: {.callout-warning title="Feltet må være glatt på hele flaten"}
+<!-- tillegg: Claude -->
+Virvelfeltet $\vec F = [-y,\ x,\ 0]/(x^2 + y^2)$ har curl null overalt der det er definert, men sirkulasjonen rundt enhetssirkelen i $xy$-planet er $2\pi$. Det er ingen motsigelse: Feltet er ikke definert på $z$-aksen, og *enhver* flate med randen $C$ må krysse $z$-aksen, akkurat som en såpehinne i en ring som er tredd på en pinne. Stokes' teorem kan derfor ikke brukes på noen av flatene. Det er samme situasjon som med hullet i Greens teorem, og det er magnetfeltet rundt en rett ledning som ser slik ut (se Ampères lov nedenfor).
+:::
+
+## Greens teorem er et spesialtilfelle
+
+<!-- tillegg: Claude -->
+La $S$ være et plant område $D$ i $xy$-planet, og $\vec F = [P,\ Q,\ R]$. Med normalen $\vec n = [0,\ 0,\ 1]$ er $\mathrm{d}S = \mathrm{d}A$, og høyrehåndsregelen sier at $C$ går mot klokka sett ovenfra. Bare $z$-komponenten av curl teller:
+$$
+(\nabla\times\vec F)\cdot\vec n = \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+$$
+Langs $C$ er $z = 0$ og $\mathrm{d}z = 0$, så $R$ bidrar ikke til linjeintegralet. Stokes' teorem blir
+
+::: {.graa}
+$$
+\oint_C P\,\mathrm{d}x + Q\,\mathrm{d}y = \iint_D \Big(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\Big)\,\mathrm{d}A
+$$
+:::
+
+<!-- tillegg: Claude -->
+Det er nøyaktig Greens teorem. Stokes' teorem sier altså det samme som Greens teorem, men for flater som er buet eller står på skrå i rommet. Divergenssetningen er på samme måte fluksformen av Greens teorem løftet opp i rommet. Alle tre setningene sier: Det som skjer på randen, er summen av det som skjer inni.
+
+## Faradays lov
+
+<!-- tillegg: Claude -->
+Michael Faraday oppdaget i 1831 at et magnetfelt som endrer seg, setter i gang strøm i en ledningssløyfe, selv om ingenting berører ledningen. Det er et elektrisk felt $\vec E$ som driver ladningene rundt sløyfa. Arbeidet per ladning på én runde er sirkulasjonen $\oint_C \vec E\cdot\mathrm{d}\vec r$, som kalles den **induserte elektromotoriske spenningen** (ems). Faradays lov sier at den er lik minus endringen per tid i den magnetiske fluksen gjennom sløyfa:
+
+::: {.callout-important title="Faradays lov"}
+<!-- tillegg: Claude -->
+For en fast, lukket kurve $C$ og en flate $S$ med randen $C$, orientert etter høyrehåndsregelen, er
+$$
+\oint_C \vec E\cdot\mathrm{d}\vec r = -\frac{\mathrm{d}}{\mathrm{d}t}\iint_S \vec B\cdot\vec n\,\mathrm{d}S
+$$
+:::
+
+![En ring $C$ står i et magnetfelt $\vec B$ som peker opp gjennom flaten $S$. Når feltet øker, induseres et elektrisk felt $\vec E$ som går rundt ringen med klokka sett ovenfra, altså motsatt vei av høyrehåndsregelen med normalen opp. Det er minustegnet i Faradays lov.](../../bilder/figurer/faraday-ring.svg){.tikz-fig style="width:360px" fig-alt="En ring C tegnet som en ellipse, med flaten S skyggelagt inni. Fire loddrette piler merket B går opp gjennom ringen. På framsiden av ringen peker en pil merket E mot venstre, og på baksiden peker en pil mot høyre. Teksten under sier at når B øker, går E rundt ringen med klokka sett ovenfra."}
+
+<!-- tillegg: Claude -->
+Minustegnet er **Lenz' regel**: Strømmen som induseres, går slik at dens eget magnetfelt motvirker endringen. Øker feltet oppover, går strømmen med klokka sett ovenfra, og da peker strømmens eget felt nedover inni ringen.
+
+Stokes' teorem gjør loven om til en likning som gjelder i hvert punkt. Venstre side er $\iint_S (\nabla\times\vec E)\cdot\vec n\,\mathrm{d}S$, og når flaten står stille, kan vi derivere under integraltegnet på høyre side:
+$$
+\iint_S (\nabla\times\vec E)\cdot\vec n\,\mathrm{d}S = \iint_S -\frac{\partial\vec B}{\partial t}\cdot\vec n\,\mathrm{d}S
+$$
+Dette gjelder for *alle* flater, også bitte små med hvilken som helst normal. Da må integrandene være like:
+
+::: {.graa}
+$$
+\nabla\times\vec E = -\frac{\partial\vec B}{\partial t}
+$$
+:::
+
+<!-- tillegg: Claude -->
+Dette er Faradays lov på differensialform, en av Maxwells likninger. Den sier at et magnetfelt som endrer seg, lager virvler i det elektriske feltet. Et slikt elektrisk felt er ikke konservativt: Sirkulasjonen er ikke null, og derfor kan det drive strøm rundt og rundt.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Indusert felt i en ring.** En sirkulær ring med radius $10.0\ \mathrm{cm}$ står vinkelrett på et homogent magnetfelt som øker jevnt med $0.500\ \mathrm{T/s}$. Finn den induserte ems-en i ringen, og styrken på det elektriske feltet langs ringen.
+
+::: {.losning}
+La $S$ være den plane disken inni ringen. Feltet er homogent og står vinkelrett på disken, så fluksen er $\Phi_B = B\cdot\pi r^2$, og
+$$
+|\mathcal{E}| = \frac{\mathrm{d}\Phi_B}{\mathrm{d}t} = \pi r^2\,\frac{\mathrm{d}B}{\mathrm{d}t} = \pi\cdot(0.100\ \mathrm{m})^2\cdot0.500\ \mathrm{T/s} = 1.571\cdot10^{-2}\ \mathrm{V} = \underline{\underline{15.7\ \mathrm{mV}}}
+$$
+Ringen er symmetrisk om aksen, så det induserte feltet har samme styrke $E$ overalt langs ringen og peker langs den. Da er sirkulasjonen $E\cdot2\pi r$, og
+$$
+E = \frac{|\mathcal{E}|}{2\pi r} = \frac{r}{2}\,\frac{\mathrm{d}B}{\mathrm{d}t} = \frac{0.100\ \mathrm{m}}{2}\cdot0.500\ \mathrm{T/s} = \underline{\underline{25.0\ \mathrm{mV/m}}}
+$$
+Feltet går rundt ringen med klokka sett fra den siden $\vec B$ peker mot (figuren over). Legg merke til at $E$ vokser med $r$: Jo større sløyfe, desto mer fluks fanger den.
+:::
+:::
+
+## Ampères lov
+
+<!-- tillegg: Claude -->
+Magnetfeltet rundt en elektrisk strøm virvler rundt strømmen. Ampères lov sier at sirkulasjonen til $\vec B$ rundt en lukket kurve $C$ er proporsjonal med strømmen $I_\text{gjennom}$ som går gjennom en flate med randen $C$, regnet positiv i retningen til normalen:
+
+::: {.callout-important title="Ampères lov (for konstante strømmer)"}
+<!-- tillegg: Claude -->
+$$
+\oint_C \vec B\cdot\mathrm{d}\vec r = \mu_0\,I_\text{gjennom} = \mu_0\iint_S \vec J\cdot\vec n\,\mathrm{d}S
+$$
+der $\vec J$ er strømtettheten (strøm per areal) og $\mu_0 = 4\pi\cdot10^{-7}\ \mathrm{T\,m/A}$.
+:::
+
+<!-- tillegg: Claude -->
+Stokes' teorem på venstre side og samme argument som for Faradays lov gir differensialformen $\nabla\times\vec B = \mu_0\vec J$: Strømmen er kilden til virvlene i magnetfeltet.
+
+::: {.eksempel}
+<!-- tillegg: Claude -->
+**Eksempel: Feltet rundt en rett ledning.** En lang, rett ledning fører strømmen $12.0\ \mathrm{A}$. Finn magnetfeltet $3.00\ \mathrm{cm}$ fra ledningen.
+
+::: {.losning}
+Av symmetri går feltlinjene i sirkler rundt ledningen, og feltstyrken $B$ er den samme overalt på en sirkel med radius $r$ om ledningen. Velg $C$ som en slik sirkel, med omløpsretning etter høyrehåndsregelen (tommelen langs strømmen). Da er $\vec B$ parallell med $\mathrm{d}\vec r$ hele veien, og
+$$
+\oint_C \vec B\cdot\mathrm{d}\vec r = B\cdot2\pi r = \mu_0 I \quad\Longrightarrow\quad B = \frac{\mu_0 I}{2\pi r}
+$$
+Med tall:
+$$
+B = \frac{4\pi\cdot10^{-7}\ \mathrm{T\,m/A}\cdot12.0\ \mathrm{A}}{2\pi\cdot0.0300\ \mathrm{m}} = 8.00\cdot10^{-5}\ \mathrm{T} = \underline{\underline{80.0\ \mathrm{\mu T}}}
+$$
+Det er litt mer enn jordmagnetfeltet i Norge, som er omtrent $50\ \mathrm{\mu T}$. Feltet $\vec B = \dfrac{\mu_0 I}{2\pi}\cdot\dfrac{[-y,\ x,\ 0]}{x^2 + y^2}$ er nettopp virvelfeltet fra advarselen over: Curl er null utenfor ledningen, men sirkulasjonen rundt ledningen er ikke null, fordi strømmen går gjennom hver flate med randen $C$.
+:::
+:::
+
+::: {.callout-tip title="Til ettertanke: Hvilken flate?"}
+<!-- tillegg: Claude -->
+Stokes' teorem sier at alle flater med randen $C$ skal gi samme strøm $I_\text{gjennom}$. Men tenk på en kondensator som lades opp: En flat disk som ledningen går gjennom, fanger strømmen, mens en pose som går mellom kondensatorplatene, ikke fanger noen strøm i det hele tatt. Hvordan kan det stemme? James Clerk Maxwell løste dette ved å legge til et ledd $\mu_0\varepsilon_0\,\partial\vec E/\partial t$ på høyre side. Feltet mellom platene endrer seg, og det leddet tar over der strømmen stopper. Det var dette leddet som førte Maxwell til elektromagnetiske bølger og lys.
+:::
+
+## Prøv selv: sjekk teoremet numerisk
+
+<!-- tillegg: Claude -->
+Programmet regner ut begge sider av Stokes' teorem for en flate $z = g(x, y)$ over en disk med radius `a`, med normalen oppover: sirkulasjonen rundt randkurven med mange små steg, og fluksen av curl gjennom flaten med små polarceller. Feltet og flaten er fra eksempelet med den skrå ellipsen. Endre `F`, `g` og `a`, og trykk **Kjør**. Prøv `return 3 - x + (1 - x**2 - y**2)`: Flaten bukter seg opp, men randen er den samme, og svaret endrer seg ikke.
+
+```{.python .kjor}
+import numpy as np
+
+def F(x, y, z):
+    return z - y**3, x**3, x
+
+def g(x, y):                      # flaten z = g(x, y) over disken
+    return 3 - x
+a = 1.0                           # radien til disken
+
+def Fv(x, y, z):                  # komponentene som tabeller med samme form
+    return [np.broadcast_to(k, np.shape(x)).astype(float) for k in F(x, y, z)]
+
+# Venstre side: sirkulasjonen rundt randen C
+n = 4000
+t = np.linspace(0, 2*np.pi, n + 1)
+x, y = a*np.cos(t), a*np.sin(t)
+z = g(x, y) + 0*x
+xm, ym, zm = (x[:-1] + x[1:])/2, (y[:-1] + y[1:])/2, (z[:-1] + z[1:])/2
+P, Q, R = Fv(xm, ym, zm)
+venstre = np.sum(P*np.diff(x) + Q*np.diff(y) + R*np.diff(z))
+
+# Høyre side: curl gjennom flaten, summert over små polarceller
+m, h = 600, 1e-5
+r = (np.arange(m) + 0.5)*a/m
+th = (np.arange(m) + 0.5)*2*np.pi/m
+Rr, T = np.meshgrid(r, th)
+X, Y = Rr*np.cos(T), Rr*np.sin(T)
+Z = g(X, Y) + 0*X
+
+def d(i, j):                      # den partiellderiverte av F_i med hensyn på x_j
+    e = [0, 0, 0]; e[j] = h
+    return (Fv(X + e[0], Y + e[1], Z + e[2])[i] - Fv(X - e[0], Y - e[1], Z - e[2])[i])/(2*h)
+
+curl = [d(2, 1) - d(1, 2), d(0, 2) - d(2, 0), d(1, 0) - d(0, 1)]
+gx = (g(X + h, Y) - g(X - h, Y))/(2*h)
+gy = (g(X, Y + h) - g(X, Y - h))/(2*h)
+integrand = -curl[0]*gx - curl[1]*gy + curl[2]     # (curl F)·[-g_x, -g_y, 1]
+hoyre = np.sum(integrand*Rr)*(a/m)*(2*np.pi/m)
+
+print("sirkulasjonen rundt C:   ", round(venstre, 5))
+print("curl gjennom flaten S:   ", round(hoyre, 5))
+```
+
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Rundt en sirkel i planet"}
+<!-- tillegg: Claude -->
+Bruk Stokes' teorem til å regne ut $\displaystyle\oint_C \vec F\cdot\mathrm{d}\vec r$ for $\vec F = \big[-y + z^2,\ x + z,\ xy\big]$, der $C$ er sirkelen $x^2 + y^2 = 4$ i planet $z = 0$, mot klokka sett ovenfra.
+
+::: {.losning}
+Velg $S$ som disken $x^2 + y^2 \le 4$ i planet $z = 0$, med normalen $\vec n = [0,\ 0,\ 1]$ (høyrehåndsregelen). Da trengs bare $z$-komponenten av curl:
+$$
+(\nabla\times\vec F)\cdot\vec n = \frac{\partial(x + z)}{\partial x} - \frac{\partial(-y + z^2)}{\partial y} = 1 - (-1) = 2
+$$
+Disken har arealet $\pi\cdot2^2 = 4\pi$, så
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \iint_S 2\,\mathrm{d}S = 2\cdot4\pi = \underline{\underline{8\pi \approx 25.1}}
+$$
+Kontroll: På $C$ er $z = 0$, så $\vec F = [-y,\ x,\ xy]$. Med $\vec r = [2\cos t,\ 2\sin t,\ 0]$ er $\vec F\cdot\vec r\,' = 4\sin^2 t + 4\cos^2 t = 4$, og $\int_0^{2\pi} 4\,\mathrm{d}t = 8\pi$.
+:::
+:::
+
+::: {.oppgave tittel="Fluksen av curl gjennom en halvkule"}
+<!-- tillegg: Claude -->
+La $\vec F = \big[z - y,\ x + z^2,\ \mathrm{e}^{xyz}\big]$, og la $S$ være halvkula $x^2 + y^2 + z^2 = 9$, $z \ge 0$, med normalen ut. Finn $\displaystyle\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S$ uten å regne ut curl over hele halvkula.
+
+::: {.losning}
+Randen av $S$ er sirkelen $x^2 + y^2 = 9$ i planet $z = 0$. Normalen ut peker oppover, så $C$ går mot klokka sett ovenfra: $\vec r(t) = [3\cos t,\ 3\sin t,\ 0]$. På $C$ er $z = 0$ og $\mathrm{d}z = 0$, så $\vec F = [-y,\ x,\ 1]$ og det vanskelige leddet $\mathrm{e}^{xyz}$ bidrar ikke:
+$$
+\vec F\cdot\vec r\,' = (-3\sin t)(-3\sin t) + (3\cos t)(3\cos t) + 1\cdot0 = 9
+$$
+Stokes' teorem gir
+$$
+\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S = \oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} 9\,\mathrm{d}t = \underline{\underline{18\pi \approx 56.5}}
+$$
+Alternativt: Disken med radius $3$ har samme rand. Der er $\vec n = [0,\ 0,\ 1]$ og $(\nabla\times\vec F)\cdot\vec n = \frac{\partial(x + z^2)}{\partial x} - \frac{\partial(z - y)}{\partial y} = 2$, som gir $2\cdot9\pi = 18\pi$.
+:::
+:::
+
+::: {.oppgave tittel="Rundt en trekant i rommet" niva="Middels"}
+<!-- tillegg: Claude -->
+$C$ er randen av trekanten med hjørnene $(1, 0, 0)$, $(0, 1, 0)$ og $(0, 0, 1)$, gjennomløpt i den rekkefølgen. Regn ut $\displaystyle\oint_C y\,\mathrm{d}x + z\,\mathrm{d}y + x\,\mathrm{d}z$ med Stokes' teorem, og kontroller ved å regne ut linjeintegralet direkte.
+
+::: {.losning}
+**Curl:** Med $\vec F = [y,\ z,\ x]$ er
+$$
+\nabla\times\vec F = \Big[\frac{\partial x}{\partial y} - \frac{\partial z}{\partial z},\ \frac{\partial y}{\partial z} - \frac{\partial x}{\partial x},\ \frac{\partial z}{\partial x} - \frac{\partial y}{\partial y}\Big] = [-1,\ -1,\ -1]
+$$
+
+**Flaten og orienteringen:** Trekanten ligger i planet $x + y + z = 1$, altså grafen til $g = 1 - x - y$ over trekanten $D$ med hjørnene $(1, 0)$, $(0, 1)$ og $(0, 0)$ i $xy$-planet. Sett ovenfra går hjørnene i rekkefølgen $(1, 0) \to (0, 1) \to (0, 0)$, som er mot klokka. Normalen skal derfor peke oppover: $\vec n\,\mathrm{d}S = [-g_x,\ -g_y,\ 1]\,\mathrm{d}A = [1,\ 1,\ 1]\,\mathrm{d}A$.
+
+**Integralet:** $(\nabla\times\vec F)\cdot[1,\ 1,\ 1] = -3$, og $D$ har arealet $\tfrac12$:
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \iint_D (-3)\,\mathrm{d}A = -3\cdot\frac12 = \underline{\underline{-\frac32}}
+$$
+
+**Kontroll direkte:** Fra $(1, 0, 0)$ til $(0, 1, 0)$ er $\vec r = [1 - t,\ t,\ 0]$ og $\vec r\,' = [-1,\ 1,\ 0]$, så $\vec F\cdot\vec r\,' = [t,\ 0,\ 1 - t]\cdot[-1,\ 1,\ 0] = -t$ og bidraget er $\int_0^1 -t\,\mathrm{d}t = -\tfrac12$. Feltet og trekanten går over i seg selv når vi bytter $x \to y \to z \to x$, så de to andre sidene gir også $-\tfrac12$ hver. Summen er $-\tfrac32$.
+:::
+:::
+
+::: {.oppgave tittel="En spole i et felt som forsvinner" niva="Middels"}
+<!-- tillegg: Claude -->
+En flat spole har $200$ vindinger med radius $5.0\ \mathrm{cm}$. Den står vinkelrett på et homogent magnetfelt på $0.80\ \mathrm{T}$ som peker opp gjennom spolen. Feltet skrus jevnt ned til null på $0.10\ \mathrm{s}$.
+
+a) Finn den induserte ems-en i spolen.
+
+b) Hvilken vei går den induserte strømmen sett ovenfra?
+
+::: {.losning}
+**a)** Hver vinding er en sløyfe med flaten $A = \pi r^2$. Fluksen gjennom én vinding endrer seg med $\Delta\Phi_B = A\,\Delta B$, og de $N$ vindingene ligger i serie, så ems-ene legges sammen:
+$$
+|\mathcal{E}| = N\,\pi r^2\,\frac{|\Delta B|}{\Delta t} = 200\cdot\pi\cdot(0.050\ \mathrm{m})^2\cdot\frac{0.80\ \mathrm{T}}{0.10\ \mathrm{s}} = 12.6\ \mathrm{V} \approx \underline{\underline{13\ \mathrm{V}}}
+$$
+med to gjeldende siffer som i dataene.
+
+**b)** Fluksen oppover avtar. Etter Lenz' regel går strømmen slik at dens eget felt peker oppover inni spolen og motvirker endringen. Høyrehåndsregelen med tommelen opp gir at strømmen går **mot klokka sett ovenfra**. Det stemmer med fortegnet i Faradays lov: Med normalen opp er $\mathrm{d}\Phi_B/\mathrm{d}t < 0$, så $\oint_C \vec E\cdot\mathrm{d}\vec r > 0$ med $C$ mot klokka.
+:::
+:::
+
+::: {.oppgave tittel="Inni og utenfor en tykk ledning" niva="Middels"}
+<!-- tillegg: Claude -->
+En lang, rett ledning har radius $R = 2.00\ \mathrm{mm}$ og fører strømmen $I = 12.0\ \mathrm{A}$, jevnt fordelt over tverrsnittet. Bruk Ampères lov til å finne magnetfeltet
+
+a) $1.00\ \mathrm{mm}$ fra midten av ledningen,
+
+b) $5.00\ \mathrm{mm}$ fra midten av ledningen.
+
+::: {.losning}
+Som i eksempelet går feltlinjene i sirkler om ledningen, så for en sirkel $C$ med radius $r$ er $\oint_C \vec B\cdot\mathrm{d}\vec r = B\cdot2\pi r$. La $S$ være den plane disken inni $C$.
+
+**a)** Når $r < R$, går bare en del av strømmen gjennom $S$. Strømmen er jevnt fordelt, så andelen er forholdet mellom arealene: $I_\text{gjennom} = I\,\dfrac{\pi r^2}{\pi R^2} = I\,\dfrac{r^2}{R^2}$. Ampères lov gir
+$$
+B\cdot2\pi r = \mu_0 I\,\frac{r^2}{R^2} \quad\Longrightarrow\quad B = \frac{\mu_0 I r}{2\pi R^2}
+$$
+$$
+B = \frac{4\pi\cdot10^{-7}\ \mathrm{T\,m/A}\cdot12.0\ \mathrm{A}\cdot1.00\cdot10^{-3}\ \mathrm{m}}{2\pi\cdot\big(2.00\cdot10^{-3}\ \mathrm{m}\big)^2} = 6.00\cdot10^{-4}\ \mathrm{T} = \underline{\underline{0.600\ \mathrm{mT}}}
+$$
+
+**b)** Når $r > R$, går hele strømmen gjennom $S$:
+$$
+B = \frac{\mu_0 I}{2\pi r} = \frac{4\pi\cdot10^{-7}\ \mathrm{T\,m/A}\cdot12.0\ \mathrm{A}}{2\pi\cdot5.00\cdot10^{-3}\ \mathrm{m}} = 4.80\cdot10^{-4}\ \mathrm{T} = \underline{\underline{0.480\ \mathrm{mT}}}
+$$
+Feltet vokser lineært fra null i midten til $1.20\ \mathrm{mT}$ på overflaten av ledningen, og avtar så som $1/r$. Inni ledningen er $\vec J \ne \vec 0$ og curl til $\vec B$ ikke null, mens curl er null utenfor.
+:::
+:::
+
+::: {.oppgave tittel="Curl gjennom en lukket flate" niva="Utfordrende"}
+<!-- tillegg: Claude -->
+a) La $S$ være en lukket flate (for eksempel en kule) med normalen ut, og $\vec F$ et glatt felt. Bruk Stokes' teorem til å vise at
+$$
+\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S = 0
+$$
+Tips: Del $S$ i to deler langs en lukket kurve.
+
+b) Kontroller resultatet for $\vec F = [xy,\ yz,\ zx]$ og enhetskula, ved å regne ut integranden.
+
+::: {.losning}
+**a)** Tegn en lukket kurve $C$ på $S$, for eksempel ekvator på en kule, som deler flaten i to deler $S_1$ (over) og $S_2$ (under). Begge delene har $C$ som rand. Med normalen ut peker normalen på $S_1$ oppover, og høyrehåndsregelen gir $C$ mot klokka sett ovenfra. På $S_2$ peker normalen ut og nedover, og høyrehåndsregelen gir $C$ med klokka sett ovenfra, altså motsatt vei. Stokes' teorem på hver del gir
+$$
+\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S = \oint_C \vec F\cdot\mathrm{d}\vec r + \oint_{-C} \vec F\cdot\mathrm{d}\vec r = \oint_C \vec F\cdot\mathrm{d}\vec r - \oint_C \vec F\cdot\mathrm{d}\vec r = \underline{\underline{0}}
+$$
+En lukket flate har ingen rand, så det finnes ingen sirkulasjon å regne. Det stemmer med divergenssetningen og regelen $\nabla\cdot(\nabla\times\vec F) = 0$.
+
+**b)** Curl er
+$$
+\nabla\times\vec F = \Big[\frac{\partial(zx)}{\partial y} - \frac{\partial(yz)}{\partial z},\ \frac{\partial(xy)}{\partial z} - \frac{\partial(zx)}{\partial x},\ \frac{\partial(yz)}{\partial x} - \frac{\partial(xy)}{\partial y}\Big] = [-y,\ -z,\ -x]
+$$
+På enhetskula er $\vec n = [x,\ y,\ z]$, så
+$$
+(\nabla\times\vec F)\cdot\vec n = -(xy + yz + zx)
+$$
+Hvert ledd skifter fortegn når én av koordinatene skifter fortegn (for eksempel $xy$ når $x \to -x$), og kula er symmetrisk om alle koordinatplanene. Derfor gir hvert ledd null, og integralet er $\underline{\underline{0}}$.
+:::
+:::
+
+::::
