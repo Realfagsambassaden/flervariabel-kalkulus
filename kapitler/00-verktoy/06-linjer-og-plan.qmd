@@ -95,35 +95,21 @@ for navn, P in (("A", A), ("B", B), ("C", C)):
 ::: {.oppgave tittel="Parametriser"}
 Parametriser linjestykket fra $(2, 5)$ til $(2, -1)$. Hvorfor ville $y = ax + b$ ikke virket her?
 
-::: {.losning}
-$\mathbf{d} = (2, -1) - (2, 5) = (0, -6)$, så
-$$
-\mathbf{r}(t) = (2,\ 5 - 6t), \qquad 0 \le t \le 1 .
-$$
-Linjestykket er loddrett ($x = 2$ hele veien), og en loddrett linje har ikke noe stigningstall. Parameterformen har ikke det problemet.
-:::
 :::
 
 ::: {.oppgave tittel="Plan fra punkt og normal"}
 Finn likningen for planet gjennom $(1, -1, 2)$ som står vinkelrett på vektoren $(4, 0, -1)$.
 
-::: {.losning}
-$$
-4(x - 1) + 0\cdot(y + 1) - (z - 2) = 0 \quad\Longleftrightarrow\quad \underline{\underline{4x - z = 2}}
-$$
-$y$ forsvinner fordi normalen ikke har noen $y$-komponent: Planet er parallelt med $y$-aksen.
+::: {.fasit}
+$4x - z = 2$
 :::
 :::
 
 ::: {.oppgave tittel="Linje møter plan" niva="Middels"}
 Linjen $\mathbf{r}(t) = (1, 0, 2) + t\,(2, 1, -1)$ skjærer planet $x + y + z = 6$. Finn skjæringspunktet.
 
-::: {.losning}
-Vi setter koordinatene $x = 1 + 2t$, $y = t$, $z = 2 - t$ inn i likningen:
-$$
-(1 + 2t) + t + (2 - t) = 3 + 2t = 6 \quad\Longrightarrow\quad t = \tfrac32 .
-$$
-Skjæringspunktet er $\mathbf{r}(\tfrac32) = \underline{\underline{(4,\ 1.5,\ 0.5)}}$. Kontroll: $4 + 1.5 + 0.5 = 6$. ✓
+::: {.fasit}
+$(4,\ 1.5,\ 0.5)$
 :::
 :::
 
@@ -137,17 +123,8 @@ a) Forklar formelen med skalarproduktet.
 
 b) Finn avstanden fra $Q = (2, 1, 3)$ til planet $2x - y + 2z = 4$.
 
-::: {.losning}
-a) Velg et punkt $P_0$ i planet. Avstanden er lengden av komponenten av $\overrightarrow{P_0Q}$ langs normalen:
-$$
-D = \frac{|\mathbf{n}\cdot\overrightarrow{P_0Q}|}{|\mathbf{n}|} .
-$$
-Siden $\mathbf{n}\cdot\mathbf{p}_0 = d$, er $\mathbf{n}\cdot\overrightarrow{P_0Q} = \mathbf{n}\cdot\mathbf{q} - d = ax_Q + by_Q + cz_Q - d$.
-
-b)
-$$
-D = \frac{|2\cdot 2 - 1 + 2\cdot 3 - 4|}{\sqrt{4 + 1 + 4}} = \frac{5}{3} \approx \underline{\underline{1.67}}
-$$
+::: {.fasit}
+$1.67$
 :::
 :::
 

@@ -98,46 +98,29 @@ for x, y in punkter:
 ::: {.oppgave tittel="Til polarkoordinater"}
 Gjør $(-3, -3)$ om til polarkoordinater.
 
-::: {.losning}
-$r = \sqrt{9 + 9} = 3\sqrt2 \approx 4.24$. Videre er $\tan\theta = 1$, og punktet ligger i tredje kvadrant, så $\theta = \frac{\pi}{4} + \pi = \frac{5\pi}{4}$. Punktet er $\underline{\underline{[3\sqrt2,\ \tfrac{5\pi}{4}]}}$.
+::: {.fasit}
+$[3\sqrt2,\ \tfrac{5\pi}{4}]$
 :::
 :::
 
 ::: {.oppgave tittel="Til kartesiske koordinater"}
 Gjør $[6, \tfrac{5\pi}{6}]$ om til kartesiske koordinater.
 
-::: {.losning}
-$$
-x = 6\cos\tfrac{5\pi}{6} = -3\sqrt3 \approx -5.20, \qquad y = 6\sin\tfrac{5\pi}{6} = 3 .
-$$
-Punktet er $\underline{\underline{(-3\sqrt3,\ 3)}}$.
+::: {.fasit}
+$(-3\sqrt3,\ 3)$
 :::
 :::
 
 ::: {.oppgave tittel="Hvilken kurve?" niva="Middels"}
 Skriv $r = 4\sin\theta$ i kartesiske koordinater, og beskriv kurven.
 
-::: {.losning}
-Gang med $r$: $r^2 = 4r\sin\theta$, altså $x^2 + y^2 = 4y$. Fullfør kvadratet:
-$$
-x^2 + (y - 2)^2 = 4 .
-$$
-Det er en **sirkel med sentrum $(0, 2)$ og radius $2$**, som går gjennom origo.
-:::
 :::
 
 ::: {.oppgave tittel="Et område i polarkoordinater" niva="Utfordrende"}
 Beskriv i polarkoordinater området i første kvadrant som ligger mellom sirklene $x^2 + y^2 = 1$ og $x^2 + y^2 = 9$, og under linjen $y = x$. Finn arealet.
 
-::: {.losning}
-Mellom sirklene er $1 \le r \le 3$. I første kvadrant og under $y = x$ er $0 \le \theta \le \frac{\pi}{4}$. Området er altså
-$$
-\{[r, \theta] : 1 \le r \le 3,\ 0 \le \theta \le \tfrac{\pi}{4}\},
-$$
-en åttendedel av ringen mellom sirklene. Ringen har areal $\pi(3^2 - 1^2) = 8\pi$, så arealet er
-$$
-\frac{8\pi}{8} = \underline{\underline{\pi}} \approx 3.14 .
-$$
+::: {.fasit}
+$\pi$
 :::
 :::
 

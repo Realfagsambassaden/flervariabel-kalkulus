@@ -182,12 +182,8 @@ plt.axis("equal"); plt.grid(); plt.title(f"Omkrets {L:.3f}"); plt.show()
 <!-- tillegg: Claude -->
 Regn ut $\displaystyle\int_C xy\,\mathrm{d}s$, der $C$ er linjestykket fra $(0, 0)$ til $(3, 4)$.
 
-::: {.losning}
-Parametriser med $\vec r(t) = [3t,\ 4t]$, $0 \le t \le 1$. Farten er $|[3,\ 4]| = 5$, og $xy = 12t^2$:
-$$
-\int_C xy\,\mathrm{d}s = \int_0^1 12t^2\cdot5\,\mathrm{d}t = 60\cdot\tfrac13 = \underline{\underline{20}}
-$$
-Kontroll av faktoren $5$: Linjestykket har lengden $\int_0^1 5\,\mathrm{d}t = 5$, som stemmer med Pytagoras.
+::: {.fasit}
+$20$
 :::
 :::
 
@@ -195,12 +191,8 @@ Kontroll av faktoren $5$: Linjestykket har lengden $\int_0^1 5\,\mathrm{d}t = 5$
 <!-- tillegg: Claude -->
 Finn lengden av kurven $\vec r(t) = \big[t^2,\ t^3\big]$ for $0 \le t \le 1$.
 
-::: {.losning}
-$\vec r\,'(t) = [2t,\ 3t^2]$, så $|\vec r\,'(t)| = \sqrt{4t^2 + 9t^4} = t\sqrt{4 + 9t^2}$ (for $t \ge 0$). Med $u = 4 + 9t^2$ er $\mathrm{d}u = 18t\,\mathrm{d}t$:
-$$
-L = \int_0^1 t\sqrt{4 + 9t^2}\,\mathrm{d}t = \frac{1}{18}\int_4^{13}\sqrt u\,\mathrm{d}u = \frac{1}{18}\cdot\frac23\Big[u^{3/2}\Big]_4^{13} = \underline{\underline{\frac{13\sqrt{13} - 8}{27}}} \approx 1.440
-$$
-Kontroll: Kurven går fra $(0, 0)$ til $(1, 1)$, og den rette linja dit er $\sqrt2 \approx 1.414$ lang. Kurven er litt lengre, som den skal være.
+::: {.fasit}
+$\frac{13\sqrt{13} - 8}{27}$
 :::
 :::
 
@@ -212,18 +204,8 @@ a) Regn ut $\displaystyle\int_C y^2\,\mathrm{d}s$ med begge parametriseringene.
 
 b) Regn det ut med $\vec r_3(t) = [-\cos t,\ \sin t]$, som går motsatt vei.
 
-::: {.losning}
-**a)** Med $\vec r_1$ er farten $1$:
-$$
-\int_0^\pi \sin^2 t\,\mathrm{d}t = \frac{\pi}{2}
-$$
-Med $\vec r_2$ er $\vec r_2\,'(u) = [-2\sin 2u,\ 2\cos 2u]$, med lengden $2$:
-$$
-\int_0^{\pi/2}\sin^2(2u)\cdot2\,\mathrm{d}u = \int_0^{\pi}\sin^2 v\,\mathrm{d}v = \frac{\pi}{2}
-$$
-(med $v = 2u$). Mauren går dobbelt så fort, men bruker halvparten så lang tid. Faktoren $|\vec r\,'|$ veier opp for det.
-
-**b)** Farten er fortsatt $1$, og $y^2 = \sin^2 t$, så svaret er igjen $\underline{\underline{\tfrac{\pi}{2}}}$. Retningen spiller ingen rolle.
+::: {.fasit}
+$\tfrac{\pi}{2}$
 :::
 :::
 
@@ -237,19 +219,8 @@ b) Massen per lengde øker med høyden: $\lambda = z$. Finn massen.
 
 c) Finn høyden $\bar z$ til tyngdepunktet.
 
-::: {.losning}
-**a)** $\vec r\,'(t) = [-\sin t,\ \cos t,\ 1]$, så $|\vec r\,'(t)| = \sqrt{\sin^2 t + \cos^2 t + 1} = \sqrt2$, og $L = 2\pi\sqrt2 \approx \underline{\underline{8.89}}$.
-
-**b)**
-$$
-m = \int_0^{2\pi} t\sqrt2\,\mathrm{d}t = \sqrt2\cdot\frac{(2\pi)^2}{2} = \underline{\underline{2\sqrt2\,\pi^2}} \approx 27.9
-$$
-
-**c)**
-$$
-\bar z = \frac1m\int_C z\,\lambda\,\mathrm{d}s = \frac{1}{2\sqrt2\,\pi^2}\int_0^{2\pi} t^2\sqrt2\,\mathrm{d}t = \frac{(2\pi)^3/3}{2\pi^2} = \underline{\underline{\tfrac{4\pi}{3}}} \approx 4.19
-$$
-Det er høyere enn midten ($\pi \approx 3.14$), fordi tråden er tyngst øverst.
+::: {.fasit}
+$8.89$ · $2\sqrt2\,\pi^2$ · $\tfrac{4\pi}{3}$
 :::
 :::
 
@@ -261,20 +232,8 @@ a) Finn arealet av den ene siden av gjerdet.
 
 b) Én liter maling dekker $8.0\ \mathrm{m^2}$. Gjerdet skal males på begge sider, to strøk. Hvor mange liter går med?
 
-::: {.losning}
-**a)** Parametriser med $\vec r(t) = [3\cos t,\ 3\sin t]$, $0 \le t \le \tfrac{\pi}{2}$. Farten er $3$, og $\tfrac{xy}{9} = \cos t\sin t = \tfrac12\sin 2t$:
-$$
-A = \int_C h\,\mathrm{d}s = \int_0^{\pi/2}\Big(1 + \tfrac12\sin 2t\Big)\cdot3\,\mathrm{d}t = 3\Big[t - \tfrac14\cos 2t\Big]_0^{\pi/2} = 3\Big(\frac{\pi}{2} + \frac14 + \frac14\Big) = \frac{3\pi}{2} + \frac32
-$$
-$$
-A = \underline{\underline{6.2\ \mathrm{m^2}}}
-$$
-Kontroll: Gjerdet er $\tfrac{3\pi}{2} = 4.7\ \mathrm{m}$ langt og mellom $1.0$ og $1.5\ \mathrm{m}$ høyt, så arealet må ligge mellom $4.7$ og $7.1\ \mathrm{m^2}$.
-
-**b)** To sider og to strøk gir $4A = 24.8\ \mathrm{m^2}$ maling:
-$$
-\frac{24.8\ \mathrm{m^2}}{8.0\ \mathrm{m^2/L}} = \underline{\underline{3.1\ \mathrm{L}}}
-$$
+::: {.fasit}
+a) $6.2\ \mathrm{m^2}$ · b) $3.1\ \mathrm{L}$
 :::
 :::
 

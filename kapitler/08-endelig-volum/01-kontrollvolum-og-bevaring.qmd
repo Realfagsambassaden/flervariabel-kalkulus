@@ -79,25 +79,19 @@ Noden i cellen kalles $P$, naboene $W$ (vest) og $E$ (øst), og flatene mellom d
 ::: {.oppgave tittel="Regnskap"}
 En celle får $40\ \mathrm{W}$ inn gjennom vestflaten og gir $65\ \mathrm{W}$ ut gjennom østflaten. Situasjonen er stasjonær. Hvor stor er varmeproduksjonen i cellen?
 
-::: {.losning}
-Ut minus inn er produksjon: $65 - 40 = \underline{\underline{25\ \mathrm{W}}}$.
+::: {.fasit}
+$25\ \mathrm{W}$
 :::
 :::
 
 ::: {.oppgave tittel="Velg phi" niva="Middels"}
 Hva er $\phi$, $\Gamma$ og $S$ når transportlikningen skal beskrive massebevaring for en væske?
 
-::: {.losning}
-$\phi = 1$, så $\rho\phi = \rho$. Masse diffunderer ikke og produseres ikke: $\Gamma = 0$ og $S = 0$. Likningen blir $\frac{\partial\rho}{\partial t} + \nabla\cdot(\rho\mathbf{u}) = 0$, kontinuitetslikningen.
-:::
 :::
 
 ::: {.oppgave tittel="Lekker energien?" niva="Utfordrende"}
 Forklar hvorfor summen av alle cellelikningene i endelig volum-metoden gir energibalansen for hele staven, uansett hvor mange celler vi bruker.
 
-::: {.losning}
-Når vi legger sammen likningene, opptrer fluksen gjennom hver indre flate to ganger: som «ut» for cellen til venstre og som «inn» for cellen til høyre, med nøyaktig samme uttrykk. De kansellerer. Igjen står bare fluksene gjennom de to endeflatene og summen av alle kildene: total fluks ut av staven er lik total produksjon. Det gjelder eksakt for den diskrete løsningen.
-:::
 :::
 
 ::::

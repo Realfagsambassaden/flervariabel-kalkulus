@@ -107,29 +107,22 @@ plt.xlabel('h'); plt.ylabel('største feil'); plt.legend(); plt.grid(True); plt.
 ::: {.oppgave tittel="Venstre rand"}
 Vis at en Neumann-betingelse $u'(a) = u'_a$ i *venstre* ende gir likningen $d_0U_0 + 2U_1 = h^2r_0 + 2hu'_a$ for $u'' + qu = r$.
 
-::: {.losning}
-Fiktivt punkt $x_{-1}$: $\frac{U_1 - U_{-1}}{2h} = u'_a$, så $U_{-1} = U_1 - 2hu'_a$. Likningen i $x_0$: $U_{-1} + d_0U_0 + U_1 = h^2r_0$. Innsatt: $d_0U_0 + 2U_1 - 2hu'_a = h^2r_0$, som gir $\underline{\underline{d_0U_0 + 2U_1 = h^2r_0 + 2hu'_a}}$.
+::: {.fasit}
+$d_0U_0 + 2U_1 = h^2r_0 + 2hu'_a$
 :::
 :::
 
 ::: {.oppgave tittel="Kjent fluks i enden" niva="Middels"}
 Løs $u'' = 0$, $u(0) = 10$, $u'(1) = -5$ med fiktiv rand og $N = 2$. Hva er den eksakte løsningen?
 
-::: {.losning}
-$h = 0.5$, $d = -2$. Randlikningen er $2U_1 - 2U_2 = h^2\cdot 0 - 2\cdot 0.5\cdot(-5) = 5$, og den indre likningen er $U_0 - 2U_1 + U_2 = 0$ med $U_0 = 10$.
-
-Fra den indre likningen er $U_2 = 2U_1 - 10$. Innsatt: $2U_1 - 4U_1 + 20 = 5$, så $\underline{\underline{U_1 = 7.5,\ U_2 = 5}}$.
-
-Eksakt løsning: $u = 10 - 5x$. Den numeriske løsningen er eksakt, fordi løsningen er en rett linje.
+::: {.fasit}
+$U_1 = 7.5,\ U_2 = 5$
 :::
 :::
 
 ::: {.oppgave tittel="To Neumann-betingelser?" niva="Utfordrende"}
 Hva skjer om vi har $u'' = 0$ med $u'(0) = 0$ og $u'(1) = 0$? Hvorfor blir likningssystemet singulært?
 
-::: {.losning}
-Alle konstante funksjoner $u = C$ oppfyller både likningen og randbetingelsene, så løsningen er ikke entydig. Matrisen får da en nullvektor $(1, 1, \dots, 1)$ og er singulær. Fysisk: En stav med isolerte ender beholder den temperaturen den har. Vi må vite hvor mye varme den inneholder for å bestemme nivået.
-:::
 :::
 
 ::::

@@ -223,11 +223,8 @@ print("dobbeltintegralet: ", round(hoyre, 4))
 <!-- tillegg: Claude -->
 Regn ut $\displaystyle\oint_C \big(y + \mathrm{e}^x\big)\,\mathrm{d}x + \big(3x + \cos y\big)\,\mathrm{d}y$, der $C$ er sirkelen med radius $2$ om origo, mot klokka.
 
-::: {.losning}
-$\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y} = 3 - 1 = 2$, og arealet inni sirkelen er $\pi\cdot2^2 = 4\pi$. Greens teorem gir
-$$
-\oint_C \ldots = \iint_D 2\,\mathrm{d}A = 2\cdot4\pi = \underline{\underline{8\pi \approx 25.1}}
-$$
+::: {.fasit}
+$8\pi \approx 25.1$
 :::
 :::
 
@@ -235,11 +232,8 @@ $$
 <!-- tillegg: Claude -->
 Bruk Greens teorem til å regne ut $\displaystyle\oint_C -y^2\,\mathrm{d}x + xy\,\mathrm{d}y$, der $C$ er randen av rektangelet $0 \le x \le 2$, $0 \le y \le 1$, mot klokka.
 
-::: {.losning}
-$P = -y^2$ og $Q = xy$, så $\dfrac{\partial Q}{\partial x} - \dfrac{\partial P}{\partial y} = y - (-2y) = 3y$. Da er
-$$
-\oint_C \ldots = \int_0^2\!\!\int_0^1 3y\,\mathrm{d}y\,\mathrm{d}x = \int_0^2 \frac32\,\mathrm{d}x = \underline{\underline{3}}
-$$
+::: {.fasit}
+$3$
 :::
 :::
 
@@ -247,15 +241,8 @@ $$
 <!-- tillegg: Claude -->
 En tomt har form som en firkant. Hjørnene er målt til $(0, 0)$, $(42.0, 0)$, $(51.0, 30.0)$ og $(12.0, 38.0)$, i meter, tatt mot klokka. Finn arealet av tomta.
 
-::: {.losning}
-Skolisseformelen gir
-$$
-A = \frac12\big[(0\cdot0 - 42.0\cdot0) + (42.0\cdot30.0 - 51.0\cdot0) + (51.0\cdot38.0 - 12.0\cdot30.0) + (12.0\cdot0 - 0\cdot38.0)\big]\ \mathrm{m^2}
-$$
-$$
-A = \frac12\big(0 + 1260 + 1578 + 0\big)\ \mathrm{m^2} = 1419\ \mathrm{m^2} = \underline{\underline{1.42\cdot10^3\ \mathrm{m^2}}}
-$$
-med tre gjeldende siffer som i målingene.
+::: {.fasit}
+$1.42\cdot10^3\ \mathrm{m^2}$
 :::
 :::
 
@@ -263,12 +250,8 @@ med tre gjeldende siffer som i målingene.
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [3x,\ y + \sin x]$ ut av ellipsen $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$.
 
-::: {.losning}
-Bruk fluksformen. $\nabla\cdot\vec F = \dfrac{\partial}{\partial x}(3x) + \dfrac{\partial}{\partial y}(y + \sin x) = 3 + 1 = 4$, og arealet av ellipsen er $\pi\cdot3\cdot2 = 6\pi$:
-$$
-\oint_C \vec F\cdot\vec n\,\mathrm{d}s = \iint_D 4\,\mathrm{d}A = 4\cdot6\pi = \underline{\underline{24\pi \approx 75.4}}
-$$
-Leddet $\sin x$ i $Q$ avhenger ikke av $y$, så det bidrar ikke til divergensen.
+::: {.fasit}
+$24\pi \approx 75.4$
 :::
 :::
 
@@ -280,15 +263,8 @@ $$
 $$
 Finn arealet mellom én bue av sykloiden og $x$-aksen. Bruk $A = -\oint_C y\,\mathrm{d}x$.
 
-::: {.losning}
-Randen mot klokka består av to deler: $x$-aksen fra $(0, 0)$ til $(2\pi, 0)$, og så sykloidebuen *baklengs* fra $(2\pi, 0)$ tilbake til $(0, 0)$. Langs $x$-aksen er $y = 0$, så den delen bidrar ikke. Langs buen baklengs skifter integralet fortegn:
-$$
-A = -\oint_C y\,\mathrm{d}x = -\Big(-\int_0^{2\pi} y\,x'(t)\,\mathrm{d}t\Big) = \int_0^{2\pi} (1 - \cos t)(1 - \cos t)\,\mathrm{d}t
-$$
-$$
-A = \int_0^{2\pi} \big(1 - 2\cos t + \cos^2 t\big)\,\mathrm{d}t = 2\pi - 0 + \pi = \underline{\underline{3\pi}}
-$$
-Arealet er nøyaktig tre ganger arealet av hjulet. Galileo prøvde å finne det ved å klippe ut og veie papirmodeller, og på 1600-tallet viste Roberval og Torricelli at svaret er nøyaktig tre.
+::: {.fasit}
+$3\pi$
 :::
 :::
 
@@ -302,14 +278,8 @@ b) kvadratet med hjørner $(2, 2)$, $(3, 2)$, $(3, 3)$ og $(2, 3)$.
 
 Du trenger ikke parametrisere sidene.
 
-::: {.losning}
-Curl til virvelen er null overalt unntatt i origo (se eksempelet over).
-
-**a)** Kvadratet går rundt origo. I området mellom kvadratet og en liten sirkel om origo er curl null, så sirkulasjonen er den samme som rundt sirkelen: $\underline{\underline{2\pi}}$.
-
-**b)** Origo ligger utenfor kvadratet, så feltet er glatt inni, og Greens teorem gir $\iint 0\,\mathrm{d}A = \underline{\underline{0}}$.
-
-Tolkning: $\oint \vec F\cdot\mathrm{d}\vec r$ for virvelen er $2\pi$ ganger antall ganger kurven går rundt origo. Feltet er $\nabla\theta$, der $\theta$ er polarvinkelen, og integralet måler hvor mye vinkelen øker langs kurven.
+::: {.fasit}
+a) $2\pi$ · b) $0$
 :::
 :::
 

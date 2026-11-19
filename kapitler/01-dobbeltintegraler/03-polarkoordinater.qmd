@@ -228,25 +228,16 @@ print(f"Gauss, R = {R}:     {G:.6f}   (pi = {np.pi:.6f}, kvadratrot: {np.sqrt(G)
 ::: {.oppgave tittel="Over en ring"}
 Regn ut $\displaystyle\iint_D (x^2 + y^2)\,\mathrm{d}A$ der $D$ er ringen $1 \le x^2 + y^2 \le 4$.
 
-::: {.losning}
-Ringen er det polare rektangelet $1 \le r \le 2$, $0 \le \theta \le 2\pi$, og $x^2 + y^2 = r^2$:
-$$
-\int_0^{2\pi}\!\!\int_1^2 r^2\cdot r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\Big[\,\tfrac14 r^4\,\Big]_1^2 = 2\pi\cdot\frac{16 - 1}{4} = \underline{\underline{\frac{15\pi}{2}}} \approx 23.6
-$$
+::: {.fasit}
+$\frac{15\pi}{2}$
 :::
 :::
 
 ::: {.oppgave tittel="Halv skive"}
 Regn ut $\displaystyle\iint_D y\,\mathrm{d}A$ der $D$ er den øvre halvdelen av enhetsskiven, $x^2 + y^2 \le 1$, $y \ge 0$.
 
-::: {.losning}
-Den øvre halvskiven er $0 \le r \le 1$, $0 \le \theta \le \pi$, og $y = r\sin\theta$:
-$$
-\int_0^{\pi}\!\!\int_0^1 r\sin\theta\cdot r\,\mathrm{d}r\,\mathrm{d}\theta
-= \left(\int_0^\pi \sin\theta\,\mathrm{d}\theta\right)\left(\int_0^1 r^2\,\mathrm{d}r\right)
-= 2\cdot\frac13 = \underline{\underline{\frac23}}
-$$
-Deler vi på arealet $\frac{\pi}{2}$, får vi $\bar y = \frac{4}{3\pi} \approx 0.42$, som er høyden til tyngdepunktet av halvskiven.
+::: {.fasit}
+$\frac23$
 :::
 :::
 
@@ -257,43 +248,24 @@ $$
 $$
 ved å skissere området og bytte til polarkoordinater.
 
-::: {.losning}
-For hver $x$ mellom $-1$ og $1$ går $y$ fra $0$ til den øvre halvsirkelen $y = \sqrt{1 - x^2}$. Området er altså den øvre halvdelen av enhetsskiven: $0 \le r \le 1$, $0 \le \theta \le \pi$. I kartesiske koordinater har $\mathrm{e}^{x^2 + y^2}$ ingen elementær antiderivert i $y$, men i polarkoordinater gir faktoren $r$ substitusjonen $u = r^2$:
-$$
-\int_0^{\pi}\!\!\int_0^1 \mathrm{e}^{r^2}\,r\,\mathrm{d}r\,\mathrm{d}\theta
-= \pi\Big[\,\tfrac12\,\mathrm{e}^{r^2}\,\Big]_0^1
-= \underline{\underline{\frac{\pi}{2}(\mathrm{e} - 1)}} \approx 2.70
-$$
+::: {.fasit}
+$\frac{\pi}{2}(\mathrm{e} - 1)$
 :::
 :::
 
 ::: {.oppgave tittel="Volumet av en kule" niva="Middels"}
 Vis at en kule med radius $a$ har volum $\frac43\pi a^3$. Bruk at den øvre halvkula ligger under flaten $z = \sqrt{a^2 - x^2 - y^2}$ over skiven $x^2 + y^2 \le a^2$.
 
-::: {.losning}
-Hele kula har dobbelt så stort volum som den øvre halvdelen:
-$$
-V = 2\int_0^{2\pi}\!\!\int_0^a \sqrt{a^2 - r^2}\;r\,\mathrm{d}r\,\mathrm{d}\theta
-$$
-Med $u = a^2 - r^2$ er $\mathrm{d}u = -2r\,\mathrm{d}r$, og $u$ går fra $a^2$ til $0$:
-$$
-\int_0^a \sqrt{a^2 - r^2}\;r\,\mathrm{d}r = \frac12\int_0^{a^2} \sqrt{u}\,\mathrm{d}u = \frac12\cdot\frac23\,a^3 = \frac{a^3}{3}
-$$
-$$
-V = 2\cdot 2\pi\cdot\frac{a^3}{3} = \underline{\underline{\frac43\pi a^3}}
-$$
+::: {.fasit}
+$\frac43\pi a^3$
 :::
 :::
 
 ::: {.oppgave tittel="Normalfordelingen" niva="Middels"}
 Bruk Gauss-integralet til å vise at $\displaystyle\int_{-\infty}^{\infty} \mathrm{e}^{-x^2/2}\,\mathrm{d}x = \sqrt{2\pi}$.
 
-::: {.losning}
-Sett $x = \sqrt2\,u$. Da er $\mathrm{d}x = \sqrt2\,\mathrm{d}u$ og $x^2/2 = u^2$, og grensene er fortsatt $\pm\infty$:
-$$
-\int_{-\infty}^{\infty} \mathrm{e}^{-x^2/2}\,\mathrm{d}x = \sqrt2\int_{-\infty}^{\infty} \mathrm{e}^{-u^2}\,\mathrm{d}u = \sqrt2\cdot\sqrt\pi = \underline{\underline{\sqrt{2\pi}}} \approx 2.507
-$$
-Derfor står $\frac{1}{\sqrt{2\pi}}$ foran $\mathrm{e}^{-x^2/2}$ i standard normalfordeling: da blir det totale arealet under kurven $1$.
+::: {.fasit}
+$\sqrt{2\pi}$
 :::
 :::
 
@@ -307,25 +279,8 @@ a) Finn massen av platen.
 
 b) Finn middeltettheten (massen delt på arealet), og sammenlign med tettheten i sentrum og i kanten.
 
-::: {.losning}
-a) Tettheten avhenger bare av $r$:
-$$
-M = 2\pi\sigma_0\int_0^R r\,\mathrm{e}^{-r/R}\,\mathrm{d}r
-$$
-Delvis integrasjon med $u = r$ og $v' = \mathrm{e}^{-r/R}$, $v = -R\,\mathrm{e}^{-r/R}$:
-$$
-\int_0^R r\,\mathrm{e}^{-r/R}\,\mathrm{d}r = \Big[-rR\,\mathrm{e}^{-r/R}\Big]_0^R + R\int_0^R \mathrm{e}^{-r/R}\,\mathrm{d}r
-= -R^2\mathrm{e}^{-1} + R^2\left(1 - \mathrm{e}^{-1}\right) = R^2\left(1 - \frac{2}{\mathrm{e}}\right)
-$$
-$$
-M = 2\pi\sigma_0 R^2\left(1 - \frac{2}{\mathrm{e}}\right) = 2\pi\cdot 2.5\ \mathrm{kg/m^2}\cdot(0.30\ \mathrm{m})^2\cdot 0.2642 = \underline{\underline{0.37\ \mathrm{kg}}}
-$$
-
-b)
-$$
-\bar\sigma = \frac{M}{\pi R^2} = 2\sigma_0\left(1 - \frac{2}{\mathrm{e}}\right) = 0.528\,\sigma_0 = \underline{\underline{1.3\ \mathrm{kg/m^2}}}
-$$
-I sentrum er tettheten $2.5\ \mathrm{kg/m^2}$, og i kanten er den $\sigma_0\,\mathrm{e}^{-1} = 0.92\ \mathrm{kg/m^2}$. Middeltettheten ligger nærmere kantverdien enn sentrumsverdien, fordi mesteparten av arealet ligger langt ute.
+::: {.fasit}
+$0.37\ \mathrm{kg}$ · $1.3\ \mathrm{kg/m^2}$
 :::
 :::
 

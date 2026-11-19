@@ -214,11 +214,8 @@ print("integralet av div F:  ", round(volum, 5))
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [2x,\ -y,\ 3z]$ ut av kula med radius $2$ om origo.
 
-::: {.losning}
-$\nabla\cdot\vec F = 2 - 1 + 3 = 4$, og volumet av kula er $\tfrac43\pi\cdot2^3 = \tfrac{32\pi}{3}$. Divergenssetningen gir
-$$
-\iint_S \vec F\cdot\vec n\,\mathrm{d}S = 4\cdot\frac{32\pi}{3} = \underline{\underline{\frac{128\pi}{3} \approx 134}}
-$$
+::: {.fasit}
+$\frac{128\pi}{3} \approx 134$
 :::
 :::
 
@@ -226,11 +223,8 @@ $$
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [xy,\ yz,\ zx]$ ut av terningen $0 \le x, y, z \le 1$.
 
-::: {.losning}
-$\nabla\cdot\vec F = y + z + x$. Hvert av de tre leddene gir $\int_0^1 x\,\mathrm{d}x = \tfrac12$ over terningen, så
-$$
-\iiint_E (x + y + z)\,\mathrm{d}V = 3\cdot\frac12 = \underline{\underline{\frac32}}
-$$
+::: {.fasit}
+$\frac32$
 :::
 :::
 
@@ -238,11 +232,8 @@ $$
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [x^3,\ y^3,\ z]$ ut av den lukkede sylinderen $x^2 + y^2 \le 1$, $0 \le z \le 3$.
 
-::: {.losning}
-$\nabla\cdot\vec F = 3x^2 + 3y^2 + 1 = 3r^2 + 1$ i sylinderkoordinater, med $\mathrm{d}V = r\,\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}z$:
-$$
-\int_0^3\!\!\int_0^{2\pi}\!\!\int_0^1 \big(3r^2 + 1\big)\,r\,\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}z = 3\cdot2\pi\Big(\frac34 + \frac12\Big) = \underline{\underline{\frac{15\pi}{2} \approx 23.6}}
-$$
+::: {.fasit}
+$\frac{15\pi}{2} \approx 23.6$
 :::
 :::
 
@@ -250,14 +241,8 @@ $$
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [y,\ -x,\ z]$ oppover gjennom paraboloiden $z = 1 - x^2 - y^2$, $z \ge 0$, ved å lukke flaten med en bunn og bruke divergenssetningen. Kontroller med grafformelen for fluks.
 
-::: {.losning}
-$\nabla\cdot\vec F = 0 + 0 + 1 = 1$, så fluksen ut av det lukkede området er volumet under paraboloiden:
-$$
-\int_0^{2\pi}\!\!\int_0^1 \big(1 - r^2\big)\,r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\Big(\frac12 - \frac14\Big) = \frac\pi2
-$$
-På bunnen ($z = 0$, $\vec n = [0,\ 0,\ -1]$) er $\vec F\cdot\vec n = -z = 0$, så hele fluksen går gjennom paraboloiden: $\underline{\underline{\pi/2}}$.
-
-Kontroll: Med $g = 1 - x^2 - y^2$ er integranden $-P\,g_x - Q\,g_y + R = 2xy - 2xy + (1 - x^2 - y^2) = 1 - r^2$, som gir det samme integralet.
+::: {.fasit}
+$\pi/2$
 :::
 :::
 
@@ -265,12 +250,8 @@ Kontroll: Med $g = 1 - x^2 - y^2$ er integranden $-P\,g_x - Q\,g_y + R = 2xy - 2
 <!-- tillegg: Claude -->
 En ladning $q_1 = 4.0\ \mathrm{nC}$ sitter inni en lukket flate $S$, og en ladning $q_2 = -6.0\ \mathrm{nC}$ sitter utenfor. Finn den elektriske fluksen ut av $S$. Endrer svaret seg hvis $q_2$ flyttes nærmere $S$ (men fortsatt utenfor)?
 
-::: {.losning}
-Bare ladningen inni teller:
-$$
-\Phi_E = \frac{q_1}{\varepsilon_0} = \frac{4.0\cdot10^{-9}\ \mathrm{C}}{8.854\cdot10^{-12}\ \mathrm{C^2/(N\,m^2)}} = \underline{\underline{4.5\cdot10^2\ \mathrm{N\,m^2/C}}}
-$$
-Svaret endrer seg ikke når $q_2$ flyttes, så lenge den er utenfor. Feltet fra $q_2$ på flaten blir sterkere, men like mye av det går inn gjennom flaten som ut: Feltet fra $q_2$ er divergensfritt inni $S$.
+::: {.fasit}
+$4.5\cdot10^2\ \mathrm{N\,m^2/C}$
 :::
 :::
 
@@ -284,12 +265,8 @@ b) Feltet er divergensfritt utenfor origo (vist under [divergens og curl](../04-
 
 c) Hvorfor kan du ikke bruke divergenssetningen direkte på den første terningen?
 
-::: {.losning}
-**a)** På kula er $\vec n = \vec r/a$, så $\vec F\cdot\vec n = \dfrac{\vec r\cdot\vec r}{a^3\cdot a} = \dfrac{a^2}{a^4} = \dfrac{1}{a^2}$. Gang med arealet $4\pi a^2$: Fluksen er $\underline{\underline{4\pi}}$.
-
-**b)** Den første terningen inneholder origo. Legg en liten kule om origo inni terningen. I området mellom kula og terningen er feltet glatt og divergensfritt, så fluksen ut av terningen er lik fluksen ut av kula: $\underline{\underline{4\pi}}$. Den andre terningen inneholder ikke origo, så feltet er glatt og divergensfritt inni, og fluksen er $\underline{\underline{0}}$.
-
-**c)** Feltet er ikke definert i origo, som ligger inni den første terningen, så kravet i setningen er ikke oppfylt. Bruker vi setningen likevel, får vi $\iiint 0\,\mathrm{d}V = 0$, som er feil. Hele «kilden» sitter i ett punkt. Dette er samme situasjon som med virvelen i Greens teorem, og det er grunnen til Gauss' lov.
+::: {.fasit}
+a) $4\pi$ · b) $4\pi$ · b) $0$
 :::
 :::
 

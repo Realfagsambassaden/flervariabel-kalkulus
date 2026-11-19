@@ -109,25 +109,22 @@ Regner vi fluksene ut med temperaturene ved *slutten* av steget, får vi en **im
 ::: {.oppgave tittel="Tidssteg for kobber"}
 Kobber har $\alpha = 1.1\cdot 10^{-4}\ \mathrm{m^2/s}$. Hvor stort kan tidssteget være med celler på $5.0\ \mathrm{mm}$, i det indre og ved en rand med kjent temperatur?
 
-::: {.losning}
-Med $\alpha = \frac{\kappa}{\rho c}$: indre $\Delta t \le \frac{\delta x^2}{2\alpha} = \frac{(5.0\cdot 10^{-3})^2}{2\cdot 1.1\cdot 10^{-4}}\ \mathrm{s} = \underline{\underline{0.11\ \mathrm{s}}}$, rand $\frac{\delta x^2}{3\alpha} = \underline{\underline{0.076\ \mathrm{s}}}$.
+::: {.fasit}
+$0.11\ \mathrm{s}$ · $0.076\ \mathrm{s}$
 :::
 :::
 
 ::: {.oppgave tittel="Ett steg for hånd" niva="Middels"}
 En indre celle har $T_W = 30$, $T_P = 20$ og $T_E = 16\ \mathrm{°C}$, og $r = \frac{\alpha\Delta t}{\delta x^2} = 0.25$. Hva er $T_P$ etter ett tidssteg?
 
-::: {.losning}
-$T_P^{n+1} = 20 + 0.25(30 - 40 + 16) = \underline{\underline{21.5\ \mathrm{°C}}}$.
+::: {.fasit}
+$21.5\ \mathrm{°C}$
 :::
 :::
 
 ::: {.oppgave tittel="Isolert innside" niva="Utfordrende"}
 Endre koden slik at innsiden av betongveggen er isolert i stedet for å holdes på $20\ \mathrm{°C}$. Hva skjer med veggen over tid? Hvilket tidssteg er nå trygt?
 
-::: {.losning}
-For celle 1: kutt koblingen ($a_W = 0$) uten bidrag til $S_P$ og $S_u$. Da kjøles hele veggen etter hvert ned mot $-10\ \mathrm{°C}$. Den isolerte randcellen har bare én nabo, så kravet der er svakere ($\frac{\rho c\,\delta x^2}{\kappa}$). Den kalde randcellen krever fortsatt $\Delta t \le 193\ \mathrm{s}$.
-:::
 :::
 
 ::::

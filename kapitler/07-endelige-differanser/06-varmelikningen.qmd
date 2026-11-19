@@ -136,33 +136,27 @@ Sett $r = \frac14$ i 2D-formelen. Da forsvinner $U_{i,j}^n$, og vi står igjen m
 ::: {.oppgave tittel="Tillatt tidssteg"}
 Hvor stort kan $\Delta t$ være for $u_t = u_{xx}$ med $\Delta x = 0.05$? Hvor mange tidssteg trengs for å nå $t = 1$?
 
-::: {.losning}
-$\Delta t \le \frac12\cdot 0.05^2 = \underline{\underline{1.25\cdot 10^{-3}}}$, altså minst $\underline{\underline{800}}$ tidssteg.
+::: {.fasit}
+$1.25\cdot 10^{-3}$ · $800$
 :::
 :::
 
 ::: {.oppgave tittel="Konvergens" niva="Middels"}
 Kjør koden med $r = 0.4$ fast og $M = 10,\ 20,\ 40$ til $t = 0.1$. Hvordan endrer feilen seg? Hvorfor ser du andre orden selv om Euler er av første orden i tid?
 
-::: {.losning}
-Feilen blir omtrent $4.2\cdot 10^{-3}$, $1.0\cdot 10^{-3}$ og $2.6\cdot 10^{-4}$, altså fire ganger mindre for hver dobling av $M$. Med $r$ fast er $\Delta t = r\Delta x^2$, så feilen $O(\Delta t) + O(\Delta x^2) = O(\Delta x^2)$.
-:::
 :::
 
 ::: {.oppgave tittel="Ett steg i 2D" niva="Middels"}
 I et 2D-rutenett er $U_{i,j}^n = 20$, og naboene er $30$, $30$, $10$ og $20$. Regn ut $U_{i,j}^{n+1}$ med $r = 0.2$. Er tidssteget stabilt?
 
-::: {.losning}
-$U^{n+1} = 20 + 0.2(30 + 30 + 10 + 20 - 80) = \underline{\underline{22}}$. Stabilt, siden $0.2 \le 0.25$.
+::: {.fasit}
+$22$
 :::
 :::
 
 ::: {.oppgave tittel="Implisitt Euler" niva="Utfordrende"}
 I *implisitt* Euler tas høyresiden på det nye tidsnivået: $U_i^{n+1} = U_i^n + r(U_{i+1}^{n+1} - 2U_i^{n+1} + U_{i-1}^{n+1})$. Vis med sagtann-argumentet at forsterkningsfaktoren er $G = \frac{1}{1 + 4r}$. Hva betyr det for stabiliteten, og hva er prisen?
 
-::: {.losning}
-Med $e_i^{n+1} = Ge_i^n$ og sagtann: $Ge = e + r(-Ge - 2Ge - Ge) = e - 4rGe$, så $G(1 + 4r) = 1$ og $G = \frac{1}{1 + 4r}$. Siden $0 < G < 1$ for alle $r > 0$, er metoden **stabil for alle tidssteg**. Prisen er at vi må løse et (tridiagonalt) likningssystem i hvert tidssteg.
-:::
 :::
 
 ::::

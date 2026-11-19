@@ -148,62 +148,32 @@ a) Skriv punktet $(x, y, z) = (0,\ 2,\ 2)$ i kulekoordinater.
 
 b) Skriv punktet $(\rho, \varphi, \theta) = \big(4,\ \tfrac{\pi}{6},\ \pi\big)$ i kartesiske koordinater.
 
-::: {.losning}
-**a)** $\rho = \sqrt{0 + 4 + 4} = 2\sqrt2$. Vinkelen fra $z$-aksen: $\cos\varphi = z/\rho = 2/(2\sqrt2) = \tfrac{1}{\sqrt2}$, så $\varphi = \tfrac{\pi}{4}$. Punktet ligger over den positive $y$-aksen, så $\theta = \tfrac{\pi}{2}$:
-$$
-(\rho, \varphi, \theta) = \underline{\underline{\big(2\sqrt2,\ \tfrac{\pi}{4},\ \tfrac{\pi}{2}\big)}}
-$$
-
-**b)**
-$$
-x = 4\sin\tfrac{\pi}{6}\cos\pi = 4\cdot\tfrac12\cdot(-1) = -2, \qquad y = 4\sin\tfrac{\pi}{6}\sin\pi = 0, \qquad z = 4\cos\tfrac{\pi}{6} = 2\sqrt3
-$$
-$$
-(x, y, z) = \underline{\underline{\big(-2,\ 0,\ 2\sqrt3\big)}}
-$$
+::: {.fasit}
+$\big(2\sqrt2,\ \tfrac{\pi}{4},\ \tfrac{\pi}{2}\big)$ · $\big(-2,\ 0,\ 2\sqrt3\big)$
 :::
 :::
 
 ::: {.oppgave tittel="Et integral som bare går i kulekoordinater"}
 Regn ut $\displaystyle\iiint_B \mathrm{e}^{(x^2 + y^2 + z^2)^{3/2}}\,\mathrm{d}V$ der $B$ er enhetskula $x^2 + y^2 + z^2 \le 1$.
 
-::: {.losning}
-Med $x^2 + y^2 + z^2 = \rho^2$ er integranden $\mathrm{e}^{\rho^3}$:
-$$
-\int_0^{2\pi}\!\!\int_0^{\pi}\!\!\int_0^1 \mathrm{e}^{\rho^3}\rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta = 4\pi\int_0^1 \mathrm{e}^{\rho^3}\rho^2\,\mathrm{d}\rho
-$$
-Med $u = \rho^3$ er $\mathrm{d}u = 3\rho^2\,\mathrm{d}\rho$:
-$$
-4\pi\cdot\tfrac13\int_0^1 \mathrm{e}^u\,\mathrm{d}u = \underline{\underline{\tfrac{4\pi}{3}(\mathrm{e} - 1)}} \approx 7.20
-$$
-Faktoren $\rho^2$ fra volumelementet er akkurat det som trengs for substitusjonen. I kartesiske koordinater finnes det ingen enkel antiderivert.
+::: {.fasit}
+$\tfrac{4\pi}{3}(\mathrm{e} - 1)$
 :::
 :::
 
 ::: {.oppgave tittel="Kuleskallet" niva="Middels"}
 Regn ut $\displaystyle\iiint_E \frac{1}{\sqrt{x^2 + y^2 + z^2}}\,\mathrm{d}V$ der $E$ er kuleskallet $1 \le x^2 + y^2 + z^2 \le 4$.
 
-::: {.losning}
-Skallet er $1 \le \rho \le 2$ med alle vinkler. Integranden er $1/\rho$:
-$$
-\int_0^{2\pi}\!\!\int_0^{\pi}\!\!\int_1^2 \frac{1}{\rho}\,\rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta = 4\pi\int_1^2 \rho\,\mathrm{d}\rho = 4\pi\cdot\tfrac32 = \underline{\underline{6\pi}}
-$$
-Integranden går mot uendelig i origo, men origo er ikke med i skallet. (Selv for hele kula går det bra: $\rho^2$ fra volumelementet demper $1/\rho$.)
+::: {.fasit}
+$6\pi$
 :::
 :::
 
 ::: {.oppgave tittel="Tyngdepunktet i en halvkule" niva="Middels"}
 Finn tyngdepunktet i den massive halvkula $x^2 + y^2 + z^2 \le a^2$, $z \ge 0$, med konstant tetthet.
 
-::: {.losning}
-Av symmetri er $\bar x = \bar y = 0$. Halvkula er $0 \le \rho \le a$, $0 \le \varphi \le \tfrac{\pi}{2}$, med volum $\tfrac23\pi a^3$. Med $z = \rho\cos\varphi$:
-$$
-\iiint z\,\mathrm{d}V = \int_0^{2\pi}\!\!\int_0^{\pi/2}\!\!\int_0^a \rho\cos\varphi\cdot\rho^2\sin\varphi\,\mathrm{d}\rho\,\mathrm{d}\varphi\,\mathrm{d}\theta = 2\pi\cdot\Big[\tfrac12\sin^2\varphi\Big]_0^{\pi/2}\cdot\frac{a^4}{4} = \frac{\pi a^4}{4}
-$$
-$$
-\bar z = \frac{\pi a^4/4}{2\pi a^3/3} = \underline{\underline{\tfrac38 a}}
-$$
-Tyngdepunktet ligger under midten av høyden ($\tfrac12 a$), fordi halvkula er bredest nederst.
+::: {.fasit}
+$\tfrac38 a$
 :::
 :::
 
@@ -220,25 +190,8 @@ b) Regn ut $M$.
 
 c) Siden $H \ll R$, er $M \approx 4\pi R^2\cdot\delta_0 H$. Forklar dette med ord, og finn hvor mange prosent tilnærmingen bommer.
 
-::: {.losning}
-**a)** Vinkelintegralene gir $4\pi$:
-$$
-M = 4\pi\delta_0\int_R^{\infty}\rho^2\,\mathrm{e}^{-(\rho - R)/H}\,\mathrm{d}\rho
-$$
-Sett $s = \rho - R$, så $\rho^2 = R^2 + 2Rs + s^2$. Vi trenger $\int_0^\infty s^n\mathrm{e}^{-s/H}\,\mathrm{d}s$ for $n = 0, 1, 2$, som er $H$, $H^2$ og $2H^3$ (delvis integrasjon). Dermed
-$$
-M = 4\pi\delta_0\big(R^2 H + 2R H^2 + 2H^3\big) = 4\pi\delta_0 H\big(R^2 + 2RH + 2H^2\big)
-$$
-
-**b)**
-$$
-M = 4\pi\cdot1.2\ \mathrm{kg/m^3}\cdot8.5\cdot10^3\ \mathrm{m}\cdot\big((6.37\cdot10^6)^2 + 2\cdot6.37\cdot10^6\cdot8.5\cdot10^3 + 2\cdot(8.5\cdot10^3)^2\big)\ \mathrm{m^2} = \underline{\underline{5.2\cdot10^{18}\ \mathrm{kg}}}
-$$
-
-**c)** $4\pi R^2$ er arealet av jordoverflaten, og $\delta_0 H$ er massen av en luftsøyle med grunnflate $1\ \mathrm{m^2}$ (integralet av $\delta_0\mathrm{e}^{-s/H}$ over høyden). Atmosfæren er så tynn i forhold til jorda at den nesten er et flatt lag. Det relative avviket er
-$$
-\frac{2RH + 2H^2}{R^2} \approx \frac{2H}{R} = \frac{2\cdot8.5\cdot10^3}{6.37\cdot10^6} = 0.0027 = \underline{\underline{0.27\ \%}}
-$$
+::: {.fasit}
+a) $5.2\cdot10^{18}\ \mathrm{kg}$ · c) $0.27\ \%$
 :::
 :::
 

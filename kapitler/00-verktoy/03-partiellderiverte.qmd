@@ -107,24 +107,13 @@ print(f"eksakt:       {fx(x, y):.5f}")
 ::: {.oppgave tittel="Deriver"}
 Finn $f_x$ og $f_y$ for $f(x, y) = x^2\,\mathrm{e}^{3y} + \ln(x)$, $x > 0$.
 
-::: {.losning}
-$$
-f_x = 2x\,\mathrm{e}^{3y} + \frac{1}{x}, \qquad f_y = 3x^2\,\mathrm{e}^{3y}
-$$
-:::
 :::
 
 ::: {.oppgave tittel="Tre variabler"}
 Finn alle de tre partiellderiverte av $T(x, y, z) = xy^2z^3$ i punktet $(1, 2, -1)$.
 
-::: {.losning}
-$$
-T_x = y^2z^3, \qquad T_y = 2xyz^3, \qquad T_z = 3xy^2z^2
-$$
-I $(1, 2, -1)$:
-$$
-T_x = 4\cdot(-1) = \underline{\underline{-4}}, \qquad T_y = 2\cdot 1\cdot 2\cdot(-1) = \underline{\underline{-4}}, \qquad T_z = 3\cdot 1\cdot 4\cdot 1 = \underline{\underline{12}}
-$$
+::: {.fasit}
+$-4$ · $12$
 :::
 :::
 
@@ -136,34 +125,14 @@ a) Finn $\dfrac{\partial p}{\partial V}$ og $\dfrac{\partial p}{\partial T}$, og
 
 b) For $n = 1.00\ \mathrm{mol}$, $T = 300\ \mathrm{K}$ og $V = 0.0250\ \mathrm{m^3}$: Omtrent hvor mye endres trykket om volumet øker med $1.0\ \mathrm{L} = 0.0010\ \mathrm{m^3}$? Bruk $\mathrm{R} = 8.314\ \mathrm{J/(mol\,K)}$.
 
-::: {.losning}
-a)
-$$
-\frac{\partial p}{\partial V} = -\frac{n\mathrm{R}T}{V^2} < 0, \qquad \frac{\partial p}{\partial T} = \frac{n\mathrm{R}}{V} > 0 .
-$$
-Trykket synker når volumet øker (ved fast temperatur), og stiger når temperaturen øker (ved fast volum).
-
-b)
-$$
-\frac{\partial p}{\partial V} = -\frac{1.00\cdot 8.314\cdot 300}{0.0250^2}\ \mathrm{Pa/m^3} = -3.99\cdot 10^{6}\ \mathrm{Pa/m^3}
-$$
-$$
-\Delta p \approx \frac{\partial p}{\partial V}\,\Delta V = -3.99\cdot 10^{6}\cdot 0.0010\ \mathrm{Pa} \approx \underline{\underline{-4.0\ \mathrm{kPa}}}
-$$
+::: {.fasit}
+$-4.0\ \mathrm{kPa}$
 :::
 :::
 
 ::: {.oppgave tittel="Laplace-likningen" niva="Utfordrende"}
 Vis at $u(x, y) = \mathrm{e}^{x}\cos y$ oppfyller Laplace-likningen $u_{xx} + u_{yy} = 0$, og at $f_{xy} = f_{yx}$ for denne funksjonen.
 
-::: {.losning}
-$$
-u_x = \mathrm{e}^{x}\cos y, \quad u_{xx} = \mathrm{e}^{x}\cos y, \qquad u_y = -\mathrm{e}^{x}\sin y, \quad u_{yy} = -\mathrm{e}^{x}\cos y
-$$
-Dermed er $u_{xx} + u_{yy} = \mathrm{e}^{x}\cos y - \mathrm{e}^{x}\cos y = 0$. ✓
-
-Blandede: $u_{xy} = \dfrac{\partial}{\partial y}(\mathrm{e}^{x}\cos y) = -\mathrm{e}^{x}\sin y$ og $u_{yx} = \dfrac{\partial}{\partial x}(-\mathrm{e}^{x}\sin y) = -\mathrm{e}^{x}\sin y$. Like. ✓
-:::
 :::
 
 ::::

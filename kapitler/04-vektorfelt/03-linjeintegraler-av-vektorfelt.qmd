@@ -206,13 +206,8 @@ a) Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$, der $C$ er linjestykket fra $(0
 
 b) Hva blir integralet langs det samme linjestykket fra $(2, 1)$ til $(0, 0)$?
 
-::: {.losning}
-**a)** Linjestykket er $\vec r(t) = [2t,\ t]$ med $0 \le t \le 1$, så $\vec r\,'(t) = [2,\ 1]$. Langs kurven er $\vec F = [2t\cdot t,\ t^2] = [2t^2,\ t^2]$, og
-$$
-\vec F\cdot\vec r\,' = 4t^2 + t^2 = 5t^2, \qquad \int_C \vec F\cdot\mathrm{d}\vec r = \int_0^1 5t^2\,\mathrm{d}t = \underline{\underline{\frac53}}
-$$
-
-**b)** Samme kurve med motsatt orientering gir motsatt fortegn: $\underline{\underline{-\tfrac53}}$. Du kan sjekke det med $\vec r(t) = [2 - 2t,\ 1 - t]$, som gir $\vec r\,' = [-2,\ -1]$ og $\vec F\cdot\vec r\,' = -5(1 - t)^2$.
+::: {.fasit}
+a) $\frac53$ · b) $-\tfrac53$
 :::
 :::
 
@@ -220,10 +215,8 @@ $$
 <!-- tillegg: Claude -->
 Det radielle feltet $\vec F = [x,\ y]$ peker rett ut fra origo. Hva er $\oint_C \vec F\cdot\mathrm{d}\vec r$ rundt sirkelen med radius $2$ om origo? Forklar uten å regne, og kontroller så med en parametrisering.
 
-::: {.losning}
-Feltet peker rett ut fra origo, altså langs radien, mens sirkelen hele tiden går vinkelrett på radien. Feltet står derfor vinkelrett på $\mathrm{d}\vec r$ overalt, tangentkomponenten er null, og integralet er $\underline{\underline{0}}$.
-
-Kontroll: $\vec r(t) = [2\cos t,\ 2\sin t]$ gir $\vec r\,' = [-2\sin t,\ 2\cos t]$ og $\vec F\cdot\vec r\,' = -4\cos t\sin t + 4\sin t\cos t = 0$.
+::: {.fasit}
+$0$
 :::
 :::
 
@@ -231,15 +224,8 @@ Kontroll: $\vec r(t) = [2\cos t,\ 2\sin t]$ gir $\vec r\,' = [-2\sin t,\ 2\cos t
 <!-- tillegg: Claude -->
 Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$ for $\vec F = [-y,\ x,\ z]$ langs skruelinjen $\vec r(t) = [\cos t,\ \sin t,\ t]$ fra $t = 0$ til $t = 2\pi$ (én omdreining).
 
-::: {.losning}
-$\vec r\,'(t) = [-\sin t,\ \cos t,\ 1]$, og langs kurven er $\vec F = [-\sin t,\ \cos t,\ t]$. Da er
-$$
-\vec F\cdot\vec r\,' = \sin^2 t + \cos^2 t + t = 1 + t
-$$
-$$
-\int_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} (1 + t)\,\mathrm{d}t = 2\pi + \frac{(2\pi)^2}{2} = \underline{\underline{2\pi + 2\pi^2 \approx 26.0}}
-$$
-Leddet $2\pi$ kommer fra rotasjonen rundt $z$-aksen, og $2\pi^2$ fra $z$-komponenten, som gjør mer og mer arbeid jo høyere opp vi kommer.
+::: {.fasit}
+$2\pi + 2\pi^2 \approx 26.0$
 :::
 :::
 
@@ -251,14 +237,8 @@ a) Hvor stort arbeid gjør friksjonskraften?
 
 b) Kassen er tilbake der den startet. Hvorfor er arbeidet likevel ikke null?
 
-::: {.losning}
-**a)** Friksjonskraften har størrelsen $f = \mu_k m\mathrm{g}$ og peker hele tiden mot bevegelsen, altså $\vec f = -f\,\vec T$. Da er $\vec f\cdot\mathrm{d}\vec r = -f\,\mathrm{d}s$, og
-$$
-W = \oint_C \vec f\cdot\mathrm{d}\vec r = -f\cdot(\text{lengden av veien}) = -0.30\cdot5.0\ \mathrm{kg}\cdot9.81\ \mathrm{m/s^2}\cdot8.0\ \mathrm{m} = \underline{\underline{-0.12\ \mathrm{kJ}}}
-$$
-(mer nøyaktig $-118\ \mathrm{J}$, men dataene har to gjeldende siffer).
-
-**b)** Friksjonskraften er ikke et fast felt i rommet: Den avhenger av hvilken vei kassen beveger seg, og snur når kassen snur. Den tar alltid energi, uansett retning, så bidragene kan aldri oppheve hverandre. Arbeidet rundt en lukket vei blir null bare for konservative krefter, som tyngdekraften.
+::: {.fasit}
+$-0.12\ \mathrm{kJ}$
 :::
 :::
 
@@ -268,16 +248,8 @@ a) Regn ut $\displaystyle\frac12\oint_C x\,\mathrm{d}y - y\,\mathrm{d}x$ rundt e
 
 b) Sammenlikn med arealet av ellipsen, $\pi ab$. Hva blir svaret for en sirkel med radius $R$?
 
-::: {.losning}
-**a)** $x = a\cos t$, $y = b\sin t$, $\mathrm{d}x = -a\sin t\,\mathrm{d}t$ og $\mathrm{d}y = b\cos t\,\mathrm{d}t$:
-$$
-x\,\mathrm{d}y - y\,\mathrm{d}x = \big(ab\cos^2 t + ab\sin^2 t\big)\,\mathrm{d}t = ab\,\mathrm{d}t
-$$
-$$
-\frac12\oint_C x\,\mathrm{d}y - y\,\mathrm{d}x = \frac12\int_0^{2\pi} ab\,\mathrm{d}t = \underline{\underline{\pi ab}}
-$$
-
-**b)** Det er nøyaktig arealet av ellipsen. For en sirkel ($a = b = R$) får vi $\pi R^2$. Integralet er $\tfrac12$ ganger sirkulasjonen til $[-y,\ x]$, som har curl $2$, så det blir $\tfrac12\cdot2\cdot\text{areal}$. Slik måler et planimeter arealet av en figur ved å følge kanten.
+::: {.fasit}
+$\pi ab$
 :::
 :::
 
@@ -289,21 +261,8 @@ a) Regn ut sirkulasjonen $\oint_C \vec F\cdot\mathrm{d}\vec r$ med en parametris
 
 b) Finn curl til $\vec F$, og sammenlikn sirkulasjonen med curl ganger arealet inni sirkelen.
 
-::: {.losning}
-**a)** $\vec r(t) = [\cos t,\ \sin t]$ gir $\vec r\,' = [-\sin t,\ \cos t]$ og $\vec F = [\sin^2 t,\ 2\cos t\sin t + \cos t]$:
-$$
-\vec F\cdot\vec r\,' = -\sin^3 t + 2\cos^2 t\sin t + \cos^2 t
-$$
-Over en hel periode er $\int_0^{2\pi}\sin^3 t\,\mathrm{d}t = 0$ (oddetall potens av sinus) og $\int_0^{2\pi}\cos^2 t\sin t\,\mathrm{d}t = \big[-\tfrac13\cos^3 t\big]_0^{2\pi} = 0$, mens $\int_0^{2\pi}\cos^2 t\,\mathrm{d}t = \pi$. Altså er
-$$
-\oint_C \vec F\cdot\mathrm{d}\vec r = \underline{\underline{\pi}}
-$$
-
-**b)**
-$$
-\nabla\times\vec F = \frac{\partial}{\partial x}(2xy + x) - \frac{\partial}{\partial y}\big(y^2\big) = 2y + 1 - 2y = 1
-$$
-Curl er $1$ overalt, og arealet inni enhetssirkelen er $\pi$, så curl ganger areal er $1\cdot\pi = \pi$. Det stemmer med sirkulasjonen, akkurat som for rotasjonsfeltet. [Greens teorem](../05-integralsetninger/02-greens-teorem.qmd) sier at sirkulasjonen rundt kanten alltid er lik integralet av curl over området inni.
+::: {.fasit}
+$\pi$
 :::
 :::
 

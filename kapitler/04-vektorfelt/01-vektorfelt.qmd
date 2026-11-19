@@ -166,27 +166,14 @@ plt.show()
 <!-- tillegg: Claude -->
 Regn ut $\vec F(x, y) = [y,\ 0]$ i punktene $(0, 1)$, $(2, 1)$, $(0, -1)$ og $(1, 0)$. Skisser feltet, og beskriv strømlinjene.
 
-::: {.losning}
-$$
-\vec F(0, 1) = [1,\ 0], \qquad \vec F(2, 1) = [1,\ 0], \qquad \vec F(0, -1) = [-1,\ 0], \qquad \vec F(1, 0) = [0,\ 0]
-$$
-Feltet er vannrett overalt og avhenger bare av $y$. Over $x$-aksen går det mot høyre, under mot venstre, og pilene blir lengre jo lenger fra $x$-aksen vi er. På $x$-aksen er feltet null.
-
-Strømlinjene er **vannrette linjer** $y = \text{konstant}$: $y' = 0$ gir $y = y_0$, og $x' = y_0$ gir $x = x_0 + y_0 t$. Slik strømmer en væske mellom to plater som glir hver sin vei.
-:::
 :::
 
 ::: {.oppgave tittel="Finn gradientfeltet"}
 <!-- tillegg: Claude -->
 Finn $\nabla f$ for $f(x, y, z) = xy^2 + z$, og regn ut feltet i punktet $(1, 2, 0)$.
 
-::: {.losning}
-$$
-\nabla f = \Big[\frac{\partial f}{\partial x},\ \frac{\partial f}{\partial y},\ \frac{\partial f}{\partial z}\Big] = \underline{\underline{\big[y^2,\ 2xy,\ 1\big]}}
-$$
-$$
-\nabla f(1, 2, 0) = \big[4,\ 4,\ 1\big]
-$$
+::: {.fasit}
+$\big[y^2,\ 2xy,\ 1\big]$
 :::
 :::
 
@@ -200,14 +187,8 @@ b) Finn en retningsvektor for tangenten til nivåkurven gjennom $(2, 1)$, og kon
 
 c) Hvilken retning ville vann rent hvis $f$ var høyden i et landskap?
 
-::: {.losning}
-**a)** $\nabla f = [2x,\ 8y]$, så $\nabla f(2, 1) = \underline{\underline{[4,\ 8]}}$.
-
-**b)** Nivåkurven er ellipsen $x^2 + 4y^2 = 8$. En vektor vinkelrett på $[4,\ 8]$ er $\underline{\underline{[2,\ -1]}}$ (bytt plass og skift ett fortegn, og forkort). Kontroll: $[4,\ 8]\cdot[2,\ -1] = 8 - 8 = 0$.
-
-Vi kan også derivere implisitt: $2x + 8y\,y' = 0$ gir $y' = -\tfrac{x}{4y} = -\tfrac12$ i $(2, 1)$, altså retningen $[2,\ -1]$.
-
-**c)** Vann renner langs $-\nabla f = [-4,\ -8]$, altså retningen $\underline{\underline{[-1,\ -2]}}$: mot origo, der landskapet er lavest, men brattere i $y$-retning enn i $x$-retning.
+::: {.fasit}
+a) $[4,\ 8]$ · b) $[2,\ -1]$ · c) $[-1,\ -2]$
 :::
 :::
 
@@ -215,13 +196,6 @@ Vi kan også derivere implisitt: $2x + 8y\,y' = 0$ gir $y' = -\tfrac{x}{4y} = -\
 <!-- tillegg: Claude -->
 Finn strømlinjene til $\vec F(x, y) = [x,\ y]$. Hvilken form har de?
 
-::: {.losning}
-$x' = x$ og $y' = y$ gir
-$$
-x(t) = x_0\,\mathrm{e}^{t}, \qquad y(t) = y_0\,\mathrm{e}^{t}
-$$
-Begge koordinatene vokser med samme faktor, så $\vec r(t) = \mathrm{e}^{t}\,[x_0,\ y_0]$. Det er **halvlinjer ut fra origo** i retningen $[x_0,\ y_0]$, gjennomløpt stadig fortere. Strømlinjene står vinkelrett på sirklene om origo, som er nivåkurvene til potensialet $\tfrac12(x^2 + y^2)$.
-:::
 :::
 
 ::: {.oppgave tittel="Gradientfelt eller ikke?" niva="Middels"}
@@ -230,16 +204,8 @@ a) Finn en funksjon $f$ slik at $\nabla f = [y,\ x]$.
 
 b) Vis at det ikke finnes noen funksjon $f$ med $\nabla f = [-y,\ x]$.
 
-::: {.losning}
-**a)** Vi trenger $f_x = y$. Integrerer vi med hensyn på $x$ (med $y$ fast), får vi $f = xy + g(y)$, der $g$ er en ukjent funksjon av $y$. Da er $f_y = x + g'(y)$, og det skal være $x$. Altså er $g' = 0$, og
-$$
-\underline{\underline{f(x, y) = xy}}
-$$
-(pluss en konstant).
-
-**b)** Samme framgangsmåte: $f_x = -y$ gir $f = -xy + g(y)$, og da er $f_y = -x + g'(y)$. Det skal være $x$, så $g'(y) = 2x$. Men $g$ er en funksjon av bare $y$, og $g'(y)$ kan ikke avhenge av $x$. **Det finnes ingen slik $f$.**
-
-En kortere grunn: Hvis $\vec F = [P,\ Q] = \nabla f$, er $P_y = f_{xy}$ og $Q_x = f_{yx}$, og blandede annenderiverte er like. For $[-y,\ x]$ er $P_y = -1$ og $Q_x = 1$. Det er denne testen vi bygger videre på under konservative felt.
+::: {.fasit}
+$f(x, y) = xy$
 :::
 :::
 
@@ -251,17 +217,6 @@ f(x, y, z) = \frac{\mathrm{G}Mm}{\sqrt{x^2 + y^2 + z^2}}
 $$
 Hvordan ser nivåflatene til $f$ ut, og hvordan står feltet i forhold til dem?
 
-::: {.losning}
-Skriv $\rho = \sqrt{x^2 + y^2 + z^2} = |\vec r|$, slik at $f = \mathrm{G}Mm\,\rho^{-1}$. Kjerneregelen gir
-$$
-\frac{\partial f}{\partial x} = \mathrm{G}Mm\cdot(-1)\rho^{-2}\cdot\frac{\partial\rho}{\partial x} = -\mathrm{G}Mm\,\rho^{-2}\cdot\frac{x}{\rho} = -\frac{\mathrm{G}Mm\,x}{\rho^3}
-$$
-fordi $\dfrac{\partial\rho}{\partial x} = \dfrac{2x}{2\sqrt{x^2 + y^2 + z^2}} = \dfrac{x}{\rho}$. På samme måte er $f_y = -\mathrm{G}Mm\,y/\rho^3$ og $f_z = -\mathrm{G}Mm\,z/\rho^3$, så
-$$
-\nabla f = -\frac{\mathrm{G}Mm}{\rho^3}\,[x,\ y,\ z] = -\frac{\mathrm{G}Mm}{|\vec r|^3}\,\vec r = \vec F
-$$
-Nivåflatene $f = \text{konstant}$ er **kuleskall** om origo, fordi $f$ bare avhenger av $\rho$. Feltet peker rett inn mot origo og står derfor vinkelrett på kuleskallene, slik en gradient skal. (I fysikken er den potensielle energien $U = -f = -\mathrm{G}Mm/|\vec r|$, og $\vec F = -\nabla U$.)
-:::
 :::
 
 ::::

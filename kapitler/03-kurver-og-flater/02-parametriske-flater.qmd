@@ -163,12 +163,8 @@ b) $\vec r(u, v) = [u\cos v,\ u\sin v,\ u^2]$, $u \ge 0$, $0 \le v \le 2\pi$
 
 c) $\vec r(u, v) = [u,\ v,\ 1 - u - v]$
 
-::: {.losning}
-**a)** $x^2 + z^2 = 4\cos^2 v + 4\sin^2 v = 4$, og $y = u$ er fri. Det er en **sylinder med radius $2$ om $y$-aksen**, fra $y = 0$ til $y = 5$: $\underline{\underline{x^2 + z^2 = 4}}$.
-
-**b)** $x^2 + y^2 = u^2$ og $z = u^2$, så $\underline{\underline{z = x^2 + y^2}}$: en **paraboloide** som åpner seg oppover. Parametrene er polarkoordinatene $r = u$ og $\theta = v$.
-
-**c)** $z = 1 - x - y$, altså **planet** $\underline{\underline{x + y + z = 1}}$.
+::: {.fasit}
+a) $x^2 + z^2 = 4$ · b) $z = x^2 + y^2$ · c) $x + y + z = 1$
 :::
 :::
 
@@ -182,20 +178,8 @@ b) Finn normalvektoren og likningen for planet trekanten ligger i.
 
 c) Finn arealet av trekanten.
 
-::: {.losning}
-**a)** $\vec Q - \vec P = [-1,\ 2,\ 0]$ og $\vec R - \vec P = [-1,\ 0,\ 3]$:
-$$
-\vec r(u, v) = [1 - u - v,\ 2u,\ 3v], \qquad u \ge 0,\ v \ge 0,\ u + v \le 1
-$$
-Hjørnene svarer til $(u, v) = (0, 0)$, $(1, 0)$ og $(0, 1)$.
-
-**b)**
-$$
-\vec n = \vec r_u\times\vec r_v = [-1,\ 2,\ 0]\times[-1,\ 0,\ 3] = \big[2\cdot3 - 0,\ 0\cdot(-1) - (-1)\cdot3,\ (-1)\cdot0 - 2\cdot(-1)\big] = [6,\ 3,\ 2]
-$$
-Planet gjennom $P$: $6(x - 1) + 3y + 2z = 0$, altså $\underline{\underline{6x + 3y + 2z = 6}}$. Kontroll: $Q$ gir $6$ og $R$ gir $6$.
-
-**c)** $|\vec n| = \sqrt{36 + 9 + 4} = 7$ er arealet av parallellogrammet. Trekanten er halvparten: $\underline{\underline{\tfrac72}}$.
+::: {.fasit}
+a) $6x + 3y + 2z = 6$ · c) $\tfrac72$
 :::
 :::
 
@@ -207,17 +191,8 @@ a) Finn $\vec r_r\times\vec r_\theta$ og lengden av den.
 
 b) Hvor er normalvektoren null, og hvorfor er det rimelig?
 
-::: {.losning}
-**a)** $\vec r_r = [\cos\theta,\ \sin\theta,\ 1]$ og $\vec r_\theta = [-r\sin\theta,\ r\cos\theta,\ 0]$:
-$$
-\vec r_r\times\vec r_\theta = \big[0 - r\cos\theta,\ -r\sin\theta - 0,\ r\cos^2\theta + r\sin^2\theta\big] = \underline{\underline{\big[-r\cos\theta,\ -r\sin\theta,\ r\big]}}
-$$
-$$
-|\vec r_r\times\vec r_\theta| = \sqrt{r^2\cos^2\theta + r^2\sin^2\theta + r^2} = \underline{\underline{\sqrt2\,r}}
-$$
-Normalen peker innover og opp (mot $z$-aksen). Bytter vi rekkefølgen i kryssproduktet, peker den utover og ned.
-
-**b)** For $r = 0$, altså i spissen. Der har kjeglen ingen tangentplan: Den har en spiss, ikke en glatt flate. Parametriseringen avslører det ved at $\vec r_\theta = \vec 0$ (hele sirkelen $\theta \in [0, 2\pi]$ blir sendt til ett punkt).
+::: {.fasit}
+$\big[-r\cos\theta,\ -r\sin\theta,\ r\big]$ · $\sqrt2\,r$
 :::
 :::
 
@@ -229,20 +204,8 @@ a) med normalen fra eksempelet om kula ($\vec n$ parallell med $\vec r$),
 
 b) ved å skrive den øvre halvkula som en graf $z = g(x, y)$.
 
-::: {.losning}
-**a)** Normalen er parallell med $\vec r = [1,\ 2,\ 2]$:
-$$
-1(x - 1) + 2(y - 2) + 2(z - 2) = 0 \quad\Longleftrightarrow\quad \underline{\underline{x + 2y + 2z = 9}}
-$$
-
-**b)** $g(x, y) = \sqrt{9 - x^2 - y^2}$, med
-$$
-g_x = \frac{-x}{\sqrt{9 - x^2 - y^2}} = -\frac12, \qquad g_y = \frac{-y}{\sqrt{9 - x^2 - y^2}} = -1 \qquad\text{i } (1, 2)
-$$
-$$
-z = 2 - \tfrac12(x - 1) - (y - 2)
-$$
-Ganger vi med $2$ og flytter over, får vi $x + 2y + 2z = 9$, det samme planet.
+::: {.fasit}
+$x + 2y + 2z = 9$
 :::
 :::
 
@@ -254,21 +217,6 @@ a) Vis at $\vec r_u\times\vec r_v = a(R + a\cos v)\big[\cos u\cos v,\ \sin u\cos
 
 b) Hvor på torusen er rutene i rutenettet størst, og hvor er de minst? Forklar med figuren fra programmet.
 
-::: {.losning}
-**a)** Med $w = R + a\cos v$:
-$$
-\vec r_u = \big[-w\sin u,\ w\cos u,\ 0\big], \qquad \vec r_v = \big[-a\sin v\cos u,\ -a\sin v\sin u,\ a\cos v\big]
-$$
-$$
-\vec r_u\times\vec r_v = \big[w\cos u\cdot a\cos v - 0,\ 0 - (-w\sin u)\,a\cos v,\ w\sin u\sin u\,a\sin v + w\cos u\cos u\,a\sin v\big]
-$$
-$$
-= a\,w\,\big[\cos u\cos v,\ \sin u\cos v,\ \sin^2u\sin v + \cos^2u\sin v\big] = a(R + a\cos v)\big[\cos u\cos v,\ \sin u\cos v,\ \sin v\big]
-$$
-Vektoren i hakeparentesen har lengde $1$, så $|\vec r_u\times\vec r_v| = a(R + a\cos v)$.
-
-**b)** Arealfaktoren er størst for $v = 0$, på **ytterkanten** av smultringen ($a(R + a)$), og minst for $v = \pi$, i **hullet** ($a(R - a)$). Ytterst er $u$-sirklene lengst ($2\pi(R + a)$), så rutene blir strukket ut. Innerst er sirklene kortest, og rutene presses sammen. Det ser vi tydelig i plottet.
-:::
 :::
 
 ::::

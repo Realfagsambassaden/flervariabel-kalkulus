@@ -114,36 +114,32 @@ Hvorfor kan Laplace-likningen aldri ha et maksimum inne i platen? Tenk på gjenn
 ::: {.oppgave tittel="Én ukjent"}
 Et kvadrat deles med $h = \frac12$ av sidelengden, så det er ett indre punkt. Kantene har temperaturene $20$, $40$, $60$ og $80\ \mathrm{°C}$. Hva blir temperaturen i midten?
 
-::: {.losning}
-Gjennomsnittet av de fire naboene: $\frac14(20 + 40 + 60 + 80) = \underline{\underline{50\ \mathrm{°C}}}$.
+::: {.fasit}
+$50\ \mathrm{°C}$
 :::
 :::
 
 ::: {.oppgave tittel="Poisson for hånd" niva="Middels"}
 Løs $\Delta u = -2$ på enhetskvadratet med $u = 0$ på randen og $h = \frac12$. Sammenlign med den eksakte verdien $u(0.5, 0.5) = 0.1473$.
 
-::: {.losning}
-Ett indre punkt, alle naboer er 0: $0 - 4U = h^2\cdot(-2) = -0.5$, så $\underline{\underline{U = 0.125}}$. Det er 15 % for lite med så grovt rutenett. Med $h = \frac{1}{32}$ blir verdien $0.1472$.
+::: {.fasit}
+$U = 0.125$
 :::
 :::
 
 ::: {.oppgave tittel="Gauss–Seidel" niva="Middels"}
 Gjør om koden til Gauss–Seidel med to løkker over $i$ og $j$. Hvor mange iterasjoner trengs nå for $M = 40$?
 
-::: {.losning}
-Gauss–Seidel trenger omtrent $\underline{\underline{2100}}$ iterasjoner mot omtrent 3900 for Jacobi, altså rundt halvparten, akkurat som i én dimensjon. Løkkene i Python er derimot mye tregere per iterasjon enn NumPy-utsnittene, så den totale tiden kan bli lengre.
+::: {.fasit}
+$2100$
 :::
 :::
 
 ::: {.oppgave tittel="Ulike steglengder" niva="Utfordrende"}
 Utled oppdateringsformelen for Laplace-likningen når steglengdene er $\Delta x$ og $\Delta y$.
 
-::: {.losning}
-$\frac{U_{i-1,j} - 2U_{i,j} + U_{i+1,j}}{\Delta x^2} + \frac{U_{i,j-1} - 2U_{i,j} + U_{i,j+1}}{\Delta y^2} = 0$ gir
-$$
-\underline{\underline{U_{i,j} = \frac{\Delta y^2(U_{i-1,j} + U_{i+1,j}) + \Delta x^2(U_{i,j-1} + U_{i,j+1})}{2(\Delta x^2 + \Delta y^2)}}}
-$$
-Et vektet gjennomsnitt, der naboene som ligger nærmest, teller mest.
+::: {.fasit}
+$U_{i,j} = \frac{\Delta y^2(U_{i-1,j} + U_{i+1,j}) + \Delta x^2(U_{i,j-1} + U_{i,j+1})}{2(\Delta x^2 + \Delta y^2)}$
 :::
 :::
 

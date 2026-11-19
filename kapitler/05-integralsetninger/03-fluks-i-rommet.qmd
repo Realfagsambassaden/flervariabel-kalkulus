@@ -215,14 +215,8 @@ Sjekk alltid at $\vec r_u\times\vec r_v$ peker riktig vei. Bytter du rekkefølge
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [2,\ 0,\ 1]$ oppover gjennom flaten $z = x$ over kvadratet $0 \le x \le 1$, $0 \le y \le 1$. Hva betyr fortegnet?
 
-::: {.losning}
-$g(x, y) = x$ gir $g_x = 1$ og $g_y = 0$. Integranden er
-$$
--P\,g_x - Q\,g_y + R = -2\cdot1 - 0 + 1 = -1
-$$
-og kvadratet har arealet $1$, så $\Phi = \underline{\underline{-1}}$.
-
-Feltet peker mest i $x$-retning, og taket heller oppover i $x$-retning. Normalen oppover, $[-1,\ 0,\ 1]$, heller derfor bakover. Feltet går altså gjennom taket fra oversiden og ned, og fluksen oppover blir negativ.
+::: {.fasit}
+$-1$
 :::
 :::
 
@@ -234,12 +228,8 @@ a) Finn fluksen oppover gjennom halvkula $z = \sqrt{a^2 - x^2 - y^2}$.
 
 b) Finn fluksen oppover gjennom disken $x^2 + y^2 \le a^2$ i planet $z = 0$. Hvorfor blir svarene like?
 
-::: {.losning}
-**a)** Med grafformelen er integranden $-P\,g_x - Q\,g_y + R = 0 + 0 + 1 = 1$, så fluksen er arealet av området under halvkula, disken med radius $a$: $\Phi = \underline{\underline{\pi a^2}}$. (Integranden har ingen problemer ved randen, selv om $g_x$ og $g_y$ blir uendelige der, fordi de ganges med $P = Q = 0$.)
-
-**b)** Disken har $\vec n = [0,\ 0,\ 1]$ og $\vec F\cdot\vec n = 1$, så $\Phi = \underline{\underline{\pi a^2}}$.
-
-Feltet har divergens null: Det som kommer inn gjennom disken nedenfra, må ut gjennom halvkula, fordi ingenting kan hope seg opp i mellom. Fluksen gjennom en flate i et divergensfritt felt avhenger bare av randen til flaten.
+::: {.fasit}
+a) $\pi a^2$ · b) $\pi a^2$
 :::
 :::
 
@@ -247,14 +237,8 @@ Feltet har divergens null: Det som kommer inn gjennom disken nedenfra, må ut gj
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [x,\ y,\ z]$ ut av overflaten til terningen $0 \le x \le 1$, $0 \le y \le 1$, $0 \le z \le 1$. Sammenlikn med divergensen ganger volumet.
 
-::: {.losning}
-Terningen har seks plane sideflater, alle med areal $1$:
-
-- $x = 1$, $\vec n = [1,\ 0,\ 0]$: $\vec F\cdot\vec n = x = 1$, fluks $1$.
-- $x = 0$, $\vec n = [-1,\ 0,\ 0]$: $\vec F\cdot\vec n = -x = 0$, fluks $0$.
-- På samme måte gir $y = 1$ og $z = 1$ fluks $1$ hver, mens $y = 0$ og $z = 0$ gir $0$.
-
-Til sammen er fluksen ut $\underline{\underline{3}}$. Divergensen er $3$ og volumet $1$, så divergensen ganger volumet er også $3$.
+::: {.fasit}
+$3$
 :::
 :::
 
@@ -262,12 +246,8 @@ Til sammen er fluksen ut $\underline{\underline{3}}$. Divergensen er $3$ og volu
 <!-- tillegg: Claude -->
 Finn fluksen til $\vec F = [x,\ y,\ z]$ ut av den lukkede sylinderen $x^2 + y^2 \le 1$, $0 \le z \le 2$ (sideflate, lokk og bunn).
 
-::: {.losning}
-- **Sideflaten:** Fra eksempelet er fluksen $2\pi a^2 h = 2\pi\cdot1^2\cdot2 = 4\pi$.
-- **Lokket** ($z = 2$, $\vec n = [0,\ 0,\ 1]$): $\vec F\cdot\vec n = z = 2$ over en disk med areal $\pi$, så fluksen er $2\pi$.
-- **Bunnen** ($z = 0$, $\vec n = [0,\ 0,\ -1]$): $\vec F\cdot\vec n = -z = 0$, så fluksen er $0$.
-
-Til sammen $4\pi + 2\pi + 0 = \underline{\underline{6\pi}}$. Kontroll: divergensen $3$ ganger volumet $\pi\cdot1^2\cdot2 = 2\pi$ gir også $6\pi$.
+::: {.fasit}
+$6\pi$
 :::
 :::
 
@@ -279,18 +259,8 @@ a) Vis at fluksen til $\vec F = [x,\ y,\ z]$ gjennom kjegleflaten er null, både
 
 b) Finn fluksen til det samme feltet ut av den lukkede kjeglen (kjegleflaten og lokket $x^2 + y^2 \le 1$ i planet $z = 1$), og sammenlikn med divergensen ganger volumet. Volumet av en kjegle er $\tfrac13\pi r^2 h$.
 
-::: {.losning}
-**a)** Med $g = \sqrt{x^2 + y^2} = r$ er $g_x = x/r$ og $g_y = y/r$. Integranden er
-$$
--x\cdot\frac{x}{r} - y\cdot\frac{y}{r} + r = -\frac{x^2 + y^2}{r} + r = -r + r = 0
-$$
-så fluksen er $\underline{\underline{0}}$.
-
-Geometrisk: Kjegleflaten består av rette linjer ut fra spissen i origo, og det radielle feltet peker langs disse linjene. Feltet går overalt *langs* flaten og aldri gjennom den.
-
-**b)** På lokket er $\vec n = [0,\ 0,\ 1]$ og $\vec F\cdot\vec n = z = 1$, over en disk med areal $\pi$. Fluksen ut av den lukkede kjeglen er derfor $0 + \pi = \underline{\underline{\pi}}$.
-
-Kontroll: Volumet er $\tfrac13\pi\cdot1^2\cdot1 = \tfrac\pi3$, og divergensen $3$ ganger volumet er $\pi$. Det stemmer.
+::: {.fasit}
+a) $0$ · b) $\pi$
 :::
 :::
 

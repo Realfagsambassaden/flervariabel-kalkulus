@@ -29,14 +29,8 @@ c) den delen av kula $x^2 + y^2 + z^2 = 4$ som ligger over planet $z = 1$,
 
 d) den delen av sylinderen $x^2 + z^2 = 1$ som ligger mellom $y = 0$ og $y = 3$.
 
-::: {.losning}
-**a)** $\vec r(t) = [1, 2, 0] + t\,[2, -3, 4] = \underline{\underline{[1 + 2t,\ 2 - 3t,\ 4t]}}$, $0 \le t \le 1$.
-
-**b)** Vi strekker enhetssirkelen med $3$ i $x$-retning og $2$ i $y$-retning: $\underline{\underline{\vec r(t) = [3\cos t,\ 2\sin t]}}$, $0 \le t \le 2\pi$. Kontroll: $\tfrac{9\cos^2 t}{9} + \tfrac{4\sin^2 t}{4} = 1$.
-
-**c)** Kulekoordinater med $\rho = 2$: $\vec r(\varphi, \theta) = [2\sin\varphi\cos\theta,\ 2\sin\varphi\sin\theta,\ 2\cos\varphi]$. Kravet $z \ge 1$ gir $\cos\varphi \ge \tfrac12$, altså $\underline{\underline{0 \le \varphi \le \pi/3}}$ og $0 \le \theta \le 2\pi$.
-
-**d)** Sylinderen har aksen langs $y$-aksen, så vinkelen går rundt i $xz$-planet: $\underline{\underline{\vec r(\theta, y) = [\cos\theta,\ y,\ \sin\theta]}}$, $0 \le \theta \le 2\pi$, $0 \le y \le 3$.
+::: {.fasit}
+a) $[1 + 2t,\ 2 - 3t,\ 4t]$ · b) $\vec r(t) = [3\cos t,\ 2\sin t]$ · c) $0 \le \varphi \le \pi/3$ · d) $\vec r(\theta, y) = [\cos\theta,\ y,\ \sin\theta]$
 :::
 :::
 
@@ -44,16 +38,8 @@ d) den delen av sylinderen $x^2 + z^2 = 1$ som ligger mellom $y = 0$ og $y = 3$.
 <!-- tillegg: Claude -->
 Finn lengden av kurven $y = x^{3/2}$ fra $x = 0$ til $x = 4$.
 
-::: {.losning}
-Med $x = t$ som parameter er $\vec r(t) = [t,\ t^{3/2}]$ og $\vec r\,'(t) = [1,\ \tfrac32 t^{1/2}]$, så
-$$
-|\vec r\,'(t)| = \sqrt{1 + \tfrac94 t}
-$$
-Med $w = 1 + \tfrac94 t$ er $\mathrm{d}w = \tfrac94\,\mathrm{d}t$, og $t = 4$ gir $w = 10$:
-$$
-L = \int_0^4 \sqrt{1 + \tfrac94 t}\;\mathrm{d}t = \frac49\int_1^{10}\sqrt w\;\mathrm{d}w = \frac49\cdot\frac23\Big[w^{3/2}\Big]_1^{10} = \frac{8}{27}\big(10\sqrt{10} - 1\big) = \underline{\underline{9.07}}
-$$
-Kontroll: Den rette linja fra $(0, 0)$ til $(4, 8)$ har lengden $\sqrt{16 + 64} = 8.94$. Kurven er litt lengre, som den skal.
+::: {.fasit}
+$9.07$
 :::
 :::
 
@@ -61,11 +47,8 @@ Kontroll: Den rette linja fra $(0, 0)$ til $(4, 8)$ har lengden $\sqrt{16 + 64} 
 <!-- tillegg: Claude -->
 Regn ut $\displaystyle\int_C xy\;\mathrm{d}s$, der $C$ er kvartsirkelen $x^2 + y^2 = 4$ i første kvadrant.
 
-::: {.losning}
-$\vec r(t) = [2\cos t,\ 2\sin t]$, $0 \le t \le \pi/2$, med $|\vec r\,'(t)| = 2$:
-$$
-\int_C xy\;\mathrm{d}s = \int_0^{\pi/2} 2\cos t\cdot2\sin t\cdot2\;\mathrm{d}t = 8\int_0^{\pi/2}\sin t\cos t\;\mathrm{d}t = 8\Big[\tfrac12\sin^2 t\Big]_0^{\pi/2} = \underline{\underline{4}}
-$$
+::: {.fasit}
+$4$
 :::
 :::
 
@@ -77,23 +60,8 @@ a) Finn tangentplanet i punktet der $(u, v) = (1, 1)$.
 
 b) Vis at $S$ er grafen til $z = \tfrac14(x^2 - y^2)$, og kontroller svaret i a) med formelen for tangentplanet til en graf.
 
-::: {.losning}
-**a)** Punktet er $\vec r(1, 1) = (2, 0, 1)$.
-$$
-\vec r_u = [1,\ 1,\ v] = [1,\ 1,\ 1], \qquad \vec r_v = [1,\ -1,\ u] = [1,\ -1,\ 1]
-$$
-$$
-\vec n = \vec r_u\times\vec r_v = \big[1\cdot1 - 1\cdot(-1),\ 1\cdot1 - 1\cdot1,\ 1\cdot(-1) - 1\cdot1\big] = [2,\ 0,\ -2]
-$$
-$$
-2(x - 2) + 0\cdot(y - 0) - 2(z - 1) = 0 \quad\Longleftrightarrow\quad \underline{\underline{x - z = 1}}
-$$
-
-**b)** Fra $x = u + v$ og $y = u - v$ er $x^2 - y^2 = (u + v)^2 - (u - v)^2 = 4uv$, så $z = uv = \tfrac14(x^2 - y^2)$. Da er $g_x = \tfrac x2 = 1$ og $g_y = -\tfrac y2 = 0$ i $(2, 0)$:
-$$
-z = 1 + 1\cdot(x - 2) + 0\cdot(y - 0) = x - 1
-$$
-Det er det samme planet, $x - z = 1$.
+::: {.fasit}
+$x - z = 1$
 :::
 :::
 
@@ -105,21 +73,8 @@ a) Vis at arealet av kalotten er $2\pi R(R - h)$.
 
 b) Polarsirkelen ligger på $66.6^\circ$ nordlig bredde. Regn jorda som en kule med radius $6371\ \mathrm{km}$. Hvor stort er området nord for polarsirkelen, og hvor stor del av jordoverflaten er det?
 
-::: {.losning}
-**a)** Med kulekoordinater er $z = R\cos\varphi$ og $\mathrm{d}S = R^2\sin\varphi\,\mathrm{d}\varphi\,\mathrm{d}\theta$. Kravet $z \ge h$ gir $0 \le \varphi \le \varphi_0$, der $\cos\varphi_0 = h/R$:
-$$
-\text{Areal} = \int_0^{2\pi}\!\!\int_0^{\varphi_0} R^2\sin\varphi\;\mathrm{d}\varphi\,\mathrm{d}\theta = 2\pi R^2\big(1 - \cos\varphi_0\big) = 2\pi R^2\Big(1 - \frac hR\Big) = \underline{\underline{2\pi R(R - h)}}
-$$
-Arealet avhenger bare av *høyden* $R - h$ på kalotten. Det er det samme som arealet av et sylinderbånd med radius $R$ og samme høyde, noe Arkimedes viste for over 2000 år siden.
-
-**b)** Breddegraden $66.6^\circ$ måles fra ekvator, så punktene på polarsirkelen har $z = R\sin66.6^\circ$:
-$$
-\text{Areal} = 2\pi R^2\big(1 - \sin66.6^\circ\big) = 2\pi\,(6371\ \mathrm{km})^2\,(1 - 0.9178) = \underline{\underline{2.10\cdot10^{7}\ \mathrm{km^2}}}
-$$
-Andelen av hele overflaten $4\pi R^2$ er
-$$
-\frac{2\pi R^2(1 - \sin66.6^\circ)}{4\pi R^2} = \frac{1 - 0.9178}{2} = \underline{\underline{4.1\ \%}}
-$$
+::: {.fasit}
+a) $2\pi R(R - h)$ · b) $2.10\cdot10^{7}\ \mathrm{km^2}$ · b) $4.1\ \%$
 :::
 :::
 
@@ -131,17 +86,8 @@ a) Regn ut $\displaystyle\iint_S z^2\;\mathrm{d}S$ med kulekoordinater.
 
 b) Forklar hvorfor $\displaystyle\iint_S x^2\,\mathrm{d}S = \iint_S y^2\,\mathrm{d}S = \iint_S z^2\,\mathrm{d}S$, og bruk det til å finne svaret i a) nesten uten regning.
 
-::: {.losning}
-**a)** $z = \cos\varphi$ og $\mathrm{d}S = \sin\varphi\,\mathrm{d}\varphi\,\mathrm{d}\theta$. Med $w = \cos\varphi$:
-$$
-\iint_S z^2\;\mathrm{d}S = \int_0^{2\pi}\!\!\int_0^{\pi}\cos^2\varphi\sin\varphi\;\mathrm{d}\varphi\,\mathrm{d}\theta = 2\pi\int_{-1}^{1} w^2\;\mathrm{d}w = 2\pi\cdot\frac23 = \underline{\underline{\frac{4\pi}{3}}}
-$$
-
-**b)** Kula ser lik ut fra alle retninger. Bytter vi navn på aksene, endres ikke flaten, så de tre integralene må være like. Summen er
-$$
-\iint_S (x^2 + y^2 + z^2)\;\mathrm{d}S = \iint_S 1\;\mathrm{d}S = 4\pi
-$$
-fordi $x^2 + y^2 + z^2 = 1$ på hele flaten. Hvert av de tre integralene er da $\tfrac13\cdot4\pi = \tfrac{4\pi}{3}$.
+::: {.fasit}
+$\frac{4\pi}{3}$
 :::
 :::
 
@@ -153,22 +99,8 @@ a) Finn massen.
 
 b) Finn høyden $\bar z$ til tyngdepunktet.
 
-::: {.losning}
-Med $\vec r(r, \theta) = [r\cos\theta,\ r\sin\theta,\ r]$ er $z = r$, $1 \le r \le 2$, og $|\vec r_r\times\vec r_\theta| = \sqrt2\,r$ (se parametriske flater).
-
-**a)**
-$$
-M = \int_0^{2\pi}\!\!\int_1^2 r\cdot\sqrt2\,r\;\mathrm{d}r\,\mathrm{d}\theta = 2\pi\sqrt2\Big[\tfrac13r^3\Big]_1^2 = \frac{14\sqrt2\,\pi}{3} = \underline{\underline{20.7\ \mathrm{g}}}
-$$
-
-**b)**
-$$
-\iint_S z\,\delta\;\mathrm{d}S = \int_0^{2\pi}\!\!\int_1^2 r\cdot r\cdot\sqrt2\,r\;\mathrm{d}r\,\mathrm{d}\theta = 2\pi\sqrt2\Big[\tfrac14r^4\Big]_1^2 = \frac{15\sqrt2\,\pi}{2}
-$$
-$$
-\bar z = \frac{15\sqrt2\,\pi/2}{14\sqrt2\,\pi/3} = \frac{45}{28} = \underline{\underline{1.61\ \mathrm{dm}}}
-$$
-Tyngdepunktet ligger over midten ($1.5\ \mathrm{dm}$) av to grunner: Skjermen er bredere øverst, og stoffet er tettere der.
+::: {.fasit}
+$20.7\ \mathrm{g}$ · $1.61\ \mathrm{dm}$
 :::
 :::
 
@@ -180,25 +112,8 @@ a) Skriv omkretsen som et integral over $t$.
 
 b) Regn ut integralet numerisk med midtpunktmetoden.
 
-::: {.losning}
-**a)** Med $\vec r(t) = [3\cos t,\ 2\sin t]$ er $\vec r\,'(t) = [-3\sin t,\ 2\cos t]$ og
-$$
-L = \int_0^{2\pi}\sqrt{9\sin^2 t + 4\cos^2 t}\;\mathrm{d}t
-$$
-
-**b)** Programmet deler $[0, 2\pi]$ i $n$ like biter og legger sammen integranden i midtpunktene ganger bredden:
-
-```{.python .kjor}
-import numpy as np
-
-n = 1000
-dt = 2 * np.pi / n
-t = (np.arange(n) + 0.5) * dt
-L = np.sum(np.sqrt(9 * np.sin(t)**2 + 4 * np.cos(t)**2)) * dt
-print(f"Omkrets: {L:.4f}")
-```
-
-Svaret er $\underline{\underline{L \approx 15.87}}$. Kontroll: Omkretsen må ligge mellom omkretsen til sirkelen med radius $2$ ($12.6$) og sirkelen med radius $3$ ($18.8$), og den er nær omkretsen til sirkelen med middelradius $2.5$ ($15.7$).
+::: {.fasit}
+$L \approx 15.87$
 :::
 :::
 

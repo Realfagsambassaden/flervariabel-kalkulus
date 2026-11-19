@@ -167,17 +167,8 @@ print("Eksakt areal:  ", np.pi / 6 * (5 * np.sqrt(5) - 1))
 <!-- tillegg: Claude -->
 Bruk parametriseringen $\vec r(\theta, z) = [a\cos\theta,\ a\sin\theta,\ z]$, $0 \le \theta \le 2\pi$, $0 \le z \le h$, til å finne arealet av sideflaten til en sylinder.
 
-::: {.losning}
-$$
-\vec r_\theta = [-a\sin\theta,\ a\cos\theta,\ 0], \qquad \vec r_z = [0,\ 0,\ 1]
-$$
-$$
-\vec r_\theta\times\vec r_z = [a\cos\theta,\ a\sin\theta,\ 0], \qquad |\vec r_\theta\times\vec r_z| = a
-$$
-$$
-\text{Areal} = \int_0^{h}\!\!\int_0^{2\pi} a\;\mathrm{d}\theta\,\mathrm{d}z = \underline{\underline{2\pi a h}}
-$$
-Det er omkretsen ganger høyden, akkurat som når vi bretter ut sideflaten til et rektangel.
+::: {.fasit}
+$2\pi a h$
 :::
 :::
 
@@ -185,16 +176,8 @@ Det er omkretsen ganger høyden, akkurat som når vi bretter ut sideflaten til e
 <!-- tillegg: Claude -->
 Finn arealet av den delen av planet $x + y + z = 1$ som ligger i første oktant ($x, y, z \ge 0$). Bruk formelen for en graf.
 
-::: {.losning}
-Planet er grafen til $g(x, y) = 1 - x - y$, med $g_x = g_y = -1$:
-$$
-\mathrm{d}S = \sqrt{1 + 1 + 1}\;\mathrm{d}A = \sqrt3\;\mathrm{d}A
-$$
-Skyggen er trekanten $x, y \ge 0$, $x + y \le 1$ med areal $\tfrac12$. Roten er konstant, så
-$$
-\text{Areal} = \sqrt3\cdot\tfrac12 = \underline{\underline{\frac{\sqrt3}{2} \approx 0.866}}
-$$
-Kontroll: Flaten er en likesidet trekant med hjørner $(1, 0, 0)$, $(0, 1, 0)$ og $(0, 0, 1)$ og sidelengde $\sqrt2$. Arealet er $\tfrac{\sqrt3}{4}(\sqrt2)^2 = \tfrac{\sqrt3}{2}$.
+::: {.fasit}
+$\frac{\sqrt3}{2} \approx 0.866$
 :::
 :::
 
@@ -202,12 +185,8 @@ Kontroll: Flaten er en likesidet trekant med hjørner $(1, 0, 0)$, $(0, 1, 0)$ o
 <!-- tillegg: Claude -->
 Finn arealet av kjeglen $z = \sqrt{x^2 + y^2}$, $0 \le z \le 2$. Sammenlign med formelen $\pi R s$ for sideflaten til en kjegle med grunnflateradius $R$ og sidekant $s$.
 
-::: {.losning}
-Under parametriske flater fant vi $|\vec r_r\times\vec r_\theta| = \sqrt2\,r$ for $\vec r(r, \theta) = [r\cos\theta,\ r\sin\theta,\ r]$. Toppen $z = 2$ gir $0 \le r \le 2$:
-$$
-\text{Areal} = \int_0^{2\pi}\!\!\int_0^2 \sqrt2\,r\;\mathrm{d}r\,\mathrm{d}\theta = \sqrt2\cdot2\pi\cdot\Big[\tfrac12r^2\Big]_0^2 = \underline{\underline{4\sqrt2\,\pi \approx 17.8}}
-$$
-Kjeglen har $R = 2$ og sidekant $s = \sqrt{2^2 + 2^2} = 2\sqrt2$, så $\pi R s = \pi\cdot2\cdot2\sqrt2 = 4\sqrt2\,\pi$. Det stemmer.
+::: {.fasit}
+$4\sqrt2\,\pi \approx 17.8$
 :::
 :::
 
@@ -219,24 +198,8 @@ a) Regn ut $I$.
 
 b) Uttrykk svaret med massen $M$ til skallet.
 
-::: {.losning}
-**a)** På kula er $x^2 + y^2 = a^2\sin^2\varphi$ (avstanden til $z$-aksen i annen), og $\mathrm{d}S = a^2\sin\varphi\,\mathrm{d}\varphi\,\mathrm{d}\theta$:
-$$
-I = \delta\int_0^{2\pi}\!\!\int_0^{\pi} a^2\sin^2\varphi\cdot a^2\sin\varphi\;\mathrm{d}\varphi\,\mathrm{d}\theta = 2\pi\delta a^4\int_0^{\pi}\sin^3\varphi\;\mathrm{d}\varphi
-$$
-Med $\sin^3\varphi = (1 - \cos^2\varphi)\sin\varphi$ og $w = \cos\varphi$:
-$$
-\int_0^{\pi}\sin^3\varphi\;\mathrm{d}\varphi = \int_{-1}^{1}(1 - w^2)\;\mathrm{d}w = 2 - \tfrac23 = \tfrac43
-$$
-$$
-I = \underline{\underline{\frac{8\pi}{3}\,\delta a^4}}
-$$
-
-**b)** Massen er $M = \delta\cdot4\pi a^2$, så $\delta = \dfrac{M}{4\pi a^2}$ og
-$$
-I = \frac{8\pi}{3}\cdot\frac{M}{4\pi a^2}\cdot a^4 = \underline{\underline{\frac23 M a^2}}
-$$
-En massiv kule har $I = \tfrac25 Ma^2$ (se [treghetsmoment](../02-trippelintegraler/04-treghetsmoment.qmd)). Skallet har større treghetsmoment fordi all massen ligger langt ute. Derfor ruller en hul ball tregere ned et skråplan enn en massiv.
+::: {.fasit}
+a) $\frac{8\pi}{3}\,\delta a^4$ · b) $\frac23 M a^2$
 :::
 :::
 
@@ -244,19 +207,8 @@ En massiv kule har $I = \tfrac25 Ma^2$ (se [treghetsmoment](../02-trippelintegra
 <!-- tillegg: Claude -->
 Finn arealet av den delen av sadelflaten $z = xy$ som ligger over sirkelskiva $x^2 + y^2 \le 1$.
 
-::: {.losning}
-$g_x = y$ og $g_y = x$, så
-$$
-\mathrm{d}S = \sqrt{1 + x^2 + y^2}\;\mathrm{d}A = \sqrt{1 + r^2}\;r\,\mathrm{d}r\,\mathrm{d}\theta
-$$
-i polarkoordinater. Med $w = 1 + r^2$ og $\mathrm{d}w = 2r\,\mathrm{d}r$:
-$$
-\int_0^1 \sqrt{1 + r^2}\;r\,\mathrm{d}r = \frac12\int_1^2 \sqrt w\;\mathrm{d}w = \frac13\Big[w^{3/2}\Big]_1^2 = \frac{2\sqrt2 - 1}{3}
-$$
-$$
-\text{Areal} = 2\pi\cdot\frac{2\sqrt2 - 1}{3} = \underline{\underline{\frac{2\pi}{3}\big(2\sqrt2 - 1\big) \approx 3.83}}
-$$
-Skyggen har arealet $\pi \approx 3.14$. Sadelflaten er litt større fordi den heller mer og mer jo lenger ut vi kommer.
+::: {.fasit}
+$\frac{2\pi}{3}\big(2\sqrt2 - 1\big) \approx 3.83$
 :::
 :::
 

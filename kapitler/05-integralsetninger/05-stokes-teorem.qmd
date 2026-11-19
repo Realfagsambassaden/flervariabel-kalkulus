@@ -313,16 +313,8 @@ print("curl gjennom flaten S:   ", round(hoyre, 5))
 <!-- tillegg: Claude -->
 Bruk Stokes' teorem til å regne ut $\displaystyle\oint_C \vec F\cdot\mathrm{d}\vec r$ for $\vec F = \big[-y + z^2,\ x + z,\ xy\big]$, der $C$ er sirkelen $x^2 + y^2 = 4$ i planet $z = 0$, mot klokka sett ovenfra.
 
-::: {.losning}
-Velg $S$ som disken $x^2 + y^2 \le 4$ i planet $z = 0$, med normalen $\vec n = [0,\ 0,\ 1]$ (høyrehåndsregelen). Da trengs bare $z$-komponenten av curl:
-$$
-(\nabla\times\vec F)\cdot\vec n = \frac{\partial(x + z)}{\partial x} - \frac{\partial(-y + z^2)}{\partial y} = 1 - (-1) = 2
-$$
-Disken har arealet $\pi\cdot2^2 = 4\pi$, så
-$$
-\oint_C \vec F\cdot\mathrm{d}\vec r = \iint_S 2\,\mathrm{d}S = 2\cdot4\pi = \underline{\underline{8\pi \approx 25.1}}
-$$
-Kontroll: På $C$ er $z = 0$, så $\vec F = [-y,\ x,\ xy]$. Med $\vec r = [2\cos t,\ 2\sin t,\ 0]$ er $\vec F\cdot\vec r\,' = 4\sin^2 t + 4\cos^2 t = 4$, og $\int_0^{2\pi} 4\,\mathrm{d}t = 8\pi$.
+::: {.fasit}
+$8\pi \approx 25.1$
 :::
 :::
 
@@ -330,16 +322,8 @@ Kontroll: På $C$ er $z = 0$, så $\vec F = [-y,\ x,\ xy]$. Med $\vec r = [2\cos
 <!-- tillegg: Claude -->
 La $\vec F = \big[z - y,\ x + z^2,\ \mathrm{e}^{xyz}\big]$, og la $S$ være halvkula $x^2 + y^2 + z^2 = 9$, $z \ge 0$, med normalen ut. Finn $\displaystyle\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S$ uten å regne ut curl over hele halvkula.
 
-::: {.losning}
-Randen av $S$ er sirkelen $x^2 + y^2 = 9$ i planet $z = 0$. Normalen ut peker oppover, så $C$ går mot klokka sett ovenfra: $\vec r(t) = [3\cos t,\ 3\sin t,\ 0]$. På $C$ er $z = 0$ og $\mathrm{d}z = 0$, så $\vec F = [-y,\ x,\ 1]$ og det vanskelige leddet $\mathrm{e}^{xyz}$ bidrar ikke:
-$$
-\vec F\cdot\vec r\,' = (-3\sin t)(-3\sin t) + (3\cos t)(3\cos t) + 1\cdot0 = 9
-$$
-Stokes' teorem gir
-$$
-\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S = \oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} 9\,\mathrm{d}t = \underline{\underline{18\pi \approx 56.5}}
-$$
-Alternativt: Disken med radius $3$ har samme rand. Der er $\vec n = [0,\ 0,\ 1]$ og $(\nabla\times\vec F)\cdot\vec n = \frac{\partial(x + z^2)}{\partial x} - \frac{\partial(z - y)}{\partial y} = 2$, som gir $2\cdot9\pi = 18\pi$.
+::: {.fasit}
+$18\pi \approx 56.5$
 :::
 :::
 
@@ -347,20 +331,8 @@ Alternativt: Disken med radius $3$ har samme rand. Der er $\vec n = [0,\ 0,\ 1]$
 <!-- tillegg: Claude -->
 $C$ er randen av trekanten med hjørnene $(1, 0, 0)$, $(0, 1, 0)$ og $(0, 0, 1)$, gjennomløpt i den rekkefølgen. Regn ut $\displaystyle\oint_C y\,\mathrm{d}x + z\,\mathrm{d}y + x\,\mathrm{d}z$ med Stokes' teorem, og kontroller ved å regne ut linjeintegralet direkte.
 
-::: {.losning}
-**Curl:** Med $\vec F = [y,\ z,\ x]$ er
-$$
-\nabla\times\vec F = \Big[\frac{\partial x}{\partial y} - \frac{\partial z}{\partial z},\ \frac{\partial y}{\partial z} - \frac{\partial x}{\partial x},\ \frac{\partial z}{\partial x} - \frac{\partial y}{\partial y}\Big] = [-1,\ -1,\ -1]
-$$
-
-**Flaten og orienteringen:** Trekanten ligger i planet $x + y + z = 1$, altså grafen til $g = 1 - x - y$ over trekanten $D$ med hjørnene $(1, 0)$, $(0, 1)$ og $(0, 0)$ i $xy$-planet. Sett ovenfra går hjørnene i rekkefølgen $(1, 0) \to (0, 1) \to (0, 0)$, som er mot klokka. Normalen skal derfor peke oppover: $\vec n\,\mathrm{d}S = [-g_x,\ -g_y,\ 1]\,\mathrm{d}A = [1,\ 1,\ 1]\,\mathrm{d}A$.
-
-**Integralet:** $(\nabla\times\vec F)\cdot[1,\ 1,\ 1] = -3$, og $D$ har arealet $\tfrac12$:
-$$
-\oint_C \vec F\cdot\mathrm{d}\vec r = \iint_D (-3)\,\mathrm{d}A = -3\cdot\frac12 = \underline{\underline{-\frac32}}
-$$
-
-**Kontroll direkte:** Fra $(1, 0, 0)$ til $(0, 1, 0)$ er $\vec r = [1 - t,\ t,\ 0]$ og $\vec r\,' = [-1,\ 1,\ 0]$, så $\vec F\cdot\vec r\,' = [t,\ 0,\ 1 - t]\cdot[-1,\ 1,\ 0] = -t$ og bidraget er $\int_0^1 -t\,\mathrm{d}t = -\tfrac12$. Feltet og trekanten går over i seg selv når vi bytter $x \to y \to z \to x$, så de to andre sidene gir også $-\tfrac12$ hver. Summen er $-\tfrac32$.
+::: {.fasit}
+$-\frac32$
 :::
 :::
 
@@ -372,14 +344,8 @@ a) Finn den induserte ems-en i spolen.
 
 b) Hvilken vei går den induserte strømmen sett ovenfra?
 
-::: {.losning}
-**a)** Hver vinding er en sløyfe med flaten $A = \pi r^2$. Fluksen gjennom én vinding endrer seg med $\Delta\Phi_B = A\,\Delta B$, og de $N$ vindingene ligger i serie, så ems-ene legges sammen:
-$$
-|\mathcal{E}| = N\,\pi r^2\,\frac{|\Delta B|}{\Delta t} = 200\cdot\pi\cdot(0.050\ \mathrm{m})^2\cdot\frac{0.80\ \mathrm{T}}{0.10\ \mathrm{s}} = 12.6\ \mathrm{V} \approx \underline{\underline{13\ \mathrm{V}}}
-$$
-med to gjeldende siffer som i dataene.
-
-**b)** Fluksen oppover avtar. Etter Lenz' regel går strømmen slik at dens eget felt peker oppover inni spolen og motvirker endringen. Høyrehåndsregelen med tommelen opp gir at strømmen går **mot klokka sett ovenfra**. Det stemmer med fortegnet i Faradays lov: Med normalen opp er $\mathrm{d}\Phi_B/\mathrm{d}t < 0$, så $\oint_C \vec E\cdot\mathrm{d}\vec r > 0$ med $C$ mot klokka.
+::: {.fasit}
+$13\ \mathrm{V}$
 :::
 :::
 
@@ -391,22 +357,8 @@ a) $1.00\ \mathrm{mm}$ fra midten av ledningen,
 
 b) $5.00\ \mathrm{mm}$ fra midten av ledningen.
 
-::: {.losning}
-Som i eksempelet går feltlinjene i sirkler om ledningen, så for en sirkel $C$ med radius $r$ er $\oint_C \vec B\cdot\mathrm{d}\vec r = B\cdot2\pi r$. La $S$ være den plane disken inni $C$.
-
-**a)** Når $r < R$, går bare en del av strømmen gjennom $S$. Strømmen er jevnt fordelt, så andelen er forholdet mellom arealene: $I_\text{gjennom} = I\,\dfrac{\pi r^2}{\pi R^2} = I\,\dfrac{r^2}{R^2}$. Ampères lov gir
-$$
-B\cdot2\pi r = \mu_0 I\,\frac{r^2}{R^2} \quad\Longrightarrow\quad B = \frac{\mu_0 I r}{2\pi R^2}
-$$
-$$
-B = \frac{4\pi\cdot10^{-7}\ \mathrm{T\,m/A}\cdot12.0\ \mathrm{A}\cdot1.00\cdot10^{-3}\ \mathrm{m}}{2\pi\cdot\big(2.00\cdot10^{-3}\ \mathrm{m}\big)^2} = 6.00\cdot10^{-4}\ \mathrm{T} = \underline{\underline{0.600\ \mathrm{mT}}}
-$$
-
-**b)** Når $r > R$, går hele strømmen gjennom $S$:
-$$
-B = \frac{\mu_0 I}{2\pi r} = \frac{4\pi\cdot10^{-7}\ \mathrm{T\,m/A}\cdot12.0\ \mathrm{A}}{2\pi\cdot5.00\cdot10^{-3}\ \mathrm{m}} = 4.80\cdot10^{-4}\ \mathrm{T} = \underline{\underline{0.480\ \mathrm{mT}}}
-$$
-Feltet vokser lineært fra null i midten til $1.20\ \mathrm{mT}$ på overflaten av ledningen, og avtar så som $1/r$. Inni ledningen er $\vec J \ne \vec 0$ og curl til $\vec B$ ikke null, mens curl er null utenfor.
+::: {.fasit}
+a) $0.600\ \mathrm{mT}$ · b) $0.480\ \mathrm{mT}$
 :::
 :::
 
@@ -420,22 +372,8 @@ Tips: Del $S$ i to deler langs en lukket kurve.
 
 b) Kontroller resultatet for $\vec F = [xy,\ yz,\ zx]$ og enhetskula, ved å regne ut integranden.
 
-::: {.losning}
-**a)** Tegn en lukket kurve $C$ på $S$, for eksempel ekvator på en kule, som deler flaten i to deler $S_1$ (over) og $S_2$ (under). Begge delene har $C$ som rand. Med normalen ut peker normalen på $S_1$ oppover, og høyrehåndsregelen gir $C$ mot klokka sett ovenfra. På $S_2$ peker normalen ut og nedover, og høyrehåndsregelen gir $C$ med klokka sett ovenfra, altså motsatt vei. Stokes' teorem på hver del gir
-$$
-\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S = \oint_C \vec F\cdot\mathrm{d}\vec r + \oint_{-C} \vec F\cdot\mathrm{d}\vec r = \oint_C \vec F\cdot\mathrm{d}\vec r - \oint_C \vec F\cdot\mathrm{d}\vec r = \underline{\underline{0}}
-$$
-En lukket flate har ingen rand, så det finnes ingen sirkulasjon å regne. Det stemmer med divergenssetningen og regelen $\nabla\cdot(\nabla\times\vec F) = 0$.
-
-**b)** Curl er
-$$
-\nabla\times\vec F = \Big[\frac{\partial(zx)}{\partial y} - \frac{\partial(yz)}{\partial z},\ \frac{\partial(xy)}{\partial z} - \frac{\partial(zx)}{\partial x},\ \frac{\partial(yz)}{\partial x} - \frac{\partial(xy)}{\partial y}\Big] = [-y,\ -z,\ -x]
-$$
-På enhetskula er $\vec n = [x,\ y,\ z]$, så
-$$
-(\nabla\times\vec F)\cdot\vec n = -(xy + yz + zx)
-$$
-Hvert ledd skifter fortegn når én av koordinatene skifter fortegn (for eksempel $xy$ når $x \to -x$), og kula er symmetrisk om alle koordinatplanene. Derfor gir hvert ledd null, og integralet er $\underline{\underline{0}}$.
+::: {.fasit}
+a) $0$ · b) $0$
 :::
 :::
 
