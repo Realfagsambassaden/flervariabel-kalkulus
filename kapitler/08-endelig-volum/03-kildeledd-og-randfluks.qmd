@@ -126,34 +126,26 @@ print(np.round(evm_1d(5, 0.50, 1.0, ('T', 80), ('fluks', 0), beta=16, T_inf=20),
 ::: {.oppgave tittel="Fyll inn tabellen"}
 En celle har $\frac{\kappa A}{\delta x} = 50\ \mathrm{W/K}$ til hver nabo og varmetap $-\beta(T_P - 15)A\,\delta x$ med $\beta A\,\delta x = 4\ \mathrm{W/K}$. Finn $S_u$, $S_P$ og $a_P$.
 
-::: {.losning}
-$\underline{\underline{S_u = 4\cdot 15 = 60\ \mathrm{W}}}$, $\underline{\underline{S_P = -4\ \mathrm{W/K}}}$ og $\underline{\underline{a_P = 50 + 50 + 4 = 104\ \mathrm{W/K}}}$.
+::: {.fasit}
+$S_u = 4\cdot 15 = 60\ \mathrm{W}$ · $S_P = -4\ \mathrm{W/K}$ · $a_P = 50 + 50 + 4 = 104\ \mathrm{W/K}$
 :::
 :::
 
 ::: {.oppgave tittel="Varme inn i enden" niva="Middels"}
 En stav med lengde $1.0\ \mathrm{m}$ og $\kappa A = 1\ \mathrm{W\,m/K}$ har $T = 0\ \mathrm{°C}$ i venstre ende og får $q_B = 10\ \mathrm{W}$ inn gjennom høyre ende. Det er ingen kilder. Hva blir temperaturene med fire celler? Hva er den eksakte løsningen?
 
-::: {.losning}
-Eksakt: Fluksen $10\ \mathrm{W}$ går gjennom hele staven, så $T' = 10$ og $T = 10x$. Koden gir $T = (1.25,\ 3.75,\ 6.25,\ 8.75)\ \mathrm{°C}$ i nodene $x = 0.125, 0.375, \dots$, som er eksakt.
-:::
 :::
 
 ::: {.oppgave tittel="Konvergens" niva="Middels"}
 Løs platen med varmeproduksjon med $n = 5,\ 10,\ 20$ celler og regn ut avviket fra den eksakte løsningen i nodene. Stemmer formelen $\frac{q\,\delta x^2}{8\kappa}$?
 
-::: {.losning}
-Avvikene blir $1.25$, $0.3125$ og $0.078\ \mathrm{°C}$, og formelen gir nøyaktig det. Metoden er av **andre orden**.
-:::
 :::
 
 ::: {.oppgave tittel="Varmen fra kjølepinnen" niva="Utfordrende"}
 Hvor mye varme avgir kjølepinnen per $\kappa A$, regnet med fem celler? Sammenlign med det eksakte svaret $(T_b - T_\infty)\,n\tanh(nL)$. Vis at summen av varmetapet fra alle cellene er lik fluksen inn gjennom basen.
 
-::: {.losning}
-Fluks inn gjennom basen: $\frac{2}{\delta x}(80 - T_1) = 20\cdot(80 - 68.67) = \underline{\underline{227\ \mathrm{K/m}}}$ (ganget med $\kappa A$ gir det watt). Eksakt: $60\cdot 4\tanh 2 = 231\ \mathrm{K/m}$.
-
-Summen av tapene $\sum n^2\delta x\,(T_i - 20)$ blir også $227\ \mathrm{K/m}$. Det følger av at fluksene gjennom de indre flatene kansellerer når vi summerer cellelikningene.
+::: {.fasit}
+$227\ \mathrm{K/m}$
 :::
 :::
 

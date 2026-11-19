@@ -136,44 +136,32 @@ for n in (4, 8, 16, 32):
 ::: {.oppgave tittel="Med fundamentalteoremet"}
 Regn ut $\displaystyle\int_0^{\pi} \sin x\,\mathrm{d}x$.
 
-::: {.losning}
-$$
-\Big[-\cos x\Big]_0^{\pi} = -\cos\pi + \cos 0 = 1 + 1 = \underline{\underline{2}}
-$$
+::: {.fasit}
+$2$
 :::
 :::
 
 ::: {.oppgave tittel="Riemann-sum for hånd"}
 Bruk midtpunktene i fire like delintervaller til å anslå $\displaystyle\int_0^{\pi} \sin x\,\mathrm{d}x$, og sammenlign med svaret over.
 
-::: {.losning}
-$\Delta x = \frac{\pi}{4}$, og midtpunktene er $\frac{\pi}{8}, \frac{3\pi}{8}, \frac{5\pi}{8}, \frac{7\pi}{8}$:
-$$
-\frac{\pi}{4}\left(\sin\tfrac{\pi}{8} + \sin\tfrac{3\pi}{8} + \sin\tfrac{5\pi}{8} + \sin\tfrac{7\pi}{8}\right) = \frac{\pi}{4}\cdot 2\,(0.3827 + 0.9239) \approx \underline{\underline{2.052}}
-$$
-Feilen er omtrent $0.05$, eller $2.6\ \%$.
+::: {.fasit}
+$2.052$
 :::
 :::
 
 ::: {.oppgave tittel="Delvis integrasjon" niva="Middels"}
 Regn ut $\displaystyle\int_1^{\mathrm{e}} x\ln x\,\mathrm{d}x$.
 
-::: {.losning}
-Velg $u = \ln x$ (blir enklere derivert) og $v' = x$, så $u' = \frac1x$ og $v = \frac12 x^2$:
-$$
-\int_1^{\mathrm{e}} x\ln x\,\mathrm{d}x = \Big[\tfrac12 x^2\ln x\Big]_1^{\mathrm{e}} - \int_1^{\mathrm{e}} \tfrac12 x\,\mathrm{d}x = \frac{\mathrm{e}^2}{2} - \frac14(\mathrm{e}^2 - 1) = \underline{\underline{\frac{\mathrm{e}^2 + 1}{4}}} \approx 2.097
-$$
+::: {.fasit}
+$\frac{\mathrm{e}^2 + 1}{4}$
 :::
 :::
 
 ::: {.oppgave tittel="Substitusjon" niva="Middels"}
 Regn ut $\displaystyle\int_0^{\pi/2} \sin^2 x\,\cos x\,\mathrm{d}x$.
 
-::: {.losning}
-Med $u = \sin x$ er $\mathrm{d}u = \cos x\,\mathrm{d}x$, og grensene blir $u = 0$ og $u = 1$:
-$$
-\int_0^1 u^2\,\mathrm{d}u = \Big[\tfrac13 u^3\Big]_0^1 = \underline{\underline{\tfrac13}}
-$$
+::: {.fasit}
+$\tfrac13$
 :::
 :::
 
@@ -184,16 +172,8 @@ $$
 $$
 der $y$ er en konstant ($y \ne 0$ i det andre).
 
-::: {.losning}
-I det første er $y\,\mathrm{e}^{xy}$ den deriverte av $\mathrm{e}^{xy}$ med hensyn på $x$:
-$$
-\int_0^{1} y\,\mathrm{e}^{xy}\,\mathrm{d}x = \Big[\mathrm{e}^{xy}\Big]_{x=0}^{x=1} = \underline{\underline{\mathrm{e}^{y} - 1}}
-$$
-Det andre krever delvis integrasjon med $u = x$ og $v' = \mathrm{e}^{xy}$, så $v = \frac1y\,\mathrm{e}^{xy}$:
-$$
-\int x\,\mathrm{e}^{xy}\,\mathrm{d}x = \frac{x}{y}\,\mathrm{e}^{xy} - \int \frac1y\,\mathrm{e}^{xy}\,\mathrm{d}x = \underline{\underline{\left(\frac{x}{y} - \frac{1}{y^2}\right)\mathrm{e}^{xy} + C(y)}}
-$$
-«Konstanten» kan avhenge av $y$, fordi den bare er konstant med hensyn på $x$.
+::: {.fasit}
+$\mathrm{e}^{y} - 1$ · $\left(\frac{x}{y} - \frac{1}{y^2}\right)\mathrm{e}^{xy} + C(y)$
 :::
 :::
 

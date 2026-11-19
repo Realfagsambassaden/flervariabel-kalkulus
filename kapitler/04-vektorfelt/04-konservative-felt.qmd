@@ -216,13 +216,8 @@ a) $\vec F = \big[3x^2y,\ x^3 + 2y\big]$
 
 b) $\vec G = \big[y^2,\ x^2\big]$
 
-::: {.losning}
-**a)** $Q_x = 3x^2$ og $P_y = 3x^2$. De er like, og planet er enkeltsammenhengende, så $\vec F$ er konservativt. Integrer $P$: $f = x^3y + g(y)$. Da er $f_y = x^3 + g'(y)$, som skal være $x^3 + 2y$, så $g = y^2$:
-$$
-\underline{\underline{f(x, y) = x^3y + y^2}}
-$$
-
-**b)** $Q_x = 2x$ og $P_y = 2y$. De er ulike (unntatt på linjen $y = x$), så curl er $2x - 2y \ne 0$, og $\vec G$ er $\underline{\underline{\text{ikke konservativt}}}$.
+::: {.fasit}
+a) $f(x, y) = x^3y + y^2$ · b) $\text{ikke konservativt}$
 :::
 :::
 
@@ -237,17 +232,8 @@ a) Finn et potensial for $\vec F$.
 
 b) Regn ut $\int_C \vec F\cdot\mathrm{d}\vec r$.
 
-::: {.losning}
-**a)** Curl: $R_y - Q_z = x - x = 0$, $P_z - R_x = y - y = 0$ og $Q_x - P_y = z - z = 0$. Feltet er konservativt i hele rommet. Integrer $P$: $f = xyz + g(y, z)$. Da er $f_y = xz + g_y = xz + 2y$, så $g = y^2 + h(z)$. Til slutt er $f_z = xy + h'(z) = xy$, så $h$ er konstant:
-$$
-\underline{\underline{f(x, y, z) = xyz + y^2}}
-$$
-
-**b)** Kurven starter i $\vec r(0) = (1, 0, 2)$ og slutter i $\vec r(1) = (2, 3, 1)$. Vi trenger ikke parametriseringen ellers:
-$$
-\int_C \vec F\cdot\mathrm{d}\vec r = f(2, 3, 1) - f(1, 0, 2) = (6 + 9) - 0 = \underline{\underline{15}}
-$$
-Å regne direkte med $\vec F(\vec r(t))\cdot\vec r\,'(t)$ gir det samme, men med et mye styggere polynom.
+::: {.fasit}
+a) $f(x, y, z) = xyz + y^2$ · b) $15$
 :::
 :::
 
@@ -259,21 +245,8 @@ a) Finn $a$ og $b$ slik at $\vec F$ er konservativt.
 
 b) Finn et potensial, og regn ut arbeidet fra origo til $(1, 2, 3)$.
 
-::: {.losning}
-**a)** Curl skal være null:
-$$
-R_y - Q_z = 2 - b = 0, \qquad P_z - R_x = -1 - (-1) = 0, \qquad Q_x - P_y = 2x - ax = 0
-$$
-Det gir $\underline{\underline{a = 2}}$ og $\underline{\underline{b = 2}}$, så $\vec F = \big[2xy - z,\ x^2 + 2z,\ -x + 2y\big]$.
-
-**b)** $f = \int(2xy - z)\,\mathrm{d}x = x^2y - xz + g(y, z)$. Da er $f_y = x^2 + g_y = x^2 + 2z$, så $g = 2yz + h(z)$. Til slutt er $f_z = -x + 2y + h'(z) = -x + 2y$, så $h$ er konstant:
-$$
-f(x, y, z) = x^2y - xz + 2yz
-$$
-Kontroll: $\nabla f = \big[2xy - z,\ x^2 + 2z,\ -x + 2y\big]$. Arbeidet er
-$$
-W = f(1, 2, 3) - f(0, 0, 0) = 2 - 3 + 12 = \underline{\underline{11}}
-$$
+::: {.fasit}
+a) $a = 2$ · a) $b = 2$ · b) $11$
 :::
 :::
 
@@ -283,18 +256,8 @@ a) En sekk med masse $2.0\ \mathrm{kg}$ bæres opp en spiraltrapp: $\vec r(t) = 
 
 b) En kloss med masse $1.5\ \mathrm{kg}$ skyves én gang rundt en sirkel med radius $2.0\ \mathrm{m}$ på et vannrett bord. Friksjonstallet er $\mu_k = 0.30$. Finn arbeidet friksjonen gjør. Hvorfor viser svaret at friksjon ikke er en konservativ kraft?
 
-::: {.losning}
-**a)** Tyngden $\vec G = [0,\ 0,\ -m\mathrm{g}]$ er konservativ med $U = m\mathrm{g}z$. Trappa starter i $z = 0$ og slutter i $z = \tfrac{150}{4\pi}\cdot4\pi = 150\ \mathrm{m}$. Arbeidet er
-$$
-W = U(A) - U(B) = -m\mathrm{g}\,\Delta z = -2.0\ \mathrm{kg}\cdot9.81\ \mathrm{m/s^2}\cdot150\ \mathrm{m} = -2943\ \mathrm{J} \approx \underline{\underline{-2.9\ \mathrm{kJ}}}
-$$
-Svingene i trappa spiller ingen rolle. Direkte: $\vec G\cdot\vec r\,'(t) = -m\mathrm{g}\cdot\tfrac{150}{4\pi}$ er konstant, og ganget med lengden $4\pi$ av intervallet gir det det samme.
-
-**b)** Friksjonen har størrelse $f = \mu_k m\mathrm{g}$ og peker alltid mot bevegelsen, så $\vec f\cdot\mathrm{d}\vec r = -f\,\mathrm{d}s$. Rundt sirkelen er veilengden $2\pi R$:
-$$
-W = -\mu_k m\mathrm{g}\cdot2\pi R = -0.30\cdot1.5\ \mathrm{kg}\cdot9.81\ \mathrm{m/s^2}\cdot2\pi\cdot2.0\ \mathrm{m} = \underline{\underline{-55\ \mathrm{J}}}
-$$
-Klossen er tilbake der den startet, men arbeidet er ikke null. For et konservativt felt er linjeintegralet rundt en lukket kurve alltid null, så friksjonen kan ikke være konservativ. Den har ingen potensiell energi.
+::: {.fasit}
+a) $-2.9\ \mathrm{kJ}$ · b) $-55\ \mathrm{J}$
 :::
 :::
 
@@ -308,20 +271,8 @@ b) Regn ut $\oint_C \vec F\cdot\mathrm{d}\vec r$ når $C$ er sirkelen med sentru
 
 c) Regn ut $\oint_C \vec F\cdot\mathrm{d}\vec r$ når $C$ er sirkelen med sentrum i origo og radius $5$, gjennomløpt mot klokka.
 
-::: {.losning}
-**a)** Med $u = y/x$ er $\dfrac{\mathrm{d}}{\mathrm{d}u}\arctan u = \dfrac{1}{1 + u^2}$:
-$$
-\theta_x = \frac{1}{1 + y^2/x^2}\cdot\Big(-\frac{y}{x^2}\Big) = \frac{-y}{x^2 + y^2}, \qquad \theta_y = \frac{1}{1 + y^2/x^2}\cdot\frac1x = \frac{x}{x^2 + y^2}
-$$
-Altså er $\nabla\theta = \vec F$ når $x > 0$.
-
-**b)** Sirkelen ligger helt i halvplanet $x > 0$ (den går fra $x = 2$ til $x = 4$). Der er feltet konservativt, og en lukket kurve gir $\underline{\underline{0}}$. Vinkelen går litt opp og ned igjen, men ender der den startet.
-
-**c)** Med $\vec r(t) = [5\cos t,\ 5\sin t]$ er $x^2 + y^2 = 25$, $\vec F = \tfrac15[-\sin t,\ \cos t]$ og $\vec r\,'(t) = 5[-\sin t,\ \cos t]$. Prikkproduktet er $\sin^2 t + \cos^2 t = 1$, så
-$$
-\oint_C \vec F\cdot\mathrm{d}\vec r = \int_0^{2\pi} 1\,\mathrm{d}t = \underline{\underline{2\pi}}
-$$
-Det samme som for enhetssirkelen. Radien spiller ingen rolle, bare at kurven går én gang rundt origo og vinkelen øker med $2\pi$. Kurven går ut av halvplanet $x > 0$, så potensialet fra a) gjelder ikke langs hele kurven.
+::: {.fasit}
+b) $0$ · c) $2\pi$
 :::
 :::
 
@@ -333,17 +284,8 @@ a) Vis at $\vec F$ er konservativt, og finn den potensielle energien $U$ med $U(
 
 b) Partikkelen flyttes fra $(0.10, 0, 0)$ til $(0, 0.30, 0)$ (i meter) langs en svingete vei. Finn arbeidet fjærkraften gjør.
 
-::: {.losning}
-**a)** $\vec F = [-kx,\ -ky,\ -kz]$. Hver komponent avhenger bare av sin egen variabel, så alle blandede deriverte er null, og curl er $\vec 0$ i hele rommet. Med $U = \tfrac12k\big(x^2 + y^2 + z^2\big)$ er $-\nabla U = [-kx,\ -ky,\ -kz] = \vec F$, og $U(\vec 0) = 0$:
-$$
-\underline{\underline{U = \tfrac12 k|\vec r|^2}}
-$$
-
-**b)**
-$$
-W = U(A) - U(B) = \tfrac12\cdot200\ \mathrm{N/m}\cdot\big((0.10\ \mathrm{m})^2 - (0.30\ \mathrm{m})^2\big) = 100\ \mathrm{N/m}\cdot(-0.080\ \mathrm{m^2}) = \underline{\underline{-8.0\ \mathrm{J}}}
-$$
-Fjæra strekkes mer, så den gjør negativt arbeid. Veien spiller ingen rolle.
+::: {.fasit}
+$U = \tfrac12 k|\vec r|^2$ · $-8.0\ \mathrm{J}$
 :::
 :::
 

@@ -193,14 +193,8 @@ plt.show()
 <!-- tillegg: Claude -->
 Finn $\nabla\cdot\vec F$ og $\nabla\times\vec F$ for $\vec F = \big[x^2y,\ xyz,\ -y^2\big]$.
 
-::: {.losning}
-Med $P = x^2y$, $Q = xyz$ og $R = -y^2$:
-$$
-\nabla\cdot\vec F = 2xy + xz + 0 = \underline{\underline{2xy + xz}}
-$$
-$$
-\nabla\times\vec F = \big[R_y - Q_z,\ P_z - R_x,\ Q_x - P_y\big] = \underline{\underline{\big[-2y - xy,\ 0,\ yz - x^2\big]}}
-$$
+::: {.fasit}
+$2xy + xz$ · $\big[-2y - xy,\ 0,\ yz - x^2\big]$
 :::
 :::
 
@@ -208,11 +202,8 @@ $$
 <!-- tillegg: Claude -->
 Feltet $\vec F = [x - y,\ x + y]$ er summen av det radielle feltet og rotasjonsfeltet. Finn divergensen og curl, og beskriv strømlinjene med ord.
 
-::: {.losning}
-$$
-\nabla\cdot\vec F = 1 + 1 = \underline{\underline{2}}, \qquad \nabla\times\vec F = \frac{\partial(x + y)}{\partial x} - \frac{\partial(x - y)}{\partial y} = 1 + 1 = \underline{\underline{2}}
-$$
-Divergens og curl er lineære, så vi kunne også lagt sammen: $[x,\ y]$ gir divergens $2$ og curl $0$, $[-y,\ x]$ gir divergens $0$ og curl $2$. Strømlinjene går rundt origo mot klokka og samtidig utover: **spiraler** som vikler seg ut fra origo.
+::: {.fasit}
+$2$
 :::
 :::
 
@@ -220,12 +211,8 @@ Divergens og curl er lineære, så vi kunne også lagt sammen: $[x,\ y]$ gir div
 <!-- tillegg: Claude -->
 Vis at $\nabla\times(\nabla f) = \vec 0$ for en vilkårlig funksjon $f(x, y, z)$ med kontinuerlige annenderiverte.
 
-::: {.losning}
-$\nabla f = [f_x,\ f_y,\ f_z]$, så $P = f_x$, $Q = f_y$ og $R = f_z$:
-$$
-\nabla\times\nabla f = \big[(f_z)_y - (f_y)_z,\ (f_x)_z - (f_z)_x,\ (f_y)_x - (f_x)_y\big] = \big[f_{zy} - f_{yz},\ f_{xz} - f_{zx},\ f_{yx} - f_{xy}\big]
-$$
-Blandede annenderiverte er like når de er kontinuerlige, så alle tre komponentene er $0$: $\underline{\underline{\nabla\times\nabla f = \vec 0}}$.
+::: {.fasit}
+$\nabla\times\nabla f = \vec 0$
 :::
 :::
 
@@ -233,15 +220,8 @@ Blandede annenderiverte er like når de er kontinuerlige, så alle tre komponent
 <!-- tillegg: Claude -->
 Vis at $f(x, y) = \ln(x^2 + y^2)$ er harmonisk, altså at $\nabla^2 f = 0$, overalt unntatt i origo.
 
-::: {.losning}
-$$
-f_x = \frac{2x}{x^2 + y^2}, \qquad f_{xx} = \frac{2(x^2 + y^2) - 2x\cdot2x}{(x^2 + y^2)^2} = \frac{2y^2 - 2x^2}{(x^2 + y^2)^2}
-$$
-Av symmetri (bytt $x$ og $y$) er
-$$
-f_{yy} = \frac{2x^2 - 2y^2}{(x^2 + y^2)^2}
-$$
-Summen er $\underline{\underline{\nabla^2 f = 0}}$. Funksjonen beskriver for eksempel temperaturen rundt et tynt, varmt rør gjennom en plate: Den avhenger bare av avstanden til røret og avtar logaritmisk.
+::: {.fasit}
+$\nabla^2 f = 0$
 :::
 :::
 
@@ -255,16 +235,8 @@ b) Finn et potensial $f$ med $\nabla f = \vec F$ for disse verdiene.
 
 c) Vis at $f$ er harmonisk.
 
-::: {.losning}
-**a)** $\nabla\cdot\vec F = a - 3 = 0$ gir $\underline{\underline{a = 3}}$, og $\nabla\times\vec F = b - 1 = 0$ gir $\underline{\underline{b = 1}}$. Feltet er $\vec F = [3x + y,\ x - 3y]$.
-
-**b)** $f_x = 3x + y$ gir $f = \tfrac32x^2 + xy + g(y)$. Da er $f_y = x + g'(y)$, som skal være $x - 3y$, så $g'(y) = -3y$ og $g = -\tfrac32y^2$:
-$$
-\underline{\underline{f(x, y) = \tfrac32x^2 + xy - \tfrac32y^2}}
-$$
-Kontroll: $\nabla f = [3x + y,\ x - 3y]$.
-
-**c)** $f_{xx} + f_{yy} = 3 - 3 = 0$. Det er ingen tilfeldighet: $\nabla^2 f = \nabla\cdot\nabla f = \nabla\cdot\vec F = 0$.
+::: {.fasit}
+a) $a = 3$ · a) $b = 1$ · b) $f(x, y) = \tfrac32x^2 + xy - \tfrac32y^2$
 :::
 :::
 
@@ -279,20 +251,8 @@ a) Vis at feltet går rundt origo mot klokka, og at lengden er $1/r$, der $r$ er
 
 b) Vis at $\nabla\cdot\vec F = 0$ og $\nabla\times\vec F = 0$ overalt der feltet er definert.
 
-::: {.losning}
-**a)** $\vec F$ er rotasjonsfeltet $[-y,\ x]$ delt på $r^2$. Retningen er den samme, rundt origo mot klokka, og lengden er $r/r^2 = \underline{\underline{1/r}}$.
-
-**b)** Skriv $r^2 = x^2 + y^2$. Kvotientregelen gir
-$$
-P_x = \frac{\partial}{\partial x}\Big(\frac{-y}{r^2}\Big) = \frac{2xy}{r^4}, \qquad Q_y = \frac{\partial}{\partial y}\Big(\frac{x}{r^2}\Big) = \frac{-2xy}{r^4}
-$$
-så $\nabla\cdot\vec F = \underline{\underline{0}}$. Videre er
-$$
-P_y = \frac{-r^2 + y\cdot2y}{r^4} = \frac{y^2 - x^2}{r^4}, \qquad Q_x = \frac{r^2 - x\cdot2x}{r^4} = \frac{y^2 - x^2}{r^4}
-$$
-så $\nabla\times\vec F = Q_x - P_y = \underline{\underline{0}}$.
-
-Feltet går rundt origo, men et padlehjul snurrer ikke noe sted! Farten er større nær origo, og det motvirker akkurat at strømlinjene krummer. Hele virvelen sitter i origo, der feltet ikke er definert. Dette feltet blir et viktig moteksempel under konservative felt.
+::: {.fasit}
+a) $1/r$ · b) $0$
 :::
 :::
 

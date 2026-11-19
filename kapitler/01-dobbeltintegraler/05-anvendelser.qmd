@@ -197,61 +197,32 @@ plt.show()
 ::: {.oppgave tittel="Middelverdi over en skive"}
 Finn middelverdien av $f(x, y) = x^2 + y^2$ over sirkelskiven $x^2 + y^2 \le R^2$. Tolk svaret: Hvor stor er middelverdien av kvadratet av avstanden til sentrum?
 
-::: {.losning}
-Arealet er $\pi R^2$. I polarkoordinater er $f = r^2$:
-$$
-\iint_D (x^2 + y^2)\,\mathrm{d}A = \int_0^{2\pi}\!\!\int_0^R r^2\cdot r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\cdot\frac{R^4}{4} = \frac{\pi R^4}{2}
-$$
-$$
-\bar f = \frac{\pi R^4/2}{\pi R^2} = \underline{\underline{\frac{R^2}{2}}}
-$$
-Middelverdien av avstanden i andre er $R^2/2$, ikke $R^2/4$ som vi kanskje ville gjettet ut fra «midt mellom sentrum og kanten». Det er fordi det meste av arealet ligger langt ute: Ringen mellom $r = R/2$ og $r = R$ har tre fjerdedeler av arealet.
+::: {.fasit}
+$\frac{R^2}{2}$
 :::
 :::
 
 ::: {.oppgave tittel="Tyngdepunktet til en trekant"}
 Finn tyngdepunktet til trekanten med hjørner i $(0, 0)$, $(1, 0)$ og $(1, 1)$, med konstant tetthet.
 
-::: {.losning}
-Trekanten er $0 \le x \le 1$, $0 \le y \le x$, med areal $\tfrac12$.
-$$
-\iint_D x\,\mathrm{d}A = \int_0^1\!\!\int_0^x x\,\mathrm{d}y\,\mathrm{d}x = \int_0^1 x^2\,\mathrm{d}x = \frac13, \qquad
-\iint_D y\,\mathrm{d}A = \int_0^1\!\!\int_0^x y\,\mathrm{d}y\,\mathrm{d}x = \int_0^1 \frac{x^2}{2}\,\mathrm{d}x = \frac16
-$$
-$$
-(\bar x, \bar y) = \left(\frac{1/3}{1/2},\ \frac{1/6}{1/2}\right) = \underline{\underline{\left(\tfrac23,\ \tfrac13\right)}}
-$$
-**Kontroll:** Det er gjennomsnittet av hjørnene, $\big(\tfrac{0 + 1 + 1}{3}, \tfrac{0 + 0 + 1}{3}\big)$, som gjelder for alle trekanter med konstant tetthet.
+::: {.fasit}
+$\left(\tfrac23,\ \tfrac13\right)$
 :::
 :::
 
 ::: {.oppgave tittel="Kvart sirkel" niva="Middels"}
 En plate med konstant tetthet har form som en kvart sirkelskive, $x^2 + y^2 \le R^2$ med $x \ge 0$ og $y \ge 0$. Finn tyngdepunktet. Sammenlikn med halvsirkelskiven i eksemplet.
 
-::: {.losning}
-Plata er symmetrisk om linjen $y = x$, så $\bar x = \bar y$. Arealet er $\tfrac14\pi R^2$.
-$$
-\iint_D y\,\mathrm{d}A = \int_0^{\pi/2}\!\!\int_0^R r^2\sin\theta\,\mathrm{d}r\,\mathrm{d}\theta = \frac{R^3}{3}\Big[-\cos\theta\Big]_0^{\pi/2} = \frac{R^3}{3}
-$$
-$$
-\bar y = \frac{R^3/3}{\pi R^2/4} = \frac{4R}{3\pi}, \qquad (\bar x, \bar y) = \underline{\underline{\left(\frac{4R}{3\pi},\ \frac{4R}{3\pi}\right)}} \approx (0.424R,\ 0.424R)
-$$
-Høyden $\bar y$ er den samme som for halvsirkelen. Det er rimelig: Halvsirkelen består av to kvarte sirkler som er speilbilder om $y$-aksen, og begge har tyngdepunktet i høyden $4R/(3\pi)$.
+::: {.fasit}
+$\left(\frac{4R}{3\pi},\ \frac{4R}{3\pi}\right)$
 :::
 :::
 
 ::: {.oppgave tittel="Mellom en paraboloide og et plan" niva="Middels"}
 Finn volumet av legemet mellom paraboloiden $z = x^2 + y^2$ og planet $z = 2y$.
 
-::: {.losning}
-Flatene møtes der $x^2 + y^2 = 2y$, altså $x^2 + (y - 1)^2 = 1$: en sirkel med sentrum i $(0, 1)$ og radius $1$. Inni sirkelen er planet øverst, så
-$$
-V = \iint_D \big(2y - x^2 - y^2\big)\,\mathrm{d}A = \iint_D \big(1 - x^2 - (y - 1)^2\big)\,\mathrm{d}A
-$$
-Vi bruker polarkoordinater med sentrum i $(0, 1)$: $x = r\cos\theta$, $y = 1 + r\sin\theta$. Det er en ren forskyvning, så jacobideterminanten er fortsatt $r$:
-$$
-V = \int_0^{2\pi}\!\!\int_0^1 (1 - r^2)\,r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\left(\frac12 - \frac14\right) = \underline{\underline{\frac{\pi}{2}}} \approx 1.57
-$$
+::: {.fasit}
+$\frac{\pi}{2}$
 :::
 :::
 
@@ -264,32 +235,8 @@ b)  Finn kraften fra vannet på demningen.
 
 c)  Finn høyden til trykksenteret, og sammenlikn med en rektangulær vegg.
 
-::: {.losning}
-**a)** Bredden øker lineært fra $40\ \mathrm{m}$ til $80\ \mathrm{m}$ over $30\ \mathrm{m}$:
-$$
-w(z) = 40\ \mathrm{m} + \frac{40}{30}\,z = \underline{\underline{40\ \mathrm{m} + \tfrac43 z}}
-$$
-
-**b)** En vannrett stripe i høyden $z$ har areal $w(z)\,\mathrm{d}z$ og trykket $\rho_\text{v}\mathrm{g}\,(30 - z)$ (med $z$ i meter):
-$$
-F = \rho_\text{v}\mathrm{g}\int_0^{30} (30 - z)\left(40 + \tfrac43 z\right)\mathrm{d}z
-$$
-Integralet er
-$$
-\int_0^{30} (30 - z)\cdot40\,\mathrm{d}z + \frac43\int_0^{30} (30z - z^2)\,\mathrm{d}z = 40\cdot450 + \frac43\,(13500 - 9000) = 18000 + 6000 = 24000\ \mathrm{m^3}
-$$
-$$
-F = 1.00\cdot10^3\ \mathrm{kg/m^3}\cdot9.81\ \mathrm{m/s^2}\cdot24000\ \mathrm{m^3} = 2.35\cdot10^{8}\ \mathrm{N} = \underline{\underline{235\ \mathrm{MN}}}
-$$
-
-**c)** Momentet om bunnen er
-$$
-\rho_\text{v}\mathrm{g}\int_0^{30} z\,(30 - z)\left(40 + \tfrac43 z\right)\mathrm{d}z = \rho_\text{v}\mathrm{g}\left(40\cdot4500 + \tfrac43\cdot67500\right) = \rho_\text{v}\mathrm{g}\cdot270000\ \mathrm{m^4}
-$$
-$$
-\bar z = \frac{270000\ \mathrm{m^4}}{24000\ \mathrm{m^3}} = \underline{\underline{11.3\ \mathrm{m}}}
-$$
-For en rektangulær vegg ligger trykksenteret i $h/3 = 10\ \mathrm{m}$. Her er veggen bredest øverst, der trykket er lite, og det løfter trykksenteret litt.
+::: {.fasit}
+a) $40\ \mathrm{m} + \tfrac43 z$ · b) $235\ \mathrm{MN}$ · c) $11.3\ \mathrm{m}$
 :::
 :::
 

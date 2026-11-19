@@ -94,47 +94,32 @@ print("t . n =", t @ n)
 ::: {.oppgave tittel="En tangent"}
 Finn tangenten til $y = \sqrt{x}$ i $x_0 = 4$.
 
-::: {.losning}
-$f(4) = 2$ og $f'(x) = \dfrac{1}{2\sqrt{x}}$, så $f'(4) = \tfrac14$.
-$$
-y = 2 + \tfrac14(x - 4) = \underline{\underline{\tfrac14 x + 1}}
-$$
+::: {.fasit}
+$\tfrac14 x + 1$
 :::
 :::
 
 ::: {.oppgave tittel="En normal"}
 Finn normalen til $y = \mathrm{e}^{x}$ i $x_0 = 0$, og en retningsvektor for den.
 
-::: {.losning}
-$f(0) = 1$ og $f'(0) = 1$. Normalen har stigningstall $-1$:
-$$
-y = 1 - (x - 0) = \underline{\underline{1 - x}}
-$$
-En retningsvektor er $\mathbf{n} = (-f'(0), 1) = (-1, 1)$.
+::: {.fasit}
+$1 - x$
 :::
 :::
 
 ::: {.oppgave tittel="Vannrett tangent" niva="Middels"}
 I hvilke punkter har $y = x^3 - 3x$ vannrett tangent? Hva er normalen der?
 
-::: {.losning}
-$f'(x) = 3x^2 - 3 = 0$ gir $x = \pm 1$. Punktene er $(1, -2)$ og $(-1, 2)$. Tangentene er vannrette, $y = -2$ og $y = 2$, så normalene er loddrette: $\underline{\underline{x = 1}}$ og $\underline{\underline{x = -1}}$.
+::: {.fasit}
+$x = 1$ · $x = -1$
 :::
 :::
 
 ::: {.oppgave tittel="Normal gjennom et gitt punkt" niva="Utfordrende"}
 Finn punktet på parabelen $y = x^2$ der normalen går gjennom punktet $(0, \tfrac{3}{2})$, med $x > 0$.
 
-::: {.losning}
-I punktet $(a, a^2)$ er $f'(a) = 2a$, og normalen er
-$$
-y = a^2 - \frac{1}{2a}(x - a).
-$$
-Den skal gå gjennom $(0, \tfrac32)$:
-$$
-\frac32 = a^2 - \frac{1}{2a}(0 - a) = a^2 + \frac12 \quad\Longrightarrow\quad a^2 = 1 .
-$$
-Med $a > 0$ er $a = 1$, og punktet er $\underline{\underline{(1,\ 1)}}$. Kontroll: Normalen $y = 1 - \tfrac12(x - 1)$ gir $y = \tfrac32$ for $x = 0$. ✓
+::: {.fasit}
+$(1,\ 1)$
 :::
 :::
 

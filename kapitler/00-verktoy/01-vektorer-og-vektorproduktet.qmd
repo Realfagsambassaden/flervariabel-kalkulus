@@ -140,65 +140,40 @@ print(f"vinkel mellom a og b: {vinkel:.1f} grader")
 ::: {.oppgave tittel="Vinkel med skalarproduktet"}
 Finn vinkelen mellom $\mathbf{u} = (1, 2, 2)$ og $\mathbf{v} = (2, 0, -1)$.
 
-::: {.losning}
-$$
-\mathbf{u}\cdot\mathbf{v} = 2 + 0 - 2 = 0
-$$
-Skalarproduktet er null, så vektorene står vinkelrett på hverandre: $\alpha = \underline{\underline{90^\circ}}$.
+::: {.fasit}
+$90^\circ$
 :::
 :::
 
 ::: {.oppgave tittel="Et vektorprodukt"}
 Regn ut $(1, 0, 2)\times(3, 1, -1)$.
 
-::: {.losning}
-$$
-\begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 1 & 0 & 2 \\ 3 & 1 & -1 \end{vmatrix}
-= (0\cdot(-1) - 2\cdot 1)\,\mathbf{i} - (1\cdot(-1) - 2\cdot 3)\,\mathbf{j} + (1\cdot 1 - 0\cdot 3)\,\mathbf{k}
-= \underline{\underline{(-2,\ 7,\ 1)}}
-$$
-Kontroll: $(-2, 7, 1)\cdot(1, 0, 2) = 0$ og $(-2, 7, 1)\cdot(3, 1, -1) = -6 + 7 - 1 = 0$.
+::: {.fasit}
+$(-2,\ 7,\ 1)$
 :::
 :::
 
 ::: {.oppgave tittel="Arealet av en trekant"}
 Finn arealet av trekanten med hjørner $A = (1, 0, 0)$, $B = (0, 2, 0)$ og $C = (0, 0, 3)$.
 
-::: {.losning}
-Trekanten er halvparten av parallellogrammet utspent av $\overrightarrow{AB} = (-1, 2, 0)$ og $\overrightarrow{AC} = (-1, 0, 3)$:
-$$
-\overrightarrow{AB}\times\overrightarrow{AC} = (2\cdot 3 - 0\cdot 0,\ -((-1)\cdot 3 - 0\cdot(-1)),\ (-1)\cdot 0 - 2\cdot(-1)) = (6, 3, 2)
-$$
-$$
-A = \tfrac12\,|(6, 3, 2)| = \tfrac12\sqrt{36 + 9 + 4} = \tfrac12\cdot 7 = \underline{\underline{3.5}}
-$$
+::: {.fasit}
+$3.5$
 :::
 :::
 
 ::: {.oppgave tittel="Plane vektorer" niva="Middels"}
 Regn ut $\mathbf{u}\times\mathbf{v}$ for de plane vektorene $\mathbf{u} = (3, 1)$ og $\mathbf{v} = (1, 2)$, og tolk svaret. Hva skjer om du bytter rekkefølge?
 
-::: {.losning}
-Vi legger til $z = 0$: $\mathbf{u} = (3, 1, 0)$ og $\mathbf{v} = (1, 2, 0)$. Da er
-$$
-\mathbf{u}\times\mathbf{v} = (3\cdot 2 - 1\cdot 1)\,\mathbf{k} = \underline{\underline{5\,\mathbf{k}}}
-$$
-Parallellogrammet har areal $5$, og vektoren peker opp ($+\mathbf{k}$) fordi vi dreier mot klokka fra $\mathbf{u}$ til $\mathbf{v}$. Bytter vi rekkefølge, får vi $\mathbf{v}\times\mathbf{u} = -5\,\mathbf{k}$: samme areal, motsatt retning.
+::: {.fasit}
+$5\,\mathbf{k}$
 :::
 :::
 
 ::: {.oppgave tittel="Volum av et parallellepiped" niva="Utfordrende"}
 Volumet av parallellepipedet utspent av $\mathbf{a}$, $\mathbf{b}$ og $\mathbf{c}$ er $V = |(\mathbf{a}\times\mathbf{b})\cdot\mathbf{c}|$: grunnflaten $|\mathbf{a}\times\mathbf{b}|$ ganger høyden, som er komponenten av $\mathbf{c}$ langs normalen. Finn volumet når $\mathbf{a} = (2, 1, 0)$, $\mathbf{b} = (0, 3, 1)$ og $\mathbf{c} = (1, 1, 4)$.
 
-::: {.losning}
-Fra eksemplet er $\mathbf{a}\times\mathbf{b} = (1, -2, 6)$. Da er
-$$
-(\mathbf{a}\times\mathbf{b})\cdot\mathbf{c} = 1 - 2 + 24 = 23, \qquad V = \underline{\underline{23}}
-$$
-Det samme tallet er determinanten med $\mathbf{a}$, $\mathbf{b}$ og $\mathbf{c}$ som rader:
-$$
-\begin{vmatrix} 2 & 1 & 0 \\ 0 & 3 & 1 \\ 1 & 1 & 4 \end{vmatrix} = 2(12 - 1) - 1(0 - 1) + 0 = 23 .
-$$
+::: {.fasit}
+$23$
 :::
 :::
 

@@ -106,28 +106,18 @@ $$
 \lim_{(x,y)\to(0,0)} \frac{x^2 - y^2}{x^2 + y^2}
 $$
 
-::: {.losning}
-Langs $x$-aksen ($y = 0$) er uttrykket $\dfrac{x^2}{x^2} = 1$. Langs $y$-aksen ($x = 0$) er det $\dfrac{-y^2}{y^2} = -1$. To veier gir ulike grenser, så grensen **finnes ikke**.
-:::
 :::
 
 ::: {.oppgave tittel="Kontinuerlig der den er definert"}
 Hvor er $g(x, y) = \dfrac{\mathrm{e}^{xy}}{x - y}$ kontinuerlig?
 
-::: {.losning}
-Teller og nevner er kontinuerlige overalt, og brøken er kontinuerlig der nevneren ikke er null. $g$ er altså kontinuerlig overalt **unntatt på linjen $y = x$**, der den ikke er definert.
-:::
 :::
 
 ::: {.oppgave tittel="Grense med polarkoordinater" niva="Middels"}
 Vis at $\displaystyle\lim_{(x,y)\to(0,0)} \frac{x^3 + y^3}{x^2 + y^2} = 0$.
 
-::: {.losning}
-Med $x = r\cos\theta$, $y = r\sin\theta$:
-$$
-\left|\frac{x^3 + y^3}{x^2 + y^2}\right| = \frac{r^3\,|\cos^3\theta + \sin^3\theta|}{r^2} = r\,|\cos^3\theta + \sin^3\theta| \le 2r ,
-$$
-siden $|\cos^3\theta| \le 1$ og $|\sin^3\theta| \le 1$. Når $r\to 0$, går dette mot $0$ for alle $\theta$, så grensen er $\underline{\underline{0}}$.
+::: {.fasit}
+$0$
 :::
 :::
 
@@ -138,19 +128,6 @@ a) Vis at $f \to 0$ langs alle rette linjer $y = kx$ inn mot origo, og langs $y$
 
 b) Vis at $f \to \frac12$ langs parabelen $y = x^2$. Hva betyr det?
 
-::: {.losning}
-a) Langs $y = kx$ er
-$$
-f(x, kx) = \frac{kx^3}{x^4 + k^2x^2} = \frac{kx}{x^2 + k^2} \to \frac{0}{k^2} = 0 \quad (k \ne 0),
-$$
-og for $k = 0$ er $f = 0$. Langs $y$-aksen er $x = 0$ og $f = 0$. Alle linjer gir altså grensen $0$.
-
-b) Langs $y = x^2$ er
-$$
-f(x, x^2) = \frac{x^4}{x^4 + x^4} = \frac12 .
-$$
-Parabelen gir en annen grense enn linjene, så $\lim_{(x,y)\to(0,0)} f(x, y)$ **finnes ikke**. Det viser at det ikke holder å sjekke rette linjer.
-:::
 :::
 
 ::::

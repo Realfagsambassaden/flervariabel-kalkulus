@@ -121,39 +121,30 @@ print("Areal med maske:", ((X**2 + Y**2) <= 1).sum()*h*h, "eksakt", np.pi/4)
 ::: {.oppgave tittel="Midtpunkt for hånd"}
 Tilnærm $\iint_R (x + y)\,\mathrm{d}A$ over $R = [0, 2] \times [0, 2]$ med $2 \times 2$ kvadrater. Hvorfor blir svaret eksakt?
 
-::: {.losning}
-Midtpunkter $(0.5, 0.5)$, $(0.5, 1.5)$, $(1.5, 0.5)$, $(1.5, 1.5)$ med $f = 1, 2, 2, 3$. Sum $= 8\cdot 1 = \underline{\underline{8}}$, som er eksakt. Midtpunktsregelen er eksakt for lineære funksjoner, fordi det som er for mye på den ene halvdelen av rektangelet, er for lite på den andre.
+::: {.fasit}
+$8$
 :::
 :::
 
 ::: {.oppgave tittel="Trapesvekter" niva="Middels"}
 Tilnærm $\iint_{[0,1]^2} x^2y\,\mathrm{d}A$ med trapesregelen og $2 \times 2$ delintervaller. Eksakt svar er $\frac16$.
 
-::: {.losning}
-Punktene er $x, y \in \{0,\ 0.5,\ 1\}$ med vekter $\frac12, 1, \frac12$ og $\Delta x = \Delta y = 0.5$. Bare punkter med $x, y > 0$ bidrar:
-
-$(0.5, 0.5)$: vekt 1, $f = 0.125$. $(0.5, 1)$: vekt $\frac12$, $f = 0.25$. $(1, 0.5)$: vekt $\frac12$, $f = 0.5$. $(1, 1)$: vekt $\frac14$, $f = 1$.
-
-Sum: $0.125 + 0.125 + 0.25 + 0.25 = 0.75$. Gang med $0.25$: $\underline{\underline{0.1875}}$ (eksakt $0.1667$).
+::: {.fasit}
+$0.1875$
 :::
 :::
 
 ::: {.oppgave tittel="Masse av en plate" niva="Middels"}
 En halvsirkelformet plate $x^2 + y^2 \le 1$, $y \ge 0$ (i meter) har tetthet $\sigma = 2 + y\ \mathrm{kg/m^2}$. Finn massen med `dblquad`, og kontroller med polarkoordinater.
 
-::: {.losning}
-`dblquad(lambda y, x: 2 + y, -1, 1, 0, lambda x: np.sqrt(1 - x**2))` gir $3.808\ \mathrm{kg}$.
-
-Polart: $\int_0^{\pi}\int_0^1(2 + r\sin\theta)\,r\,\mathrm{d}r\,\mathrm{d}\theta = \pi + \frac23 = \underline{\underline{3.81\ \mathrm{kg}}}$.
+::: {.fasit}
+$3.81\ \mathrm{kg}$
 :::
 :::
 
 ::: {.oppgave tittel="Maskefeil" niva="Utfordrende"}
 Kjør maskemetoden for arealet av kvartsirkelen med $n = 10,\ 100,\ 1000$. Hvilken orden har feilen? Hvorfor er den dårligere enn midtpunktsregelen for et rektangel?
 
-::: {.losning}
-Feilene blir omtrent $4.6\cdot 10^{-3}$, $3.0\cdot 10^{-4}$ og $2.1\cdot 10^{-5}$, men de varierer ujevnt fordi det avhenger av hvordan kanten treffer rutenettet. I snitt er feilen av orden $h$ til $h^{1.5}$, ikke $h^2$. Rutene som kanten skjærer gjennom, telles enten helt med eller ikke i det hele tatt.
-:::
 :::
 
 ::::

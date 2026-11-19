@@ -265,51 +265,21 @@ c) En vindusrute avgir varme til uteluft på $-5\ \mathrm{°C}$.
 
 d) En gitarstreng med lengde $L$ er festet i begge ender.
 
-::: {.losning}
-a) Temperaturen er kjent: $u(0, t) = 0\ \mathrm{°C}$. **Dirichlet** (homogen).
-
-b) Varmestrømmen *ut* er $-k\frac{\partial u}{\partial n}$, og den er $-300\ \mathrm{W/m^2}$, fordi varmen går inn. Altså $k\frac{\partial u}{\partial n} = 300\ \mathrm{W/m^2}$. **Neumann** (inhomogen).
-
-c) Etter Newtons avkjølingslov er $-k\frac{\partial u}{\partial n} = h\,\big(u - (-5\ \mathrm{°C})\big)$, der $h$ er varmeovergangstallet. **Robin**.
-
-d) Utslaget er null i endene: $u(0, t) = 0$ og $u(L, t) = 0$. **Dirichlet** (homogen). I tillegg trengs to initialbetingelser, startformen $u(x, 0)$ og startfarten $u_t(x, 0)$.
-:::
 :::
 
 ::: {.oppgave tittel="Normalderivert på et rektangel" niva="Middels"}
 La $u(x, y) = x^2y$ på rektangelet $0 \le x \le 2$, $0 \le y \le 1$. Finn den normalderiverte $\frac{\partial u}{\partial n}$ på hver av de fire sidene.
 
-::: {.losning}
-Gradienten er $\nabla u = [2xy,\ x^2]$. Utadrettede normaler og $\frac{\partial u}{\partial n} = \nabla u \cdot \vec n$:
-
-| Side | $\vec n$ | $\frac{\partial u}{\partial n}$ |
-|---|---|---|
-| høyre, $x = 2$ | $[1, 0]$ | $u_x(2, y) = \underline{\underline{4y}}$ |
-| venstre, $x = 0$ | $[-1, 0]$ | $-u_x(0, y) = \underline{\underline{0}}$ |
-| øverst, $y = 1$ | $[0, 1]$ | $u_y(x, 1) = \underline{\underline{x^2}}$ |
-| nederst, $y = 0$ | $[0, -1]$ | $-u_y(x, 0) = \underline{\underline{-x^2}}$ |
-
-Legg merke til fortegnet på de to sidene der normalen peker i negativ retning.
+::: {.fasit}
+$4y$ · $0$ · $x^2$ · $-x^2$
 :::
 :::
 
 ::: {.oppgave tittel="Stav som kjøles av luft" niva="Middels"}
 En stav av rustfritt stål med lengde $L = 0.30\ \mathrm{m}$ og varmeledningsevne $k = 15\ \mathrm{W/(m\cdot K)}$ er isolert langs sidene. Den ene enden holdes på $100\ \mathrm{°C}$, og den andre avgir varme til luft på $20\ \mathrm{°C}$ med varmeovergangstall $h = 50\ \mathrm{W/(m^2\cdot K)}$. Finn den stasjonære temperaturen i den kjølte enden og varmestrømmen gjennom staven.
 
-::: {.losning}
-Stasjonært er $u'' = 0$, så $u = 100 + Ax$ (i °C, $x$ i meter). Robin-betingelsen i $x = L$, der $\frac{\partial u}{\partial n} = u'(L) = A$:
-$$
--kA = h\,\big(100 + AL - 20\big) \quad\Longrightarrow\quad A = -\frac{80h}{k + hL} = -\frac{80\cdot 50}{15 + 50\cdot 0.30}\ \mathrm{K/m} = -133.3\ \mathrm{K/m}
-$$
-Temperaturen i enden:
-$$
-u(L) = 100 - 133.3\cdot 0.30 = \underline{\underline{60\ \mathrm{°C}}}
-$$
-Varmestrømmen etter Fouriers lov:
-$$
-q = -kA = 15\cdot 133.3\ \mathrm{W/m^2} = \underline{\underline{2.0\ \mathrm{kW/m^2}}}
-$$
-Kontroll: $h\,(u(L) - 20) = 50\cdot 40\ \mathrm{W/m^2} = 2.0\ \mathrm{kW/m^2}$. Det som ledes gjennom staven, går ut i lufta.
+::: {.fasit}
+$60\ \mathrm{°C}$ · $2.0\ \mathrm{kW/m^2}$
 :::
 :::
 
@@ -320,32 +290,16 @@ a) For hvilken verdi av $b$ har problemet løsning?
 
 b) Finn alle løsningene for denne $b$. Er løsningen entydig?
 
-::: {.losning}
-a) Integrer likningen fra $0$ til $1$:
-$$
-u'(1) - u'(0) = \int_0^1 (-6x)\,\mathrm{d}x = -3
-$$
-Med $u'(0) = 0$ må $\underline{\underline{b = -3}}$. Fysisk: Kilden produserer varme, og i likevekt må all den varmen strømme ut gjennom høyre ende. Negativ $u'(1)$ betyr at temperaturen faller utover, så varmen strømmer ut.
-
-b) Integrer to ganger: $u' = -3x^2 + C_1$, og $u'(0) = 0$ gir $C_1 = 0$. Så
-$$
-\underline{\underline{u(x) = -x^3 + C}}
-$$
-Da er $u'(1) = -3$ for alle $C$. Løsningen er ikke entydig: Konstanten $C$ kan ikke bestemmes av Neumann-betingelsene.
+::: {.fasit}
+a) $b = -3$ · b) $u(x) = -x^3 + C$
 :::
 :::
 
 ::: {.oppgave tittel="To initialbetingelser for bølgelikningen" niva="Middels"}
 Vis at $u(x, t) = \sin(\pi x)\,\big(\cos(\pi t) + B\sin(\pi t)\big)$ oppfyller $u_{tt} = u_{xx}$, $u(0, t) = u(1, t) = 0$ og $u(x, 0) = \sin(\pi x)$ for *alle* konstanter $B$. Finn $B$ når i tillegg $u_t(x, 0) = \pi\sin(\pi x)$.
 
-::: {.losning}
-To ganger derivert med hensyn på $t$ gir faktoren $-\pi^2$, og to ganger med hensyn på $x$ gir også $-\pi^2$: $u_{tt} = -\pi^2u = u_{xx}$. Randbetingelsene holder fordi $\sin 0 = \sin\pi = 0$. Ved $t = 0$ er $\cos 0 + B\sin 0 = 1$, så $u(x, 0) = \sin(\pi x)$ uansett $B$.
-
-Startformen bestemmer altså ikke løsningen. Startfarten gjør det:
-$$
-u_t(x, 0) = \sin(\pi x)\,\big(-\pi\sin 0 + B\pi\cos 0\big) = B\pi\sin(\pi x) = \pi\sin(\pi x)
-$$
-som gir $\underline{\underline{B = 1}}$. Derfor trenger bølgelikningen to initialbetingelser.
+::: {.fasit}
+$B = 1$
 :::
 :::
 
@@ -358,20 +312,8 @@ b) Ved $t = 0$ har startverdiene en feil $\varepsilon\sin(5x)$. Hvor stor er fei
 
 c) Vi måler temperaturen ved $t = 1$ og vil regne *baklengs* for å finne starttemperaturen. Målingen har en feil $1.0\cdot 10^{-6}\sin(5x)$. Hvor stor feil gir det i starttemperaturen? Er problemet velstilt?
 
-::: {.losning}
-a) $u_t = -n^2a\,\mathrm{e}^{-n^2t}\sin(nx)$ og $u_{xx} = -n^2a\,\mathrm{e}^{-n^2t}\sin(nx)$, så $u_t = u_{xx}$. Randbetingelsene holder fordi $\sin 0 = \sin(n\pi) = 0$.
-
-b) Problemet er lineært, så feilen utvikler seg selv som en løsning, med $n = 5$ og $a = \varepsilon$. Ved $t = 1$ er amplituden
-$$
-\varepsilon\,\mathrm{e}^{-25} = \underline{\underline{1.4\cdot 10^{-11}\,\varepsilon}}
-$$
-Feilen dempes kraftig. Framover i tid er varmelikningen stabil.
-
-c) Starttemperaturen som gir feilen $1.0\cdot 10^{-6}\sin(5x)$ ved $t = 1$, har amplituden $a$ der $a\,\mathrm{e}^{-25} = 1.0\cdot 10^{-6}$:
-$$
-a = 1.0\cdot 10^{-6}\cdot\mathrm{e}^{25} = \underline{\underline{7.2\cdot 10^4}}
-$$
-En nesten umerkelig målefeil gir en enorm feil i svaret, og for $\sin(10x)$ blir forsterkningen $\mathrm{e}^{100} \approx 2.7\cdot 10^{43}$. Problemet er **ikke stabilt** og derfor ikke velstilt. Varmen jevner ut detaljer, og når de først er jevnet ut, kan de ikke regnes tilbake.
+::: {.fasit}
+b) $1.4\cdot 10^{-11}\,\varepsilon$ · c) $7.2\cdot 10^4$
 :::
 :::
 

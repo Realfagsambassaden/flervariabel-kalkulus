@@ -166,14 +166,8 @@ Mer om numerisk integrasjon i to dimensjoner finner du under *numerisk beregning
 ::: {.oppgave tittel="Et første dobbeltintegral"}
 Regn ut $\displaystyle\iint_R 6x^2y\,\mathrm{d}A$ der $R = [0, 1] \times [0, 2]$.
 
-::: {.losning}
-Vi integrerer med hensyn på $x$ først:
-$$
-\int_0^1 6x^2y\,\mathrm{d}x = \Big[\,2x^3y\,\Big]_{x=0}^{x=1} = 2y
-\qquad
-\int_0^2 2y\,\mathrm{d}y = \Big[\,y^2\,\Big]_0^2 = \underline{\underline{4}}
-$$
-Integranden er et produkt, så vi kunne også regnet $6\left(\int_0^1 x^2\,\mathrm{d}x\right)\left(\int_0^2 y\,\mathrm{d}y\right) = 6\cdot\frac13\cdot 2 = 4$.
+::: {.fasit}
+$4$
 :::
 :::
 
@@ -184,50 +178,24 @@ a) Del $R$ i $2 \times 2$ kvadrater og regn ut Riemann-summen med midtpunktene.
 
 b) Regn ut dobbeltintegralet eksakt og finn feilen i a).
 
-::: {.losning}
-a) Kvadratene har sider $1$, så $\Delta A = 1$. Midtpunktene har $x, y \in \{0.5,\ 1.5\}$:
-$$
-\begin{aligned}
-f(0.5, 0.5) &= 0.75, & f(0.5, 1.5) &= 1.75,\\
-f(1.5, 0.5) &= 2.75, & f(1.5, 1.5) &= 3.75.
-\end{aligned}
-$$
-Riemann-summen er $(0.75 + 1.75 + 2.75 + 3.75)\cdot 1 = \underline{\underline{9}}$.
-
-b)
-$$
-\int_0^2 (x^2 + y)\,\mathrm{d}x = \frac83 + 2y
-\qquad
-\int_0^2 \left(\frac83 + 2y\right)\mathrm{d}y = \frac{16}{3} + 4 = \underline{\underline{\frac{28}{3}}} \approx 9.333
-$$
-Feilen er $9 - \frac{28}{3} = -\frac13 \approx -0.33$. Midtpunktene gir eksakt svar for leddet $y$, som er lineært. Hele feilen kommer fra $x^2$, som krummer.
+::: {.fasit}
+$9$ · $\frac{28}{3}$
 :::
 :::
 
 ::: {.oppgave tittel="Volum under et skrått tak"}
 Finn volumet under flaten $z = 1 + xy$ over kvadratet $R = [0, 2] \times [0, 2]$.
 
-::: {.losning}
-$f > 0$ på hele $R$, så volumet er
-$$
-V = \iint_R (1 + xy)\,\mathrm{d}A = \iint_R 1\,\mathrm{d}A + \left(\int_0^2 x\,\mathrm{d}x\right)\left(\int_0^2 y\,\mathrm{d}y\right) = 4 + 2\cdot 2 = \underline{\underline{8}}
-$$
-Det første leddet er arealet av $R$.
+::: {.fasit}
+$8$
 :::
 :::
 
 ::: {.oppgave tittel="Velg rekkefølge" niva="Middels"}
 Regn ut $\displaystyle\iint_R x\cos(xy)\,\mathrm{d}A$ der $R = [0, 1] \times [0, \tfrac{\pi}{2}]$. Hvilken rekkefølge lønner seg?
 
-::: {.losning}
-Integrerer vi med hensyn på $y$ først, er $x$ konstant, og $x\cos(xy)$ er den deriverte av $\sin(xy)$ med hensyn på $y$:
-$$
-\int_0^{\pi/2} x\cos(xy)\,\mathrm{d}y = \Big[\,\sin(xy)\,\Big]_{y=0}^{y=\pi/2} = \sin\!\left(\frac{\pi x}{2}\right)
-$$
-$$
-\int_0^1 \sin\!\left(\frac{\pi x}{2}\right)\mathrm{d}x = \Big[-\frac{2}{\pi}\cos\!\left(\frac{\pi x}{2}\right)\Big]_0^1 = -\frac{2}{\pi}(0 - 1) = \underline{\underline{\frac{2}{\pi}}} \approx 0.637
-$$
-Den andre rekkefølgen krever delvis integrasjon i $x$ og blir mye tyngre.
+::: {.fasit}
+$\frac{2}{\pi}$
 :::
 :::
 
@@ -238,17 +206,8 @@ a) Finn middeltemperaturen over omgivelsene uttrykt ved $T_0$.
 
 b) Hvor stor brøkdel av maksimaltemperaturen er dette?
 
-::: {.losning}
-a) Integranden er et produkt, og $\int_0^\pi \sin x\,\mathrm{d}x = 2$:
-$$
-\iint_R T_0\sin x\,\sin y\,\mathrm{d}A = T_0\left(\int_0^\pi \sin x\,\mathrm{d}x\right)\left(\int_0^\pi \sin y\,\mathrm{d}y\right) = 4\,T_0
-$$
-Arealet er $A(R) = \pi^2$, så
-$$
-\bar T = \frac{4\,T_0}{\pi^2} = \underline{\underline{0.405\,T_0}}
-$$
-
-b) Maksimaltemperaturen er $T_0$ (i midten, der $\sin x = \sin y = 1$). Middelverdien er altså omtrent $41\ \%$ av maksimum. Til sammenligning er middelverdien av $\sin x$ på $[0, \pi]$ lik $\frac{2}{\pi} \approx 64\ \%$, og i to dimensjoner ganges to slike faktorer: $\left(\frac{2}{\pi}\right)^2 = \frac{4}{\pi^2}$.
+::: {.fasit}
+$0.405\,T_0$
 :::
 :::
 

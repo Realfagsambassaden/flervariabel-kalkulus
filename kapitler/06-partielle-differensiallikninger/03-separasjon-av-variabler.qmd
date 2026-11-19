@@ -236,66 +236,32 @@ plt.xlabel('x (m)'); plt.ylabel('utslag (mm)'); plt.legend(); plt.show()
 ::: {.oppgave tittel="Sjekk en løsning"}
 Vis at $u(x, t) = \mathrm{e}^{-4\pi^2 t}\sin(2\pi x)$ løser $u_t = u_{xx}$ med $u(0, t) = u(1, t) = 0$. Hvilken modus er det, og hva er startprofilen?
 
-::: {.losning}
-$u_t = -4\pi^2\,\mathrm{e}^{-4\pi^2 t}\sin(2\pi x)$. $\quad u_x = 2\pi\,\mathrm{e}^{-4\pi^2 t}\cos(2\pi x)$, $\quad u_{xx} = -4\pi^2\,\mathrm{e}^{-4\pi^2 t}\sin(2\pi x)$.
-
-Altså er $u_t = u_{xx}$. I endene er $\sin 0 = 0$ og $\sin 2\pi = 0$, så randbetingelsene er oppfylt.
-
-Med $L = 1$ og $\alpha = 1$ er dette modus $\underline{\underline{n = 2}}$, med $\lambda_2 = (2\pi)^2 = 4\pi^2$. Startprofilen er $\underline{\underline{u(x, 0) = \sin(2\pi x)}}$, med et nodepunkt midt på.
+::: {.fasit}
+$n = 2$ · $u(x, 0) = \sin(2\pi x)$
 :::
 :::
 
 ::: {.oppgave tittel="Halveringstid for en kobberstav"}
 En kobberstav har lengde $1.00\ \mathrm{m}$ og $\alpha = 1.11\cdot 10^{-4}\ \mathrm{m^2/s}$, med endene holdt på $0\ \mathrm{^\circ C}$. Hvor lang tid tar det før amplituden til modus 1 er halvert? Og for modus 2?
 
-::: {.losning}
-Modus $n$ har amplituden $b_n\,\mathrm{e}^{-\alpha(n\pi/L)^2 t}$. Den er halvert når $\alpha(n\pi/L)^2 t = \ln 2$:
-$$
-t_{1/2,\,n} = \frac{\ln 2\cdot L^2}{\alpha\,n^2\pi^2}
-$$
-Modus 1:
-$$
-t_{1/2,\,1} = \frac{0.6931\cdot(1.00\ \mathrm{m})^2}{1.11\cdot 10^{-4}\ \mathrm{m^2/s}\cdot\pi^2} = 633\ \mathrm{s} = \underline{\underline{10.5\ \mathrm{min}}}
-$$
-Modus 2 dør $2^2 = 4$ ganger så raskt: $t_{1/2,\,2} = 633\ \mathrm{s}/4 = \underline{\underline{158\ \mathrm{s}}}$.
+::: {.fasit}
+$10.5\ \mathrm{min}$ · $158\ \mathrm{s}$
 :::
 :::
 
 ::: {.oppgave tittel="Startprofil med sinus i tredje" niva="Middels"}
 Løs $u_t = u_{xx}$ for $0 < x < 1$ med $u(0, t) = u(1, t) = 0$ og $u(x, 0) = \sin^3(\pi x)$. Bruk identiteten $\sin^3\theta = \frac34\sin\theta - \frac14\sin 3\theta$. Regn ut $u(0.5,\ 0.1)$.
 
-::: {.losning}
-Startprofilen er en sum av to moder:
-$$
-u(x, 0) = \tfrac34\sin(\pi x) - \tfrac14\sin(3\pi x)
-$$
-så $b_1 = \frac34$, $b_3 = -\frac14$, og resten er null. Med $L = 1$ og $\alpha = 1$ avtar modus $n$ som $\mathrm{e}^{-n^2\pi^2 t}$:
-$$
-\underline{\underline{u(x, t) = \tfrac34\,\mathrm{e}^{-\pi^2 t}\sin(\pi x) - \tfrac14\,\mathrm{e}^{-9\pi^2 t}\sin(3\pi x)}}
-$$
-I $x = 0.5$ er $\sin\frac{\pi}{2} = 1$ og $\sin\frac{3\pi}{2} = -1$:
-$$
-u(0.5,\ 0.1) = \tfrac34\,\mathrm{e}^{-0.98696} + \tfrac14\,\mathrm{e}^{-8.8826} = 0.27953 + 0.00003 = \underline{\underline{0.280}}
-$$
-Modus 3 er nesten borte allerede ved $t = 0.1$.
+::: {.fasit}
+$u(x, t) = \tfrac34\,\mathrm{e}^{-\pi^2 t}\sin(\pi x) - \tfrac14\,\mathrm{e}^{-9\pi^2 t}\sin(3\pi x)$ · $0.280$
 :::
 :::
 
 ::: {.oppgave tittel="Fasiten til pianohammeren" niva="Middels"}
 En streng med $L = 1$ og $c = 1$ ligger rett, $u(x, 0) = 0$, og får farten $u_t(x, 0) = \sin(\pi x)$ av et slag. Bruk separasjon av variabler til å vise at $u(x, t) = \frac{1}{\pi}\sin(\pi x)\sin(\pi t)$.
 
-::: {.losning}
-Separasjon gir modene $\sin(n\pi x)\big(A_n\cos(n\pi t) + B_n\sin(n\pi t)\big)$, siden $\omega_n = n\pi c/L = n\pi$. Summen er
-$$
-u(x, t) = \sum_{n=1}^{\infty}\sin(n\pi x)\big(A_n\cos(n\pi t) + B_n\sin(n\pi t)\big)
-$$
-Startposisjonen: $u(x, 0) = \sum A_n\sin(n\pi x) = 0$, så alle $A_n = 0$.
-
-Startfarten: $u_t(x, 0) = \sum n\pi B_n\sin(n\pi x) = \sin(\pi x)$. Sammenlign leddene: $\pi B_1 = 1$, og $B_n = 0$ for $n \ge 2$. Altså er $B_1 = \frac1\pi$ og
-$$
-\underline{\underline{u(x, t) = \frac{1}{\pi}\sin(\pi x)\sin(\pi t)}}
-$$
-Sjekk: $u_{tt} = -\pi\sin(\pi x)\sin(\pi t) = u_{xx}$, $u = 0$ i endene, $u(x, 0) = 0$ og $u_t(x, 0) = \sin(\pi x)$.
+::: {.fasit}
+$u(x, t) = \frac{1}{\pi}\sin(\pi x)\sin(\pi t)$
 :::
 :::
 
@@ -305,16 +271,8 @@ Den dypeste strengen på en gitar har lengde $L = 0.650\ \mathrm{m}$ og grunnton
 a) Hva er bølgefarten i strengen?
 b) Gitaristen presser strengen ned mot et bånd for å spille A, $110\ \mathrm{Hz}$. Hvor lang må den svingende delen være, og hvor langt fra den øvre enden (sadelen) ligger båndet?
 
-::: {.losning}
-a) Fra $f_1 = \frac{c}{2L}$:
-$$
-c = 2Lf_1 = 2\cdot 0.650\ \mathrm{m}\cdot 82.4\ \mathrm{Hz} = \underline{\underline{107\ \mathrm{m/s}}}
-$$
-b) Bølgefarten er den samme (samme streng og stramming), men lengden endres:
-$$
-L' = \frac{c}{2f_1'} = \frac{107.1\ \mathrm{m/s}}{2\cdot 110\ \mathrm{Hz}} = \underline{\underline{0.487\ \mathrm{m}}}
-$$
-Båndet ligger $0.650\ \mathrm{m} - 0.487\ \mathrm{m} = \underline{\underline{0.163\ \mathrm{m}}}$ fra sadelen. Kortere streng gir høyere tone, fordi en halv bølgelengde da tar kortere tid å gå over strengen.
+::: {.fasit}
+a) $107\ \mathrm{m/s}$ · b) $0.487\ \mathrm{m}$ · b) $0.163\ \mathrm{m}$
 :::
 :::
 
@@ -324,22 +282,8 @@ En stav med lengde $L$ er isolert i begge endene, så ingen varme slipper ut: $u
 a) Vis at egenfunksjonene nå er $X_n = \cos\frac{n\pi x}{L}$ med $n = 0, 1, 2, \dots$
 b) Finn $u(x, t)$, og hva temperaturen blir etter lang tid. Tolk svaret.
 
-::: {.losning}
-a) Romlikningen er fortsatt $X'' + \lambda X = 0$, nå med $X'(0) = X'(L) = 0$.
-
-- $\lambda = 0$: $X = A + Bx$, $X' = B = 0$. Konstanten $X_0 = 1$ er en løsning.
-- $\lambda = k^2 > 0$: $X = A\cos kx + B\sin kx$, $X' = -Ak\sin kx + Bk\cos kx$. $X'(0) = Bk = 0$ gir $B = 0$. $X'(L) = -Ak\sin kL = 0$ gir $kL = n\pi$.
-- $\lambda < 0$ gir bare nulløsningen, som med faste ender.
-
-Altså $X_n = \cos\frac{n\pi x}{L}$ og $\lambda_n = (n\pi/L)^2$ for $n = 0, 1, 2, \dots$ Nytt er modus $n = 0$ med $\lambda_0 = 0$.
-
-b) Startprofilen er modus 0 med $b_0 = 20\ \mathrm{^\circ C}$ og modus 1 med $b_1 = 5\ \mathrm{^\circ C}$. Modus 0 har $T_0 = \mathrm{e}^{0} = 1$ og avtar aldri:
-$$
-\underline{\underline{u(x, t) = 20\ \mathrm{^\circ C} + 5\ \mathrm{^\circ C}\cdot\mathrm{e}^{-\alpha(\pi/L)^2 t}\cos\frac{\pi x}{L}}}
-$$
-Etter lang tid går leddet med $\mathrm{e}^{-\alpha(\pi/L)^2 t}$ mot null, og $u \to \underline{\underline{20\ \mathrm{^\circ C}}}$ overalt.
-
-Tolkning: Ingen varme slipper ut, så den totale varmemengden er bevart. Temperaturen jevner seg ut til gjennomsnittet av startprofilen. Cosinusleddet har gjennomsnitt null over staven, så gjennomsnittet er nettopp $20\ \mathrm{^\circ C}$.
+::: {.fasit}
+$u(x, t) = 20\ \mathrm{^\circ C} + 5\ \mathrm{^\circ C}\cdot\mathrm{e}^{-\alpha(\pi/L)^2 t}\cos\frac{\pi x}{L}$ · $20\ \mathrm{^\circ C}$
 :::
 :::
 

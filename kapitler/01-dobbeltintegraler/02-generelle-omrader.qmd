@@ -249,31 +249,16 @@ Riemann-summen med «null utenfor» konvergerer langsomt, fordi rutene som kutte
 ::: {.oppgave tittel="Sett opp grensene begge veier"}
 Området $D$ er avgrenset av $y = \sqrt{x}$, $y = 0$ og $x = 4$. Skriv $\displaystyle\iint_D x\,\mathrm{d}A$ som iterert integral på begge måter, og regn ut begge.
 
-::: {.losning}
-Kurven $y = \sqrt{x}$ treffer linja $x = 4$ i $(4, 2)$. Området ligger mellom $x$-aksen og kurven, for $0 \le x \le 4$.
-
-**Type I.** Loddrett stripe fra $y = 0$ til $y = \sqrt{x}$:
-$$
-\int_0^4\!\!\int_0^{\sqrt{x}} x\,\mathrm{d}y\,\mathrm{d}x = \int_0^4 x\sqrt{x}\,\mathrm{d}x = \Big[\,\tfrac25 x^{5/2}\,\Big]_0^4 = \frac25\cdot 32 = \frac{64}{5}
-$$
-
-**Type II.** Kurven skrevet som funksjon av $y$ er $x = y^2$. En vannrett stripe går fra kurven ut til $x = 4$, og $y$ går fra $0$ til $2$:
-$$
-\int_0^2\!\!\int_{y^2}^{4} x\,\mathrm{d}x\,\mathrm{d}y = \int_0^2 \frac{16 - y^4}{2}\,\mathrm{d}y = \frac12\left(32 - \frac{32}{5}\right) = \frac{64}{5}
-$$
-
-Begge gir $\underline{\underline{\dfrac{64}{5} = 12.8}}$.
+::: {.fasit}
+$\dfrac{64}{5} = 12.8$
 :::
 :::
 
 ::: {.oppgave tittel="Areal mellom to parabler"}
 Bruk et dobbeltintegral til å finne arealet av området mellom $y = x^2$ og $y = 2 - x^2$.
 
-::: {.losning}
-Skjæringspunktene: $x^2 = 2 - x^2$ gir $x^2 = 1$, altså $x = \pm 1$. Mellom dem ligger $y = 2 - x^2$ øverst (for $x = 0$: $2 > 0$). Med loddrette striper:
-$$
-A = \int_{-1}^{1}\!\!\int_{x^2}^{2 - x^2} 1\,\mathrm{d}y\,\mathrm{d}x = \int_{-1}^{1} \left(2 - 2x^2\right)\mathrm{d}x = \Big[\,2x - \tfrac23 x^3\,\Big]_{-1}^{1} = \frac43 - \left(-\frac43\right) = \underline{\underline{\frac83}}
-$$
+::: {.fasit}
+$\frac83$
 :::
 :::
 
@@ -284,14 +269,8 @@ $$
 $$
 ved å bytte integrasjonsrekkefølge. Skisser området først.
 
-::: {.losning}
-**Området.** $0 \le y \le 2$, og $x$ går fra linja $x = y/2$ (altså $y = 2x$) til $x = 1$. Området er trekanten med hjørner i $(0, 0)$, $(1, 0)$ og $(1, 2)$: under linja $y = 2x$ og over $x$-aksen, for $0 \le x \le 1$.
-
-**Byttet rekkefølge.** En loddrett stripe går fra $y = 0$ til $y = 2x$:
-$$
-\int_0^1\!\!\int_0^{2x} \mathrm{e}^{x^2}\,\mathrm{d}y\,\mathrm{d}x = \int_0^1 2x\,\mathrm{e}^{x^2}\,\mathrm{d}x = \Big[\,\mathrm{e}^{x^2}\,\Big]_0^1 = \underline{\underline{\mathrm{e} - 1}} \approx 1.72
-$$
-I den gitte rekkefølgen er det indre integralet $\int \mathrm{e}^{x^2}\,\mathrm{d}x$, som ikke kan skrives med vanlige funksjoner.
+::: {.fasit}
+$\mathrm{e} - 1$
 :::
 :::
 
@@ -301,16 +280,8 @@ $$
 \int_0^{\pi}\!\!\int_x^{\pi} \frac{\sin y}{y}\,\mathrm{d}y\,\mathrm{d}x
 $$
 
-::: {.losning}
-$\dfrac{\sin y}{y}$ har ingen antiderivert som kan skrives med vanlige funksjoner, så vi bytter rekkefølge.
-
-**Området.** $0 \le x \le \pi$ og $x \le y \le \pi$: trekanten over linja $y = x$ og under $y = \pi$, med hjørner i $(0, 0)$, $(0, \pi)$ og $(\pi, \pi)$.
-
-**Vannrette striper.** For fast $y$ går $x$ fra $0$ til $y$, og $y$ går fra $0$ til $\pi$:
-$$
-\int_0^{\pi}\!\!\int_0^{y} \frac{\sin y}{y}\,\mathrm{d}x\,\mathrm{d}y = \int_0^{\pi} y\cdot\frac{\sin y}{y}\,\mathrm{d}y = \int_0^{\pi} \sin y\,\mathrm{d}y = \Big[-\cos y\Big]_0^{\pi} = \underline{\underline{2}}
-$$
-Lengden av stripen, $y$, forkorter mot nevneren.
+::: {.fasit}
+$2$
 :::
 :::
 
@@ -323,31 +294,8 @@ b) Regn ut det samme med loddrette striper. Hvorfor må området deles i to?
 
 c) Kontroller svaret med sammenligningsregelen.
 
-::: {.losning}
-Sidene er $y = 0$, $y = x$ (fra $(0, 0)$ til $(1, 1)$) og $y = 2 - x$ (fra $(1, 1)$ til $(2, 0)$).
-
-a) En vannrett stripe ved fast $y$ går fra $x = y$ til $x = 2 - y$, og $0 \le y \le 1$:
-$$
-\int_y^{2-y} (x + y)\,\mathrm{d}x = \Big[\,\tfrac12 x^2 + xy\,\Big]_{x=y}^{x=2-y} = \frac{(2 - y)^2 - y^2}{2} + y(2 - 2y) = 2 - 2y + 2y - 2y^2 = 2 - 2y^2
-$$
-$$
-\int_0^1 \left(2 - 2y^2\right)\mathrm{d}y = 2 - \frac23 = \underline{\underline{\frac43}}
-$$
-
-b) En loddrett stripe går fra $y = 0$ og opp til $y = x$ når $x \le 1$, men opp til $y = 2 - x$ når $x \ge 1$. Den øvre kanten skifter kurve i $x = 1$, så vi deler i $D_1$ ($0 \le x \le 1$) og $D_2$ ($1 \le x \le 2$):
-$$
-\iint_{D_1} (x + y)\,\mathrm{d}A = \int_0^1 \left(x\cdot x + \tfrac12 x^2\right)\mathrm{d}x = \int_0^1 \tfrac32 x^2\,\mathrm{d}x = \frac12
-$$
-$$
-\iint_{D_2} (x + y)\,\mathrm{d}A = \int_1^2 \left(x(2 - x) + \tfrac12 (2 - x)^2\right)\mathrm{d}x
-$$
-Med $u = 2 - x$ (så $x = 2 - u$, og $u$ går fra $1$ til $0$):
-$$
-\int_0^1 \left((2 - u)\,u + \tfrac12 u^2\right)\mathrm{d}u = \int_0^1 \left(2u - \tfrac12 u^2\right)\mathrm{d}u = 1 - \frac16 = \frac56
-$$
-Additiviteten gir $\dfrac12 + \dfrac56 = \dfrac43$, som i a).
-
-c) Arealet er $\tfrac12\cdot 2\cdot 1 = 1$. På trekanten er $x + y$ minst $0$ (i origo) og høyst $2$ (i $(2, 0)$ og $(1, 1)$). Integralet må derfor ligge mellom $0$ og $2$, og $\tfrac43 \approx 1.33$ gjør det.
+::: {.fasit}
+$\frac43$
 :::
 :::
 

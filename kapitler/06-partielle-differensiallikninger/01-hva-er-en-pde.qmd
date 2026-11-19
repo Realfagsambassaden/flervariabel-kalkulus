@@ -263,48 +263,24 @@ Finn orden, og avgjør om likningen er lineær, kvasilineær eller ikke-lineær.
 
 (a) $u_t = u_{xx} + u_{yy} + \mathrm{e}^{-t}$ (b) $u_{tt} - u_{xx} + u = 0$ (c) $u_x\,u_{xx} + u_y = 0$ (d) $u_{xx}u_{yy} - u_{xy}^2 = 0$
 
-::: {.losning}
-(a) Høyeste deriverte er $u_{xx}$ og $u_{yy}$: **andre orden**. Alle ledd med $u$ er lineære: $u_t - u_{xx} - u_{yy} = \mathrm{e}^{-t}$. Høyresiden er ikke null, så likningen er $\underline{\underline{\text{lineær og inhomogen}}}$: varmelikningen i 2D med en kilde som dør ut.
-
-(b) **Andre orden**. Leddene $u_{tt}$, $u_{xx}$ og $u$ har konstante koeffisienter, og høyresiden er null: $\underline{\underline{\text{lineær og homogen}}}$.
-
-(c) **Andre orden**. Produktet $u_x\,u_{xx}$ gjør den ikke-lineær, men den høyeste deriverte $u_{xx}$ står i første potens med koeffisienten $u_x$, som er av lavere orden. Likningen er $\underline{\underline{\text{kvasilineær}}}$.
-
-(d) **Andre orden**. De høyeste deriverte ganges med hverandre ($u_{xx}u_{yy}$ og $u_{xy}^2$), så likningen er ikke engang lineær i dem: $\underline{\underline{\text{ikke-lineær}}}$.
+::: {.fasit}
+a) $\text{lineær og inhomogen}$ · b) $\text{lineær og homogen}$ · c) $\text{kvasilineær}$ · d) $\text{ikke-lineær}$
 :::
 :::
 
 ::: {.oppgave tittel="Generell løsning"}
 Finn den generelle løsningen $u(x, y)$ av (a) $u_y = \cos x$ og (b) $u_{xx} = 0$. Sjekk svarene.
 
-::: {.losning}
-(a) Integrer med hensyn på $y$ med $x$ fast. «Konstanten» kan avhenge av $x$:
-$$
-\underline{\underline{u = y\cos x + f(x)}}
-$$
-Kontroll: $u_y = \cos x + 0$, fordi $f(x)$ ikke avhenger av $y$.
-
-(b) Integrer med hensyn på $x$ to ganger med $y$ fast: $u_x = f(y)$ og
-$$
-\underline{\underline{u = x\,f(y) + g(y)}}
-$$
-Kontroll: $u_x = f(y)$ og $u_{xx} = 0$. For hver fast $y$ er $u$ en rett linje i $x$, men stigningstallet og konstantleddet kan variere med $y$.
+::: {.fasit}
+a) $u = y\cos x + f(x)$ · b) $u = x\,f(y) + g(y)$
 :::
 :::
 
 ::: {.oppgave tittel="Harmonisk funksjon"}
 Vis at $u(x, y) = \ln(x^2 + y^2)$ løser Laplace-likningen $u_{xx} + u_{yy} = 0$ for $(x, y) \ne (0, 0)$.
 
-::: {.losning}
-Skriv $r^2 = x^2 + y^2$. Da er $u_x = \dfrac{2x}{x^2 + y^2}$, og kvotientregelen gir
-$$
-u_{xx} = \frac{2(x^2 + y^2) - 2x\cdot 2x}{(x^2 + y^2)^2} = \frac{2(y^2 - x^2)}{(x^2 + y^2)^2}
-$$
-Av symmetri (bytt $x$ og $y$) er $u_{yy} = \dfrac{2(x^2 - y^2)}{(x^2 + y^2)^2}$. Summen er
-$$
-u_{xx} + u_{yy} = \frac{2(y^2 - x^2) + 2(x^2 - y^2)}{(x^2 + y^2)^2} = \underline{\underline{0}}
-$$
-Funksjonen er det elektriske potensialet rundt en lang, rett, ladet ledning gjennom origo (opp til en konstant faktor). I origo er den ikke definert, og der sitter kilden.
+::: {.fasit}
+$0$
 :::
 :::
 
@@ -315,25 +291,6 @@ u(x, t) = \frac{1}{\sqrt{t}}\,\mathrm{e}^{-x^2/(4\alpha t)}, \qquad t > 0
 $$
 løser varmelikningen $u_t = \alpha u_{xx}$. Beskriv hvordan løsningen ser ut når $t$ øker.
 
-::: {.losning}
-Skriv $u = t^{-1/2}\mathrm{e}^{s}$ med $s = -\dfrac{x^2}{4\alpha t}$. Da er $s_t = \dfrac{x^2}{4\alpha t^2}$ og $s_x = -\dfrac{x}{2\alpha t}$.
-
-Tid (produktregelen):
-$$
-u_t = -\tfrac12t^{-3/2}\mathrm{e}^{s} + t^{-1/2}\mathrm{e}^{s}\cdot\frac{x^2}{4\alpha t^2} = t^{-1/2}\mathrm{e}^{s}\left(-\frac{1}{2t} + \frac{x^2}{4\alpha t^2}\right)
-$$
-Rom:
-$$
-u_x = t^{-1/2}\mathrm{e}^{s}\cdot\left(-\frac{x}{2\alpha t}\right), \qquad u_{xx} = t^{-1/2}\mathrm{e}^{s}\left(-\frac{1}{2\alpha t} + \frac{x^2}{4\alpha^2t^2}\right)
-$$
-Ganger vi $u_{xx}$ med $\alpha$, får vi
-$$
-\alpha u_{xx} = t^{-1/2}\mathrm{e}^{s}\left(-\frac{1}{2t} + \frac{x^2}{4\alpha t^2}\right) = u_t
-$$
-så $u$ er en løsning.
-
-Løsningen er en klokkeformet kurve med toppverdi $1/\sqrt{t}$ i $x = 0$ og bredde proporsjonal med $\sqrt{\alpha t}$. Når $t$ øker, blir den **lavere og bredere**. Arealet under kurven er det samme hele tiden, $\int_{-\infty}^{\infty}u\,\mathrm{d}x = 2\sqrt{\pi\alpha}$, så den totale varmemengden er bevart. Den beskriver varme som slippes ut i ett punkt og sprer seg. Merk at $u > 0$ for alle $x$ så snart $t > 0$: Varmen merkes straks overalt, slik en parabolsk likning skal.
-:::
 :::
 
 ::: {.oppgave tittel="Kilde og superposisjon" niva="Middels"}
@@ -345,18 +302,8 @@ Se på $u_t = u_{xx} + 2$.
 
 (c) Skriv opp alle løsningene ved hjelp av løsningene av $u_t = u_{xx}$.
 
-::: {.losning}
-(a) $u_1 = 2t$: $(u_1)_t = 2$ og $(u_1)_{xx} = 0$, så $2 = 0 + 2$. ✓ $\quad u_2 = -x^2$: $(u_2)_t = 0$ og $(u_2)_{xx} = -2$, så $0 = -2 + 2$. ✓
-
-(b) $u_1 + u_2 = 2t - x^2$ gir $u_t = 2$ og $u_{xx} = -2$. Høyresiden blir $-2 + 2 = 0 \ne 2$, så summen er **ikke** en løsning. Med $Lu = u_t - u_{xx}$ er $L(u_1 + u_2) = 2 + 2 = 4$: Kildene legges sammen og blir dobbelt så store.
-
-Differansen $u_1 - u_2 = 2t + x^2$ gir $u_t = 2$ og $u_{xx} = 2$, så $u_t - u_{xx} = 0$. Den løser den **homogene** likningen $u_t = u_{xx}$, fordi $L(u_1 - u_2) = 2 - 2 = 0$.
-
-(c) Alle løsninger er én bestemt løsning pluss en løsning av den homogene likningen:
-$$
-\underline{\underline{u = 2t + u_h, \quad \text{der } (u_h)_t = (u_h)_{xx}}}
-$$
-(Like gjerne $u = -x^2 + u_h$. De to beskrivelsene gir de samme løsningene, fordi $2t$ og $-x^2$ skiller seg med en homogen løsning.)
+::: {.fasit}
+$u = 2t + u_h, \quad \text{der } (u_h)_t = (u_h)_{xx}$
 :::
 :::
 
@@ -367,19 +314,8 @@ $$
 
 (c) Finn $k > 0$ slik at $U(x, y) = \sin(3x)\cos(4y)$ løser Helmholtz-likningen $\nabla^2U + k^2U = 0$. Er Helmholtz-likningen elliptisk, parabolsk eller hyperbolsk?
 
-::: {.losning}
-(a) $A = 1$, $B = -6$, $C = 9$: $B^2 - 4AC = 36 - 36 = 0$, **parabolsk**.
-
-$A = 2$, $B = 1$, $C = 1$: $B^2 - 4AC = 1 - 8 = -7 < 0$, **elliptisk**.
-
-$u_{xy} - u_x = 0$: $A = 0$, $B = 1$, $C = 0$, så $B^2 - 4AC = 1 > 0$, **hyperbolsk**.
-
-(b) $A = 1$, $B = 2y$, $C = 1$: $B^2 - 4AC = 4y^2 - 4 = 4(y^2 - 1)$. Likningen er
-$$
-\underline{\underline{\text{elliptisk for } |y| < 1, \quad \text{parabolsk for } |y| = 1, \quad \text{hyperbolsk for } |y| > 1}}
-$$
-
-(c) $U_{xx} = -9\sin(3x)\cos(4y)$ og $U_{yy} = -16\sin(3x)\cos(4y)$, så $\nabla^2U = -25U$. Da er $\nabla^2U + k^2U = (k^2 - 25)U = 0$ for $\underline{\underline{k = 5}}$. Andreordensleddene er de samme som i Laplace-likningen ($A = C = 1$, $B = 0$), og leddet $k^2U$ er av lavere orden og teller ikke, så Helmholtz-likningen er **elliptisk**.
+::: {.fasit}
+b) $\text{elliptisk for } |y| < 1, \quad \text{parabolsk for } |y| = 1, \quad \text{hyperbolsk for } |y| > 1$ · c) $k = 5$
 :::
 :::
 

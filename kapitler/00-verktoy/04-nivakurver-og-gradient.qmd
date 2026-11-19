@@ -104,16 +104,13 @@ for t in (0.3, 1.0, 2.5):
 ::: {.oppgave tittel="Rette nivåkurver"}
 Beskriv nivåkurvene til $f(x, y) = 2x - y$. Hva er gradienten, og hvordan ligger den i forhold til nivåkurvene?
 
-::: {.losning}
-$2x - y = c$ gir $y = 2x - c$: parallelle rette linjer med stigningstall $2$. Gradienten er $\nabla f = (2, -1)$, den samme overalt. En retningsvektor for linjene er $(1, 2)$, og $(2, -1)\cdot(1, 2) = 0$, så gradienten står vinkelrett på alle nivåkurvene.
-:::
 :::
 
 ::: {.oppgave tittel="Hyperbler"}
 Skisser nivåkurvene $f = -1$, $f = 0$ og $f = 1$ for $f(x, y) = xy$, og finn $\nabla f(2, \tfrac12)$.
 
-::: {.losning}
-$xy = 1$ og $xy = -1$ er hyperbler, i henholdsvis første og tredje og i andre og fjerde kvadrant. $xy = 0$ er de to aksene. Gradienten er $\nabla f = (y, x)$, så $\nabla f(2, \tfrac12) = \underline{\underline{(\tfrac12,\ 2)}}$. Punktet ligger på $xy = 1$, og gradienten peker bort fra origo, mot større verdier av $xy$.
+::: {.fasit}
+$(\tfrac12,\ 2)$
 :::
 :::
 
@@ -124,30 +121,16 @@ a) I hvilken retning stiger terrenget brattest i punktet $(50, 25)$?
 
 b) Hvor bratt er det der, målt som stigning per meter?
 
-::: {.losning}
-a)
-$$
-\nabla h = (-0.02x,\ -0.08y), \qquad \nabla h(50, 25) = (-1.0,\ -2.0)
-$$
-Terrenget stiger brattest i retningen $(-1, -2)$, altså innover mot toppen i origo.
-
-b) Stigningen er
-$$
-|\nabla h| = \sqrt{1.0^2 + 2.0^2} = \sqrt{5} \approx \underline{\underline{2.2}},
-$$
-det vil si omtrent $2.2\ \mathrm{m}$ stigning per meter i den retningen.
+::: {.fasit}
+$2.2$
 :::
 :::
 
 ::: {.oppgave tittel="Normal til en nivåflate" niva="Utfordrende"}
 Kula $x^2 + y^2 + z^2 = 9$ er nivåflaten $f = 9$ til $f(x, y, z) = x^2 + y^2 + z^2$. Bruk gradienten til å finne en normalvektor til kula i punktet $(1, 2, 2)$, og forklar hvorfor svaret er rimelig.
 
-::: {.losning}
-Samme argument som i planet: Gradienten står vinkelrett på hver kurve som ligger på nivåflaten, og dermed på hele flaten.
-$$
-\nabla f = (2x,\ 2y,\ 2z), \qquad \nabla f(1, 2, 2) = \underline{\underline{(2,\ 4,\ 4)}}
-$$
-Den er parallell med stedvektoren $(1, 2, 2)$, altså radien. Normalen til en kule går gjennom sentrum, så svaret er rimelig.
+::: {.fasit}
+$(2,\ 4,\ 4)$
 :::
 :::
 

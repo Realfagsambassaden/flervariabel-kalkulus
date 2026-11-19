@@ -121,39 +121,27 @@ med $r = c\Delta t/h \le \frac{1}{\sqrt2}$. Oppstarten er den samme, med fempunk
 ::: {.oppgave tittel="Tidssteg for en gitarstreng"}
 En gitarstreng har bølgefart $c = 400\ \mathrm{m/s}$ og lengde $0.65\ \mathrm{m}$. Den deles i 100 intervaller. Hvor stort kan tidssteget være, og hvor mange tidssteg trengs for $1.0\ \mathrm{s}$ lyd?
 
-::: {.losning}
-$\Delta x = 6.5\cdot 10^{-3}\ \mathrm{m}$. $\Delta t \le \frac{\Delta x}{c} = \underline{\underline{1.6\cdot 10^{-5}\ \mathrm{s}}}$, altså minst $\underline{\underline{6.2\cdot 10^{4}}}$ tidssteg.
+::: {.fasit}
+$1.6\cdot 10^{-5}\ \mathrm{s}$ · $6.2\cdot 10^{4}$
 :::
 :::
 
 ::: {.oppgave tittel="Oppstart fra ro" niva="Middels"}
 En streng slippes fra ro med $f = (0,\ 0.2,\ 0.4,\ 0.2,\ 0)$ i punktene $x_0, \dots, x_4$. Regn ut $U^1$ med $r = 1$.
 
-::: {.losning}
-$U_i^1 = f_i + \frac12(f_{i+1} - 2f_i + f_{i-1})$:
-
-$U_1^1 = 0.2 + \frac12(0.4 - 0.4 + 0) = 0.2$, $\quad U_2^1 = 0.4 + \frac12(0.2 - 0.8 + 0.2) = 0.2$, $\quad U_3^1 = 0.2$.
-
-$\underline{\underline{U^1 = (0,\ 0.2,\ 0.2,\ 0.2,\ 0)}}$. Toppen er i ferd med å dele seg i to bølger som går hver sin vei.
+::: {.fasit}
+$U^1 = (0,\ 0.2,\ 0.2,\ 0.2,\ 0)$
 :::
 :::
 
 ::: {.oppgave tittel="Konvergens" niva="Middels"}
 Bruk pianohammer-eksempelet med $r = 0.8$ og $M = 10,\ 20,\ 40$ til $t \approx 0.5$. Hvilken orden har metoden?
 
-::: {.losning}
-Største feil blir omtrent $3.8\cdot 10^{-3}$, $9.4\cdot 10^{-4}$ og $2.4\cdot 10^{-4}$. Fire ganger mindre for hver dobling: **andre orden** i både rom og tid.
-:::
 :::
 
 ::: {.oppgave tittel="Magisk tidssteg" niva="Utfordrende"}
 Vis at med $r = 1$ blir leapfrog $U_i^{n+1} = U_{i+1}^n + U_{i-1}^n - U_i^{n-1}$. Prøv i koden: Hvorfor beholder bølgeformen sine skarpe hjørner helt nøyaktig?
 
-::: {.losning}
-Med $r^2 = 1$: $2U_i^n - U_i^{n-1} + U_{i+1}^n - 2U_i^n + U_{i-1}^n = U_{i+1}^n + U_{i-1}^n - U_i^{n-1}$.
-
-Den eksakte løsningen er $u = F(x - ct) + G(x + ct)$. Med $c\Delta t = \Delta x$ flytter hver bølge seg nøyaktig ett gitterpunkt per tidssteg, og formelen over er da eksakt for slike løsninger. I 1D gir $r = 1$ derfor ingen feil i gitterpunktene (bortsett fra feilen i oppstarten).
-:::
 :::
 
 ::::

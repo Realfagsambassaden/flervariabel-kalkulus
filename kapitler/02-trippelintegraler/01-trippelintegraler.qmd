@@ -175,16 +175,8 @@ print(f"Masse: {m:.3f} kg,  tyngdepunkt: z = {100*Mz/m:.2f} cm")
 <!-- tillegg: Claude -->
 Regn ut $\displaystyle\iiint_B (x + y + z)\,\mathrm{d}V$ der $B = [0, 1] \times [0, 1] \times [0, 2]$.
 
-::: {.losning}
-Vi deler integralet i tre ledd. Boksen har volum $1\cdot1\cdot2 = 2$.
-$$
-\iiint_B x\,\mathrm{d}V = \int_0^1 x\,\mathrm{d}x\cdot1\cdot2 = \tfrac12\cdot2 = 1, \qquad
-\iiint_B y\,\mathrm{d}V = 1, \qquad
-\iiint_B z\,\mathrm{d}V = 1\cdot1\cdot\int_0^2 z\,\mathrm{d}z = 2
-$$
-Til sammen $1 + 1 + 2 = \underline{\underline{4}}$.
-
-Kontroll: Middelverdien av $x + y + z$ over boksen er $\tfrac12 + \tfrac12 + 1 = 2$, og middelverdi ganger volum er $2\cdot2 = 4$.
+::: {.fasit}
+$4$
 :::
 :::
 
@@ -196,18 +188,8 @@ a)  Vis at det skrå sideplanet er $\dfrac{x}{2} + \dfrac{y}{3} + \dfrac{z}{6} =
 
 b)  Sett opp volumet som et trippelintegral og regn det ut.
 
-::: {.losning}
-**a)** Planet skjærer aksene i $x = 2$, $y = 3$ og $z = 6$. Setter vi inn $(2, 0, 0)$, $(0, 3, 0)$ og $(0, 0, 6)$ i likningen, får vi $1$ hver gang, og en lineær likning bestemmes av tre punkter.
-
-**b)** Toppen er $z = 6\big(1 - \tfrac{x}{2} - \tfrac{y}{3}\big) = 6 - 3x - 2y$. Skyggen er trekanten under linja $\tfrac{x}{2} + \tfrac{y}{3} = 1$, altså $0 \le x \le 2$, $0 \le y \le 3 - \tfrac32 x$:
-$$
-V = \int_0^2\!\!\int_0^{3 - 3x/2}\!\!\int_0^{6 - 3x - 2y} \mathrm{d}z\,\mathrm{d}y\,\mathrm{d}x = \int_0^2\!\!\int_0^{3 - 3x/2}(6 - 3x - 2y)\,\mathrm{d}y\,\mathrm{d}x
-$$
-Med $s = 3 - \tfrac32x$ er $6 - 3x = 2s$, og det indre integralet er $\int_0^s (2s - 2y)\,\mathrm{d}y = s^2$:
-$$
-V = \int_0^2 \Big(3 - \tfrac32x\Big)^2\mathrm{d}x = \Big[-\tfrac29\Big(3 - \tfrac32x\Big)^3\Big]_0^2 = \tfrac29\cdot27 = \underline{\underline{6}}
-$$
-Kontroll med pyramideformelen: $\tfrac13\cdot\big(\tfrac12\cdot2\cdot3\big)\cdot6 = 6$.
+::: {.fasit}
+$6$
 :::
 :::
 
@@ -219,20 +201,8 @@ a)  Finn volumet.
 
 b)  Finn tyngdepunktet når tettheten er konstant.
 
-::: {.losning}
-**a)** Toppen møter bunnen der $x = \pm1$. Skyggen er rektangelet $-1 \le x \le 1$, $0 \le y \le 2$:
-$$
-V = \int_{-1}^{1}\!\!\int_0^2\!\!\int_0^{1 - x^2}\mathrm{d}z\,\mathrm{d}y\,\mathrm{d}x = 2\int_{-1}^{1}(1 - x^2)\,\mathrm{d}x = 2\cdot\tfrac43 = \underline{\underline{\tfrac83}}
-$$
-
-**b)** Av symmetri er $\bar x = 0$ (speiling i $x = 0$) og $\bar y = 1$ (midt mellom endeveggene). For $\bar z$:
-$$
-\iiint_E z\,\mathrm{d}V = \int_{-1}^{1}\!\!\int_0^2 \tfrac12(1 - x^2)^2\,\mathrm{d}y\,\mathrm{d}x = \int_{-1}^{1}(1 - 2x^2 + x^4)\,\mathrm{d}x = 2 - \tfrac43 + \tfrac25 = \tfrac{16}{15}
-$$
-$$
-\bar z = \frac{16/15}{8/3} = \tfrac25
-$$
-Tyngdepunktet er $\underline{\underline{(0,\ 1,\ \tfrac25)}}$. Det ligger lavere enn midt i høyden ($\tfrac12$), fordi legemet er bredest nederst.
+::: {.fasit}
+a) $\tfrac83$ · b) $(0,\ 1,\ \tfrac25)$
 :::
 :::
 
@@ -244,17 +214,8 @@ a)  Forklar hvorfor det lønner seg å se på $E$ som $y$-enkelt.
 
 b)  Finn volumet. (Du kan bruke polarkoordinater i $xz$-planet.)
 
-::: {.losning}
-**a)** Paraboloiden åpner seg langs $y$-aksen. For hver $(x, z)$ går $y$ fra paraboloiden $y = x^2 + z^2$ til planet $y = 4$. Skyggen i $xz$-planet er der de møtes: $x^2 + z^2 \le 4$, en sirkelskive med radius $2$. Ser vi på $E$ som $z$-enkelt, får vi to flater oppe og nede ($z = \pm\sqrt{y - x^2}$) og en mer kronglete skygge.
-
-**b)**
-$$
-V = \iint_{x^2 + z^2 \le 4} \big(4 - x^2 - z^2\big)\,\mathrm{d}A
-$$
-Med polarkoordinater $x = r\cos\theta$, $z = r\sin\theta$:
-$$
-V = \int_0^{2\pi}\!\!\int_0^2 (4 - r^2)\,r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\Big[\,2r^2 - \tfrac14r^4\,\Big]_0^2 = 2\pi(8 - 4) = \underline{\underline{8\pi}} \approx 25.1
-$$
+::: {.fasit}
+$8\pi$
 :::
 :::
 
@@ -271,26 +232,8 @@ b)  Finn massen.
 
 c)  Finn middeltettheten, og sammenlikn med tettheten i midten av fonnen.
 
-::: {.losning}
-**a)** Fonnen er et prisme med trekantet tverrsnitt: $V = \tfrac12 hL\cdot W = \tfrac12\cdot1.5\ \mathrm{m}\cdot4.0\ \mathrm{m}\cdot2.0\ \mathrm{m} = \underline{\underline{6.0\ \mathrm{m^3}}}$.
-
-**b)** La $H(x) = h\big(1 - \tfrac{x}{L}\big)$ være høyden. Det innerste integralet langs en loddrett stav er
-$$
-\int_0^{H}\big(\rho_1 + k(h - z)\big)\,\mathrm{d}z = \rho_1 H + k\Big(hH - \tfrac12H^2\Big)
-$$
-Integranden avhenger ikke av $y$, så integralet over $y$ gir faktoren $W$. Over $x$ trenger vi
-$$
-\int_0^L H\,\mathrm{d}x = \tfrac12 hL, \qquad \int_0^L H^2\,\mathrm{d}x = h^2\int_0^L\Big(1 - \tfrac{x}{L}\Big)^2\mathrm{d}x = \tfrac13h^2L
-$$
-Dermed er
-$$
-m = W\Big[\rho_1\cdot\tfrac12hL + k\Big(h\cdot\tfrac12hL - \tfrac12\cdot\tfrac13h^2L\Big)\Big] = W\Big[\tfrac12\rho_1 hL + \tfrac13kh^2L\Big]
-$$
-$$
-m = 2.0\ \mathrm{m}\cdot\big[600\ \mathrm{kg/m} + 300\ \mathrm{kg/m}\big] = 1.8\cdot10^3\ \mathrm{kg} = \underline{\underline{1.8\ \mathrm{t}}}
-$$
-
-**c)** Middeltettheten er $m/V = 1.8\cdot10^3\ \mathrm{kg}/6.0\ \mathrm{m^3} = \underline{\underline{3.0\cdot10^2\ \mathrm{kg/m^3}}}$. Midt i fonnens høyeste del, $z = h/2$, er tettheten $\rho_1 + k\,h/2 = 275\ \mathrm{kg/m^3}$. Middeltettheten er større, fordi mye av snøen ligger lavt, der den er hardest pakket.
+::: {.fasit}
+a) $6.0\ \mathrm{m^3}$ · b) $1.8\ \mathrm{t}$ · c) $3.0\cdot10^2\ \mathrm{kg/m^3}$
 :::
 :::
 

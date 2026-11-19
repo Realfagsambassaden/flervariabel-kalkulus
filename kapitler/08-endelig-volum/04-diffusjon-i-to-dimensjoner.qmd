@@ -107,24 +107,24 @@ plt.gca().set_aspect('equal'); plt.show()
 ::: {.oppgave tittel="Koeffisientene"}
 En celle har $\delta x = 0.020\ \mathrm{m}$, $\delta y = 0.010\ \mathrm{m}$ og $\kappa = 5.0\ \mathrm{W/(m\,K)}$ (dybde $1\ \mathrm{m}$). Finn $a_W$, $a_E$, $a_S$ og $a_N$ for en indre celle.
 
-::: {.losning}
-$a_W = a_E = \frac{\kappa\,\delta y}{\delta x} = \frac{5.0\cdot 0.010}{0.020} = \underline{\underline{2.5\ \mathrm{W/K}}}$ og $a_S = a_N = \frac{\kappa\,\delta x}{\delta y} = \underline{\underline{10\ \mathrm{W/K}}}$. Naboene i $y$-retning er tettere koblet fordi de ligger nærmere og flaten mellom dem er større.
+::: {.fasit}
+$2.5\ \mathrm{W/K}$ · $10\ \mathrm{W/K}$
 :::
 :::
 
 ::: {.oppgave tittel="Isolert vegg" niva="Middels"}
 Hvordan endres likningen for en randcelle når veggen er isolert? Hva skjer med temperaturene i eksempelet hvis den øverste veggen isoleres?
 
-::: {.losning}
-For en isolert vegg kuttes koblingen uten noe bidrag til $S_u$ eller $S_P$. I eksempelet blir platen varmere, fordi varmen bare kan slippe ut gjennom to kalde vegger. Med $3 \times 3$ celler blir midtcellen $\underline{\underline{48.8\ \mathrm{°C}}}$ i stedet for $40.0\ \mathrm{°C}$.
+::: {.fasit}
+$48.8\ \mathrm{°C}$
 :::
 :::
 
 ::: {.oppgave tittel="Symmetri" niva="Utfordrende"}
 Forklar hvorfor midtcellen i eksempelet ble nøyaktig $40\ \mathrm{°C}$. (Hint: Legg sammen fire løsninger der hver av de fire veggene er varm etter tur.)
 
-::: {.losning}
-Problemet er lineært. Gir vi hver vegg sin tur som den varme ($100\ \mathrm{°C}$) og summerer de fire løsningene, blir resultatet det samme som med alle fire veggene på $100 + 3\cdot 20 = 160\ \mathrm{°C}$, altså $160\ \mathrm{°C}$ overalt. Av symmetri bidrar hver av de fire løsningene like mye i midtcellen: $160/4 = \underline{\underline{40\ \mathrm{°C}}}$.
+::: {.fasit}
+$40\ \mathrm{°C}$
 :::
 :::
 
