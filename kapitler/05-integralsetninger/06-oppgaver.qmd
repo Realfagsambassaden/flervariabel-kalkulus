@@ -2,14 +2,331 @@
 title: "Sammensatte oppgaver: integralsetningene"
 tema: integralsetninger
 undertema: oppgaver
-plassholder: true
 ---
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Oppgavene blander alt om integralsetningene: [fluks gjennom en kurve](01-fluks-i-planet.qmd), [Greens teorem](02-greens-teorem.qmd), [fluks gjennom en flate](03-fluks-i-rommet.qmd), [divergenssetningen](04-divergenssetningen.qmd) og [Stokes' teorem](05-stokes-teorem.qmd). Det meste av arbeidet er å velge riktig vei. Still disse spørsmålene før du begynner å regne:
+
+::: {.steg}
+1. **Er kurven eller flaten lukket?** En lukket kurve i planet gir Greens teorem: curl inni for sirkulasjon, divergens inni for fluks. En lukket flate gir divergenssetningen.
+2. **Er den åpen?** Lukk den med en enkel flate eller et linjestykke, bruk setningen på det lukkede området, og trekk fra bidraget fra lokket.
+3. **Er det en sirkulasjon rundt en kurve i rommet?** Bruk Stokes' teorem, og velg den enkleste flaten med kurven som rand. Er curl null, er feltet konservativt, og potensialet gir svaret.
+4. **Er integranden enkel inni, men tung på randen (eller omvendt)?** Gå dit regningen er lettest. Pass på orienteringen: mot klokka, normal ut, høyrehåndsregelen.
 :::
 
-## Dette kommer på siden
+Prøv selv før du åpner løsningen.
 
-- Blandede oppgaver med løsning
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Rundt en ellipse to ganger" krever="integralsetninger/green, integralsetninger/fluks"}
+<!-- tillegg: Claude -->
+La $C$ være ellipsen $\dfrac{x^2}{4} + y^2 = 1$, gjennomløpt mot klokka.
+
+a) Regn ut sirkulasjonen
+$$
+\oint_C \big(2y + \mathrm{e}^{x^2}\big)\,\mathrm{d}x + \big(5x + \ln(1 + y^2)\big)\,\mathrm{d}y
+$$
+
+b) Regn ut fluksen til $\vec G = [x + \sin y,\ y + \cos x]$ ut av ellipsen.
+
+::: {.losning}
+Å parametrisere ellipsen og sette inn gir integraler av $\mathrm{e}^{4\cos^2 t}$ og liknende, som ikke kan regnes ut for hånd. Greens teorem flytter regningen inn i ellipsen, der den er enkel. Ellipsen har halvaksene $a = 2$ og $b = 1$, så arealet er $\pi ab = 2\pi$.
+
+**a)** $P = 2y + \mathrm{e}^{x^2}$ og $Q = 5x + \ln(1 + y^2)$. De tunge leddene forsvinner når vi deriverer: $\mathrm{e}^{x^2}$ avhenger ikke av $y$, og $\ln(1 + y^2)$ avhenger ikke av $x$. Dermed er
+$$
+\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 5 - 2 = 3
+$$
+og
+$$
+\oint_C P\,\mathrm{d}x + Q\,\mathrm{d}y = \iint_D 3\,\mathrm{d}A = 3\cdot2\pi = \underline{\underline{6\pi}}
+$$
+
+**b)** Greens teorem på fluksform: $\nabla\cdot\vec G = \dfrac{\partial}{\partial x}(x + \sin y) + \dfrac{\partial}{\partial y}(y + \cos x) = 1 + 1 = 2$, så
+$$
+\oint_C \vec G\cdot\vec n\,\mathrm{d}s = \iint_D 2\,\mathrm{d}A = 2\cdot2\pi = \underline{\underline{4\pi}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="To veier ut av en sylinder" krever="integralsetninger/fluks, integralsetninger/gauss, trippelintegraler/sylinderkoordinater"}
+<!-- tillegg: Claude -->
+La $E$ være den lukkede sylinderen $x^2 + y^2 \le 4$, $0 \le z \le 3$, og la $\vec F = [xz,\ yz,\ z^2]$.
+
+a) Finn fluksen ut av hele randen til $E$ med divergenssetningen.
+
+b) Finn fluksen ut gjennom sideflaten, toppen og bunnen hver for seg, og kontroller svaret i a).
+
+::: {.losning}
+**a)** $\nabla\cdot\vec F = z + z + 2z = 4z$. I sylinderkoordinater er $\mathrm{d}V = r\,\mathrm{d}z\,\mathrm{d}r\,\mathrm{d}\theta$:
+$$
+\iiint_E 4z\,\mathrm{d}V = \int_0^{2\pi}\!\!\int_0^2\!\!\int_0^3 4z\,r\,\mathrm{d}z\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\cdot2\cdot18 = \underline{\underline{72\pi}}
+$$
+der $\int_0^2 r\,\mathrm{d}r = 2$ og $\int_0^3 4z\,\mathrm{d}z = 18$.
+
+**b)** *Sideflaten* $x^2 + y^2 = 4$: Utovernormalen er $\vec n = \tfrac12[x,\ y,\ 0]$, så $\vec F\cdot\vec n = \tfrac12(x^2 + y^2)z = 2z$. Med $\mathrm{d}S = 2\,\mathrm{d}\theta\,\mathrm{d}z$ er
+$$
+\Phi_\text{side} = \int_0^{2\pi}\!\!\int_0^3 2z\cdot2\,\mathrm{d}z\,\mathrm{d}\theta = 2\pi\cdot18 = 36\pi
+$$
+*Toppen* $z = 3$: $\vec n = [0,\ 0,\ 1]$ og $\vec F\cdot\vec n = z^2 = 9$ over en disk med areal $4\pi$, så $\Phi_\text{topp} = 36\pi$.
+
+*Bunnen* $z = 0$: $\vec n = [0,\ 0,\ -1]$ og $\vec F\cdot\vec n = -z^2 = 0$, så $\Phi_\text{bunn} = 0$.
+
+Summen er $36\pi + 36\pi + 0 = 72\pi$, det samme som i a). Divergenssetningen ga svaret med ett integral i stedet for tre.
+:::
+:::
+
+::: {.oppgave tittel="Ett felt, tre spørsmål" niva="Middels" krever="vektorfelt/konservative, integralsetninger/gauss, integralsetninger/stokes"}
+<!-- tillegg: Claude -->
+La $\vec F = \big[y + z,\ x + z,\ x + y + z^2\big]$.
+
+a) Vis at $\vec F$ er konservativt, og finn arbeidet langs en vilkårlig kurve fra $(0, 0, 0)$ til $(1, 2, 3)$.
+
+b) Hva er sirkulasjonen $\oint_C \vec F\cdot\mathrm{d}\vec r$ rundt en lukket kurve $C$? Begrunn svaret med Stokes' teorem.
+
+c) Finn fluksen ut av enhetsterningen $0 \le x, y, z \le 1$. Hvilke sideflater bidrar?
+
+::: {.losning}
+**a)** Med $P = y + z$, $Q = x + z$ og $R = x + y + z^2$ er
+$$
+\nabla\times\vec F = \big[R_y - Q_z,\ P_z - R_x,\ Q_x - P_y\big] = [1 - 1,\ 1 - 1,\ 1 - 1] = \vec 0
+$$
+i hele rommet, så feltet er konservativt. $f_x = y + z$ gir $f = xy + xz + g(y, z)$. Da er $f_y = x + g_y = x + z$, så $g = yz + h(z)$, og $f_z = x + y + h'(z) = x + y + z^2$ gir $h = \tfrac13z^3$:
+$$
+f(x, y, z) = xy + xz + yz + \tfrac13z^3
+$$
+Arbeidet er
+$$
+W = f(1, 2, 3) - f(0, 0, 0) = 2 + 3 + 6 + 9 = \underline{\underline{20}}
+$$
+
+**b)** Velg en flate $S$ med $C$ som rand. Stokes' teorem gir
+$$
+\oint_C \vec F\cdot\mathrm{d}\vec r = \iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S = \iint_S \vec 0\cdot\vec n\,\mathrm{d}S = \underline{\underline{0}}
+$$
+Det stemmer med potensialet: Rundt en lukket kurve er start og slutt det samme punktet, så $f(B) - f(A) = 0$.
+
+**c)** At curl er null, sier ingenting om fluksen. Den bestemmes av divergensen: $\nabla\cdot\vec F = 0 + 0 + 2z = 2z$, så
+$$
+\iint_S \vec F\cdot\vec n\,\mathrm{d}S = \int_0^1\!\!\int_0^1\!\!\int_0^1 2z\,\mathrm{d}z\,\mathrm{d}y\,\mathrm{d}x = \underline{\underline{1}}
+$$
+$P = y + z$ avhenger ikke av $x$, så fluksen inn gjennom flaten $x = 0$ er like stor som fluksen ut gjennom $x = 1$, og de to flatene bidrar til sammen med null. Det samme gjelder flatene $y = 0$ og $y = 1$. Bare toppen og bunnen bidrar: $\iint (x + y + 1)\,\mathrm{d}A = 2$ ut gjennom toppen og $-\iint (x + y)\,\mathrm{d}A = -1$ gjennom bunnen. Summen er $1$.
+:::
+:::
+
+::: {.oppgave tittel="Lukk paraboloiden" niva="Middels" krever="integralsetninger/fluks, integralsetninger/gauss, trippelintegraler/sylinderkoordinater"}
+<!-- tillegg: Claude -->
+La $S$ være paraboloiden $z = 4 - x^2 - y^2$, $z \ge 0$, med normalen oppover, og la
+$$
+\vec F = \big[x + \sin(y^2),\ y + \mathrm{e}^{xz},\ z + 1\big]
+$$
+
+a) Skriv opp det direkte fluksintegralet over $S$. Hvorfor er det tungt å regne ut?
+
+b) Finn fluksen gjennom $S$ ved å lukke flaten.
+
+::: {.losning}
+**a)** For grafen $z = g(x, y) = 4 - x^2 - y^2$ er $\vec n\,\mathrm{d}S = [-g_x,\ -g_y,\ 1]\,\mathrm{d}A = [2x,\ 2y,\ 1]\,\mathrm{d}A$, og
+$$
+\Phi_S = \iint_{x^2 + y^2 \le 4}\Big(2x\big(x + \sin(y^2)\big) + 2y\big(y + \mathrm{e}^{x(4 - x^2 - y^2)}\big) + 5 - x^2 - y^2\Big)\,\mathrm{d}A
+$$
+Leddet med $\mathrm{e}^{x(4 - x^2 - y^2)}$ har ingen antiderivert vi kan skrive opp.
+
+**b)** Lukk $S$ med bunnen $B$, disken $x^2 + y^2 \le 4$ i planet $z = 0$. Sammen omslutter de området $E$ under paraboloiden. Divergensen er enkel:
+$$
+\nabla\cdot\vec F = 1 + 1 + 1 = 3
+$$
+Volumet av $E$ finner vi i sylinderkoordinater:
+$$
+V = \int_0^{2\pi}\!\!\int_0^2 (4 - r^2)\,r\,\mathrm{d}r\,\mathrm{d}\theta = 2\pi\Big[2r^2 - \tfrac14r^4\Big]_0^2 = 2\pi\cdot4 = 8\pi
+$$
+Divergenssetningen gir $\Phi_S + \Phi_B = 3\cdot8\pi = 24\pi$. På bunnen peker utovernormalen ned, $\vec n = [0,\ 0,\ -1]$, så $\vec F\cdot\vec n = -(z + 1) = -1$ og $\Phi_B = -1\cdot4\pi = -4\pi$. Dermed er
+$$
+\Phi_S = 24\pi - (-4\pi) = \underline{\underline{28\pi \approx 88.0}}
+$$
+Programmet regner ut det direkte integralet fra a) numerisk med små polarceller, som kontroll:
+
+```{.python .kjor}
+import numpy as np
+
+m = 800
+r = (np.arange(m) + 0.5) * 2 / m
+th = (np.arange(m) + 0.5) * 2 * np.pi / m
+R, T = np.meshgrid(r, th)
+x, y = R * np.cos(T), R * np.sin(T)
+z = 4 - x**2 - y**2
+P, Q, Rz = x + np.sin(y**2), y + np.exp(x * z), z + 1
+integrand = 2 * x * P + 2 * y * Q + Rz          # F·[2x, 2y, 1]
+fluks = np.sum(integrand * R) * (2 / m) * (2 * np.pi / m)
+print(f"Direkte, numerisk: {fluks:.4f}")
+print(f"28 pi:             {28 * np.pi:.4f}")
+```
+:::
+:::
+
+::: {.oppgave tittel="Gauss' lov for en ladet kule" niva="Middels" krever="integralsetninger/gauss, integralsetninger/fluks, geometri/romfigurer"}
+<!-- tillegg: Claude -->
+En kule med radius $R = 5.0\ \mathrm{cm}$ har ladningen $Q = 2.0\ \mathrm{nC}$, jevnt fordelt i hele volumet. Bruk $\varepsilon_0 = 8.854\cdot10^{-12}\ \mathrm{C^2/(N\,m^2)}$.
+
+a) Finn den elektriske fluksen ut av en terning med sidekant $20\ \mathrm{cm}$ som har samme sentrum som kula.
+
+b) Finn fluksen ut av en kuleflate med radius $r = 3.0\ \mathrm{cm}$ og samme sentrum.
+
+c) Bruk symmetri og svaret i b) til å finne feltstyrken $E$ i avstanden $3.0\ \mathrm{cm}$ fra sentrum. Finn også $E$ i avstanden $10\ \mathrm{cm}$.
+
+::: {.losning}
+**a)** Terningen rekker $10\ \mathrm{cm}$ ut fra sentrum i alle retninger, så hele kula ligger inni. Gauss' lov gir
+$$
+\Phi = \frac{Q}{\varepsilon_0} = \frac{2.0\cdot10^{-9}\ \mathrm{C}}{8.854\cdot10^{-12}\ \mathrm{C^2/(N\,m^2)}} = 225.9\ \mathrm{N\,m^2/C} \approx \underline{\underline{2.3\cdot10^2\ \mathrm{N\,m^2/C}}}
+$$
+Formen på flaten spiller ingen rolle, bare ladningen den omslutter.
+
+**b)** Ladningen er jevnt fordelt, så ladningen inni kuleflaten er andelen av volumet:
+$$
+Q_\text{inni} = Q\cdot\frac{\tfrac43\pi r^3}{\tfrac43\pi R^3} = Q\Big(\frac{r}{R}\Big)^3 = 2.0\ \mathrm{nC}\cdot0.216 = 0.432\ \mathrm{nC}
+$$
+$$
+\Phi = \frac{Q_\text{inni}}{\varepsilon_0} = \frac{0.432\cdot10^{-9}\ \mathrm{C}}{8.854\cdot10^{-12}\ \mathrm{C^2/(N\,m^2)}} = 48.8\ \mathrm{N\,m^2/C} \approx \underline{\underline{49\ \mathrm{N\,m^2/C}}}
+$$
+
+**c)** Av symmetri peker $\vec E$ rett ut fra sentrum og har samme størrelse $E$ overalt på kuleflaten. Da er $\vec E\cdot\vec n = E$, og fluksintegralet blir $E$ ganger arealet:
+$$
+E\cdot4\pi r^2 = \Phi \quad\Rightarrow\quad E = \frac{48.8\ \mathrm{N\,m^2/C}}{4\pi\,(0.030\ \mathrm{m})^2} = 4.31\cdot10^3\ \mathrm{N/C} \approx \underline{\underline{4.3\ \mathrm{kN/C}}}
+$$
+I avstanden $10\ \mathrm{cm}$ omslutter kuleflaten hele ladningen, så $\Phi = 225.9\ \mathrm{N\,m^2/C}$ og
+$$
+E = \frac{225.9\ \mathrm{N\,m^2/C}}{4\pi\,(0.10\ \mathrm{m})^2} = 1.80\cdot10^3\ \mathrm{N/C} \approx \underline{\underline{1.8\ \mathrm{kN/C}}}
+$$
+Utenfor kula er feltet det samme som fra en punktladning $Q$ i sentrum, $E = \mathrm{k_e}Q/r^2$. Inni kula vokser feltet lineært med $r$, fordi $Q_\text{inni}$ vokser som $r^3$ og arealet som $r^2$.
+:::
+:::
+
+::: {.oppgave tittel="Rundt sadelen" niva="Middels" krever="integralsetninger/stokes, integralsetninger/fluks, vektorfelt/divergens-og-curl, vektorfelt/linjeintegraler"}
+<!-- tillegg: Claude -->
+Kurven $C$ er skjæringen mellom sylinderen $x^2 + y^2 = 1$ og sadelflaten $z = xy$, gjennomløpt mot klokka sett ovenfra. Den ligger ikke i noe plan. La $\vec F = [y^2,\ x,\ z^2]$.
+
+a) Regn ut $\oint_C \vec F\cdot\mathrm{d}\vec r$ direkte.
+
+b) Regn ut det samme med Stokes' teorem, med den delen av sadelflaten som ligger innenfor sylinderen som flate.
+
+c) Forklar hvorfor svaret blir det samme som for sirkulasjonen til $[y^2,\ x]$ rundt enhetssirkelen i planet.
+
+::: {.losning}
+**a)** $\vec r(t) = [\cos t,\ \sin t,\ \cos t\sin t]$, $0 \le t \le 2\pi$, og $z = \tfrac12\sin2t$ gir $\vec r\,'(t) = [-\sin t,\ \cos t,\ \cos2t]$. Vi tar leddene hver for seg:
+
+- $\displaystyle\int_0^{2\pi} y^2\,x'\,\mathrm{d}t = -\int_0^{2\pi}\sin^3 t\,\mathrm{d}t = 0$, fordi $\sin^3 t$ er like mye positiv som negativ over en hel periode.
+- $\displaystyle\int_0^{2\pi} x\,y'\,\mathrm{d}t = \int_0^{2\pi}\cos^2 t\,\mathrm{d}t = \pi$.
+- $\displaystyle\int_0^{2\pi} z^2\,z'\,\mathrm{d}t = \Big[\tfrac13z^3\Big]_{t = 0}^{t = 2\pi} = 0$, fordi kurven er lukket.
+
+Sirkulasjonen er $\underline{\underline{\pi}}$.
+
+**b)**
+$$
+\nabla\times\vec F = \big[R_y - Q_z,\ P_z - R_x,\ Q_x - P_y\big] = [0 - 0,\ 0 - 0,\ 1 - 2y] = [0,\ 0,\ 1 - 2y]
+$$
+Omløpet er mot klokka sett ovenfra, så høyrehåndsregelen gir normalen oppover. For grafen $z = xy$ er $\vec n\,\mathrm{d}S = [-y,\ -x,\ 1]\,\mathrm{d}A$ over enhetsdisken $D$, og
+$$
+\iint_S (\nabla\times\vec F)\cdot\vec n\,\mathrm{d}S = \iint_D (1 - 2y)\,\mathrm{d}A = \pi - 0 = \underline{\underline{\pi}}
+$$
+der $\iint_D y\,\mathrm{d}A = 0$ fordi disken er symmetrisk om $x$-aksen.
+
+**c)** Curl har bare en $z$-komponent, og den avhenger ikke av $z$. Prikket med $[-y,\ -x,\ 1]$ blir den bare $1 - 2y$, så sadelens form forsvinner fra integralet. Det står igjen nøyaktig dobbeltintegralet i Greens teorem for $[y^2,\ x]$ over enhetsdisken. Sett fra kurvens side: Leddet $z^2\,\mathrm{d}z$ er gradienten til $\tfrac13z^3$ og gir null rundt en lukket kurve. Det som er igjen, $y^2\,\mathrm{d}x + x\,\mathrm{d}y$, ser bare skyggen av $C$ i $xy$-planet, som er enhetssirkelen.
+:::
+:::
+
+::: {.oppgave tittel="Kilden i elva" niva="Utfordrende" krever="integralsetninger/fluks, integralsetninger/green, vektorfelt/divergens-og-curl"}
+<!-- tillegg: Claude -->
+Et rør munner ut i bunnen av en grunn elv med jevn dybde $h = 0.30\ \mathrm{m}$. Vi legger origo ved røret og ser på vannet ovenfra. Fartsfeltet er
+$$
+\vec v(x, y) = \left[U + \frac{kx}{x^2 + y^2},\ \frac{ky}{x^2 + y^2}\right]
+$$
+med elvefarten $U = 0.50\ \mathrm{m/s}$ og kildestyrken $k = 0.20\ \mathrm{m^2/s}$. Koordinatene er i meter.
+
+![Fartsfeltet i elva med kilden i origo. Kurven $C_1$ er kvadratet med hjørner $(\pm1, \pm1)$ rundt kilden, og $C_2$ er sirkelen med sentrum $(3, 0)$ og radius $1$. Begge gjennomløpes mot klokka.](../../bilder/figurer/kilde-i-elva.svg){.tikz-fig style="width:520px" fig-alt="Koordinatsystem med små piler som peker mot høyre over hele bildet, med strømmen i elva. Nær origo, der kilden er merket med en ring, bøyer pilene seg ut fra kilden. Et kvadrat C1 med hjørner i pluss minus 1, pluss minus 1 ligger rundt kilden, og en sirkel C2 med sentrum i (3, 0) og radius 1 ligger til høyre for den. Begge kurvene har en pil mot klokka."}
+
+a) Vis at $\nabla\cdot\vec v = 0$ overalt unntatt i origo.
+
+b) Regn ut fluksen ut av sirkelen med radius $R$ om origo direkte. Avhenger svaret av $R$ eller $U$?
+
+c) Finn fluksen ut av kvadratet $C_1$ og ut av sirkelen $C_2$ i figuren uten å regne ut flere linjeintegraler.
+
+d) Hvor mange kubikkmeter vann per sekund kommer ut av røret?
+
+::: {.losning}
+**a)** Med $r^2 = x^2 + y^2$ er
+$$
+\frac{\partial}{\partial x}\Big(\frac{x}{r^2}\Big) = \frac{r^2 - 2x^2}{r^4}, \qquad \frac{\partial}{\partial y}\Big(\frac{y}{r^2}\Big) = \frac{r^2 - 2y^2}{r^4}
+$$
+og den konstante $U$ deriveres bort. Summen er
+$$
+\nabla\cdot\vec v = k\,\frac{2r^2 - 2x^2 - 2y^2}{r^4} = 0
+$$
+for alle $(x, y) \ne (0, 0)$. I origo er feltet ikke definert.
+
+**b)** På sirkelen er $\vec n = [\cos t,\ \sin t]$ og $\mathrm{d}s = R\,\mathrm{d}t$. Den jevne strømmen gir $U\cos t$, som integreres til null over en hel runde: Det som renner inn på den ene siden, renner ut på den andre. Kildedelen gir
+$$
+\frac{k}{R^2}\big(R\cos t\cdot\cos t + R\sin t\cdot\sin t\big) = \frac{k}{R}
+$$
+så
+$$
+\oint \vec v\cdot\vec n\,\mathrm{d}s = \int_0^{2\pi}\frac{k}{R}\cdot R\,\mathrm{d}t = 2\pi k = 2\pi\cdot0.20\ \mathrm{m^2/s} = 1.26\ \mathrm{m^2/s} \approx \underline{\underline{1.3\ \mathrm{m^2/s}}}
+$$
+Svaret avhenger verken av $R$ eller av $U$.
+
+**c)** $C_1$ går rundt origo, der feltet ikke er definert, så vi kan ikke bruke Greens teorem direkte på hele kvadratet. Legg i stedet en liten sirkel om origo inni kvadratet, og bruk Greens teorem på fluksform på området mellom kvadratet og sirkelen. Der er $\nabla\cdot\vec v = 0$, så fluksen ut av området er null. Randen består av kvadratet (normal ut) og den lille sirkelen (normal inn mot origo). Fluksen ut av kvadratet er derfor lik fluksen ut av den lille sirkelen, som er $2\pi k$ etter b):
+$$
+\oint_{C_1} \vec v\cdot\vec n\,\mathrm{d}s = 2\pi k \approx \underline{\underline{1.3\ \mathrm{m^2/s}}}
+$$
+$C_2$ går ikke rundt origo, og inni den er feltet glatt med divergens null. Greens teorem på fluksform gir
+$$
+\oint_{C_2} \vec v\cdot\vec n\,\mathrm{d}s = \iint_{D_2} 0\,\mathrm{d}A = \underline{\underline{0}}
+$$
+Det som strømmer inn i sirkelen, strømmer ut igjen.
+
+**d)** Fluksen i planet er arealet som krysser kurven per tid. Ganget med dybden blir det volumstrømmen ut av røret:
+$$
+h\cdot2\pi k = 0.30\ \mathrm{m}\cdot1.257\ \mathrm{m^2/s} = 0.377\ \mathrm{m^3/s} \approx \underline{\underline{0.38\ \mathrm{m^3/s}}}
+$$
+:::
+:::
+
+::: {.oppgave tittel="Hvorfor en tredjedel?" niva="Utfordrende" krever="integralsetninger/gauss, integralsetninger/green, integralsetninger/fluks"}
+<!-- tillegg: Claude -->
+En kjegle (eller pyramide) har spissen i origo og en plan grunnflate $B$ med areal $A$. Planet til grunnflaten ligger i avstanden $h$ fra origo. Grunnflaten kan ha hvilken som helst form, og sideflaten består av alle linjestykkene fra spissen til randen av $B$.
+
+a) Bruk divergenssetningen med feltet $\vec r = [x,\ y,\ z]$ til å vise at volumet av et område $E$ med randen $S$ er
+$$
+V = \frac13\iint_S \vec r\cdot\vec n\,\mathrm{d}S
+$$
+
+b) Vis at $\vec r\cdot\vec n = 0$ på sideflaten av kjeglen, og at $\vec r\cdot\vec n = h$ på grunnflaten. Hva blir volumet?
+
+c) Vis på samme måte med Greens teorem at arealet av en trekant er halvparten av grunnlinja ganger høyden.
+
+::: {.losning}
+**a)** $\nabla\cdot\vec r = 1 + 1 + 1 = 3$, så divergenssetningen gir
+$$
+\iint_S \vec r\cdot\vec n\,\mathrm{d}S = \iiint_E 3\,\mathrm{d}V = 3V
+$$
+og vi deler på $3$.
+
+**b)** Et punkt på sideflaten ligger på et linjestykke fra origo, og hele linjestykket ligger i sideflaten. Posisjonsvektoren $\vec r$ peker langs dette linjestykket, altså langs flaten. Normalen står vinkelrett på flaten, så $\vec r\cdot\vec n = 0$. Sideflaten bidrar ikke.
+
+På grunnflaten er $\vec n$ enhetsnormalen som peker bort fra origo. Komponenten av $\vec r$ langs $\vec n$ er avstanden fra origo til planet, den samme for alle punkter i planet. Altså er $\vec r\cdot\vec n = h$, og
+$$
+V = \frac13\iint_B h\,\mathrm{d}S = \underline{\underline{\frac13\,hA}}
+$$
+Det gjelder alle kjegler og pyramider: Grunnflaten kan være en sirkel, et kvadrat eller en hvilken som helst plan figur. Faktoren $\tfrac13$ kommer fra divergensen $3$ i rommet.
+
+**c)** I planet er $\vec n\,\mathrm{d}s = [\mathrm{d}y,\ -\mathrm{d}x]$ langs en kurve mot klokka. Greens teorem på fluksform med $\vec r = [x,\ y]$ og $\nabla\cdot\vec r = 2$ gir
+$$
+A = \frac12\oint_C \vec r\cdot\vec n\,\mathrm{d}s = \frac12\oint_C x\,\mathrm{d}y - y\,\mathrm{d}x
+$$
+som er arealformelen fra Greens teorem. Legg ett hjørne av trekanten i origo. Langs de to sidene fra origo peker $\vec r$ langs siden, så $\vec r\cdot\vec n = 0$. Langs den tredje siden, grunnlinja med lengden $b$, er $\vec r\cdot\vec n = h$, avstanden fra origo til linja, altså høyden. Dermed er
+$$
+A = \frac12\cdot h\cdot b = \underline{\underline{\frac12\,bh}}
+$$
+I planet er divergensen $2$, og faktoren blir $\tfrac12$.
+:::
+:::
+
+::::
