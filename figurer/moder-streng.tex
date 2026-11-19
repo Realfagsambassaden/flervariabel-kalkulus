@@ -1,0 +1,19 @@
+\begin{tikzpicture}[scale=1.0]
+% De tre første modene X_n(x) = sin(n pi x / L), stablet. Heltrukket: X_n, stiplet: -X_n (stående bølge snur).
+\foreach \n/\y in {1/0,2/-2.2,3/-4.4} {
+  \begin{scope}[yshift=\y cm]
+    \draw[black!40] (0,0)--(6,0);
+    \draw[bla,very thick,domain=0:6,samples=120] plot (\x,{0.8*sin(\n*180*\x/6)});
+    \draw[bla,thick,dashed,domain=0:6,samples=120] plot (\x,{-0.8*sin(\n*180*\x/6)});
+    \fill (0,0) circle (2.5pt); \fill (6,0) circle (2.5pt);
+    \ifnum\n>1
+      \foreach \k in {1,...,\numexpr\n-1\relax} \fill[rod] ({6*\k/\n},0) circle (2.5pt);
+    \fi
+    \node[left] at (-0.3,0) {$n=\n$};
+    \node[right,align=left] at (6.4,0) {$X_\n = \sin\dfrac{\ifnum\n>1 \n\fi\pi x}{L}$\\[2pt] $\lambda_\n = \Big(\dfrac{\ifnum\n>1 \n\fi\pi}{L}\Big)^2$};
+  \end{scope}
+}
+\node[below] at (0,-5.3) {$0$}; \node[below] at (6,-5.3) {$L$};
+\draw[akse] (-0.1,-5.3)--(6.4,-5.3) node[right]{$x$};
+\node[rod,below] at (3,-5.9) {nodepunkter: $X_n = 0$ inne i intervallet};
+\end{tikzpicture}
