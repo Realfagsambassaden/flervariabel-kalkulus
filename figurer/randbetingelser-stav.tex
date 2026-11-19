@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+\tikzset{stav/.style={fill=black!12,draw=black,thick}}
+\foreach \y/\navn in {0/Dirichlet,-1.9/Neumann,-3.8/Robin} {
+  \draw[stav] (0,\y-0.22) rectangle (6,\y+0.22);
+  % venstre ende: holdt på fast temperatur
+  \fill[rod!70] (-0.55,\y-0.5) rectangle (0,\y+0.5);
+  \node[rod,left] at (-0.6,\y) {\small $80\ ^\circ\mathrm{C}$};
+  \node[above,font=\bfseries] at (3,\y+0.25) {\navn};
+}
+% Dirichlet: høyre ende i bad med fast temperatur
+\fill[bla!60] (6,-0.5) rectangle (6.55,0.5);
+\node[bla,right] at (6.6,0) {\small $u(L)=20\ ^\circ\mathrm{C}$};
+\node[black!70,below] at (3,-0.25) {\small verdien er gitt};
+% Neumann: isolert ende
+\fill[pattern=north east lines,pattern color=black!60] (6,-2.4) rectangle (6.55,-1.4);
+\draw[black!70] (6,-2.4) rectangle (6.55,-1.4);
+\node[right] at (6.6,-1.9) {\small $u'(L)=0$};
+\node[black!70,below] at (3,-2.15) {\small isolert: ingen varmestr\o m ut};
+% Robin: varmeovergang til luft
+\foreach \dy in {-0.25,0,0.25} {
+  \draw[gronn,->,thick] plot[domain=0:0.85,samples=40,smooth] ({6.05+\x},{-3.8+\dy*(1+0.6*\x)+0.05*sin(\x*1300)});
+}
+\node[gronn,right] at (6.95,-3.8) {\small luft, $u_\infty$};
+\node[black!70,below] at (3,-4.05) {\small varmestr\o m ut $\propto u(L)-u_\infty$};
+\node[right] at (5.9,-4.75) {\small $-k\,u'(L)=h\,\big(u(L)-u_\infty\big)$};
+\end{tikzpicture}
