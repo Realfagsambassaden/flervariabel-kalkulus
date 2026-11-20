@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+% staven
+\fill[black!8] (0,0) rectangle (9,1.6);
+\draw[thick] (0,0) -- (9,0) (0,1.6) -- (9,1.6);
+\draw[thick,dashed] (0,0) -- (0,1.6) (9,0) -- (9,1.6);
+% skiva
+\fill[black!22] (3.5,0) rectangle (5.5,1.6);
+\draw[very thick] (3.5,0) rectangle (5.5,1.6);
+\node at (4.5,1.05) {$\rho c\,u$};
+\node at (4.5,0.45) {\small kilde $s$};
+% flukser
+\draw[vek,rod] (1.9,0.8) -- (3.4,0.8) node[midway,above] {$q(x)$};
+\draw[vek,rod] (5.6,0.8) -- (7.1,0.8) node[midway,above] {$q(x+\Delta x)$};
+% mål
+\node[below] at (3.5,0) {$x$};
+\node[below] at (5.5,0) {$x+\Delta x$};
+\draw[|-|] (3.5,-0.75) -- (5.5,-0.75) node[midway,below] {$\Delta x$};
+% tverrsnitt
+\draw[<->] (9.35,0) -- (9.35,1.6) node[midway,right] {areal $A$};
+\end{tikzpicture}

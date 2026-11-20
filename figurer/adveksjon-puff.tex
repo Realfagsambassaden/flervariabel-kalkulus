@@ -1,0 +1,13 @@
+\begin{tikzpicture}[yscale=1.6]
+\draw[akse] (-0.3,0) -- (10.3,0) node[right] {$x$};
+\draw[akse] (0,-0.1) -- (0,1.35) node[above] {$\phi$};
+% ren adveksjon: samme form flyttet
+\draw[very thick,bla] plot[domain=0:4,samples=80,smooth] (\x,{exp(-((\x-1.5)/0.45)^2)});
+\draw[very thick,bla,dashed] plot[domain=3.5:8.5,samples=80,smooth] (\x,{exp(-((\x-5.5)/0.45)^2)});
+% adveksjon + diffusjon: lavere og bredere
+\draw[very thick,rod] plot[domain=3:10,samples=80,smooth] (\x,{0.5*exp(-((\x-5.5)/0.9)^2)});
+\draw[vek] (1.9,1.12) -- (5.1,1.12) node[midway,above] {$v\,t$};
+\node[bla] at (1.5,-0.22) {\small $t=0$};
+\node[bla,right] at (6.0,0.9) {\small bare adveksjon};
+\node[rod,right] at (6.7,0.42) {\small adveksjon og diffusjon};
+\end{tikzpicture}
