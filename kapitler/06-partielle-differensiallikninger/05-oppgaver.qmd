@@ -2,14 +2,121 @@
 title: "Sammensatte oppgaver: PDE-er"
 tema: partielle-differensiallikninger
 undertema: oppgaver
-plassholder: true
 ---
 
 <!-- tillegg: Claude -->
-::: {.callout-note title="Kommer snart"}
-Denne siden skrives nå. Innholdet kommer snart.
+Oppgavene blander alt om partielle differensiallikninger: [hva en PDE er og de tre typene](01-hva-er-en-pde.qmd), [rand- og initialbetingelser](02-rand-og-initialbetingelser.qmd), [separasjon av variabler](03-separasjon-av-variabler.qmd) og [bevaringslover og varmelikningen](04-bevaringslover.qmd). Det meste av arbeidet er å forstå problemet før du regner. Still disse spørsmålene først:
+
+::: {.steg}
+1. **Hva slags likning er det?** Orden, lineær eller ikke, homogen eller ikke, og typen: elliptisk, parabolsk eller hyperbolsk.
+2. **Hvilke betingelser trengs?** Én initialbetingelse per tidsderivert, og betingelser på hele randen. Er de Dirichlet, Neumann eller Robin?
+3. **Hva sier fysikken?** Sett opp energiregnskapet: Hva strømmer inn og ut, og hva produseres? En isolert rand betyr null fluks.
+4. **Kan den løses eksakt?** Er likningen og randbetingelsene homogene, prøv separasjon. Er de ikke det, trekk fra en stasjonær løsning først.
+5. **Er svaret rimelig?** Sjekk enheter, grensetilfeller og at regnskapet går opp.
 :::
 
-## Dette kommer på siden
+Prøv selv før du åpner fasiten.
 
-- Blandede oppgaver med løsning
+:::: {.oppgaver}
+
+::: {.oppgave tittel="Tre likninger, tre typer" krever="partielle-differensiallikninger/typer, partielle-differensiallikninger/betingelser"}
+<!-- tillegg: Claude -->
+For hver av likningene: Finn orden, avgjør om den er lineær og homogen, og bestem typen. Si hvilke betingelser som trengs for et velstilt problem.
+
+a) $u_t = 3u_{xx} - u$ for $0 < x < 2$, $t > 0$
+
+b) $u_{xx} + 4u_{yy} = \sin x$ i et rektangel
+
+c) $u_{tt} = 4u_{xx}$ for $0 < x < 1$, $t > 0$
+
+::: {.fasit}
+a) andre orden, lineær, homogen, parabolsk; én initialbetingelse og én randbetingelse i hver ende · b) andre orden, lineær, inhomogen, elliptisk; randbetingelser på hele randen, ingen initialbetingelse · c) andre orden, lineær, homogen, hyperbolsk; to initialbetingelser ($u$ og $u_t$) og én randbetingelse i hver ende
+:::
+:::
+
+::: {.oppgave tittel="Den isolerte enden" niva="Middels" krever="partielle-differensiallikninger/separasjon, partielle-differensiallikninger/betingelser"}
+<!-- tillegg: Claude -->
+En stav med lengde $L = 1$ og $\alpha = 1$ har venstre ende holdt på $u = 0$, mens høyre ende er isolert:
+$$
+u_t = u_{xx}, \qquad u(0, t) = 0, \qquad u_x(1, t) = 0
+$$
+a) Vis at egenfunksjonene er $X_n = \sin\dfrac{(2n - 1)\pi x}{2}$, $n = 1, 2, 3, \dots$, og finn egenverdiene.
+
+b) Startprofilen er $u(x, 0) = \sin\frac{\pi x}{2} + 0.2\sin\frac{5\pi x}{2}$. Finn $u(x, t)$ og regn ut temperaturen i den isolerte enden ved $t = 0.1$.
+
+c) Hva er tidskonstanten for den laveste modusen? Sammenlign med en stav der begge endene holdes på null.
+
+::: {.fasit}
+a) $\lambda_n = \big(\tfrac{(2n-1)\pi}{2}\big)^2$ · b) $u(x, t) = \mathrm{e}^{-\pi^2 t/4}\sin\frac{\pi x}{2} + 0.2\,\mathrm{e}^{-25\pi^2 t/4}\sin\frac{5\pi x}{2}$, $u(1,\ 0.1) = 0.782$ · c) $4/\pi^2 = 0.405$, fire ganger så lang som $1/\pi^2$ med begge ender på null
+:::
+:::
+
+::: {.oppgave tittel="Varmeelement med kald ende" niva="Middels" krever="partielle-differensiallikninger/bevaringslover, partielle-differensiallikninger/betingelser, differensiallikninger/andre-orden"}
+<!-- tillegg: Claude -->
+En stav av rustfritt stål med lengde $L = 0.30\ \mathrm{m}$ og $k = 15\ \mathrm{W/(m\cdot K)}$ er isolert langs sidene og i høyre ende. Strøm gjennom staven gir varmeproduksjonen $s = 2.0\cdot 10^4\ \mathrm{W/m^3}$. Venstre ende holdes på $20\ \mathrm{^\circ C}$.
+
+a) Skriv opp den stasjonære likningen og randbetingelsene. Hvilken type er hver randbetingelse?
+
+b) Finn $u(x)$. Hvor er staven varmest, og hvor varm er den der?
+
+c) Finn varmefluksen gjennom venstre ende, og vis at den stemmer med energiregnskapet for hele staven.
+
+::: {.fasit}
+b) $u(x) = 20\ \mathrm{^\circ C} + \dfrac{s}{k}\Big(Lx - \dfrac{x^2}{2}\Big)$ · i den isolerte enden, $80\ \mathrm{^\circ C}$ · c) $6.0\ \mathrm{kW/m^2}$ ut av staven (i negativ $x$-retning), lik produksjonen $sL$ per tverrsnittsareal
+:::
+:::
+
+::: {.oppgave tittel="Energien i en isolert kloss" niva="Middels" krever="partielle-differensiallikninger/bevaringslover, partielle-differensiallikninger/betingelser, integralsetninger/gauss"}
+<!-- tillegg: Claude -->
+Et legeme $V$ er isolert på hele overflaten, så $\nabla u\cdot\vec n = 0$ på $\partial V$. Temperaturen følger $u_t = \alpha\nabla^2 u$, og det er ingen kilder.
+
+a) Bruk divergenssetningen til å vise at $\dfrac{\mathrm{d}}{\mathrm{d}t}\iiint_V u\,\mathrm{d}V = 0$. Hva betyr det fysisk?
+
+b) En aluminiumskloss består av to like store halvdeler. Den ene har $80\ \mathrm{^\circ C}$ og den andre $20\ \mathrm{^\circ C}$ når de presses sammen. Hvilken temperatur ender klossen på?
+
+c) Gjelder resultatet i a) hvis klossen i stedet står i et bad med fast temperatur på overflaten? Begrunn svaret.
+
+::: {.fasit}
+a) Den totale energien i legemet er konstant · b) $50\ \mathrm{^\circ C}$ · c) nei, da strømmer det varme gjennom overflaten
+:::
+:::
+
+::: {.oppgave tittel="Fiolinstrengen" niva="Middels" krever="partielle-differensiallikninger/separasjon, partielle-differensiallikninger/typer"}
+<!-- tillegg: Claude -->
+A-strengen på en fiolin har svingende lengde $L = 0.325\ \mathrm{m}$ og grunntone $440\ \mathrm{Hz}$.
+
+a) Finn bølgefarten i strengen.
+
+b) Finn frekvensen til modus 3.
+
+c) Fiolinisten legger fingeren lett midt på strengen (et flageolett), slik at midtpunktet holdes i ro. Hvilke moder kan da svinge, og hvilken tone hører vi?
+
+d) Hvorfor trenger bølgelikningen to initialbetingelser, mens varmelikningen klarer seg med én?
+
+::: {.fasit}
+a) $286\ \mathrm{m/s}$ · b) $1.32\ \mathrm{kHz}$ · c) bare de jevne modene ($n = 2, 4, \dots$), grunntonen blir $880\ \mathrm{Hz}$
+:::
+:::
+
+::: {.oppgave tittel="Stav med varmekilde: stasjonært pluss forbigående" niva="Utfordrende" krever="partielle-differensiallikninger/separasjon, partielle-differensiallikninger/bevaringslover, partielle-differensiallikninger/betingelser"}
+<!-- tillegg: Claude -->
+En stav med $L = 1$ og $\alpha = 1$ har en jevn varmekilde og endene holdt på null:
+$$
+u_t = u_{xx} + 2, \qquad u(0, t) = u(1, t) = 0
+$$
+Likningen er inhomogen, så separasjon virker ikke direkte.
+
+a) Finn den stasjonære løsningen $w(x)$.
+
+b) Skriv $u(x, t) = w(x) + v(x, t)$. Vis at $v$ oppfyller den *homogene* varmelikningen med homogene randbetingelser.
+
+c) Startprofilen er $u(x, 0) = x(1 - x) + 0.5\sin(\pi x)$. Finn $u(x, t)$ og regn ut $u(0.5,\ 0.2)$.
+
+d) Hva går temperaturen midt på staven mot når $t \to \infty$? Kontroller med energiregnskapet at varmen som produseres, går ut gjennom endene.
+
+::: {.fasit}
+a) $w(x) = x(1 - x)$ · c) $u(x, t) = x(1 - x) + 0.5\,\mathrm{e}^{-\pi^2 t}\sin(\pi x)$, $u(0.5,\ 0.2) = 0.319$ · d) $0.25$
+:::
+:::
+
+::::
