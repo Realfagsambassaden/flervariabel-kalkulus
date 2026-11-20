@@ -73,7 +73,7 @@ Den fysiske tolkningen er lettest å se for temperatur $u$. Etter **Fouriers lov
 $$
 q = -k\,\frac{\partial u}{\partial n}
 $$
-der $k$ er varmeledningsevnen. Varmen strømmer fra varmt til kaldt, derfor minustegnet.
+der $k$ er varmeledningsevnen. Varmen strømmer fra varmt til kaldt, derfor minustegnet. Mer om Fouriers lov står under [bevaringslover og varmelikningen](04-bevaringslover.qmd).
 
 ![](../../bilder/figurer/randbetingelser-stav.svg){.tikz-fig style="width:620px" fig-alt="Tre staver med venstre ende holdt på 80 grader celsius. Den første, Dirichlet, har høyre ende i et bad med fast temperatur u av L lik 20 grader: verdien er gitt. Den andre, Neumann, har høyre ende pakket inn i isolasjon: u derivert i L er null, ingen varmestrøm ut. Den tredje, Robin, avgir varme til lufta med temperatur u uendelig gjennom høyre ende: varmestrømmen ut er proporsjonal med u av L minus u uendelig, altså minus k u derivert av L lik h ganger u av L minus u uendelig."}
 
@@ -220,7 +220,7 @@ Sammenlign med bølgelikningen $u_{tt} = u_{xx}$ med de samme Cauchy-betingelsen
 Rene Neumann-betingelser for Laplace eller Poisson gir løsning bare når forenlighetsbetingelsen er oppfylt, og da bare opp til en konstant.
 :::
 
-Løsningen $u_n$ i Hadamards eksempel er et produkt av en funksjon av $x$ og en funksjon av $y$. Slike produktløsninger er utgangspunktet for metoden *separasjon av variabler*. Hvordan betingelsene behandles numerisk, står under [randverdiproblemer med Dirichlet-betingelser](../07-endelige-differanser/02-randverdiproblem.qmd) og [Neumann-betingelser og fiktiv rand](../07-endelige-differanser/04-neumann-og-fiktiv-rand.qmd).
+Løsningen $u_n$ i Hadamards eksempel er et produkt av en funksjon av $x$ og en funksjon av $y$. Slike produktløsninger er utgangspunktet for metoden [separasjon av variabler](03-separasjon-av-variabler.qmd). Hvordan betingelsene behandles numerisk, står under [randverdiproblemer med Dirichlet-betingelser](../07-endelige-differanser/02-randverdiproblem.qmd) og [Neumann-betingelser og fiktiv rand](../07-endelige-differanser/04-neumann-og-fiktiv-rand.qmd).
 
 ## Prøv selv
 
