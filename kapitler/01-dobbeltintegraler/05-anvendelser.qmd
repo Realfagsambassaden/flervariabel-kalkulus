@@ -143,7 +143,7 @@ Kraften vokser med kvadratet av dybden. Dobbelt så dypt vann gir fire ganger s�
 ::: {.losning}
 a)
 $$
-F = \rho_\text{v}\mathrm{g}\,b\,\frac{h^2}{2} = 1.00\cdot10^3\ \mathrm{kg/m^3}\cdot9.81\ \mathrm{m/s^2}\cdot50\ \mathrm{m}\cdot\frac{(20\ \mathrm{m})^2}{2} = 9.81\cdot10^{7}\ \mathrm{N} = \underline{\underline{98.1\ \mathrm{MN}}}
+F = \rho_\text{v}\mathrm{g}\,b\,\frac{h^2}{2} = 1.00\cdot10^3\ \mathrm{kg/m^3}\cdot9.81\ \mathrm{m/s^2}\cdot50\ \mathrm{m}\cdot\frac{(20\ \mathrm{m})^2}{2} = 9.81\cdot10^{7}\ \mathrm{N} = \underline{\underline{98\ \mathrm{MN}}}
 $$
 
 b) Trykksenteret er tyngdepunktet til kraften: et veid gjennomsnitt av høyden, med kraften som vekt.
@@ -236,7 +236,7 @@ b)  Finn kraften fra vannet på demningen.
 c)  Finn høyden til trykksenteret, og sammenlikn med en rektangulær vegg.
 
 ::: {.fasit}
-a) $40\ \mathrm{m} + \tfrac43 z$ · b) $235\ \mathrm{MN}$ · c) $11.3\ \mathrm{m}$
+a) $40\ \mathrm{m} + \tfrac43 z$ · b) $2.4\cdot10^{2}\ \mathrm{MN}$ · c) $11\ \mathrm{m}$ <!-- tillegg: Claude: notasjon (gjeldende siffer) -->
 :::
 :::
 

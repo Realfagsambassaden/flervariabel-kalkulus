@@ -115,7 +115,7 @@ $12.61$ · $12.01$
 Bruk differanseformelen for $f''$ med $h = 0.1$ på $f(x) = \mathrm{e}^{x}$ i $x = 0$. Hva er feilen?
 
 ::: {.fasit}
-$1.000834$
+$1.000834$, så feilen er $8.3\cdot10^{-4}$ <!-- tillegg: Claude -->
 :::
 :::
 

@@ -95,7 +95,7 @@ Samme svar som med sylinderkoordinater, men på tre linjer.
 :::
 
 ::: {.eksempel}
-**Eksempel: Jordas masse.** En enkel modell av jorda lar tettheten avta lineært fra $\delta_{\text{s}} = 13.0\cdot10^3\ \mathrm{kg/m^3}$ i sentrum til $\delta_{\text{o}} = 3.0\cdot10^3\ \mathrm{kg/m^3}$ ved overflaten:
+**Eksempel: Jordas masse.** En enkel modell av jorda lar tettheten avta lineært fra $\delta_{\text{s}} = 13.0\cdot10^3\ \mathrm{kg/m^3}$ i sentrum til $\delta_{\text{o}} = 3.00\cdot10^3\ \mathrm{kg/m^3}$ ved overflaten:
 $$
 \delta(\rho) = \delta_{\text{s}} - \big(\delta_{\text{s}} - \delta_{\text{o}}\big)\frac{\rho}{R}, \qquad R = 6.37\cdot10^6\ \mathrm{m}
 $$
