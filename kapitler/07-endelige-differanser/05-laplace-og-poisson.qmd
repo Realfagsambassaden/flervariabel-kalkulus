@@ -131,7 +131,7 @@ $U = 0.125$
 Gjør om koden til Gauss–Seidel med to løkker over $i$ og $j$. Hvor mange iterasjoner trengs nå for $M = 40$?
 
 ::: {.fasit}
-$2100$
+Ca. $2.1\cdot10^{3}$ <!-- tillegg: Claude: notasjon (standardform) -->
 :::
 :::
 

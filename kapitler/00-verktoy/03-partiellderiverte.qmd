@@ -113,7 +113,7 @@ Finn $f_x$ og $f_y$ for $f(x, y) = x^2\,\mathrm{e}^{3y} + \ln(x)$, $x > 0$.
 Finn alle de tre partiellderiverte av $T(x, y, z) = xy^2z^3$ i punktet $(1, 2, -1)$.
 
 ::: {.fasit}
-$-4$ · $12$
+$-4$ · $-4$ · $12$ <!-- tillegg: Claude: manglende svar -->
 :::
 :::
 
