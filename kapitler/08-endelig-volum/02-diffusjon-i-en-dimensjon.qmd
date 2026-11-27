@@ -67,9 +67,9 @@ $$
 =
 \begin{bmatrix} 640 \\ 0 \\ 0 \\ -320 \end{bmatrix}
 $$
-gir $\underline{\underline{T = (16.25,\ 8.75,\ 1.25,\ -6.25)\ \mathrm{°C}}}$.
+gir $T = (16.25,\ 8.75,\ 1.25,\ -6.25)\ \mathrm{°C}$, altså $\underline{\underline{T \approx (16,\ 8.8,\ 1.3,\ -6.3)\ \mathrm{°C}}}$ med to gjeldende siffer. <!-- tillegg: Claude: notasjon (gjeldende siffer) -->
 
-Varmetapet er fluksen gjennom en hvilken som helst flate, for eksempel mellom celle 1 og 2: $16\cdot(16.25 - 8.75) = \underline{\underline{120\ \mathrm{W/m^2}}}$. Den eksakte løsningen er den rette linja $T = 20 - 150x$, og den numeriske løsningen er eksakt, fordi den lineære tilnærmingen av fluksen er eksakt for en rett linje.
+Varmetapet er fluksen gjennom en hvilken som helst flate, for eksempel mellom celle 1 og 2: $16\cdot(16.25 - 8.75) = 120\ \mathrm{W/m^2} = \underline{\underline{1.2\cdot10^{2}\ \mathrm{W/m^2}}}$. Den eksakte løsningen er den rette linja $T = 20 - 150x$, og den numeriske løsningen er eksakt, fordi den lineære tilnærmingen av fluksen er eksakt for en rett linje.
 :::
 :::
 
@@ -86,11 +86,11 @@ $$
 **Eksempel: Murvegg med isolasjon.** Veggen over får $0.10\ \mathrm{m}$ mur med $\kappa = 0.80\ \mathrm{W/(m\,K)}$ og $0.10\ \mathrm{m}$ isolasjon med $\kappa = 0.040\ \mathrm{W/(m\,K)}$. Hva blir varmetapet nå, og hva er temperaturen der muren og isolasjonen møtes?
 
 ::: {.losning}
-Med åtte celler og harmonisk gjennomsnitt i grenseflaten gir koden under varmetapet $\underline{\underline{11.4\ \mathrm{W/m^2}}}$, bare en tidel av før. Det stemmer eksakt med serieformelen
+Med åtte celler og harmonisk gjennomsnitt i grenseflaten gir koden under varmetapet $11.43\ \mathrm{W/m^2} \approx \underline{\underline{11\ \mathrm{W/m^2}}}$, bare en tidel av før. <!-- tillegg: Claude: notasjon (gjeldende siffer) --> Det stemmer eksakt med serieformelen
 $$
-q = \frac{\Delta T}{\sum\frac{L}{\kappa}} = \frac{30\ \mathrm{K}}{\frac{0.10}{0.80} + \frac{0.10}{0.040}\ \mathrm{m^2K/W}} = 11.4\ \mathrm{W/m^2}
+q = \frac{\Delta T}{\sum\frac{L}{\kappa}} = \frac{30\ \mathrm{K}}{\frac{0.10}{0.80} + \frac{0.10}{0.040}\ \mathrm{m^2K/W}} = 11.43\ \mathrm{W/m^2}
 $$
-Temperaturen i grenseflaten er $20 - 11.4\cdot\frac{0.10}{0.80} = \underline{\underline{18.6\ \mathrm{°C}}}$. Nesten hele temperaturfallet skjer i isolasjonen.
+Temperaturen i grenseflaten er $20 - 11.43\cdot\frac{0.10}{0.80} = 18.57\ \mathrm{°C} \approx \underline{\underline{19\ \mathrm{°C}}}$. Nesten hele temperaturfallet skjer i isolasjonen.
 
 Bruker vi vanlig gjennomsnitt $\frac12(\kappa_P + \kappa_E)$ i stedet, blir varmetapet for stort, fordi den dårlige lederen får for lite vekt.
 :::
@@ -152,7 +152,7 @@ $T = (10,\ 30,\ 50)\ \mathrm{°C}$
 Endre koden slik at den bruker vanlig gjennomsnitt $\frac12(\kappa_P + \kappa_E)$ på flatene. Hvor stort blir varmetapet for murveggen med isolasjon, og hvorfor er det feil?
 
 ::: {.fasit}
-$12.7\ \mathrm{W/m^2}$
+$13\ \mathrm{W/m^2}$ <!-- tillegg: Claude: notasjon (gjeldende siffer) -->
 :::
 :::
 

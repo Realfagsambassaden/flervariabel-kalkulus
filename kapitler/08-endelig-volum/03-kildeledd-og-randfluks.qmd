@@ -41,7 +41,7 @@ Indre celler: $a_W = a_E = 100$, $a_P = 200$, $S_u = 1000$. Randceller: $S_P = -
 
 Avviket er nøyaktig $1.25\ \mathrm{°C}$ i *alle* cellene. Det kommer fra den halve randcellen: Mellom randen og første node er temperaturen krum, men vi har tilnærmet den med en rett linje. Avviket er $\frac{q\,\delta x^2}{8\kappa}$, så det deles på fire hver gang cellene halveres.
 
-Energibalansen stemmer likevel eksakt: Fluksen ut på hver side er $200\cdot(32.50 - 20) = 2500\ \mathrm{W}$, til sammen $5000\ \mathrm{W}$, som er hele produksjonen $50\ \mathrm{kW/m^3}\cdot 0.10\ \mathrm{m^3}$.
+Energibalansen stemmer likevel eksakt: Fluksen ut på hver side er $200\cdot(32.50 - 20)\ \mathrm{W} = 2.5\ \mathrm{kW}$, til sammen $5.0\ \mathrm{kW}$, <!-- tillegg: Claude: notasjon (prefiks) --> som er hele produksjonen $50\ \mathrm{kW/m^3}\cdot 0.10\ \mathrm{m^3}$.
 :::
 :::
 
@@ -65,7 +65,7 @@ Sammenlign med endelige differanser, der vi trengte et fiktivt punkt for å få 
 ::: {.losning}
 Bare celle 5 endres: $a_E = 0$, $S_P = 0$, $S_u = 1000$, så $a_P = 100$.
 
-Løsningen blir $T = (45,\ 85,\ 115,\ 135,\ 145)\ \mathrm{°C}$, og den eksakte løsningen $T = 20 + \frac{q}{2\kappa}x(2L - x)$ gir $1.25\ \mathrm{°C}$ mindre i hver node. Ved selve den isolerte flaten er den eksakte temperaturen $\underline{\underline{145\ \mathrm{°C}}}$. All varmen, $5000\ \mathrm{W}$, går nå ut gjennom venstre side.
+Løsningen blir $T = (45,\ 85,\ 115,\ 135,\ 145)\ \mathrm{°C}$, og den eksakte løsningen $T = 20 + \frac{q}{2\kappa}x(2L - x)$ gir $1.25\ \mathrm{°C}$ mindre i hver node. Ved selve den isolerte flaten er den eksakte temperaturen $145\ \mathrm{°C} \approx \underline{\underline{1.5\cdot10^{2}\ \mathrm{°C}}}$. All varmen, $5.0\ \mathrm{kW}$, <!-- tillegg: Claude: notasjon (gjeldende siffer, prefiks) --> går nå ut gjennom venstre side.
 :::
 :::
 
@@ -145,7 +145,7 @@ Løs platen med varmeproduksjon med $n = 5,\ 10,\ 20$ celler og regn ut avviket 
 Hvor mye varme avgir kjølepinnen per $\kappa A$, regnet med fem celler? Sammenlign med det eksakte svaret $(T_b - T_\infty)\,n\tanh(nL)$. Vis at summen av varmetapet fra alle cellene er lik fluksen inn gjennom basen.
 
 ::: {.fasit}
-$227\ \mathrm{K/m}$
+$2.3\cdot10^{2}\ \mathrm{K/m}$ <!-- tillegg: Claude: notasjon (gjeldende siffer) -->
 :::
 :::
 
