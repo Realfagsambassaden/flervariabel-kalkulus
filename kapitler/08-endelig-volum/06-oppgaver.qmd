@@ -18,7 +18,7 @@ Nevn to situasjoner der endelig volum-metoden har en klar fordel framfor endelig
 En $0.060\ \mathrm{m}$ tykk betongplate med $\kappa = 1.4\ \mathrm{W/(m\,K)}$ har varmekabler som gir $q = 2.0\ \mathrm{kW/m^3}$ jevnt fordelt. Undersiden er isolert, og oversiden holdes på $22\ \mathrm{°C}$ av romlufta. Hva er den høyeste temperaturen i platen? Bruk endelig volum-metoden med tre celler, og sammenlign med det eksakte svaret.
 
 ::: {.fasit}
-$24.6\ \mathrm{°C}$
+$24.57\ \mathrm{°C} \approx 25\ \mathrm{°C}$, både numerisk og eksakt <!-- tillegg: Claude: notasjon (gjeldende siffer) -->
 :::
 :::
 

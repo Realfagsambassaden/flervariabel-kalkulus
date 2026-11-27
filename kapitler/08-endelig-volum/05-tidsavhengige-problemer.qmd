@@ -52,8 +52,9 @@ I 2D med kvadratiske celler har en indre celle fire naboer, og kravet blir $\Del
 ::: {.losning}
 $\delta x = 0.020\ \mathrm{m}$. Grensene:
 $$
-\frac{\rho c\,\delta x^2}{2\kappa} = \frac{2300\cdot 880\cdot 0.020^2}{2\cdot 1.4}\ \mathrm{s} = 289\ \mathrm{s}, \qquad \frac{\rho c\,\delta x^2}{3\kappa} = \underline{\underline{193\ \mathrm{s}}}
+\frac{\rho c\,\delta x^2}{2\kappa} = \frac{2300\cdot 880\cdot 0.020^2}{2\cdot 1.4}\ \mathrm{s} = 289\ \mathrm{s} \approx 2.9\cdot10^{2}\ \mathrm{s}, \qquad \frac{\rho c\,\delta x^2}{3\kappa} = 193\ \mathrm{s} \approx \underline{\underline{1.9\cdot10^{2}\ \mathrm{s}}}
 $$
+<!-- tillegg: Claude: notasjon (gjeldende siffer) -->
 Med $\Delta t = 180\ \mathrm{s}$ gir koden under denne temperaturen midt i veggen:
 
 | tid | $1\ \mathrm{h}$ | $6\ \mathrm{h}$ | $24\ \mathrm{h}$ |

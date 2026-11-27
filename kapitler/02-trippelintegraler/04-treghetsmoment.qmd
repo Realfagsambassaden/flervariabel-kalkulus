@@ -93,7 +93,7 @@ Treghetsmomentet kan måles uten å bore i jorda, fra hvordan jordaksen vugger u
 
 ::: {.eksempel}
 <!-- tillegg: Claude -->
-**Eksempel: Treghetsmomentet til jorda.** Bruk modellen fra [kulekoordinater](03-kulekoordinater.qmd), der tettheten avtar lineært fra $\delta_{\text{s}} = 13.0\cdot10^3\ \mathrm{kg/m^3}$ i sentrum til $\delta_{\text{o}} = 3.0\cdot10^3\ \mathrm{kg/m^3}$ ved overflaten:
+**Eksempel: Treghetsmomentet til jorda.** Bruk modellen fra [kulekoordinater](03-kulekoordinater.qmd), der tettheten avtar lineært fra $\delta_{\text{s}} = 13.0\cdot10^3\ \mathrm{kg/m^3}$ i sentrum til $\delta_{\text{o}} = 3.00\cdot10^3\ \mathrm{kg/m^3}$ ved overflaten: <!-- tillegg: Claude: notasjon (gjeldende siffer, som på siden om kulekoordinater) -->
 $$
 \delta(\rho) = \delta_{\text{s}} - \big(\delta_{\text{s}} - \delta_{\text{o}}\big)\frac{\rho}{R}, \qquad R = 6.37\cdot10^6\ \mathrm{m}
 $$
@@ -218,7 +218,7 @@ $\tfrac23 mR^2$
 
 ::: {.oppgave tittel="Jorda med kjerne og mantel" niva="Utfordrende"}
 <!-- tillegg: Claude -->
-En annen enkel modell av jorda har en jernkjerne med radius $R_\text{k} = 3.48\cdot10^6\ \mathrm{m}$ og tettheten $\delta_\text{k} = 11.0\cdot10^3\ \mathrm{kg/m^3}$, og en mantel ut til $R = 6.37\cdot10^6\ \mathrm{m}$ med tettheten $\delta_\text{m} = 4.5\cdot10^3\ \mathrm{kg/m^3}$.
+En annen enkel modell av jorda har en jernkjerne med radius $R_\text{k} = 3.48\cdot10^6\ \mathrm{m}$ og tettheten $\delta_\text{k} = 11.0\cdot10^3\ \mathrm{kg/m^3}$, og en mantel ut til $R = 6.37\cdot10^6\ \mathrm{m}$ med tettheten $\delta_\text{m} = 4.50\cdot10^3\ \mathrm{kg/m^3}$. <!-- tillegg: Claude: notasjon (gjeldende siffer, så svarene kan ha tre siffer) -->
 
 a) Finn massen $M$ og treghetsmomentet $I$ om jordaksen.
 

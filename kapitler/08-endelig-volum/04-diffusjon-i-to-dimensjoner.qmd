@@ -116,7 +116,7 @@ $2.5\ \mathrm{W/K}$ · $10\ \mathrm{W/K}$
 Hvordan endres likningen for en randcelle når veggen er isolert? Hva skjer med temperaturene i eksempelet hvis den øverste veggen isoleres?
 
 ::: {.fasit}
-$48.8\ \mathrm{°C}$
+Midtcellen: $48.8\ \mathrm{°C}$ <!-- tillegg: Claude -->
 :::
 :::
 
